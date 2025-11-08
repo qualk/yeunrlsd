@@ -130,6 +130,49 @@ body:has(.product-detail) .header {
   transform: translateX(-50%);
 }
 
+.site-title {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 32px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.site-title::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--foreground);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.site-title::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--foreground);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.site-title:hover::before {
+  transform: scaleX(1);
+}
+
+.site-title:hover::after {
+  transform: scaleX(1);
+}
+
 .main-content {
   padding-top: 80px;
   min-height: calc(100dvh - 80px);

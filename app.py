@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session, jsonify, abort
+from flask import Flask, render_template, request, session, jsonify, abort, redirect
 from datastar_sse import datastar_merge_fragment
 from datastar_broadcast import register_queue, unregister_queue, publish
 import queue
@@ -49,9 +49,8 @@ def product_detail(product_id):
     if request.headers.get('X-Datastar-Action') == 'fetch':
         return render_template('product_fragment.html', product=product, sizes=SIZES, cart_quantity=get_cart_quantity())
 
-    # Otherwise return a Datastar SSE patch to update #product-detail
-    html = render_template('product_fragment.html', product=product, sizes=SIZES, cart_quantity=get_cart_quantity())
-    return datastar_merge_fragment(html, selector="#product-detail", merge_mode=None, use_view_transition=True)
+    # Otherwise redirect to home page to prevent SSE text on refresh
+    return redirect('/')
 
 
 @app.route('/datastar')

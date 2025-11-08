@@ -23,10 +23,12 @@
 
     <nav class="header" role="navigation" aria-label="Main navigation">
         <div class="nav-left">
-            <button id="back-btn" class="back-btn{% if back_hidden %} hidden{% endif %}" onclick="{{ back_onclick }}" aria-label="Back" title="Back"></button>
+            <button id="back-btn" class="back-btn{% if back_hidden %} hidden{% endif %}" onclick="{{ back_onclick }}" aria-label="Back" title="Back">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
         </div>
         <div class="nav-center">
-            <h1 class="site-title">[yeunrlsd]</h1>
+            <a href="/" class="site-title">[yeunrlsd]</a>
         </div>
         <div class="nav-right">
             <button id="cart-btn" class="cart-btn" onclick="{{ cart_onclick }}" aria-label="View cart" title="View cart" aria-haspopup="dialog" aria-controls="cart-sidebar">
