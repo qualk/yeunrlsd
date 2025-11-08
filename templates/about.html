@@ -1,0 +1,42 @@
+{% extends 'partials/layout.html' %}
+
+{% set back_hidden = false %}
+{% set back_onclick = "window.location.href='/'" %}
+{% set cart_onclick = "window.location.href='/'" %}
+
+{% block title %}About - [yeunrlsd]{% endblock %}
+
+{% block description %}About [yeunrlsd] - A minimalist ecommerce experience.{% endblock %}
+
+{% block main %}
+<div class="page-content" role="main" aria-labelledby="about-title">
+    <h1 id="about-title">ABOUT</h1>
+
+    <section aria-labelledby="about-yeunrlsd">
+        <h2 id="about-yeunrlsd">[yeunrlsd]</h2>
+        <p>
+            [yeunrlsd] is a minimalist ecommerce template inspired by the design
+            principles of simplicity and functionality. Built with Flask and
+            modern web technologies, it offers a streamlined shopping experience
+            focused on essential clothing items.
+        </p>
+    </section>
+
+    <section aria-labelledby="about-technology">
+        <h2 id="about-technology">TECHNOLOGY</h2>
+        <p>
+            Built using Flask, Datastar, and vanilla JavaScript, [yeunrlsd]
+            represents a modern approach to ecommerce, prioritising performance
+            and user experience.
+        </p>
+    </section>
+
+    <section aria-labelledby="about-credit">
+        <h2 id="about-credit">CREDIT</h2>
+        <p>
+            All credit for the site design and inspiration goes to Kanye West,
+            the original Yeezy team and designers.
+        </p>
+    </section>
+</div>
+{% endblock %}

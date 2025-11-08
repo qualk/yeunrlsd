@@ -1,0 +1,27 @@
+<div id="product-detail" class="product-detail" aria-live="polite" aria-atomic="true">
+    <div class="product-detail-view" aria-label="Product detail">
+        <div class="product-image-container">
+            <img src="{{ product.image }}" alt="{{ product.name }}" class="product-detail-image" loading="eager">
+        </div>
+        <div class="add-to-cart-section">
+            <div class="size-selector" role="group" aria-label="Size selector">
+                <div id="product-name" class="product-name">{{ product.id.split('-')[:2]|join('-')|upper }}</div>
+                <div id="select-size" class="select-size hidden" aria-live="polite">
+                    <div class="w-8"></div>
+                    <span>SELECT SIZE</span>
+                    <button id="close-size" class="close-size" onclick="closeSizeSelector()" aria-label="Close size selector">&times;</button>
+                </div>
+                <button id="add-btn" class="add-button" onclick="openSizeSelector()" aria-label="Open size selector">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                        <path d="M12 4v16m8-8H4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div id="size-buttons" class="size-buttons hidden" role="radiogroup" aria-label="Available sizes">
+                    {% for size in sizes %}
+                    <button class="size-btn" onclick="addToCart('{{ product.id }}', '{{ size.value }}')" aria-label="Add size {{ size.label }} to cart">{{ size.label }}</button>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

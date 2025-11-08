@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}[yeunrlsd]{% endblock %}</title>
+    <meta name="description" content="{% block description %}Inspired by yeezy.com, built with Flask.{% endblock %}">
+    <meta name="theme-color" content="#FFFFFF">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <!-- Preconnect & preload font to reduce flash of unstyled text -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbV2o-flEEny0FZhsfKu5WU4xD7OwE.woff2" as="font" type="font/woff2" crossorigin>
+    {% block extra_head %}{% endblock %}
+    <script src="{{ url_for('static', filename='js/datastar-client.js') }}"></script>
+</head>
+<body>
+    {% set back_hidden = back_hidden | default(true) %}
+    {% set back_onclick = back_onclick | default("goBack()") %}
+    {% set cart_onclick = cart_onclick | default("toggleCart()") %}
+
+    <nav class="header" role="navigation" aria-label="Main navigation">
+        <div class="nav-left">
+            <button id="back-btn" class="back-btn{% if back_hidden %} hidden{% endif %}" onclick="{{ back_onclick }}" aria-label="Back" title="Back"></button>
+        </div>
+        <div class="nav-center">
+            <h1 class="site-title">[yeunrlsd]</h1>
+        </div>
+        <div class="nav-right">
+            <button id="cart-btn" class="cart-btn" onclick="{{ cart_onclick }}" aria-label="View cart" title="View cart" aria-haspopup="dialog" aria-controls="cart-sidebar">
+                <svg class="cart-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                    <rect x="6" y="8" width="12" height="10" rx="2" stroke="currentColor" stroke-width="2" stroke-linecap="round"></rect>
+                    <path d="M9 7V7C9 5.34315 10.3431 4 12 4V4C13.6569 4 15 5.34315 15 7V7" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                </svg>
+                <span id="cart-quantity" aria-live="polite">{{ cart_quantity }}</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="main-content" id="main-content" tabindex="-1" role="main">
+        {% block main %}{% endblock %}
+    </main>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

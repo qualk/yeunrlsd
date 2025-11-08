@@ -1,0 +1,64 @@
+{% extends 'partials/layout.html' %}
+
+{% set back_hidden = true %}
+{% set back_onclick = "goBack()" %}
+{% set cart_onclick = "toggleCart()" %}
+
+{% block title %}[yeunrlsd]{% endblock %}
+
+{% block description %}Inspired by yeezy.com, built with Flask.{% endblock %}
+
+{% block extra_head %}
+{% for product in products[:6] %}
+<link rel="preload" as="image" href="{{ product.image }}">
+{% endfor %}
+<!-- Removed HTMX and Turbo scripts -->
+{% endblock %}
+
+{% block main %}
+<div id="product-grid" class="product-grid" role="list" aria-label="Product list">
+    {% for product in products %}
+    <div class="product-item" data-on-click="@get('/p/{{ product.id }}')" role="listitem" tabindex="0" aria-label="View details for {{ product.name }}">
+        <img src="{{ product.image }}" alt="{{ product.name }}" class="product-image" loading="lazy">
+        <p class="product-name">{{ product.id.split('-')[:2]|join('-')|upper }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+<div id="product-detail" class="product-detail hidden" aria-live="polite" aria-atomic="true">
+        <!-- Will be populated by Datastar -->
+</div>
+
+<div id="cart-sidebar" class="cart-sidebar hidden" role="dialog" aria-modal="true" aria-label="Shopping cart">
+    <div class="cart-content">
+        <div id="cart-items" class="cart-items" aria-live="polite">
+            <!-- Cart items will be loaded here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="cart-total">$0</span>
+            </div>
+            <p class="cart-note">TAX AND SHIPPING NOT INCLUDED</p>
+            <a href="https://www.yeezy.com" target="_blank" class="checkout-btn" aria-label="Continue to checkout">CONTINUE</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+// Register service worker
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/static/sw.js')
+            .then(registration => {
+            console.log('SW registered: ', registration);
+        })
+        .catch(registrationError => {
+            console.log('SW registration failed: ', registrationError);
+        });
+    });
+}
+</script>
+{% endblock %}
