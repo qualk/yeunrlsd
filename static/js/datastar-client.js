@@ -128,7 +128,7 @@
                 else if (existing) existing.innerHTML = html;
                 // ensure visible and run init hooks
                 document.getElementById('product-detail')?.classList.remove('hidden');
-                document.getElementById('back-btn')?.classList.remove('hidden');
+                document.getElementById('   ')?.classList.remove('hidden');
                 try { window.cacheElements?.(); } catch(e){}
                 try { window.enhanceImages?.(); } catch(e){}
             };
@@ -153,5 +153,16 @@
             }
         }
     });
+    
+    // Handle site title click navigation
+    window.handleTitleClick = function() {
+        if (document.querySelector('.product-detail:not(.hidden)')) {
+            goBack();
+            return false;
+        } else if (window.location.pathname === '/') {
+            return false;
+        }
+        return true;
+    };
     
 })();
