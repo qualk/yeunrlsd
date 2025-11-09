@@ -6,43 +6,26 @@
 
 {% block title %}[yeunrlsd]{% endblock %}
 
-{% block description %}Inspired by yeezy.com, built with Flask.{% endblock %}
+{% block description %}ye unreleased music, inspired by yeezy.com, built with Flask.{% endblock %}
 
 {% block extra_head %}
-{% for product in products[:6] %}
-<link rel="preload" as="image" href="{{ product.image }}">
+{% for album in albums[:6] %}
+<link rel="preload" as="image" href="{{ album.image }}">
 {% endfor %}
-<!-- Removed HTMX and Turbo scripts -->
 {% endblock %}
 
 {% block main %}
-<div id="product-grid" class="product-grid" role="list" aria-label="Product list">
-    {% for product in products %}
-    <div class="product-item" data-on-click="@get('/p/{{ product.id }}')" role="listitem" tabindex="0" aria-label="View details for {{ product.name }}">
-        <img src="{{ product.image }}" alt="{{ product.name }}" class="product-image" loading="lazy">
-        <p class="product-name">{{ product.id.split('-')[:2]|join('-')|upper }}</p>
+<div id="album-grid" class="product-grid" role="list" aria-label="Album list">
+    {% for album in albums %}
+    <div class="product-item" data-on-click="@get('/p/{{ album.id }}')" role="listitem" tabindex="0" aria-label="View details for {{ album.name }}">
+        <img src="{{ album.image }}" alt="{{ album.name }}" class="product-image" loading="lazy">
+        <p class="product-name">{{ album.name }}</p>
     </div>
     {% endfor %}
 </div>
 
-<div id="product-detail" class="product-detail hidden" aria-live="polite" aria-atomic="true">
+<div id="album-detail" class="product-detail hidden" aria-live="polite" aria-atomic="true">
         <!-- Will be populated by Datastar -->
-</div>
-
-<div id="cart-sidebar" class="cart-sidebar hidden" role="dialog" aria-modal="true" aria-label="Shopping cart">
-    <div class="cart-content">
-        <div id="cart-items" class="cart-items" aria-live="polite">
-            <!-- Cart items will be loaded here -->
-        </div>
-        <div class="cart-footer">
-            <div class="cart-total">
-                <span>Total</span>
-                <span id="cart-total">$0</span>
-            </div>
-            <p class="cart-note">TAX AND SHIPPING NOT INCLUDED</p>
-            <a href="https://www.yeezy.com" target="_blank" class="checkout-btn" aria-label="Continue to checkout">CONTINUE</a>
-        </div>
-    </div>
 </div>
 {% endblock %}
 

@@ -13,7 +13,7 @@
         return null;
     }
     
-    // Perform a fetch for the given URL and apply the returned fragment into #product-detail
+    // Perform a fetch for the given URL and apply the returned fragment into #album-detail
     async function fetchAndPatch(url, pushHistory = true) {
         try {
             const res = await fetch(url, {
@@ -35,9 +35,9 @@
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
             
-            // Expect fragment to contain an element with id="product-detail"
-            const frag = doc.getElementById('product-detail');
-            const existing = document.getElementById('product-detail');
+            // Expect fragment to contain an element with id="album-detail" (album detail)
+            const frag = doc.getElementById('album-detail');
+            const existing = document.getElementById('album-detail');
             
             if (frag && existing) {
                 existing.replaceWith(frag);
@@ -50,9 +50,12 @@
             }
             
             // Show it and update header/back button
-            const newDetail = document.getElementById('product-detail');
+            const newDetail = document.getElementById('album-detail');
             newDetail?.classList.remove('hidden');
             document.getElementById('back-btn')?.classList.remove('hidden');
+            
+            // Hide the grid when showing detail
+            document.getElementById('album-grid')?.classList.add('hidden');
             
             // Update history
             if (pushHistory) history.pushState({}, '', url);
@@ -86,14 +89,16 @@
     // Basic back handler exposed globally (used by layout back button)
     window.goBack = function() {
         history.pushState({}, '', '/');
-        const existing = document.getElementById('product-detail');
+        const existing = document.getElementById('album-detail');
         if (existing) {
             const placeholder = document.createElement('div');
-            placeholder.id = 'product-detail';
+            placeholder.id = 'album-detail';
             placeholder.className = 'product-detail hidden';
             existing.replaceWith(placeholder);
         }
         document.getElementById('back-btn')?.classList.add('hidden');
+        // Show the grid
+        document.getElementById('album-grid')?.classList.remove('hidden');
         try { window.cacheElements?.(); } catch(e){}
     };
     
@@ -103,12 +108,13 @@
         if (path === '/') {
             window.goBack();
         } else if (path.startsWith('/p/')) {
-            // Load product without pushing history
+            // Load album without pushing history
             fetchAndPatch(path, false);
         }
     });
     
-    // === Server-Sent Events: listen for server push patches ===
+    // === Server-Sent Events: infrastructure for future server push patches ===
+    // Currently not used for album loading, but available for real-time updates
     try {
         const es = new EventSource('/datastar');
         es.addEventListener('datastar-patch-elements', function(e){
@@ -119,16 +125,17 @@
             if (!html) return;
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
-            const frag = doc.getElementById('product-detail');
-            const existing = document.getElementById('product-detail');
+            const frag = doc.getElementById('album-detail');
+            const existing = document.getElementById('album-detail');
             
             const apply = () => {
                 if (frag && existing) existing.replaceWith(frag);
                 else if (frag && !existing) document.body.appendChild(frag);
                 else if (existing) existing.innerHTML = html;
                 // ensure visible and run init hooks
-                document.getElementById('product-detail')?.classList.remove('hidden');
-                document.getElementById('   ')?.classList.remove('hidden');
+                document.getElementById('album-detail')?.classList.remove('hidden');
+                document.getElementById('back-btn')?.classList.remove('hidden');
+                document.getElementById('album-grid')?.classList.add('hidden');
                 try { window.cacheElements?.(); } catch(e){}
                 try { window.enhanceImages?.(); } catch(e){}
             };
@@ -144,10 +151,10 @@
         console.warn('SSE disabled', err);
     }
     
-    // Close product detail on escape
+    // Close album detail on escape
     document.addEventListener('keydown', function(e){
         if (e.key === 'Escape') {
-            const pd = document.getElementById('product-detail');
+            const pd = document.getElementById('album-detail');
             if (pd && !pd.classList.contains('hidden')) {
                 window.goBack();
             }

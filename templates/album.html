@@ -1,0 +1,31 @@
+{% extends 'partials/layout.html' %}
+
+{% set back_hidden = false %}
+{% set back_onclick = "goBack()" %}
+{% set cart_onclick = "toggleCart()" %}
+
+{% block title %}{{ album.name }} - [yeunrlsd]{% endblock %}
+
+{% block description %}Album details for {{ album.name }}{% endblock %}
+
+{% block extra_head %}
+{% endblock %}
+
+{% block main %}
+<div class="product-detail-view" aria-label="Album detail" aria-live="polite" aria-atomic="true">
+    <div class="product-image-container">
+        <img src="{{ album.image }}" alt="{{ album.name }}" class="product-detail-image" loading="eager">
+    </div>
+    <div class="songs-section">
+        <h3>Songs</h3>
+        <ul class="songs-list">
+            {% for song in album.songs %}
+            <li>{{ song }}</li>
+            {% endfor %}
+            {% if not album.songs %}
+            <li>No songs available yet.</li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

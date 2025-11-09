@@ -1,0 +1,31 @@
+<div id="album-detail" class="product-detail" aria-live="polite" aria-atomic="true">
+    <div class="product-detail-view" aria-label="Album detail">
+        <div class="product-image-container">
+            <img src="{{ album.image }}" alt="{{ album.name }}" class="product-detail-image" loading="eager">
+        </div>
+        <div class="songs-section">
+            <h3>Songs</h3>
+            <ul class="songs-list">
+                {% for song in album.songs %}
+                <li class="song-item">
+                    <div class="song-info">
+                        <span class="song-title">{{ song.title }}</span>
+                        {% if song.duration %}
+                        <span class="song-duration">{{ song.duration }}</span>
+                        {% endif %}
+                        {% if song.release_date %}
+                        <span class="song-release">{{ song.release_date }}</span>
+                        {% endif %}
+                    </div>
+                    {% if song.download_link %}
+                    <a href="{{ song.download_link }}" class="download-link" target="_blank" rel="noopener">Download</a>
+                    {% endif %}
+                </li>
+                {% endfor %}
+                {% if not album.songs %}
+                <li>No songs available yet.</li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>

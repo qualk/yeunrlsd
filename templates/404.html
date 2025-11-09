@@ -4,10 +4,13 @@
 
 {% block description %}The page you're looking for doesn't exist.{% endblock %}
 
+{% block favicon %}
+<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/404.ico') }}" />
+{% endblock %}
+
 {% block header %}
 {% set back_hidden = false %}
 {% set back_onclick = "window.location.href='/'" %}
-{% set cart_onclick = "window.location.href='/'" %}
 {% include 'partials/header.html' %}
 {% endblock %}
 

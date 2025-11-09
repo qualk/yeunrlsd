@@ -1,21 +1,74 @@
 {
-  "name": "[yeunrlsd]",
-  "short_name": "[yeunrlsd]",
-  "description": "A minimalist ecommerce experience",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#ffffff",
-  "icons": [
-    {
-      "src": "/static/img/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/static/img/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
+    "name": "[yeunrlsd]",
+    "short_name": "yeunrlsd",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "orientation": "landscape-primary",
+    "icons": [
+        {
+            "src": "icons/icon-128x128.avif",
+            "type": "image/avif",
+            "sizes": "128x128",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/icon-128x128.avif",
+            "type": "image/avif",
+            "sizes": "128x128",
+            "purpose": "any"
+        },
+        {
+            "src": "icons/icon-192x192.avif",
+            "type": "image/avif",
+            "sizes": "192x192",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/icon-192x192.avif",
+            "type": "image/avif",
+            "sizes": "192x192",
+            "purpose": "any"
+        },
+        {
+            "src": "icons/icon-384x384.avif",
+            "type": "image/avif",
+            "sizes": "384x384",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/icon-384x384.avif",
+            "type": "image/avif",
+            "sizes": "384x384",
+            "purpose": "any"
+        },
+        {
+            "src": "icons/icon-512x512.avif",
+            "type": "image/avif",
+            "sizes": "512x512",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/icon-512x512.avif",
+            "type": "image/avif",
+            "sizes": "512x512",
+            "purpose": "any"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "icons/desktop_screenshot.avif",
+            "sizes": "1920x1080",
+            "type": "image/avif",
+            "label": ""
+        },
+        {
+            "src": "icons/mobile_screenshot.avif",
+            "sizes": "1080x1920",
+            "type": "image/avif",
+            "form_factor": "wide",
+            "label": ""
+        }
+    ]
 }
