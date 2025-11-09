@@ -1,8 +1,4 @@
 from flask import Flask, render_template, request, session, abort, redirect
-from datastar_sse import datastar_merge_fragment
-from datastar_broadcast import register_queue, unregister_queue, publish
-import queue
-from datastar_py.sse import SSE_HEADERS, ServerSentEventGenerator as SSE
 from flask_squeeze import Squeeze
 from albums import ALBUMS
 
@@ -22,31 +18,6 @@ def get_album_by_id(album_id):
 @app.route('/')
 def home():
     return render_template('index.html', albums=ALBUMS)
-
-
-@app.route('/datastar')
-def datastar_stream():
-    """SSE endpoint that streams published datastar events to connected clients."""
-    q = queue.Queue()
-    register_queue(q)
-
-    def gen():
-        try:
-            while True:
-                event = q.get()
-                if event is None:
-                    break
-                yield event
-        finally:
-            unregister_queue(q)
-
-    return app.response_class(gen(), headers=SSE_HEADERS, mimetype='text/event-stream')
-
-
-def publish_patch(html, selector=None, mode=None):
-    """Render a patch event and publish it to all SSE subscribers."""
-    event = SSE.patch_elements(elements=html, selector=selector, mode=mode)
-    publish(event)
 
 
 # Album detail page
