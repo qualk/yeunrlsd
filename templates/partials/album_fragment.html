@@ -1,37 +1,46 @@
-<div id="album-detail" class="album-panel" aria-live="polite" aria-atomic="true">
-  <div class="album-panel-inner">
-    <div class="album-panel-cover">
-      <img src="{{ album.image }}" alt="{{ album.name }}" class="album-panel-image" loading="eager">
+<div id="album-detail" class="album-detail" aria-live="polite" aria-atomic="true">
+    <div class="album-detail-view" aria-label="Album detail">
+        <!-- Left: Album Cover (40%) -->
+        <div class="album-cover-section">
+            <!-- Desktop: album name above the cover -->
+            <h2 class="album-title album-title--cover">{{ album.name }}</h2>
+            <img src="{{ album.image }}" alt="{{ album.name }}" class="album-detail-image" loading="eager">
+        </div>
+
+        <!-- Right: Title and Songs (60%) -->
+        <div class="album-info-section">
+            <h2 class="album-title album-title--info">{{ album.name }}</h2>
+            
+            <div class="songs-section">
+                <ul class="songs-list">
+                    {% for song in album.songs %}
+                    <li class="song-row">
+                        <div class="song-main" data-song-id="{{ loop.index0 }}" data-file="{{ song.file }}">
+                            <!-- Play indicator (SVG) on the left; inside .song-main so clicks trigger play -->
+                            <button class="song-play">
+                                <!-- Black circle with white play icon -->
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="12" fill="#000"/>
+                                    <polygon points="9,7 9,17 17,12" fill="#fff"/>
+                                </svg>
+                            </button>
+                            <div class="song-left">
+                                <span class="song-title">{{ song.title }}</span>
+                                {% if song.duration %}
+                                <span class="song-duration">{{ song.duration }}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% if song.download_link %}
+                        <a href="{{ song.download_link }}" class="song-download" target="_blank" rel="noopener" onclick="event.stopPropagation();">↓</a>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                    {% if not album.songs %}
+                    <li class="no-songs">No songs available yet.</li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
     </div>
-    <div class="album-panel-meta">
-      <h2 class="album-panel-title">{{ album.name }}</h2>
-      <ul class="album-panel-songs">
-        {% for song in album.songs %}
-        <li class="album-panel-song-row" tabindex="0" role="button" aria-label="Play {{ song.title }}" data-song-index="{{ loop.index0 }}">
-          <div class="album-panel-song-main">
-            <span class="album-panel-song-title">{{ song.title }}</span>
-            {% if song.duration %}<span class="album-panel-song-duration">{{ song.duration }}</span>{% endif %}
-          </div>
-          {% if song.download_link %}
-          <a href="{{ song.download_link }}" class="album-panel-song-download" target="_blank" rel="noopener" tabindex="0" aria-label="Download {{ song.title }}" onclick="event.stopPropagation()">Download</a>
-          {% endif %}
-        </li>
-        {% endfor %}
-        {% if not album.songs %}
-        <li class="album-panel-song-row empty">No songs available yet.</li>
-        {% endif %}
-      </ul>
-    </div>
-  </div>
 </div>
-<script>
-// Song row click: play (ignore playback logic for now)
-document.querySelectorAll('.album-panel-song-row').forEach(function(row) {
-  row.addEventListener('click', function(e) {
-    if (e.target.classList.contains('album-panel-song-download')) return;
-    // TODO: Play song logic here
-    row.classList.add('playing');
-    setTimeout(() => row.classList.remove('playing'), 200);
-  });
-});
-</script>

@@ -5,12 +5,39 @@
     if (window.DatastarClient) return;
     window.DatastarClient = {};
     
+    // Global audio playback state
+    let currentAudio = null;
+    let currentButton = null;
+    let currentFile = null;
+    let currentDurationSpan = null;
+    let countdownInterval = null;
+    let totalDuration = 0;
+    
     // Helper: parse @get('/url') expression
     function parseAction(expr) {
         if (!expr) return null;
         const m = expr.match(/@get\(['"](.+?)['"]\)/);
         if (m) return { method: 'GET', url: m[1] };
         return null;
+    }
+    
+    // Update play button SVG
+    function updateButton(button, isPlaying) {
+        const svg = button.querySelector('svg');
+        if (isPlaying) {
+            // Pause icon
+            svg.innerHTML = '<circle cx="12" cy="12" r="12" fill="#000"/><rect x="8" y="7" width="2" height="10" fill="#fff"/><rect x="14" y="7" width="2" height="10" fill="#fff"/>';
+        } else {
+            // Play icon
+            svg.innerHTML = '<circle cx="12" cy="12" r="12" fill="#000"/><polygon points="9,7 9,17 17,12" fill="#fff"/>';
+        }
+    }
+    
+    // Format seconds to mm:ss
+    function formatTime(seconds) {
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
     }
     
     // Perform a fetch for the given URL and apply the returned fragment into #album-detail
@@ -72,6 +99,68 @@
     // Click delegation for data-on-click="@get('/p/...')"
     document.addEventListener('click', function(evt){
         let el = evt.target;
+        
+        // Check if clicking on a song row to play
+        const songRow = evt.target.closest('.song-main');
+        if (songRow) {
+            const file = songRow.getAttribute('data-file');
+            const button = songRow.querySelector('.song-play');
+            if (currentAudio && currentFile === file) {
+                // Toggle play/pause for same song
+                if (currentAudio.paused) {
+                    currentAudio.play();
+                    updateButton(button, true);
+                } else {
+                    currentAudio.pause();
+                    updateButton(button, false);
+                }
+            } else {
+                // Stop current audio
+                if (currentAudio) {
+                    currentAudio.pause();
+                    updateButton(currentButton, false);
+                    if (countdownInterval) {
+                        clearInterval(countdownInterval);
+                        countdownInterval = null;
+                    }
+                    currentDurationSpan = null;
+                    totalDuration = 0;
+                }
+                // Play new song
+                currentAudio = new Audio(file);
+                currentAudio.addEventListener('loadedmetadata', () => {
+                    totalDuration = currentAudio.duration;
+                    currentDurationSpan = songRow.querySelector('.song-duration');
+                    if (currentDurationSpan) {
+                        currentDurationSpan.textContent = "0:00 / " + formatTime(totalDuration);
+                    }
+                    countdownInterval = setInterval(() => {
+                        if (currentAudio) {
+                            currentDurationSpan.textContent = formatTime(currentAudio.currentTime) + " / " + formatTime(totalDuration);
+                        }
+                    }, 1000);
+                });
+                currentAudio.addEventListener('ended', () => {
+                    updateButton(button, false);
+                    currentAudio = null;
+                    currentButton = null;
+                    currentFile = null;
+                    if (countdownInterval) {
+                        clearInterval(countdownInterval);
+                        countdownInterval = null;
+                    }
+                    currentDurationSpan = null;
+                    totalDuration = 0;
+                });
+                currentAudio.play();
+                currentButton = button;
+                currentFile = file;
+                updateButton(button, true);
+            }
+            return;
+        }
+        
+        // Check for data-on-click attribute
         while (el && el !== document.documentElement) {
             const expr = el.getAttribute && el.getAttribute('data-on-click');
             if (expr) {
@@ -93,7 +182,7 @@
         if (existing) {
             const placeholder = document.createElement('div');
             placeholder.id = 'album-detail';
-            placeholder.className = 'product-detail hidden';
+            placeholder.className = 'album-detail hidden';
             existing.replaceWith(placeholder);
         }
         document.getElementById('back-btn')?.classList.add('hidden');
@@ -163,7 +252,7 @@
     
     // Handle site title click navigation
     window.handleTitleClick = function() {
-        if (document.querySelector('.product-detail:not(.hidden)')) {
+        if (document.querySelector('.album-detail:not(.hidden)')) {
             goBack();
             return false;
         } else if (window.location.pathname === '/') {

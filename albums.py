@@ -7,8 +7,9 @@ ALBUMS = [
         "songs": [
             {
                 "title": "Hurricane",
-                "download_link": "https://example.com/download/hurricane",
-                "duration": "4:03",
+                "file": "/static/music/jik/Kanye West - Hurricane.mp3",
+                "download_link": "/static/music/jik/Kanye%20West%20-%20Hurricane.mp3",
+                "duration": "2:18",
                 "release_date": "2019"
             }
         ]
@@ -20,9 +21,10 @@ ALBUMS = [
         "songs": [
             {
                 "title": "Lonely",
-                "download_link": "https://example.com/download/lonely",
-                "duration": "3:45",
-                "release_date": "2024"
+                "file": "/static/music/gaj/Kanye West - Lonely.mp3",
+                "download_link": "/static/music/gaj/Kanye%20West%20-%20Lonely.mp3",
+                "duration": "3:19",
+                "release_date": "2007"
             }
         ]
     },
@@ -33,8 +35,9 @@ ALBUMS = [
         "songs": [
             {
                 "title": "City In The Sky",
-                "download_link": "https://example.com/download/city-in-the-sky",
-                "duration": "3:48",
+                "file": "/static/music/yandhi/Kanye West - City In The Sky.mp3",
+                "download_link": "/static/music/yandhi/Kanye%20West%20-%20City%20In%20The%20Sky.mp3",
+                "duration": "5:05",
                 "release_date": "2018"
             }
         ]
@@ -46,9 +49,10 @@ ALBUMS = [
         "songs": [
             {
                 "title": "Awesome",
-                "download_link": "https://example.com/download/awesome",
-                "duration": "4:12",
-                "release_date": "2024"
+                "file": "/static/music/tgfd/Kanye West - Awesome.mp3",
+                "download_link": "/static/music/tgfd/Kanye%20West%20-%20Awesome.mp3",
+                "duration": "4:21",
+                "release_date": "2013"
             }
         ]
     },
@@ -59,8 +63,9 @@ ALBUMS = [
         "songs": [
             {
                 "title": "See Me Again",
-                "download_link": "https://example.com/download/see-me-again",
-                "duration": "4:18",
+                "file": "/static/music/donda/Kanye West - See Me Again.mp3",
+                "download_link": "/static/music/donda/Kanye%20West%20-%20See%20Me%20Again.mp3",
+                "duration": "8:19",
                 "release_date": "2021"
             }
         ]

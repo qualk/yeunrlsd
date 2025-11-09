@@ -133,7 +133,7 @@ img {
   height: var(--header-height);
 }
 
-body:has(.product-detail) .header {
+body:has(.album-detail) .header {
   background-color: transparent;
 }
 
@@ -200,41 +200,80 @@ body:has(.product-detail) .header {
   letter-spacing: 0.05em;
 }
 
-.product-detail {
+
+.album-detail {
   position: fixed;
   inset: 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  background-color: rgba(255, 255, 255, 0.8);
+  flex-direction: row;
+  background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(8px);
   padding: 30px;
-  padding-top: calc(30px + env(safe-area-inset-top));
+  padding-top: calc(var(--header-height) + 10px);
   padding-bottom: calc(30px + env(safe-area-inset-bottom));
+  z-index: 5;
+  /* vertically center cover relative to page */
+  align-items: center;
 }
 
-.product-detail-view {
+.album-detail-view {
   width: 100%;
-  max-width: 1024px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
   margin: 0 auto;
-  flex-grow: 1;
+}
+
+/* Shift the whole detail view up by half the header height so
+   centering is relative to the entire viewport (not header-bottom). */
+.album-detail-view {
+  transform: translateY(calc(-1 * var(--header-height) / 2));
+}
+
+.album-cover-section {
+  flex: 0 0 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: 0;
+  height: 100%;
+  justify-content: center;
 }
 
-.product-image-container {
+.album-title--cover {
   width: 100%;
-  max-width: 1152px;
-  margin-bottom: 0;
+  text-align: center;
+  margin-bottom: 24px;
+  display: block;
 }
 
-.product-detail-image {
+.album-title--info {
+  display: none;
+}
+
+.album-detail-image {
   width: 100%;
-  max-height: calc(100dvh - 450px);
+  height: auto;
+  max-height: calc(100dvh - var(--header-height) - 60px);
   object-fit: contain;
+}
+
+.album-info-section {
+  flex: 1 1 60%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.album-title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 0;
+  letter-spacing: 0.05em;
+  text-align: center;
 }
 
 /* =====================
@@ -395,16 +434,24 @@ body:has(.product-detail) .header {
 
 .songs-section {
   width: 100%;
-  max-width: 600px;
-  margin-top: 48px;
+  flex: 1;
+  overflow-y: auto;
+  max-height: 60vh;
+  min-height: 220px;
 }
 
-.songs-section h3 {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 24px;
-  text-align: center;
-  letter-spacing: 0.05em;
+@media (max-width: 640px) {
+  .songs-section {
+    max-height: none;
+    min-height: 160px;
+    overflow-y: unset;
+  }
+  .songs-list {
+    max-height: 50vh;
+    overflow-y: auto;
+    /* Only scroll if needed */
+    overscroll-behavior: contain;
+  }
 }
 
 .songs-list {
@@ -413,50 +460,111 @@ body:has(.product-detail) .header {
   margin: 0;
 }
 
-.song-item {
+.song-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 0;
+  padding: 12px 0;
   border-bottom: 1px solid var(--border);
+  gap: 12px;
 }
 
-.song-item:last-child {
+.song-play {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  margin-right: 14px;
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+  color: #000;
+}
+
+.song-play svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.song-play circle {
+  fill: #000;
+  transition: fill 0.2s;
+}
+
+.song-play:focus circle,
+.song-play:hover circle {
+  fill: #444;
+}
+.song-play:focus,
+.song-play:hover {
+  outline: none;
+}
+
+.song-row:last-child {
   border-bottom: none;
 }
 
-.song-info {
+.song-main {
+  flex: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.song-left {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  min-width: 0;
 }
 
 .song-title {
   font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
   letter-spacing: 0.05em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.song-duration,
-.song-release {
-  font-size: 14px;
-  color: #666;
+.song-duration {
+  font-size: 13px;
+  color: #888;
   font-weight: 400;
 }
 
-.download-link {
-  padding: 8px 16px;
-  background-color: var(--foreground);
-  color: var(--background);
+.song-download {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: var(--foreground);
   text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 18px;
   border-radius: 4px;
-  transition: opacity 0.2s ease;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
 }
 
-.download-link:hover {
-  opacity: 0.8;
+.song-download:hover {
+  background-color: var(--muted);
+}
+
+.no-songs {
+  padding: 12px 0;
+  color: #888;
+  font-size: 14px;
 }
 
 .add-to-cart-section {
@@ -748,8 +856,68 @@ body:has(.product-detail) .header {
     padding-top: var(--header-height);
   }
 
-  .product-detail {
+  /* Mobile: Full-width album detail, stacked layout */
+
+  .album-detail {
     padding: 16px;
+    padding-top: var(--header-height);
+    flex-direction: column;
+  }
+
+  /* undo the desktop vertical shift on mobile so stacking looks normal */
+  .album-detail-view {
+    transform: none;
+  }
+  .songs-section {
+    max-height: 50vh;
+    min-height: 160px;
+  }
+
+  .album-detail-view {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .album-cover-section {
+    flex: 0 1 auto;
+    max-height: 50vh;
+  }
+
+  .album-detail-image {
+    max-height: calc(50vh - var(--header-height) / 2);
+  }
+
+  .album-info-section {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    max-height: calc(50vh - 16px);
+  }
+
+  .album-title {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  /* On mobile, hide the cover-title and show the info-title below the cover */
+  .album-title--cover { display: none; }
+  .album-title--info { display: block; text-align: center; }
+
+  .song-row {
+    padding: 10px 0;
+  }
+
+  .song-title {
+    font-size: 14px;
+  }
+
+  .song-duration {
+    font-size: 12px;
+  }
+
+  .song-download {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
   }
 
   .cart-sidebar {
@@ -793,192 +961,8 @@ body:has(.product-detail) .header {
 
 @media (prefers-reduced-transparency: reduce) {
   .header,
-  .product-detail {
+  .album-detail {
     backdrop-filter: none !important;
     background-color: var(--background) !important;
-  }
-}
-
-/* =====================
-   Album Panel 40/60 Split
-====================== */
-.album-panel {
-  position: fixed;
-  inset: 0;
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(8px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 20;
-}
-.album-panel-inner {
-  display: flex;
-  width: 100%;
-  max-width: 1024px;
-  height: 80vh;
-  min-height: 400px;
-  background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 2px 24px 0 rgba(0,0,0,0.04);
-  overflow: hidden;
-}
-.album-panel-cover {
-  flex: 0 0 40%;
-  background: #f5f5f5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-}
-.album-panel-image {
-  width: 100%;
-  max-width: 340px;
-  max-height: 70vh;
-  object-fit: contain;
-  border-radius: 0;
-  box-shadow: none;
-}
-.album-panel-meta {
-  flex: 1 1 60%;
-  display: flex;
-  flex-direction: column;
-  padding: 48px 36px 36px 36px;
-  min-width: 0;
-  background: #fff;
-}
-.album-panel-title {
-  font-size: 2.1rem;
-  font-weight: 600;
-  margin-bottom: 36px;
-  letter-spacing: 0.01em;
-  text-align: left;
-}
-.album-panel-songs {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  overflow-y: auto;
-  flex: 1 1 auto;
-}
-.album-panel-song-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 0 0 0;
-  min-height: 54px;
-  border-bottom: 1px solid var(--border);
-  cursor: pointer;
-  transition: background 0.15s;
-  background: transparent;
-}
-.album-panel-song-row:last-child {
-  border-bottom: none;
-}
-.album-panel-song-row:focus,
-.album-panel-song-row.playing {
-  background: var(--muted);
-}
-.album-panel-song-row.empty {
-  color: #888;
-  cursor: default;
-}
-.album-panel-song-main {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  min-width: 0;
-}
-.album-panel-song-title {
-  font-size: 1.08rem;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 220px;
-}
-.album-panel-song-duration {
-  font-size: 0.98rem;
-  color: #888;
-  font-weight: 400;
-}
-.album-panel-song-download {
-  margin-left: 18px;
-  padding: 6px 16px;
-  background: var(--foreground);
-  color: var(--background);
-  border-radius: 4px;
-  font-size: 0.98rem;
-  font-weight: 500;
-  text-decoration: none;
-  transition: opacity 0.2s;
-  opacity: 0.92;
-  cursor: pointer;
-}
-.album-panel-song-download:hover {
-  opacity: 1;
-}
-@media (max-width: 900px) {
-  .album-panel-inner {
-    flex-direction: column;
-    height: auto;
-    min-height: 0;
-    max-width: 98vw;
-    border-radius: 0;
-  }
-  .album-panel-cover {
-    flex: none;
-    width: 100%;
-    min-height: 220px;
-    max-height: 60vw;
-    padding: 0;
-    justify-content: center;
-  }
-  .album-panel-image {
-    max-width: 90vw;
-    max-height: 48vw;
-  }
-  .album-panel-meta {
-    flex: none;
-    width: 100%;
-    padding: 32px 16px 24px 16px;
-  }
-  .album-panel-title {
-    text-align: center;
-    margin-bottom: 24px;
-  }
-}
-@media (max-width: 640px) {
-  .album-panel-inner {
-    flex-direction: column;
-    height: auto;
-    min-height: 0;
-    max-width: 100vw;
-    border-radius: 0;
-  }
-  .album-panel-cover {
-    min-height: 180px;
-    max-height: 60vw;
-    padding: 0;
-  }
-  .album-panel-image {
-    max-width: 100vw;
-    max-height: 60vw;
-  }
-  .album-panel-meta {
-    padding: 18px 8px 12px 8px;
-  }
-  .album-panel-title {
-    font-size: 1.3rem;
-    margin-bottom: 18px;
-  }
-  .album-panel-song-title {
-    max-width: 120px;
-    font-size: 1rem;
-  }
-  .album-panel-song-download {
-    padding: 5px 10px;
-    font-size: 0.92rem;
   }
 }
