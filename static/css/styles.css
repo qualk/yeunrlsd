@@ -856,6 +856,11 @@ body:has(.album-detail) .header {
     padding-top: var(--header-height);
   }
 
+  .product-name {
+    font-size: 18px;
+    line-height: 1.3;
+  }
+
   /* Mobile: Full-width album detail, stacked layout */
 
   .album-detail {

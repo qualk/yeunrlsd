@@ -189,6 +189,20 @@
         // Show the grid
         document.getElementById('album-grid')?.classList.remove('hidden');
         try { window.cacheElements?.(); } catch(e){}
+        // Stop any playing audio
+        if (currentAudio) {
+            currentAudio.pause();
+            updateButton(currentButton, false);
+            if (countdownInterval) {
+                clearInterval(countdownInterval);
+                countdownInterval = null;
+            }
+            currentDurationSpan = null;
+            totalDuration = 0;
+            currentAudio = null;
+            currentButton = null;
+            currentFile = null;
+        }
     };
     
     // Handle browser back/forward

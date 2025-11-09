@@ -70,4 +70,18 @@ ALBUMS = [
             }
         ]
     },
+    {
+        "id": "grad",
+        "name": "Graduation",
+        "image": "/static/img/grad.png",
+        "songs": [
+            {
+                "title": "Piano",
+                "file": "/static/music/grad/Kanye West - Piano.mp3",
+                "download_link": "/static/music/grad/Kanye%20West%20-%20Piano.mp3",
+                "duration": "3:47",
+                "release_date": "2007"
+            }
+        ]
+    }
 ]
