@@ -202,44 +202,6 @@
         }
     });
     
-    // === Server-Sent Events: infrastructure for future server push patches ===
-    // Currently not used for album loading, but available for real-time updates
-    try {
-        const es = new EventSource('/datastar');
-        es.addEventListener('datastar-patch-elements', function(e){
-            // Extract lines that start with 'elements '
-            const lines = e.data.split('\n');
-            const elLines = lines.filter(l => l.startsWith('elements ')).map(l => l.slice('elements '.length));
-            const html = elLines.join('\n');
-            if (!html) return;
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            const frag = doc.getElementById('album-detail');
-            const existing = document.getElementById('album-detail');
-            
-            const apply = () => {
-                if (frag && existing) existing.replaceWith(frag);
-                else if (frag && !existing) document.body.appendChild(frag);
-                else if (existing) existing.innerHTML = html;
-                // ensure visible and run init hooks
-                document.getElementById('album-detail')?.classList.remove('hidden');
-                document.getElementById('back-btn')?.classList.remove('hidden');
-                document.getElementById('album-grid')?.classList.add('hidden');
-                try { window.cacheElements?.(); } catch(e){}
-                try { window.enhanceImages?.(); } catch(e){}
-            };
-            
-            if (document.startViewTransition) {
-                document.startViewTransition(() => apply());
-            } else {
-                apply();
-            }
-        });
-    } catch (err) {
-        // EventSource may not be available in some environments
-        console.warn('SSE disabled', err);
-    }
-    
     // Close album detail on escape
     document.addEventListener('keydown', function(e){
         if (e.key === 'Escape') {
