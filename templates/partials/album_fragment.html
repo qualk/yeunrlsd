@@ -1,31 +1,37 @@
-<div id="album-detail" class="product-detail" aria-live="polite" aria-atomic="true">
-    <div class="product-detail-view" aria-label="Album detail">
-        <div class="product-image-container">
-            <img src="{{ album.image }}" alt="{{ album.name }}" class="product-detail-image" loading="eager">
-        </div>
-        <div class="songs-section">
-            <h3>Songs</h3>
-            <ul class="songs-list">
-                {% for song in album.songs %}
-                <li class="song-item">
-                    <div class="song-info">
-                        <span class="song-title">{{ song.title }}</span>
-                        {% if song.duration %}
-                        <span class="song-duration">{{ song.duration }}</span>
-                        {% endif %}
-                        {% if song.release_date %}
-                        <span class="song-release">{{ song.release_date }}</span>
-                        {% endif %}
-                    </div>
-                    {% if song.download_link %}
-                    <a href="{{ song.download_link }}" class="download-link" target="_blank" rel="noopener">Download</a>
-                    {% endif %}
-                </li>
-                {% endfor %}
-                {% if not album.songs %}
-                <li>No songs available yet.</li>
-                {% endif %}
-            </ul>
-        </div>
+<div id="album-detail" class="album-panel" aria-live="polite" aria-atomic="true">
+  <div class="album-panel-inner">
+    <div class="album-panel-cover">
+      <img src="{{ album.image }}" alt="{{ album.name }}" class="album-panel-image" loading="eager">
     </div>
+    <div class="album-panel-meta">
+      <h2 class="album-panel-title">{{ album.name }}</h2>
+      <ul class="album-panel-songs">
+        {% for song in album.songs %}
+        <li class="album-panel-song-row" tabindex="0" role="button" aria-label="Play {{ song.title }}" data-song-index="{{ loop.index0 }}">
+          <div class="album-panel-song-main">
+            <span class="album-panel-song-title">{{ song.title }}</span>
+            {% if song.duration %}<span class="album-panel-song-duration">{{ song.duration }}</span>{% endif %}
+          </div>
+          {% if song.download_link %}
+          <a href="{{ song.download_link }}" class="album-panel-song-download" target="_blank" rel="noopener" tabindex="0" aria-label="Download {{ song.title }}" onclick="event.stopPropagation()">Download</a>
+          {% endif %}
+        </li>
+        {% endfor %}
+        {% if not album.songs %}
+        <li class="album-panel-song-row empty">No songs available yet.</li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
 </div>
+<script>
+// Song row click: play (ignore playback logic for now)
+document.querySelectorAll('.album-panel-song-row').forEach(function(row) {
+  row.addEventListener('click', function(e) {
+    if (e.target.classList.contains('album-panel-song-download')) return;
+    // TODO: Play song logic here
+    row.classList.add('playing');
+    setTimeout(() => row.classList.remove('playing'), 200);
+  });
+});
+</script>
