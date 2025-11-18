@@ -1,11 +1,11 @@
 {
     "name": "[yeunrlsd]",
-    "short_name": "yeunrlsd",
+    "short_name": "[yeunrlsd]",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#ffffff",
-    "orientation": "landscape-primary",
+    "orientation": "natural",
     "icons": [
         {
             "src": "icons/icon-128x128.avif",

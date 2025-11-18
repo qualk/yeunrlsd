@@ -1,6 +1,4 @@
-// Datastar client (adapted from datastar-wordle-flask)
-// https://github.com/1363V4/datastar-wordle-flask/blob/main/static/js/datastar.js
-
+// Fragment client
 (function(){
     if (window.DatastarClient) return;
     window.DatastarClient = {};
@@ -12,6 +10,7 @@
     let currentDurationSpan = null;
     let countdownInterval = null;
     let totalDuration = 0;
+    let originalImageSrc = null;
     
     // Helper: parse @get('/url') expression
     function parseAction(expr) {
@@ -46,7 +45,7 @@
             const res = await fetch(url, {
                 method: 'GET',
                 headers: {
-                    'X-Datastar-Action': 'fetch',
+                    'Fragment-Request': 'fetch',
                     'X-Requested-With': 'XMLHttpRequest',
                     'Accept': 'text/html'
                 },
@@ -75,6 +74,9 @@
                 // Fallback: inject HTML inside existing container
                 existing.innerHTML = html;
             }
+            
+            // Reset image swap state for new album
+            originalImageSrc = null;
             
             // Show it and update header/back button
             const newDetail = document.getElementById('album-detail');
@@ -105,20 +107,38 @@
         if (songRow) {
             const file = songRow.getAttribute('data-file');
             const button = songRow.querySelector('.song-play');
-            if (currentAudio && currentFile === file) {
+        if (currentAudio && currentFile === file) {
                 // Toggle play/pause for same song
                 if (currentAudio.paused) {
                     currentAudio.play();
                     updateButton(button, true);
+                    // Swap to gif if available
+                    const img = document.querySelector('.album-detail-image');
+                    if (img && img.dataset.gif && !originalImageSrc) {
+                        originalImageSrc = img.src;
+                        img.src = img.dataset.gif;
+                    }
                 } else {
                     currentAudio.pause();
                     updateButton(button, false);
+                    // Swap back
+                    const img = document.querySelector('.album-detail-image');
+                    if (img && originalImageSrc) {
+                        img.src = originalImageSrc;
+                        originalImageSrc = null;
+                    }
                 }
             } else {
                 // Stop current audio
                 if (currentAudio) {
                     currentAudio.pause();
                     updateButton(currentButton, false);
+                    // Swap back
+                    const img = document.querySelector('.album-detail-image');
+                    if (img && originalImageSrc) {
+                        img.src = originalImageSrc;
+                        originalImageSrc = null;
+                    }
                     if (countdownInterval) {
                         clearInterval(countdownInterval);
                         countdownInterval = null;
@@ -142,6 +162,12 @@
                 });
                 currentAudio.addEventListener('ended', () => {
                     updateButton(button, false);
+                    // Swap back
+                    const img = document.querySelector('.album-detail-image');
+                    if (img && originalImageSrc) {
+                        img.src = originalImageSrc;
+                        originalImageSrc = null;
+                    }
                     currentAudio = null;
                     currentButton = null;
                     currentFile = null;
@@ -156,6 +182,12 @@
                 currentButton = button;
                 currentFile = file;
                 updateButton(button, true);
+                // Swap to gif if available
+                const img = document.querySelector('.album-detail-image');
+                if (img && img.dataset.gif && !originalImageSrc) {
+                    originalImageSrc = img.src;
+                    img.src = img.dataset.gif;
+                }
             }
             return;
         }
@@ -193,6 +225,12 @@
         if (currentAudio) {
             currentAudio.pause();
             updateButton(currentButton, false);
+            // Swap back
+            const img = document.querySelector('.album-detail-image');
+            if (img && originalImageSrc) {
+                img.src = originalImageSrc;
+                originalImageSrc = null;
+            }
             if (countdownInterval) {
                 clearInterval(countdownInterval);
                 countdownInterval = null;

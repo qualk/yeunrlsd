@@ -6,7 +6,7 @@
 
 {% block title %}[yeunrlsd]{% endblock %}
 
-{% block description %}ye unreleased music, inspired by yeezy.com, built with Flask.{% endblock %}
+{% block description %}[ye unreleased music]{% endblock %}
 
 {% block extra_head %}
 {% for album in albums[:6] %}
@@ -34,7 +34,7 @@
 // Register service worker
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/static/sw.js')
+        navigator.serviceWorker.register('/sw.js', { scope: '/' })
             .then(registration => {
             console.log('SW registered: ', registration);
         })

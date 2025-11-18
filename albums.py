@@ -3,7 +3,8 @@ ALBUMS = [
     {
         "id": "jik",
         "name": "Jesus Is King",
-        "image": "https://original.fontsinuse.com/fontsinuse.com/use-images/99/99639/99639.png",
+        "image": "/static/img/JiK.avif",
+        "gif": "/static/gif/JiK.avif",
         "songs": [
             {
                 "title": "Hurricane",
@@ -17,7 +18,7 @@ ALBUMS = [
     {
         "id": "gaj",
         "name": "Good Ass Job",
-        "image": "https://static.wikia.nocookie.net/kanyewest/images/1/11/Goodahhjob.jpg",
+        "image": "/static/img/gaj.avif",
         "songs": [
             {
                 "title": "Lonely",
@@ -31,7 +32,8 @@ ALBUMS = [
     {
         "id": "yandhi",
         "name": "Yandhi",
-        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Yandhi_Cover_Art_%28Free_License%29.jpg/1200px-Yandhi_Cover_Art_%28Free_License%29.jpg",
+        "image": "/static/img/yandhi.avif",
+        "gif": "/static/gif/yandhi.avif",
         "songs": [
             {
                 "title": "City In The Sky",
@@ -45,7 +47,8 @@ ALBUMS = [
     {
         "id": "tgfd",
         "name": "Thank God for Drugs",
-        "image": "https://e.snmc.io/i/1200/s/67a44da58790f509f8d3c7c12869b4c1/10888862",
+        "image": "/static/img/tgfd.avif",
+        "gif": "/static/gif/tgfd.avif",
         "songs": [
             {
                 "title": "Awesome",
@@ -59,7 +62,7 @@ ALBUMS = [
     {
         "id": "donda",
         "name": "Donda",
-        "image": "https://i.redd.it/jvst2ity53d51.jpg",
+        "image": "/static/img/donda_float.avif",
         "songs": [
             {
                 "title": "See Me Again",
@@ -81,6 +84,28 @@ ALBUMS = [
                 "download_link": "/static/music/grad/Kanye%20West%20-%20Piano.mp3",
                 "duration": "3:47",
                 "release_date": "2007"
+            }
+        ]
+    },
+    {
+        "id": "war",
+        "name": "War",
+        "image": "/static/img/war.avif",
+        "gif": "/static/gif/war.avif",
+        "songs": [
+            {
+                "title": "Talking",
+                "file": "/static/music/war/Kanye West - Talking.mp3",
+                "download_link": "/static/music/war/Kanye%20West%20-%20Talking.mp3",
+                "duration": "3:55",
+                "release_date": "2024"
+            },
+            {
+                "title": "What I Would've Said At Virgil's Funeral",
+                "file": "/static/music/war/Kanye West - What I Would've Said At Virgil's Funeral.mp3",
+                "download_link": "/static/music/war/Kanye%20West%20-%20What%20I%20Would've%20said%20Said%20At%20Virgil's%20Funeral.mp3",
+                "duration": "4:32",
+                "release_date": "2024"
             }
         ]
     }

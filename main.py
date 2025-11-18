@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session, abort, redirect
+from flask import Flask, render_template, request, session, abort, redirect, send_file
 from flask_squeeze import Squeeze
 from albums import ALBUMS
 
@@ -33,7 +33,6 @@ def album_detail(album_id):
     # Otherwise redirect to home page to prevent SSE text on refresh
     return redirect('/')
 
-
 @app.route('/about')
 def about():
     return render_template('about.html')
@@ -49,6 +48,10 @@ def privacy():
 @app.route('/terms')
 def terms():
     return render_template('terms.html')
+
+@app.route('/sw.js')
+def service_worker():
+    return send_file('sw.js', mimetype='application/javascript')
 
 @app.errorhandler(404)
 def page_not_found(e):
