@@ -26,8 +26,8 @@ def album_detail(album_id):
     album = get_album_by_id(album_id)
     if not album:
         abort(404)
-    # If the client requested a simple fetch (from our Datastar client), return the fragment HTML
-    if request.headers.get('X-Datastar-Action') == 'fetch':
+    # If the client requested a simple fetch (from our client), return the fragment HTML
+    if request.headers.get('Fragment-Request') == 'fetch':
         return render_template('partials/album_fragment.html', album=album)
 
     # Otherwise redirect to home page to prevent SSE text on refresh

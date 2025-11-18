@@ -36,7 +36,7 @@ function enhanceImages() {
 }
 
 
-// Navigation is now handled by Datastar SSE and data-on-click attributes.
+// Navigation is now handled by client-side fetch and data-on-click attributes.
 
 // Handle browser back/forward
 window.addEventListener('popstate', function(event) {

@@ -231,6 +231,13 @@ body:has(.album-detail) .header {
   transform: translateY(calc(-1 * var(--header-height) / 2));
 }
 
+/* Incredibly hacky fix so album details don't clip behind header */
+@media (min-aspect-ratio: 16/10) {
+  .album-detail {
+    padding-top: calc(var(--header-height) + (var(--header-height) / 2) + 75px);
+  }
+}
+
 .album-cover-section {
   flex: 0 0 40%;
   display: flex;
@@ -892,10 +899,11 @@ body:has(.album-detail) .header {
     max-height: calc(50vh - var(--header-height) / 2);
   }
 
+  /* Don't let the songlist scroll when it doesn't need to */
   .album-info-section {
     flex: 1 1 auto;
-    overflow-y: auto;
-    max-height: calc(50vh - 16px);
+    overflow: visible;
+    max-height: none;
   }
 
   .album-title {

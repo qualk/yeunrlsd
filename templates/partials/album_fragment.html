@@ -4,7 +4,7 @@
         <div class="album-cover-section">
             <!-- Desktop: album name above the cover -->
             <h2 class="album-title album-title--cover">{{ album.name }}</h2>
-            <img src="{{ album.image }}" alt="{{ album.name }}" class="album-detail-image" loading="eager" {% if album.gif %}data-gif="{{ album.gif }}"{% endif %}>
+            <img src="{{ album.image }}" alt="{{ album.name }}" class="album-detail-image" loading="eager" {% if album.anim %}data-anim="{{ album.anim }}"{% endif %}>
         </div>
 
         <!-- Right: Title and Songs (60%) -->

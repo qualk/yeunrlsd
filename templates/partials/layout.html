@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}[yeunrlsd]{% endblock %}</title>
-    <meta name="description" content="{% block description %}[ye unreleased music]{% endblock %}">
+    <meta name="description" content="{% block description %}[ye] [unreleased] [music]{% endblock %}">
     <meta name="theme-color" content="#FFFFFF">
     <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
     {% block favicon %}
@@ -17,7 +17,7 @@
     <link rel="preload" href="{{ url_for('static', filename='css/styles.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"></noscript>
     {% block extra_head %}{% endblock %}
-    <script defer src="{{ url_for('static', filename='js/datastar-client.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='js/client.js') }}"></script>
 </head>
 <body>
     {% set back_hidden = back_hidden | default(true) %}
