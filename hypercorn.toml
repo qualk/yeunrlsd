@@ -1,0 +1,9 @@
+application_class = "hypercorn.wsgi:WSGIApp"
+workers = 2               # 2 workers instead of 25+ like gunicorn
+bind = "0.0.0.0:5000"     # Bind address
+accesslog = "-"           # Log to stdout
+errorlog = "-"            # Error log to stderr
+loglevel = "info"         # Log level
+keep_alive_timeout = 30   # Connection keep-alive
+keep_alive_max_requests = 1000  # Max requests per connection
+max_requests_jitter = 50  # Randomise max requests to prevent thundering herd

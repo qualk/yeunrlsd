@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request, session, abort, redirect, send_file
+from flask import Flask, render_template, request, session, abort, redirect, send_file, jsonify
 from flask_squeeze import Squeeze
 from albums import ALBUMS
+import json
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
@@ -52,6 +53,16 @@ def terms():
 @app.route('/sw.js')
 def service_worker():
     return send_file('sw.js', mimetype='application/javascript')
+
+@app.route('/api/songs')
+def get_songs():
+    """Return all song URLs for service worker caching"""
+    songs = []
+    for album in ALBUMS:
+        for song in album.get('songs', []):
+            if 'file' in song:
+                songs.append(song['file'])
+    return jsonify(songs)
 
 @app.errorhandler(404)
 def page_not_found(e):
