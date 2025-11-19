@@ -26,9 +26,56 @@
   pointer-events: auto;
 }
 
-/* Hide on small screens entirely */
-@media (max-width: 1023px) {
-  .desktop-player { display: none !important; }
+/* Mobile: compact floating player (show on phones with reduced controls) */
+@media (max-width: 640px) {
+  .desktop-player {
+    display: flex !important;
+    width: calc(100% - 24px);
+    left: 50%;
+    transform: translateX(-50%) translateY(12px);
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    padding: 10px 12px;
+    gap: 12px;
+    border-radius: 10px;
+    font-size: 14px;
+    backdrop-filter: none; /* save CPU on mobile */
+  }
+
+  .player-left {
+    width: 96px;
+    gap: 8px;
+  }
+
+  .player-album-art {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+  }
+
+  .player-track-info {
+    min-width: 0;
+  }
+
+  .player-title {
+    font-size: 13px;
+    max-width: 140px;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+
+  .player-artist { display: none; }
+
+  .player-centre { gap: 6px; padding: 4px 0; }
+
+  .player-progress-bar { height: 3px; }
+  .player-playhead { width: 10px; height: 10px; }
+
+  .player-play-btn { width: 44px; height: 44px; border-radius: 10px; }
+
+  .player-time-display { font-size: 11px; top: calc(100% + 6px); }
+
+  /* Make interactions a bit easier on touch devices */
+  .player-btn, .player-play-btn { touch-action: manipulation; }
 }
 
 /* Left Section */

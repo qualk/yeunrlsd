@@ -63,6 +63,23 @@ class DesktopPlayer {
     this.titleEl.textContent = track.title;
     this.artistEl.textContent = 'Kanye West';
     this.albumArt.src = track.albumArt || '';
+    // Set Media Session API metadata for native controls (cross-platform)
+    if ('mediaSession' in navigator) {
+      navigator.mediaSession.metadata = new window.MediaMetadata({
+        title: track.title,
+        artist: 'Kanye West',
+        album: track.album || '',
+        artwork: [
+          { src: track.albumArt || '', sizes: '96x96', type: 'image/png' },
+          { src: track.albumArt || '', sizes: '192x192', type: 'image/png' },
+          { src: track.albumArt || '', sizes: '512x512', type: 'image/png' }
+        ]
+      });
+      // Optionally set composer if available
+      if (track.composer) {
+        navigator.mediaSession.metadata.composer = track.composer;
+      }
+    }
     this.audio.play();
     // notify other UI that desktop player started playing this file
     try {
