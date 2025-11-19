@@ -15,15 +15,8 @@
                 <ul class="songs-list">
                     {% for song in album.songs %}
                     <li class="song-row">
-                        <div class="song-main" data-song-id="{{ loop.index0 }}" data-file="{{ song.file }}">
-                            <!-- Play indicator (SVG) on the left; inside .song-main so clicks trigger play -->
-                            <button class="song-play">
-                                <!-- Black circle with white play icon -->
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="12" cy="12" r="12" fill="#000"/>
-                                    <polygon points="9,7 9,17 17,12" fill="#fff"/>
-                                </svg>
-                            </button>
+                        <div class="song-main" data-song-id="{{ loop.index0 }}" data-file="{{ song.file }}" data-title="{{ song.title }}" data-album-art="{{ album.image }}">
+                            <!-- play indicator removed: row click handles playback -->
                             <div class="song-left">
                                 <span class="song-title">{{ song.title }}</span>
                                 {% if song.duration %}

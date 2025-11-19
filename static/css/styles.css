@@ -177,6 +177,8 @@ body:has(.album-detail) .header {
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 30px;
   padding: 30px 30px 48px 30px;
+  max-width: 1050px;
+  margin: 0 auto;
 }
 
 .product-item {
@@ -476,42 +478,7 @@ body:has(.album-detail) .header {
   gap: 12px;
 }
 
-.song-play {
-  width: 40px;
-  height: 40px;
-  min-width: 40px;
-  min-height: 40px;
-  margin-right: 14px;
-  background: none;
-  border: none;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background 0.2s;
-  color: #000;
-}
-
-.song-play svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.song-play circle {
-  fill: #000;
-  transition: fill 0.2s;
-}
-
-.song-play:focus circle,
-.song-play:hover circle {
-  fill: #444;
-}
-.song-play:focus,
-.song-play:hover {
-  outline: none;
-}
+/* per-row .song-play removed; control is via row click and floating player */
 
 .song-row:last-child {
   border-bottom: none;
@@ -979,3 +946,5 @@ body:has(.album-detail) .header {
     background-color: var(--background) !important;
   }
 }
+
+/* per-row .song-play removed from templates */

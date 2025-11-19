@@ -51,7 +51,7 @@ ALBUMS = [
         "songs": [
             {
                 "title": "City In The Sky",
-                "file": "/static/music/yandhi/City In The Sky.mp3",
+                "file": "/static/music/yandhi/City%20In%20The%20Sky.mp3",
                 "download_link": "/static/music/yandhi/City%20In%20The%20Sky.mp3",
                 "duration": "5:05",
                 "release_date": "2018"

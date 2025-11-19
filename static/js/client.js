@@ -5,11 +5,8 @@
     
     // Global audio playback state
     let currentAudio = null;
-    let currentButton = null;
     let currentFile = null;
-    let currentDurationSpan = null;
-    let countdownInterval = null;
-    let totalDuration = 0;
+    let currentRow = null;
     let originalImageSrc = null;
     
     // Helper: parse @get('/url') expression
@@ -20,23 +17,14 @@
         return null;
     }
     
-    // Update play button SVG
-    function updateButton(button, isPlaying) {
-        const svg = button.querySelector('svg');
-        if (isPlaying) {
-            // Pause icon
-            svg.innerHTML = '<circle cx="12" cy="12" r="12" fill="#000"/><rect x="8" y="7" width="2" height="10" fill="#fff"/><rect x="14" y="7" width="2" height="10" fill="#fff"/>';
-        } else {
-            // Play icon
-            svg.innerHTML = '<circle cx="12" cy="12" r="12" fill="#000"/><polygon points="9,7 9,17 17,12" fill="#fff"/>';
+    // Update play indicator: toggle .playing class on the row
+    function updateButton(el, isPlaying) {
+        if (!el) return;
+        const row = el.closest ? el.closest('.song-main') : null;
+        if (row) {
+            if (isPlaying) row.classList.add('playing');
+            else row.classList.remove('playing');
         }
-    }
-    
-    // Format seconds to mm:ss
-    function formatTime(seconds) {
-        const mins = Math.floor(seconds / 60);
-        const secs = Math.floor(seconds % 60);
-        return `${mins}:${secs.toString().padStart(2, '0')}`;
     }
     
     // Perform a fetch for the given URL and apply the returned fragment into #album-detail
@@ -102,93 +90,73 @@
     document.addEventListener('click', function(evt){
         let el = evt.target;
         
-        // Check if clicking on a song row to play
+        // Check if clicking on a song row to play (desktop-only behaviour)
         const songRow = evt.target.closest('.song-main');
         if (songRow) {
+            // use centralized audio element (desktop player audio if present)
             const file = songRow.getAttribute('data-file');
-            const button = songRow.querySelector('.song-play');
-        if (currentAudio && currentFile === file) {
-                // Toggle play/pause for same song
-                if (currentAudio.paused) {
-                    currentAudio.play();
-                    updateButton(button, true);
-                    // Swap to anim if available
-                    const img = document.querySelector('.album-detail-image');
-                    if (img && img.dataset.anim && !originalImageSrc) {
-                        originalImageSrc = img.src;
-                        img.src = img.dataset.anim;
-                    }
-                } else {
-                    currentAudio.pause();
-                    updateButton(button, false);
-                    // Swap back
-                    const img = document.querySelector('.album-detail-image');
-                    if (img && originalImageSrc) {
-                        img.src = originalImageSrc;
-                        originalImageSrc = null;
-                    }
+            const title = songRow.getAttribute('data-title') || 'Unknown';
+            const albumArt = songRow.getAttribute('data-album-art') || '';
+
+            // shared audio element: prefer desktop player's audio element
+            const sharedAudio = (window.desktopPlayer && window.desktopPlayer.audio) || document.getElementById('player-audio') || (window.sharedAudio = window.sharedAudio || new Audio());
+
+            // If same track clicked again -> reset to start and play (do not toggle)
+            if (currentFile === file) {
+                try {
+                    sharedAudio.currentTime = 0;
+                } catch (e) {
+                    // ignore if not ready
                 }
-            } else {
-                // Stop current audio
-                if (currentAudio) {
-                    currentAudio.pause();
-                    updateButton(currentButton, false);
-                    // Swap back
-                    const img = document.querySelector('.album-detail-image');
-                    if (img && originalImageSrc) {
-                        img.src = originalImageSrc;
-                        originalImageSrc = null;
-                    }
-                    if (countdownInterval) {
-                        clearInterval(countdownInterval);
-                        countdownInterval = null;
-                    }
-                    currentDurationSpan = null;
-                    totalDuration = 0;
-                }
-                // Play new song
-                currentAudio = new Audio(file);
-                currentAudio.addEventListener('loadedmetadata', () => {
-                    totalDuration = currentAudio.duration;
-                    currentDurationSpan = songRow.querySelector('.song-duration');
-                    if (currentDurationSpan) {
-                        currentDurationSpan.textContent = "0:00 / " + formatTime(totalDuration);
-                    }
-                    countdownInterval = setInterval(() => {
-                        if (currentAudio) {
-                            currentDurationSpan.textContent = formatTime(currentAudio.currentTime) + " / " + formatTime(totalDuration);
-                        }
-                    }, 1000);
-                });
-                currentAudio.addEventListener('ended', () => {
-                    updateButton(button, false);
-                    // Swap back
-                    const img = document.querySelector('.album-detail-image');
-                    if (img && originalImageSrc) {
-                        img.src = originalImageSrc;
-                        originalImageSrc = null;
-                    }
-                    currentAudio = null;
-                    currentButton = null;
-                    currentFile = null;
-                    if (countdownInterval) {
-                        clearInterval(countdownInterval);
-                        countdownInterval = null;
-                    }
-                    currentDurationSpan = null;
-                    totalDuration = 0;
-                });
-                currentAudio.play();
-                currentButton = button;
-                currentFile = file;
-                updateButton(button, true);
-                // Swap to anim if available
+                sharedAudio.play();
+                updateButton(songRow, true);
+                // swap to anim if available
                 const img = document.querySelector('.album-detail-image');
                 if (img && img.dataset.anim && !originalImageSrc) {
                     originalImageSrc = img.src;
                     img.src = img.dataset.anim;
                 }
+            } else {
+                // stop previous
+                if (currentFile) {
+                    updateButton(currentRow, false);
+                }
+
+                // set source and play
+                if (sharedAudio.src !== file) sharedAudio.src = file;
+                sharedAudio.play();
+
+                // update state
+                currentAudio = sharedAudio;
+                currentFile = file;
+                currentRow = songRow;
+                updateButton(songRow, true);
+
+                // Ensure desktop player shows the track and uses same audio
+                if (window.desktopPlayer) {
+                    window.desktopPlayer.play({ title: title, file: file, albumArt: albumArt });
+                }
+
+                // swap to anim if available
+                const img = document.querySelector('.album-detail-image');
+                if (img && img.dataset.anim && !originalImageSrc) {
+                    originalImageSrc = img.src;
+                    img.src = img.dataset.anim;
+                }
+
+                // When track ends, clear state
+                sharedAudio.onended = function() {
+                    updateButton(songRow, false);
+                    if (img && originalImageSrc) {
+                        img.src = originalImageSrc;
+                        originalImageSrc = null;
+                    }
+                    currentAudio = null;
+                    currentFile = null;
+                    currentRow = null;
+                };
             }
+
             return;
         }
         
@@ -208,7 +176,8 @@
     }, { passive: false });
     
     // Basic back handler exposed globally (used by layout back button)
-    window.goBack = function() {
+    // pass pauseAudio=false to avoid pausing playback when closing the detail
+    window.goBack = function(pauseAudio = true) {
         history.pushState({}, '', '/');
         const existing = document.getElementById('album-detail');
         if (existing) {
@@ -221,25 +190,19 @@
         // Show the grid
         document.getElementById('album-grid')?.classList.remove('hidden');
         try { window.cacheElements?.(); } catch(e){}
-        // Stop any playing audio
-        if (currentAudio) {
+        // Stop any playing audio only when requested
+        if (pauseAudio && currentAudio) {
             currentAudio.pause();
-            updateButton(currentButton, false);
-            // Swap back
+            updateButton(currentRow, false);
+            // Swap back image if needed
             const img = document.querySelector('.album-detail-image');
             if (img && originalImageSrc) {
                 img.src = originalImageSrc;
                 originalImageSrc = null;
             }
-            if (countdownInterval) {
-                clearInterval(countdownInterval);
-                countdownInterval = null;
-            }
-            currentDurationSpan = null;
-            totalDuration = 0;
             currentAudio = null;
-            currentButton = null;
             currentFile = null;
+            currentRow = null;
         }
     };
     
@@ -259,7 +222,8 @@
         if (e.key === 'Escape') {
             const pd = document.getElementById('album-detail');
             if (pd && !pd.classList.contains('hidden')) {
-                window.goBack();
+                // do not pause audio when closing via Escape
+                window.goBack(false);
             }
         }
     });
@@ -274,5 +238,29 @@
         }
         return true;
     };
+
+    // Listen for desktop player play events so client state stays in sync
+    document.addEventListener('desktopplayer:play', function(e){
+        try {
+            const file = e?.detail?.file;
+            if (!file) return;
+            // find the row matching this file
+            const row = document.querySelector('.song-main[data-file="' + CSS.escape(file) + '"]');
+            if (row) {
+                // clear previous
+                if (currentRow && currentRow !== row) updateButton(currentRow, false);
+                currentRow = row;
+                currentFile = file;
+                currentAudio = (window.desktopPlayer && window.desktopPlayer.audio) || currentAudio;
+                updateButton(row, true);
+            } else {
+                // No matching row, just set file state
+                currentFile = file;
+                currentAudio = (window.desktopPlayer && window.desktopPlayer.audio) || currentAudio;
+            }
+        } catch (err) {
+            // ignore
+        }
+    });
     
 })();

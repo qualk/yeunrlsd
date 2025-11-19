@@ -16,6 +16,8 @@
     <!-- Load CSS asynchronously to prevent render blocking -->
     <link rel="preload" href="{{ url_for('static', filename='css/styles.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"></noscript>
+    <link rel="preload" href="{{ url_for('static', filename='css/desktop-player.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/desktop-player.css') }}"></noscript>
     {% block extra_head %}{% endblock %}
     <script defer src="{{ url_for('static', filename='js/client.js') }}"></script>
 </head>
@@ -40,7 +42,10 @@
         {% block main %}{% endblock %}
     </main>
 
+    {% include 'partials/desktop_player.html' %}
+
     <script defer src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='js/desktop-player.js') }}"></script>
     {% block extra_scripts %}{% endblock %}
 </body>
 </html>

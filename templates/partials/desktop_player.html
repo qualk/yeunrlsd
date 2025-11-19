@@ -1,0 +1,36 @@
+<div id="desktop-player" class="desktop-player" style="opacity:0;transform:translateX(-50%) translateY(24px);pointer-events:none;">
+  <!-- Left Section: Album Art and Track Info -->
+  <div class="player-left">
+    <img id="player-album-art" class="player-album-art" src="" alt="Album art">
+    <div class="player-track-info">
+      <div id="player-title" class="player-title">No track playing</div>
+      <div id="player-artist" class="player-artist">Artist</div>
+    </div>
+  </div>
+
+  <!-- Centre Section: Timeline and Progress -->
+  <div class="player-centre">
+    <div id="player-timeline" class="player-timeline">
+      <div class="player-progress-bar">
+        <div id="player-progress" class="player-progress"></div>
+        <div id="player-playhead" class="player-playhead"></div>
+      </div>
+    </div>
+    <div class="player-time-display">
+      <span id="player-current-time">0:00</span>
+      <span class="player-time-separator">/</span>
+      <span id="player-duration">0:00</span>
+    </div>
+  </div>
+
+  <!-- Right Section: Controls -->
+  <div class="player-right">
+    <button id="player-play-btn" class="player-btn player-play-btn" title="Play/Pause">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M8 5v14l11-7z"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<audio id="player-audio"></audio>
