@@ -9,7 +9,7 @@
 {% block description %}[ye] [unreleased] [music]{% endblock %}
 
 {% block extra_head %}
-{% for album in albums[:6] %}
+{% for album in albums %}
 <link rel="preload" as="image" href="{{ album.image }}">
 {% endfor %}
 {% endblock %}

@@ -3,7 +3,7 @@
   align-items: center;
   gap: 20px;
   padding: 14px 18px;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
   position: fixed;
@@ -261,4 +261,25 @@
 
 .player-play-btn:hover {
   filter: brightness(1.03);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .desktop-player {
+    transition: none !important;
+  }
+  .player-progress {
+    transition: none !important;
+  }
+  .player-playhead {
+    transition: none !important;
+  }
+  .player-btn {
+    transition: none !important;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .desktop-player {
+    background: rgba(255, 255, 255, 1) !important;
+  }
 }

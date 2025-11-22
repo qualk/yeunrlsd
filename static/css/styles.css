@@ -124,7 +124,7 @@ img {
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 10;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
@@ -508,7 +508,7 @@ body:has(.album-detail) .header {
   white-space: nowrap;
 }
 
-.song-duration {
+.song-credits {
   font-size: 13px;
   color: #888;
   font-weight: 400;
@@ -890,7 +890,7 @@ body:has(.album-detail) .header {
     font-size: 14px;
   }
 
-  .song-duration {
+  .song-credits {
     font-size: 12px;
   }
 
@@ -946,5 +946,3 @@ body:has(.album-detail) .header {
     background-color: var(--background) !important;
   }
 }
-
-/* per-row .song-play removed from templates */

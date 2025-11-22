@@ -176,8 +176,7 @@
     }, { passive: false });
     
     // Basic back handler exposed globally (used by layout back button)
-    // pass pauseAudio=false to avoid pausing playback when closing the detail
-    window.goBack = function(pauseAudio = true) {
+    window.goBack = function() {
         history.pushState({}, '', '/');
         const existing = document.getElementById('album-detail');
         if (existing) {
@@ -190,20 +189,6 @@
         // Show the grid
         document.getElementById('album-grid')?.classList.remove('hidden');
         try { window.cacheElements?.(); } catch(e){}
-        // Stop any playing audio only when requested
-        if (pauseAudio && currentAudio) {
-            currentAudio.pause();
-            updateButton(currentRow, false);
-            // Swap back image if needed
-            const img = document.querySelector('.album-detail-image');
-            if (img && originalImageSrc) {
-                img.src = originalImageSrc;
-                originalImageSrc = null;
-            }
-            currentAudio = null;
-            currentFile = null;
-            currentRow = null;
-        }
     };
     
     // Handle browser back/forward
@@ -222,24 +207,21 @@
         if (e.key === 'Escape') {
             const pd = document.getElementById('album-detail');
             if (pd && !pd.classList.contains('hidden')) {
-                // do not pause audio when closing via Escape
-                window.goBack(false);
+                goBack();
             }
         }
     });
     
-    // Handle site title click navigation
-    window.handleTitleClick = function() {
-        if (document.querySelector('.album-detail:not(.hidden)')) {
-            goBack();
-            return false;
-        } else if (window.location.pathname === '/') {
-            return false;
-        }
-        return true;
-    };
-
-    // Listen for desktop player play events so client state stays in sync
+// Handle site title click navigation
+window.handleTitleClick = function() {
+    if (document.querySelector('.album-detail:not(.hidden)')) {
+        goBack();
+        return false;
+    } else if (window.location.pathname === '/') {
+        return false;
+    }
+    return true;
+};    // Listen for desktop player play events so client state stays in sync
     document.addEventListener('desktopplayer:play', function(e){
         try {
             const file = e?.detail?.file;
