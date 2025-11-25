@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,28 +12,44 @@
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}" />
     {% endblock %}
     <!-- Preload fonts to prevent FOUT -->
-    <link rel="preload" fetchpriority="high" href="{{ url_for('static', filename='fonts/jetbrains-mono-v24-latin/jetbrains-mono-v24-latin-500.woff2') }}" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" fetchpriority="high" href="{{ url_for('static', filename='fonts/jetbrains-mono-v24-latin/jetbrains-mono-v24-latin-600.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" fetchpriority="high"
+        href="{{ url_for('static', filename='fonts/jetbrains-mono-v24-latin/jetbrains-mono-v24-latin-500.woff2') }}"
+        as="font" type="font/woff2" crossorigin>
+    <link rel="preload" fetchpriority="high"
+        href="{{ url_for('static', filename='fonts/jetbrains-mono-v24-latin/jetbrains-mono-v24-latin-600.woff2') }}"
+        as="font" type="font/woff2" crossorigin>
     <!-- Load CSS asynchronously to prevent render blocking -->
-    <link rel="preload" href="{{ url_for('static', filename='css/styles.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"></noscript>
-    <link rel="preload" href="{{ url_for('static', filename='css/desktop-player.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/desktop-player.css') }}"></noscript>
+    <link rel="preload" href="{{ url_for('static', filename='css/styles.css') }}" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    </noscript>
+    <link rel="preload" href="{{ url_for('static', filename='css/desktop-player.css') }}" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/desktop-player.css') }}">
+    </noscript>
     {% block extra_head %}{% endblock %}
     <script defer src="{{ url_for('static', filename='js/client.js') }}"></script>
 </head>
+
 <body>
     {% set back_hidden = back_hidden | default(true) %}
     {% set back_onclick = back_onclick | default("goBack()") %}
 
     <nav class="header" role="navigation" aria-label="Main navigation">
         <div class="nav-left">
-            <button id="back-btn" class="back-btn{% if back_hidden %} hidden{% endif %}" onclick="{{ back_onclick }}" aria-label="Back" title="Back">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            <button id="back-btn" class="back-btn{% if back_hidden %} hidden{% endif %}" onclick="{{ back_onclick }}"
+                aria-label="Back" title="Back">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m15 18-6-6 6-6" />
+                </svg>
             </button>
         </div>
         <div class="nav-center">
-            <a href="/" onclick="return handleTitleClick();" class="site-title">[yeunrlsd]</a>
+            <a href="/" onclick="return handleTitleClick();" class="site-title"> <span class="bracket">[</span> <span
+                    class="site-title-text">yeunrlsd</span> <span class="bracket">]</span> </a>
         </div>
         <div class="nav-right">
         </div>
@@ -48,4 +65,5 @@
     <script defer src="{{ url_for('static', filename='js/desktop-player.js') }}"></script>
     {% block extra_scripts %}{% endblock %}
 </body>
+
 </html>
