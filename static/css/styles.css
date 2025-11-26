@@ -162,6 +162,7 @@ body:has(.album-detail) .header {
   font-weight: 600;
   font-size: 48px;
   position: relative;
+  white-space: nowrap;
 }
 
 /* Slight bracket hover interaction: scale brackets when hovering the title */
@@ -241,8 +242,8 @@ body:has(.album-detail) .header {
   text-align: center;
   font-size: 21px;
   letter-spacing: 0.05em;
+  line-height: 0.9;
 }
-
 
 .album-detail {
   position: fixed;
@@ -486,7 +487,7 @@ body:has(.album-detail) .header {
   width: 100%;
   flex: 1;
   overflow-y: auto;
-  max-height: 60vh;
+  max-height: 85vh;
   min-height: 220px;
 }
 
@@ -842,7 +843,8 @@ body:has(.album-detail) .header {
    Responsive Design
 ====================== */
 
-@media (max-width: 640px) {
+@media (max-width: 640px),
+(max-height: 360px) {
   :root {
     --header-height: 80px;
   }

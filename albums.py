@@ -119,7 +119,14 @@ ALBUMS = [
                 "download_link": "https://drive.usercontent.google.com/download?id=1ev8kga-KLNZ6QkgjmTVfZFiYQzAwq0qt&export=download",
                 "credits": "Kanye West, John Cunningham, Donny Hathaway",
                 "release_date": "2022",
-            }
+            },
+            {
+                "title": "Love Love Love",
+                "file": "/static/music/yebu/Love Love Love.mp3",
+                "download_link": "/static/music/yebu/Love Love Love.mp3",
+                "credits": "Kanye West, Ty Dolla $ign, Consequence, Donny Hathaway",
+                "release_date": "2022",
+            },
         ],
     },
     {

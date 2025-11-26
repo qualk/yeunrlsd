@@ -1,14 +1,17 @@
 // Fragment client
-(function(){
+(function () {
     if (window.Client) return;
     window.Client = {};
-    
+
     // Global audio playback state
     let currentAudio = null;
     let currentFile = null;
     let currentRow = null;
     let originalImageSrc = null;
-    
+
+    // Scroll position for album grid
+    let albumGridScrollY = 0;
+
     // Helper: parse @get('/url') expression
     function parseAction(expr) {
         if (!expr) return null;
@@ -16,7 +19,7 @@
         if (m) return { method: 'GET', url: m[1] };
         return null;
     }
-    
+
     // Update play indicator: toggle .playing class on the row
     function updateButton(el, isPlaying) {
         if (!el) return;
@@ -26,7 +29,7 @@
             else row.classList.remove('playing');
         }
     }
-    
+
     // Perform a fetch for the given URL and apply the returned fragment into #album-detail
     async function fetchAndPatch(url, pushHistory = true) {
         try {
@@ -39,20 +42,20 @@
                 },
                 credentials: 'same-origin'
             });
-            
+
             if (!res.ok) {
                 console.error('Fetch failed', res.status);
                 return;
             }
-            
+
             const html = await res.text();
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
-            
+
             // Expect fragment to contain an element with id="album-detail" (album detail)
             const frag = doc.getElementById('album-detail');
             const existing = document.getElementById('album-detail');
-            
+
             if (frag && existing) {
                 existing.replaceWith(frag);
             } else if (frag && !existing) {
@@ -62,34 +65,37 @@
                 // Fallback: inject HTML inside existing container
                 existing.innerHTML = html;
             }
-            
+
             // Reset image swap state for new album
             originalImageSrc = null;
-            
+
             // Show it and update header/back button
             const newDetail = document.getElementById('album-detail');
             newDetail?.classList.remove('hidden');
             document.getElementById('back-btn')?.classList.remove('hidden');
-            
+
+            // Save scroll position before hiding the grid
+            albumGridScrollY = window.scrollY;
+
             // Hide the grid when showing detail
             document.getElementById('album-grid')?.classList.add('hidden');
-            
+
             // Update history
             if (pushHistory) history.pushState({}, '', url);
-            
+
             // Re-run site init helpers if present
-            try { window.cacheElements?.(); } catch(e){}
-            try { window.enhanceImages?.(); } catch(e){}
-            
+            try { window.cacheElements?.(); } catch (e) { }
+            try { window.enhanceImages?.(); } catch (e) { }
+
         } catch (err) {
             console.error('Error fetching fragment', err);
         }
     }
-    
+
     // Click delegation for data-on-click="@get('/p/...')"
-    document.addEventListener('click', function(evt){
+    document.addEventListener('click', function (evt) {
         let el = evt.target;
-        
+
         // Check if clicking on a song row to play (desktop-only behaviour)
         const songRow = evt.target.closest('.song-main');
         if (songRow) {
@@ -145,7 +151,7 @@
                 }
 
                 // When track ends, clear state
-                sharedAudio.onended = function() {
+                sharedAudio.onended = function () {
                     updateButton(songRow, false);
                     if (img && originalImageSrc) {
                         img.src = originalImageSrc;
@@ -159,7 +165,7 @@
 
             return;
         }
-        
+
         // Check for data-on-click attribute
         while (el && el !== document.documentElement) {
             const expr = el.getAttribute && el.getAttribute('data-on-click');
@@ -174,9 +180,9 @@
             el = el.parentElement;
         }
     }, { passive: false });
-    
+
     // Basic back handler exposed globally (used by layout back button)
-    window.goBack = function() {
+    window.goBack = function () {
         history.pushState({}, '', '/');
         const existing = document.getElementById('album-detail');
         if (existing) {
@@ -188,11 +194,13 @@
         document.getElementById('back-btn')?.classList.add('hidden');
         // Show the grid
         document.getElementById('album-grid')?.classList.remove('hidden');
-        try { window.cacheElements?.(); } catch(e){}
+        // Restore scroll position
+        window.scrollTo(0, albumGridScrollY);
+        try { window.cacheElements?.(); } catch (e) { }
     };
-    
+
     // Handle browser back/forward
-    window.addEventListener('popstate', function(e){
+    window.addEventListener('popstate', function (e) {
         const path = window.location.pathname;
         if (path === '/') {
             window.goBack();
@@ -201,9 +209,9 @@
             fetchAndPatch(path, false);
         }
     });
-    
+
     // Close album detail on escape
-    document.addEventListener('keydown', function(e){
+    document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') {
             const pd = document.getElementById('album-detail');
             if (pd && !pd.classList.contains('hidden')) {
@@ -211,18 +219,18 @@
             }
         }
     });
-    
-// Handle site title click navigation
-window.handleTitleClick = function() {
-    if (document.querySelector('.album-detail:not(.hidden)')) {
-        goBack();
-        return false;
-    } else if (window.location.pathname === '/') {
-        return false;
-    }
-    return true;
-};    // Listen for desktop player play events so client state stays in sync
-    document.addEventListener('desktopplayer:play', function(e){
+
+    // Handle site title click navigation
+    window.handleTitleClick = function () {
+        if (document.querySelector('.album-detail:not(.hidden)')) {
+            goBack();
+            return false;
+        } else if (window.location.pathname === '/') {
+            return false;
+        }
+        return true;
+    };    // Listen for desktop player play events so client state stays in sync
+    document.addEventListener('desktopplayer:play', function (e) {
         try {
             const file = e?.detail?.file;
             if (!file) return;
@@ -244,5 +252,5 @@ window.handleTitleClick = function() {
             // ignore
         }
     });
-    
+
 })();
