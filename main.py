@@ -1,16 +1,15 @@
+import sqlite3
 from flask import (
     Flask,
     render_template,
     request,
-    session,
     abort,
     redirect,
     send_file,
     jsonify,
+    g,
 )
 from flask_squeeze import Squeeze
-from albums import ALBUMS
-import json
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
 
@@ -20,16 +19,40 @@ squeeze.init_app(app)
 
 app.secret_key = "superdupersecretkey"
 
-ALBUM_LOOKUP = {a["id"]: a for a in ALBUMS}
+DATABASE = 'data/music.db'
 
+def get_db():
+    db = getattr(g, '_database', None)
+    if db is None:
+        db = g._database = sqlite3.connect(DATABASE)
+        db.row_factory = sqlite3.Row
+    return db
+
+@app.teardown_appcontext
+def close_connection(exception):
+    db = getattr(g, '_database', None)
+    if db is not None:
+        db.close()
 
 def get_album_by_id(album_id):
-    return ALBUM_LOOKUP.get(album_id)
-
+    db = get_db()
+    cursor = db.execute("SELECT * FROM albums WHERE id = ?", (album_id,))
+    album = cursor.fetchone()
+    if album:
+        songs_cursor = db.execute("SELECT * FROM songs WHERE album_id = ? ORDER BY id", (album_id,))
+        songs = songs_cursor.fetchall()
+        # convert album from sqlite3.Row to dict and add songs
+        album_dict = dict(album)
+        album_dict['songs'] = [dict(song) for song in songs]
+        return album_dict
+    return None
 
 @app.route("/")
 def home():
-    return render_template("index.html", albums=ALBUMS)
+    db = get_db()
+    cursor = db.execute("SELECT * FROM albums ORDER BY rowid")
+    albums = cursor.fetchall()
+    return render_template("index.html", albums=[dict(album) for album in albums])
 
 
 # Album detail page
@@ -74,11 +97,9 @@ def service_worker():
 @app.route("/api/songs")
 def get_songs():
     """Return all song URLs for service worker caching"""
-    songs = []
-    for album in ALBUMS:
-        for song in album.get("songs", []):
-            if "file" in song:
-                songs.append(song["file"])
+    db = get_db()
+    cursor = db.execute("SELECT file FROM songs")
+    songs = [row['file'] for row in cursor.fetchall() if row['file']]
     return jsonify(songs)
 
 

@@ -82,18 +82,17 @@ wheels = [
 
 [[package]]
 name = "flask-squeeze"
-version = "3.4.0"
+version = "3.5.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "brotli" },
     { name = "flask" },
     { name = "rcssmin" },
     { name = "rjsmin" },
-    { name = "werkzeug" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/05/8b/34e5075eb64f1da71cb1ed2847df3181a7b90c828672ed094cce1ab71c69/flask_squeeze-3.4.0.tar.gz", hash = "sha256:81055b1370c593d2a041b6d83f7101a049d48bda973bfb38c8498eabfd637c34", size = 17871, upload-time = "2025-06-22T09:47:58.722Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/57/e0/916e7ccfed6828a43751609ec1421292fff0803e94989783c6611e48580f/flask_squeeze-3.5.0.tar.gz", hash = "sha256:65cec427d6e24d65b4fa398d0094842e85a4b3b3d30fb325591fceafefcc8bc2", size = 16845, upload-time = "2025-11-21T20:23:17.139Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/d6/78/f39aa1cda0660ee39806012735922a61c5b98f10b48e38ad3047b34ba4e4/flask_squeeze-3.4.0-py3-none-any.whl", hash = "sha256:55e939732eccc8f87039bef437d864f7ab7380582f58868b64fc48a061a9416c", size = 11561, upload-time = "2025-06-22T09:47:57.834Z" },
+    { url = "https://files.pythonhosted.org/packages/91/ab/629a6e1a8c542f98aebe333b937d5bf01df6ee3624dadf4eb12fe0757c99/flask_squeeze-3.5.0-py3-none-any.whl", hash = "sha256:30fd2efbeddd68a5ed87390451b070371a176527c221ef3ff7762e7e6d3f950c", size = 10873, upload-time = "2025-11-21T20:23:16.285Z" },
 ]
 
 [[package]]
@@ -213,5 +212,5 @@ dependencies = [
 requires-dist = [
     { name = "flask", specifier = "==3.1.2" },
     { name = "flask-cors", specifier = "==6.0.1" },
-    { name = "flask-squeeze", specifier = "==3.4.0" },
+    { name = "flask-squeeze", specifier = "==3.5.0" },
 ]

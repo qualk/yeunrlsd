@@ -15,7 +15,7 @@ function cacheElements() {
 
 // Enhance images to avoid visible flicker on reload: reserve space and fade them in
 function enhanceImages() {
-    const selectors = ['img.product-image', 'img.product-detail-image', 'img.cart-item-image'];
+    const selectors = ['img.product-image', 'img.album-detail-image'];
     const imgs = document.querySelectorAll(selectors.join(','));
     imgs.forEach(img => {
         // prefer async decoding to avoid main-thread jank

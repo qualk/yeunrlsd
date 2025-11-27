@@ -1,5 +1,5 @@
 // bunx workbox-cli injectManifest workbox-config.js
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/7.3.0/workbox-sw.js');
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/7.4.0/workbox-sw.js');
 
 // Precache all assets
 workbox.precaching.precacheAndRoute(self.__WB_MANIFEST);
@@ -96,24 +96,24 @@ async function downloadAllSongs() {
   try {
     // Check if connection is metered
     const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-    
+
     // Skip if on metered connection or save-data is enabled
     if (connection && (connection.saveData || connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g')) {
       console.log('Skipping song download: metered connection detected');
       return;
     }
-    
+
     console.log('Starting background song download...');
-    
+
     // Fetch song list from API
     const response = await fetch('/api/songs');
     if (!response.ok) {
       throw new Error('Failed to fetch song list');
     }
-    
+
     const songs = await response.json();
     console.log(`Found ${songs.length} songs to download`);
-    
+
     // Download each song in background
     const cache = await caches.open('audio');
     const downloadPromises = songs.map(async (songUrl) => {
@@ -127,10 +127,10 @@ async function downloadAllSongs() {
         console.warn(`Failed to download ${songUrl}:`, error);
       }
     });
-    
+
     await Promise.allSettled(downloadPromises);
     console.log('Song download complete');
-    
+
   } catch (error) {
     console.error('Error in song download:', error);
   }

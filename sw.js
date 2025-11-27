@@ -1,8 +1,8 @@
 // bunx workbox-cli injectManifest workbox-config.js
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/7.3.0/workbox-sw.js');
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/7.4.0/workbox-sw.js');
 
 // Precache all assets
-workbox.precaching.precacheAndRoute([{"revision":"0c1932ede18cd1a7e87640aa1420cf6d","url":"static/anim/JiK.avif"},{"revision":"94b1e5453ad9338726af6c714ea38370","url":"static/anim/tgfd.avif"},{"revision":"f5fda7f969fe2641b1ba5443cebe6faa","url":"static/anim/war.avif"},{"revision":"4294e61d15f203eb45b45cf484c8a7e1","url":"static/anim/yandhi.avif"},{"revision":"0ef641cc2f77a1d39c81aca6a2db88bc","url":"static/css/styles.css"},{"revision":"cdd73b250b50d22e7ce9f973cef3cebc","url":"static/icons/icon-128x128.avif"},{"revision":"4255e56fef7b16fc7a1ff6b87e6212ec","url":"static/icons/icon-192x192.avif"},{"revision":"4f8a0e4ad65798bc38e44cbce473931f","url":"static/icons/icon-384x384.avif"},{"revision":"909592136827d616d095d91a521f06d2","url":"static/icons/icon-512x512.avif"},{"revision":"80ba9e6bcf6dd23a551277b1ce615d2b","url":"static/img/404.ico"},{"revision":"ba2f047225df82272e7178d1a011b5fe","url":"static/img/bully.avif"},{"revision":"89b33b4350ea04286772839f77653b69","url":"static/img/donda_float.avif"},{"revision":"18930d4a78e8861a0acfb119d39204c7","url":"static/img/donda.avif"},{"revision":"88c7d704d5556f4c261a0f7a200b2fe6","url":"static/img/favicon.ico"},{"revision":"fa91fecd2cb660f3c1642ada5ca02ba9","url":"static/img/gaj_bear.avif"},{"revision":"356436807cbf9b5ed4cd595d3f81d90d","url":"static/img/gaj.avif"},{"revision":"5acb7c5a5bdb8d7dbec2ebb0d134ce7f","url":"static/img/JiK.avif"},{"revision":"18700a43e354450582cf8e24714d93d5","url":"static/img/logo.avif"},{"revision":"86d471bed4873947aef46c2daef3b4cd","url":"static/img/tgfd.avif"},{"revision":"7054a3680ee8af8fa00c8a672d581345","url":"static/img/war.avif"},{"revision":"2e435524d1c72733d22ce2b511ec0759","url":"static/img/yandhi.avif"},{"revision":"59ea558a7de4d885b7e66032b75a89ff","url":"static/img/yebu.avif"},{"revision":"9b3197bc9cf7930059c031ed9bd918d0","url":"static/js/app.js"},{"revision":"b484d97e69e033ece15da93d997ae313","url":"static/js/client.js"},{"revision":"bb70b47eeab94d14013e478feb92b535","url":"static/manifest.json"}]);
+workbox.precaching.precacheAndRoute([{"revision":"bb70b47eeab94d14013e478feb92b535","url":"static/manifest.json"},{"revision":"e721a1dfcd49cdecc6f8681f3c609f94","url":"static/js/player.js"},{"revision":"002b55e00b4327da7ceaa1931023f2ca","url":"static/js/desktop-player.js"},{"revision":"37d8e650134929fac085a05a55b53435","url":"static/js/client.js"},{"revision":"07628d7f948274db987429e2c3953700","url":"static/js/app.js"},{"revision":"28b85d79cf9ad443bb76721d99116ae7","url":"static/img/donda2.avif"},{"revision":"feb1a6b48310871632d196d67f1275c4","url":"static/img/iapw.avif"},{"revision":"f5d3bb8b141d77f3e52f71b2c5c83ccd","url":"static/img/bully.avif"},{"revision":"59ea558a7de4d885b7e66032b75a89ff","url":"static/img/yebu.avif"},{"revision":"2e435524d1c72733d22ce2b511ec0759","url":"static/img/yandhi.avif"},{"revision":"7054a3680ee8af8fa00c8a672d581345","url":"static/img/war.avif"},{"revision":"a4b7e68beb4e6f273e47d6875b09b4e6","url":"static/img/tgx.avif"},{"revision":"86d471bed4873947aef46c2daef3b4cd","url":"static/img/tgfd.avif"},{"revision":"18700a43e354450582cf8e24714d93d5","url":"static/img/logo.avif"},{"revision":"fa91fecd2cb660f3c1642ada5ca02ba9","url":"static/img/gaj_bear.avif"},{"revision":"356436807cbf9b5ed4cd595d3f81d90d","url":"static/img/gaj.avif"},{"revision":"88c7d704d5556f4c261a0f7a200b2fe6","url":"static/img/favicon.ico"},{"revision":"89b33b4350ea04286772839f77653b69","url":"static/img/donda_float.avif"},{"revision":"18930d4a78e8861a0acfb119d39204c7","url":"static/img/donda.avif"},{"revision":"5acb7c5a5bdb8d7dbec2ebb0d134ce7f","url":"static/img/JiK.avif"},{"revision":"80ba9e6bcf6dd23a551277b1ce615d2b","url":"static/img/404.ico"},{"revision":"909592136827d616d095d91a521f06d2","url":"static/icons/icon-512x512.avif"},{"revision":"4f8a0e4ad65798bc38e44cbce473931f","url":"static/icons/icon-384x384.avif"},{"revision":"4255e56fef7b16fc7a1ff6b87e6212ec","url":"static/icons/icon-192x192.avif"},{"revision":"cdd73b250b50d22e7ce9f973cef3cebc","url":"static/icons/icon-128x128.avif"},{"revision":"2636585141d6fa9ab0ae02a65030b717","url":"static/css/styles.css"},{"revision":"bb9451db10d2de6fbc02cb321e767a97","url":"static/css/desktop-player.css"},{"revision":"7cdbce85d5343a9fee9c1f2c6e363520","url":"static/anim/donda2.avif"},{"revision":"4294e61d15f203eb45b45cf484c8a7e1","url":"static/anim/yandhi.avif"},{"revision":"f5fda7f969fe2641b1ba5443cebe6faa","url":"static/anim/war.avif"},{"revision":"94b1e5453ad9338726af6c714ea38370","url":"static/anim/tgfd.avif"},{"revision":"0c1932ede18cd1a7e87640aa1420cf6d","url":"static/anim/JiK.avif"}]);
 
 // Cache images with CacheFirst
 workbox.routing.registerRoute(
@@ -96,24 +96,24 @@ async function downloadAllSongs() {
   try {
     // Check if connection is metered
     const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-    
+
     // Skip if on metered connection or save-data is enabled
     if (connection && (connection.saveData || connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g')) {
       console.log('Skipping song download: metered connection detected');
       return;
     }
-    
+
     console.log('Starting background song download...');
-    
+
     // Fetch song list from API
     const response = await fetch('/api/songs');
     if (!response.ok) {
       throw new Error('Failed to fetch song list');
     }
-    
+
     const songs = await response.json();
     console.log(`Found ${songs.length} songs to download`);
-    
+
     // Download each song in background
     const cache = await caches.open('audio');
     const downloadPromises = songs.map(async (songUrl) => {
@@ -127,10 +127,10 @@ async function downloadAllSongs() {
         console.warn(`Failed to download ${songUrl}:`, error);
       }
     });
-    
+
     await Promise.allSettled(downloadPromises);
     console.log('Song download complete');
-    
+
   } catch (error) {
     console.error('Error in song download:', error);
   }
