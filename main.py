@@ -19,39 +19,49 @@ squeeze.init_app(app)
 
 app.secret_key = "superdupersecretkey"
 
-DATABASE = 'data/music.db'
+DATABASE = "data/music.db"
+
 
 def get_db():
-    db = getattr(g, '_database', None)
+    db = getattr(g, "_database", None)
     if db is None:
         db = g._database = sqlite3.connect(DATABASE)
         db.row_factory = sqlite3.Row
     return db
 
+
 @app.teardown_appcontext
 def close_connection(exception):
-    db = getattr(g, '_database', None)
+    db = getattr(g, "_database", None)
     if db is not None:
         db.close()
+
 
 def get_album_by_id(album_id):
     db = get_db()
     cursor = db.execute("SELECT * FROM albums WHERE id = ?", (album_id,))
     album = cursor.fetchone()
     if album:
-        songs_cursor = db.execute("SELECT * FROM songs WHERE album_id = ? ORDER BY id", (album_id,))
+        songs_cursor = db.execute(
+            "SELECT * FROM songs WHERE album_id = ? ORDER BY id", (album_id,)
+        )
         songs = songs_cursor.fetchall()
         # convert album from sqlite3.Row to dict and add songs
         album_dict = dict(album)
-        album_dict['songs'] = [dict(song) for song in songs]
+        album_dict["songs"] = [dict(song) for song in songs]
         return album_dict
     return None
+
 
 @app.route("/")
 def home():
     db = get_db()
-    cursor = db.execute("SELECT * FROM albums ORDER BY rowid")
+    # Include a lightweight render-time indicator whether an album has any songs.
+    cursor = db.execute(
+        "SELECT a.*, EXISTS(SELECT 1 FROM songs s WHERE s.album_id = a.id) AS has_songs FROM albums a ORDER BY rowid"
+    )
     albums = cursor.fetchall()
+    # Convert sqlite rows to dicts so templates can read `has_songs` as a boolean-like value (0/1)
     return render_template("index.html", albums=[dict(album) for album in albums])
 
 
@@ -99,7 +109,7 @@ def get_songs():
     """Return all song URLs for service worker caching"""
     db = get_db()
     cursor = db.execute("SELECT file FROM songs")
-    songs = [row['file'] for row in cursor.fetchall() if row['file']]
+    songs = [row["file"] for row in cursor.fetchall() if row["file"]]
     return jsonify(songs)
 
 

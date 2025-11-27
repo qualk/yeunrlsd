@@ -15,33 +15,43 @@
 {% endblock %}
 
 {% block main %}
-<div id="album-grid" class="product-grid" role="list" aria-label="Album list">
+<div id="album-grid" class="album-grid" role="list" aria-label="Album list">
     {% for album in albums %}
-    <div class="product-item" data-on-click="@get('/p/{{ album.id }}')" role="listitem" tabindex="0" aria-label="View details for {{ album.name }}">
-        <img src="{{ album.image }}" alt="{{ album.name }}" class="product-image" loading="lazy">
-        <p class="product-name">{{ album.name }}</p>
+    {# If album has songs, make it interactive; otherwise render a non-interactive, greyed item #}
+    {% if album.has_songs %}
+    <div class="album-item" data-on-click="@get('/p/{{ album.id }}')" role="listitem" tabindex="0"
+        aria-label="View details for {{ album.name }}">
+        <img src="{{ album.image }}" alt="{{ album.name }}" class="album-image" loading="lazy">
+        <p class="album-name">{{ album.name }}</p>
     </div>
+    {% else %}
+    <div class="album-item empty" role="listitem" tabindex="-1" aria-disabled="true"
+        aria-label="{{ album.name }} (no songs)">
+        <img src="{{ album.image }}" alt="{{ album.name }}" class="album-image" loading="lazy">
+        <p class="album-name">{{ album.name }}</p>
+    </div>
+    {% endif %}
     {% endfor %}
 </div>
 
-<div id="album-detail" class="product-detail hidden" aria-live="polite" aria-atomic="true">
-        <!-- Will be populated by client-side fetch -->
+<div id="album-detail" class="album-detail hidden" aria-live="polite" aria-atomic="true">
+    <!-- Will be populated by client-side fetch -->
 </div>
 {% endblock %}
 
 {% block extra_scripts %}
 <script>
-// Register service worker
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js', { scope: '/' })
-            .then(registration => {
-            console.log('SW registered: ', registration);
-        })
-        .catch(registrationError => {
-            console.log('SW registration failed: ', registrationError);
+    // Register service worker
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js', { scope: '/' })
+                .then(registration => {
+                    console.log('SW registered: ', registration);
+                })
+                .catch(registrationError => {
+                    console.log('SW registration failed: ', registrationError);
+                });
         });
-    });
-}
+    }
 </script>
 {% endblock %}

@@ -92,7 +92,7 @@ body {
 }
 
 /* =====================
-   Images & Media
+    Images & Media
 ====================== */
 
 img {
@@ -106,7 +106,7 @@ img {
 }
 
 /* Smooth image loading: reserve space and fade images in to avoid visible flicker on reload */
-.product-image,
+.album-image,
 .album-detail-image {
   background-color: transparent;
   display: block;
@@ -189,10 +189,10 @@ body:has(.album-detail) .header {
 }
 
 /* =====================
-   Product Components
+   Album Components
 ====================== */
 
-.product-grid {
+.album-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 30px;
@@ -201,7 +201,7 @@ body:has(.album-detail) .header {
   margin: 0 auto;
 }
 
-.product-item {
+.album-item {
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -209,8 +209,34 @@ body:has(.album-detail) .header {
   gap: 18px;
 }
 
+/* Empty / non-interactive album visuals */
+.album-item.empty {
+  cursor: default;
+  /* allow hover so we can reveal the color on hover while remaining non-interactive
+     (HTML already marks these as tabindex="-1" / aria-disabled). */
+  pointer-events: auto;
+  opacity: 0.72;
+}
+
+.album-item.empty .album-image {
+  filter: grayscale(100%) contrast(0.95);
+  transform: none !important;
+}
+
+.album-item.empty .album-name {
+  color: #9a9a9a;
+  transform: none !important;
+}
+
+/* show colour on hover */
+.album-item.empty:hover .album-image,
+.album-item.empty:focus .album-image {
+  filter: none !important;
+  transform: none !important;
+}
+
 /* Subtle hover interaction for the album grid: scale cover and lift name */
-.product-image {
+.album-image {
   width: 100%;
   aspect-ratio: 1;
   object-fit: contain;
@@ -218,7 +244,7 @@ body:has(.album-detail) .header {
   will-change: transform;
 }
 
-.product-name {
+.album-name {
   font-weight: 500;
   text-align: center;
   font-size: 21px;
@@ -228,13 +254,13 @@ body:has(.album-detail) .header {
   will-change: transform, color;
 }
 
-.product-item:hover .product-image,
-.product-item:focus .product-image {
+.album-item:hover .album-image,
+.album-item:focus .album-image {
   transform: scale(1.04);
 }
 
-.product-item:hover .product-name,
-.product-item:focus .product-name {
+.album-item:hover .album-name,
+.album-item:focus .album-name {
   transform: translateY(-3px);
 }
 
@@ -356,10 +382,8 @@ body:has(.album-detail) .header {
   }
 
   .songs-list {
-    max-height: 50vh;
-    overflow-y: auto;
-    /* Only scroll if needed */
-    overscroll-behavior: contain;
+    max-height: none;
+    overflow: visible;
   }
 }
 
@@ -574,7 +598,7 @@ body:has(.album-detail) .header {
     --header-height: 80px;
   }
 
-  .product-grid {
+  .album-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
     padding: 16px;
@@ -598,7 +622,7 @@ body:has(.album-detail) .header {
     padding-top: var(--header-height);
   }
 
-  .product-name {
+  .album-name {
     font-size: 18px;
     line-height: 1.3;
   }
@@ -606,14 +630,21 @@ body:has(.album-detail) .header {
   /* Mobile: Full-width album detail, stacked layout */
 
   .album-detail {
+    position: relative;
+    inset: auto;
     padding: 16px;
-    padding-top: var(--header-height);
+    padding-top: 16px;
+    padding-bottom: 0;
     flex-direction: column;
+    height: auto;
+    min-height: auto;
   }
 
   /* undo the desktop vertical shift on mobile so stacking looks normal */
   .album-detail-view {
     transform: none;
+    height: auto;
+    overflow: visible;
   }
 
   .songs-section {
@@ -628,11 +659,11 @@ body:has(.album-detail) .header {
 
   .album-cover-section {
     flex: 0 1 auto;
-    max-height: 50vh;
+    max-height: none;
   }
 
   .album-detail-image {
-    max-height: calc(50vh - var(--header-height) / 2);
+    max-height: none;
   }
 
   /* Don't let the songlist scroll when it doesn't need to */
@@ -711,8 +742,8 @@ body:has(.album-detail) .header {
 
   /* Reduce motion: disable transitions/animations for these interactive elements */
   .site-title .bracket,
-  .product-image,
-  .product-name {
+  .album-image,
+  .album-name {
     transition: none !important;
   }
 }

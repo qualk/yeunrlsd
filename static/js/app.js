@@ -15,13 +15,13 @@ function cacheElements() {
 
 // Enhance images to avoid visible flicker on reload: reserve space and fade them in
 function enhanceImages() {
-    const selectors = ['img.product-image', 'img.album-detail-image'];
+    const selectors = ['img.album-image', 'img.album-detail-image'];
     const imgs = document.querySelectorAll(selectors.join(','));
     imgs.forEach(img => {
         // prefer async decoding to avoid main-thread jank
-        try { img.decoding = 'async'; } catch(e) {}
+        try { img.decoding = 'async'; } catch (e) { }
         // set eager loading for above-the-fold images (if within viewport)
-        try { if (img.getBoundingClientRect().top < window.innerHeight * 1.5) img.loading = 'eager'; } catch(e) {}
+        try { if (img.getBoundingClientRect().top < window.innerHeight * 1.5) img.loading = 'eager'; } catch (e) { }
 
         // If already loaded, mark immediately
         if (img.complete && img.naturalWidth > 0) {
@@ -39,7 +39,7 @@ function enhanceImages() {
 // Navigation is now handled by client-side fetch and data-on-click attributes.
 
 // Handle browser back/forward
-window.addEventListener('popstate', function(event) {
+window.addEventListener('popstate', function (event) {
     const path = window.location.pathname;
     if (path === '/') {
         if (window.goBack) window.goBack();
@@ -47,19 +47,19 @@ window.addEventListener('popstate', function(event) {
 });
 
 // Keyboard shortcuts
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keydown', function (event) {
     if (selectedAlbum && event.key === 'Escape') {
         if (window.goBack) window.goBack();
     }
 });
 
 // Initialize
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Cache DOM elements
     cacheElements();
     // Improve image loading behavior to reduce flicker
     enhanceImages();
-    
+
     // Check initial URL
     const path = window.location.pathname;
     if (path.startsWith('/p/')) {
