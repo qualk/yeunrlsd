@@ -55,20 +55,5 @@
             "sizes": "512x512",
             "purpose": "any"
         }
-    ],
-    "screenshots": [
-        {
-            "src": "icons/desktop_screenshot.avif",
-            "sizes": "1920x1080",
-            "type": "image/avif",
-            "label": ""
-        },
-        {
-            "src": "icons/mobile_screenshot.avif",
-            "sizes": "1080x1920",
-            "type": "image/avif",
-            "form_factor": "wide",
-            "label": ""
-        }
     ]
 }
