@@ -3,5 +3,7 @@ fly.toml
 __pycache__/
 .envrc
 .venv/
-# Exclude music files from container image to keep image small, fetching from jsDelivr
+# exclude files fetched by jsdelivr
 static/music/
+static/img
+static/anim

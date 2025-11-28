@@ -45,8 +45,6 @@ class DesktopPlayer {
     document.addEventListener('mousemove', (e) => this.drag(e));
     document.addEventListener('mouseup', () => this.endDrag());
 
-    // (volume control removed per user request)
-
     // Spacebar to toggle play/pause (when not typing in inputs)
     document.addEventListener('keydown', (e) => {
       const active = document.activeElement && document.activeElement.tagName;
@@ -67,7 +65,7 @@ class DesktopPlayer {
     if ('mediaSession' in navigator) {
       navigator.mediaSession.metadata = new window.MediaMetadata({
         title: track.title,
-        artist: 'Kanye West',
+        artist: 'Ye',
         album: track.album || '',
         artwork: [
           { src: track.albumArt || '', sizes: '96x96', type: 'image/png' },
@@ -174,7 +172,7 @@ class DesktopPlayer {
       this.playerContainer.style.opacity = '';
       this.playerContainer.style.transform = '';
       this.playerContainer.style.pointerEvents = '';
-    } catch (e) {}
+    } catch (e) { }
     this.playerContainer.classList.add('active');
   }
 
@@ -190,7 +188,7 @@ class DesktopPlayer {
   }
 }
 
-// Initialize player on DOM ready
+// Initialise player on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
   window.desktopPlayer = new DesktopPlayer();
 });

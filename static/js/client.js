@@ -99,15 +99,24 @@
         // Check if clicking on a song row to play (desktop-only behaviour)
         const songRow = evt.target.closest('.song-main');
         if (songRow) {
-            // use centralized audio element (desktop player audio if present)
             const file = songRow.getAttribute('data-file');
             const title = songRow.getAttribute('data-title') || 'Unknown';
             const albumArt = songRow.getAttribute('data-album-art') || '';
 
-            // shared audio element: prefer desktop player's audio element
-            const sharedAudio = (window.desktopPlayer && window.desktopPlayer.audio) || document.getElementById('player-audio') || (window.sharedAudio = window.sharedAudio || new Audio());
+            const desktopPlayer = window.desktopPlayer;
+            const sharedAudio = desktopPlayer
+                ? desktopPlayer.audio
+                : document.getElementById('player-audio') || (window.sharedAudio = window.sharedAudio || new Audio());
 
-            // If same track clicked again -> reset to start and play (do not toggle)
+            const img = document.querySelector('.album-detail-image');
+
+            const handleAnimations = () => {
+                if (img && img.dataset.anim && !originalImageSrc) {
+                    originalImageSrc = img.src;
+                    img.src = img.dataset.anim;
+                }
+            };
+
             if (currentFile === file) {
                 try {
                     sharedAudio.currentTime = 0;
@@ -116,41 +125,24 @@
                 }
                 sharedAudio.play();
                 updateButton(songRow, true);
-                // swap to anim if available
-                const img = document.querySelector('.album-detail-image');
-                if (img && img.dataset.anim && !originalImageSrc) {
-                    originalImageSrc = img.src;
-                    img.src = img.dataset.anim;
-                }
+                handleAnimations();
             } else {
-                // stop previous
-                if (currentFile) {
-                    updateButton(currentRow, false);
+                if (currentFile) updateButton(currentRow, false);
+
+                if (desktopPlayer) {
+                    desktopPlayer.play({ title: title, file: file, albumArt: albumArt });
+                    currentAudio = desktopPlayer.audio;
+                } else {
+                    if (sharedAudio.src !== file) sharedAudio.src = file;
+                    sharedAudio.play();
+                    currentAudio = sharedAudio;
                 }
 
-                // set source and play
-                if (sharedAudio.src !== file) sharedAudio.src = file;
-                sharedAudio.play();
-
-                // update state
-                currentAudio = sharedAudio;
                 currentFile = file;
                 currentRow = songRow;
                 updateButton(songRow, true);
+                handleAnimations();
 
-                // Ensure desktop player shows the track and uses same audio
-                if (window.desktopPlayer) {
-                    window.desktopPlayer.play({ title: title, file: file, albumArt: albumArt });
-                }
-
-                // swap to anim if available
-                const img = document.querySelector('.album-detail-image');
-                if (img && img.dataset.anim && !originalImageSrc) {
-                    originalImageSrc = img.src;
-                    img.src = img.dataset.anim;
-                }
-
-                // When track ends, clear state
                 sharedAudio.onended = function () {
                     updateButton(songRow, false);
                     if (img && originalImageSrc) {

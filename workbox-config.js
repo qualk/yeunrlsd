@@ -4,7 +4,8 @@ module.exports = {
   swDest: 'sw.js',
   globDirectory: '.',
   globPatterns: [
-    'static/**/*.{css,js,json,avif,ico}'
+    'static/**/*.{css,js,json,ico}',
+    'static/icons/*.avif'
   ],
   // exclude large files if needed, but for now include mp3
   maximumFileSizeToCacheInBytes: 50 * 1024 * 1024, // 50MB for songs

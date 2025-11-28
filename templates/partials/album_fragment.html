@@ -4,7 +4,8 @@
         <div class="album-cover-section">
             <!-- Desktop: album name above the cover -->
             <h2 class="album-title album-title--cover">{{ album.name }}</h2>
-            <img src="{{ album.image }}" alt="{{ album.name }}" class="album-detail-image" loading="eager" {% if album.anim %}data-anim="{{ album.anim }}"{% endif %}>
+            <img src="{{ album.image }}" alt="{{ album.name }}" class="album-detail-image" loading="eager" {% if
+                album.anim %}data-anim="{{ album.anim }}" {% endif %}>
         </div>
 
         <!-- Right: Title and Songs (60%) -->
@@ -14,7 +15,8 @@
                 <ul class="songs-list">
                     {% for song in album.songs %}
                     <li class="song-row">
-                        <div class="song-main" data-song-id="{{ loop.index0 }}" data-file="{{ song.file }}" data-title="{{ song.title }}" data-album-art="{{ album.image }}">
+                        <div class="song-main" data-song-id="{{ loop.index0 }}" data-file="{{ song.file }}"
+                            data-title="{{ song.title }}" data-album-art="{{ album.image }}">
                             <!-- play indicator removed: row click handles playback -->
                             <div class="song-left">
                                 <span class="song-title">{{ song.title }}</span>
@@ -23,9 +25,8 @@
                                 {% endif %}
                             </div>
                         </div>
-                        {% if song.download_link %}
-                        <a href="{{ song.download_link }}" class="song-download" target="_blank" rel="noopener" onclick="event.stopPropagation();">↓</a>
-                        {% endif %}
+                        <a href="{{ song.file }}" class="song-download" target="_blank" rel="noopener noreferrer"
+                            onclick=" event.stopPropagation();">↓</a>
                     </li>
                     {% endfor %}
                     {% if not album.songs %}

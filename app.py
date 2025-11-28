@@ -46,7 +46,7 @@ def get_album_by_id(album_id):
             "SELECT * FROM songs WHERE album_id = ? ORDER BY id", (album_id,)
         )
         songs = songs_cursor.fetchall()
-        # convert album from sqlite3.Row to dict and add songs
+        # convert album from row to dict and add songs
         album_dict = dict(album)
         album_dict["songs"] = [dict(song) for song in songs]
         return album_dict
@@ -56,26 +56,25 @@ def get_album_by_id(album_id):
 @app.route("/")
 def home():
     db = get_db()
-    # Include a lightweight render-time indicator whether an album has any songs.
+    # identify empty albums
     cursor = db.execute(
         "SELECT a.*, EXISTS(SELECT 1 FROM songs s WHERE s.album_id = a.id) AS has_songs FROM albums a ORDER BY rowid"
     )
     albums = cursor.fetchall()
-    # Convert sqlite rows to dicts so templates can read `has_songs` as a boolean-like value (0/1)
+    # convert sqlite rows to dicts so templates can read `has_songs` as a boolean-like value
     return render_template("index.html", albums=[dict(album) for album in albums])
 
 
-# Album detail page
 @app.route("/p/<album_id>")
 def album_detail(album_id):
     album = get_album_by_id(album_id)
     if not album:
         abort(404)
-    # If the client requested a simple fetch (from our client), return the fragment HTML
+    # return fragment HTML
     if request.headers.get("Fragment-Request") == "fetch":
         return render_template("partials/album_fragment.html", album=album)
 
-    # Otherwise redirect to home page to prevent SSE text on refresh
+    # prevent flask from erroring
     return redirect("/")
 
 
@@ -106,7 +105,6 @@ def service_worker():
 
 @app.route("/api/songs")
 def get_songs():
-    """Return all song URLs for service worker caching"""
     db = get_db()
     cursor = db.execute("SELECT file FROM songs")
     songs = [row["file"] for row in cursor.fetchall() if row["file"]]
