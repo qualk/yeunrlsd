@@ -1,0 +1,74 @@
+/* =====================
+   Desktop-specific Styles
+====================== */
+
+@media (min-width: 1024px) {
+  .player-container {
+    width: 350px;
+    height: 100dvh;
+    position: fixed;
+    right: 0;
+    left: auto;
+    top: 0;
+    bottom: 0;
+    border-top: none;
+    border-left: 1px solid var(--border);
+    border-radius: 0;
+  }
+
+  .app-main {
+    margin-right: 350px;
+  }
+
+  .player {
+    flex-direction: column;
+    height: 100%;
+    padding: 20px;
+  }
+
+  .now-playing {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .player-art {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+
+  .now-playing-info {
+    min-width: auto;
+  }
+
+  .now-playing-title {
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .now-playing-subtitle {
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .player-audio {
+    width: 100%;
+  }
+
+  .player-controls {
+    justify-content: space-around;
+  }
+
+  .player-btn {
+    flex: 1;
+  }
+
+  .detail-view {
+    padding-bottom: 20px;
+  }
+
+  .grid-view {
+    padding-bottom: 20px;
+  }
+}

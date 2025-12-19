@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="[ye] [unreleased] [music]">
+  <link rel="icon" type="image/x-icon" href="/icons/favicon.ico">
+  <title>[yeunrlsd]</title>
+  
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/icons/icon-192x192.avif">
+  <link rel="icon" type="image/avif" href="/icons/icon-192x192.avif">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/desktop-player.css">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="file:///public/fonts">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-content">
+        <a href="/" id="header-logo"><h1 class="header-title">[yeunrlsd]</h1></a>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="app-main">
+      <!-- Album Grid View -->
+      <div id="grid-view" class="grid-view">
+        <div id="album-grid" class="album-grid" role="list" aria-label="Album list">
+          <!-- Albums will be loaded here -->
+        </div>
+      </div>
+
+      <!-- Album Detail View -->
+      <div id="detail-view" class="detail-view hidden">
+        <button class="back-btn" id="back-btn" aria-label="Go back">← Back</button>
+        <div id="album-detail" class="album-detail">
+          <!-- Album details will be loaded here -->
+        </div>
+      </div>
+    </main>
+
+    <!-- Player -->
+    <aside class="player-container">
+      <div class="player">
+        <div class="now-playing">
+          <img id="player-art" class="player-art" src="/img/placeholder.avif" alt="Album art">
+          <div class="now-playing-info">
+            <div class="now-playing-title" id="player-title">Select a song</div>
+            <div class="now-playing-subtitle" id="player-subtitle"></div>
+          </div>
+        </div>
+        
+        <div id="roulette-container" class="roulette-container">
+          <button id="roulette-btn" class="roulette-btn" aria-label="Play random song">🎰</button>
+        </div>
+
+        <audio id="player" class="player-audio" controls></audio>
+        
+        <div class="player-controls">
+          <button class="player-btn" id="prev-btn" aria-label="Previous">⏮</button>
+          <button class="player-btn" id="play-pause-btn" aria-label="Play/Pause">▶</button>
+          <button class="player-btn" id="next-btn" aria-label="Next">⏭</button>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/js/app.js" defer></script>
+  <script src="/js/player.js" defer></script>
+  <script>
+    // Register service worker for PWA
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js', { scope: '/' })
+          .then(registration => console.log('SW registered'))
+          .catch(err => console.log('SW registration failed:', err));
+      });
+    }
+  </script>
+</body>
+</html>
