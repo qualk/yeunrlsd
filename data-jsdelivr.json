@@ -1,0 +1,498 @@
+{
+  "albums": [
+    {
+      "id": "grad",
+      "name": "Graduation",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/grad.png",
+      "anim": null,
+      "songs": [
+        {
+          "title": "Piano",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/grad/Piano.mp3",
+          "credits": "Kanye West, Jon Brion"
+        }
+      ]
+    },
+    {
+      "id": "gaj",
+      "name": "Good Ass Job",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/gaj.avif",
+      "anim": null,
+      "songs": [
+        {
+          "title": "Lonely",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Lonely.mp3",
+          "credits": "Kanye West, Madcliff"
+        },
+        {
+          "title": "Ghetto University",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Ghetto University.mp3",
+          "credits": "(feat. Charlie Wilson, The WRLDFMS Tony Williams & John Legend) (prod. Jeff Bhasker & MIKE DEAN)"
+        }
+      ]
+    },
+    {
+      "id": "tgfd",
+      "name": "Thank G-d for Drugs",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/tgfd.avif",
+      "anim": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/anim/tgfd.avif",
+      "songs": [
+        {
+          "title": "Awesome",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/tgfd/Awesome.mp3",
+          "credits": "(feat. Charlie Wilson & Stevie Wonder) (prod. Sak Pase)"
+        },
+        {
+          "title": "Nobody To Love",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/tgfd/Nobody To Love.mp3",
+          "credits": "(feat. Charlie Wilson, John Legend & Elon Rutberg) (prod. No I.D., Tyler, The Creator & MIKE DEAN)"
+        }
+      ]
+    },
+    {
+      "id": "cw",
+      "name": "Cruel Winter",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/cw.avif",
+      "anim": null,
+      "songs": [
+        {
+          "title": "Panda (Remix)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cw/PANDA Remix (9.6.15).mp3",
+          "credits": "(with Desiigner & Sia) (prod. MIKE DEAN & Menace)"
+        }
+      ]
+    },
+    {
+      "id": "yeezus2",
+      "name": "Yeezus 2",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/yeezus2.avif",
+      "anim": null,
+      "songs": []
+    },
+    {
+      "id": "shmG",
+      "name": "So Help Me God",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/shmC.avif",
+      "anim": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/shmG-moses.avif",
+      "songs": []
+    },
+    {
+      "id": "swish",
+      "name": "Swish",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/swish.avif",
+      "anim": null,
+      "songs": []
+    },
+    {
+      "id": "waves",
+      "name": "Waves",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/waves.avif",
+      "anim": null,
+      "songs": []
+    },
+    {
+      "id": "tgx",
+      "name": "TurboGrafx 16",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/tgx.avif",
+      "anim": null,
+      "songs": [
+        {
+          "title": "Can't Look In My Eyes",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/tgx/Can't Look In My Eyes.mp3",
+          "credits": "Kanye West, Kid Cudi"
+        }
+      ]
+    },
+    {
+      "id": "wolves",
+      "name": "Wolves",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/wolves.avif",
+      "anim": null,
+      "songs": []
+    },
+    {
+      "id": "le",
+      "name": "Love Everyone",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/le.avif",
+      "anim": null,
+      "songs": []
+    },
+    {
+      "id": "ksg2",
+      "name": "Kids See Ghosts 2",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/ksg2.avif",
+      "anim": null,
+      "songs": [
+        {
+          "title": "Thank You (Vol. 2)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ksg2/Thank You Vol. 2.mp3",
+          "credits": "(prod. Ty Dolla $ign & damn james!)"
+        }
+      ]
+    },
+    {
+      "id": "yandhi",
+      "name": "Yandhi",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/yandhi.avif",
+      "anim": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/anim/yandhi.avif",
+      "songs": [
+        {
+          "title": "City In The Sky",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/City In The Sky.mp3",
+          "credits": "(feat. Ty Dolla $ign, Ant Clemons, Desiigner, 070 Shake & Kid Cudi) (prod. damn james!, Ty Dolla $ign, MIKE DEAN)"
+        },
+        {
+          "title": "On God",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/On God.mp3",
+          "credits": "Dua Lipa, BSB Dante"
+        },
+        {
+          "title": "Brothers",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Brothers.mp3",
+          "credits": "(feat. Charlie Wilson) (prod. 7 Aurelius, Irv Gotti & Bink!)"
+        }
+      ]
+    },
+    {
+      "id": "JiK",
+      "name": "Jesus Is King",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/JiK.avif",
+      "anim": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/anim/JiK.avif",
+      "songs": [
+        {
+          "title": "Hurricane",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK/Hurricane.mp3",
+          "credits": "(prod. RONNY J)"
+        },
+        {
+          "title": "LA Monster",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK/LA Monster.mp3",
+          "credits": "(prod. Angel Lopez)"
+        },
+        {
+          "title": "Bound 3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK/Bound 3.mp3",
+          "credits": "(feat. Sunday Service Choir) (prod. Budgie Beats & Sunday Service Choir)"
+        }
+      ]
+    },
+    {
+      "id": "Gc",
+      "name": "God's Country",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/Gc.avif",
+      "anim": null,
+      "songs": [
+        {
+          "title": "Let The Spirit Go Wild",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/KW_Let_The_Spirit_Go_Wild_-_07.16.20_RJ.mp3",
+          "credits": "(feat. Abstract Mindstate) (prod. FnZ, RONNY J & Styalz Fuego)"
+        },
+        {
+          "title": "New Body",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/01_New_Body_-_07.10.20_Ye_Edit.mp3",
+          "credits": "(feat. Ty Dolla $ign & Nicki Minaj) (prod. BoogzDaBeast, CuBeatz, Ty Dolla $ign & Kanye West)"
+        }
+      ]
+    },
+    {
+      "id": "donda",
+      "name": "Donda",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/donda_float.avif",
+      "anim": null,
+      "songs": [
+        {
+          "title": "See Me Again",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/See Me Again.mp3",
+          "credits": "(feat. Bon Iver, The WRLDFMS Tony Williams, John Legend & Elly Jackson)"
+        },
+        {
+          "title": "Star Time",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/IDK_x_Kanye_West_X_Anderson_Paak_X_88-Keys.mp3",
+          "credits": "(feat. IDK & Anderson .Paak) (prod. 88-Keys & MIKE DEAN)"
+        },
+        {
+          "title": "24",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/VERT_24 V4 (extra sunday service percussion at end).mp3",
+          "credits": "(ref. Dem Jointz) (feat. KayCyy & Sunday Service Choir) (prod. BoogzDaBeast, FnZ, Dem Jointz, Rico Nichols & Darius Woodley)"
+        },
+        {
+          "title": "God's Test",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/01_GODS_TEST_Ye__Toni_164bpm_ST_3.mp3",
+          "credits": "(ref. Dem Jointz) (feat. 2 Chainz & KayCyy) (prod. Dem Jointz)"
+        },
+        {
+          "title": "He Gave It All",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/He Gave It All ojivolta chords v.1.mp3",
+          "credits": "(ref. KayCyy) (feat. Boyz II Men, Wanya & Sunday Service Choir) (prod. Ojivolta)"
+        },
+        {
+          "title": "God Got Me",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/VERT_God_Got_Me_-_21.05.13_Tracking_Ref.mp3",
+          "credits": "(prod. 88-Keys & Ojivolta)"
+        }
+      ]
+    },
+    {
+      "id": "yebu",
+      "name": "Yebu",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/yebu.avif",
+      "anim": null,
+      "songs": [
+        {
+          "title": "Someday We'll All Be Free",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yebu/Someday We'll All Be Free.mp3",
+          "credits": "aka 'Censori Overload'. (prod. John Cunningham)"
+        },
+        {
+          "title": "Love Love Love",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yebu/Love Love Love.mp3",
+          "credits": "Yedit (prod. John Cunningham)"
+        },
+        {
+          "title": "Unlock",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yebu/Unlock.mp3",
+          "credits": "(prod. 88-Keys & Digital Nas)"
+        }
+      ]
+    },
+    {
+      "id": "war",
+      "name": "War",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/war.avif",
+      "anim": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/anim/war.avif",
+      "songs": [
+        {
+          "title": "It's Not Supposed To Be Perfect",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/It's Not Supposed To Be Perfect.mp3",
+          "credits": "(prod. James Blake & No I.D.)"
+        },
+        {
+          "title": "Showtime",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Showtime.mp3",
+          "credits": "(prod. James Blake & No I.D.)"
+        },
+        {
+          "title": "Precious",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Precious.mp3",
+          "credits": "(prod. James Blake & No I.D.)"
+        },
+        {
+          "title": "Hold Up, Get Up",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/04. HOLD UP, GET UP.mp3",
+          "credits": "(prod. James Blake & No I.D.)"
+        },
+        {
+          "title": "What I Would've Said At Virgil's Funeral",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/What I Would've Said At Virgil's Funeral.mp3",
+          "credits": "(prod. James Blake & No I.D.)"
+        },
+        {
+          "title": "Quiet",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Quiet.mp3",
+          "credits": "(prod. James Blake & No I.D.)"
+        },
+        {
+          "title": "Bobby Digital",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/06. BOBBY DIGITAL.mp3",
+          "credits": "(prod. James Blake & No I.D.)"
+        },
+        {
+          "title": "Through The High Wire",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/08. THROUGH THE HIGH WIRE.mp3",
+          "credits": "(prod. James Blake & No I.D.)"
+        },
+        {
+          "title": "Never Coming Back",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Never Coming Back.mp3",
+          "credits": "(prod. James Blake & No I.D.)"
+        },
+        {
+          "title": "Spiky",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Spiky.mp3",
+          "credits": "(prod. James Blake)"
+        },
+        {
+          "title": "Talking",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Talking.mp3",
+          "credits": "(prod. James Blake, No I.D. & Dom Maker)"
+        },
+        {
+          "title": "530",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/530.mp3",
+          "credits": "(prod. James Blake & No I.D.)"
+        },
+        {
+          "title": "My Way",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/My Way.mp3",
+          "credits": "Yedit (feat. Frank Sinatra)"
+        },
+        {
+          "title": "All In Love",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/All In Love.mp3",
+          "credits": "(prod. James Blake)"
+        }
+      ]
+    },
+    {
+      "id": "vultures1",
+      "name": "Vultures 1",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/vultures1.avif",
+      "anim": null,
+      "songs": [
+        {
+          "title": "Everybody",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures1/Everybody.mp3",
+          "credits": "(feat. Charlie Wilson & Lil Baby) (prod. London on da Track)"
+        },
+        {
+          "title": "So Called Friends",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures1/So Called Friends.mp3",
+          "credits": "(feat. Freddie Gibbs)"
+        }
+      ]
+    },
+    {
+      "id": "vultures2",
+      "name": "Vultures 2",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/vultures2.avif",
+      "anim": null,
+      "songs": [
+        {
+          "title": "Pay Per View",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures2/Pay Per View.mp3",
+          "credits": "(ref. Young Moose) (feat. Project Pat) (prod. Nico Baran, Juicy J, DJ Paul & Ojivolta)"
+        },
+        {
+          "title": "Melrose",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures2/Melrose.mp3",
+          "credits": "(feat. Playboi Carti) (prod. TheLabCook & Ojivolta)"
+        }
+      ]
+    },
+    {
+      "id": "vultures3",
+      "name": "Vultures 3",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/vultures3.avif",
+      "anim": null,
+      "songs": [
+        {
+          "title": "Don't Kill The Party",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures3/Don't Kill The Party.mp3",
+          "credits": "(feat. Tyga) (prod. BNYX®, Ojivolta, BBYKOBE, Matt Spatola, Lasik & 206DEREK)"
+        }
+      ]
+    },
+    {
+      "id": "donda2",
+      "name": "Donda 2",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/donda2.avif",
+      "anim": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/anim/donda2.avif",
+      "songs": [
+        {
+          "title": "Happy Birthday",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda2/Happy Birthday.mp3",
+          "credits": "(prod. Digital Nas)"
+        }
+      ]
+    },
+    {
+      "id": "bully",
+      "name": "Bully",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/bully.avif",
+      "anim": null,
+      "songs": [
+        {
+          "title": "Dark Matter (Instrumental)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/Dark Matter - Diskrypt.mp3",
+          "credits": "(Yedit by Diskrypt)"
+        },
+        {
+          "title": "Bulletproof",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/Bulletproof.mp3",
+          "credits": "(feat. Kodak Black) (prod. DrZeus, Rvei, The Legendary Traxster & OLYEVNS)"
+        },
+        {
+          "title": "Mission Control",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/Mission Control.mp3",
+          "credits": "(feat. The WRLDFMS Tony Williams)"
+        }
+      ]
+    },
+    {
+      "id": "iapw",
+      "name": "In a Perfect World",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/iapw.avif",
+      "anim": null,
+      "songs": [
+        {
+          "title": "Bianca",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/iapw/Bianca.mp3",
+          "credits": "(ref. Dave Blunts)"
+        },
+        {
+          "title": "WW3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/iapw/WW3.mp3",
+          "credits": "(prod. 1SRAEL, Quadwoofer, Sheffmade, Theevoni, G06 Beatz & FVBII)"
+        },
+        {
+          "title": "Thousand Miles",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/iapw/Thousand Miles.mp3",
+          "credits": "Ty Dolla $ign (prod. Peter Lee Johnson)"
+        },
+        {
+          "title": "Cosby",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/iapw/Cosby.mp3",
+          "credits": "(prod. Quadwoofer & Sheffmade)"
+        },
+        {
+          "title": "Cousins",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/iapw/Cousins.mp3",
+          "credits": "(ref. Dave Blunts) (prod. Kanye West, Digital Nas & Chuki Beats)"
+        }
+      ]
+    },
+    {
+      "id": "ye-i",
+      "name": "Ye (i)",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/ye-i.avif",
+      "anim": null,
+      "songs": [
+        {
+          "title": "Shine The Darkest",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ye-i/01 SHINE THE DARKEST.m4a",
+          "credits": "(prod. Gabe Shaddow & damn james!)"
+        },
+        {
+          "title": "Crowd Pleaser",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ye-i/02 CROWD PLEASER.m4a",
+          "credits": "(prod. Gabe Shaddow & damn james!)"
+        },
+        {
+          "title": "Mind Gone",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ye-i/03 MIND GONE.m4a",
+          "credits": "(prod. Gabe Shaddow & damn james!)"
+        },
+        {
+          "title": "Scary",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ye-i/04 SCARY.m4a",
+          "credits": "(prod. Gabe Shaddow & damn james!)"
+        },
+        {
+          "title": "The Awakening (im not crazy)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ye-i/05 THE AWAKENING (im not crazy).m4a",
+          "credits": "(prod. Gabe Shaddow & damn james!)"
+        },
+        {
+          "title": "Fendi Rocka",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ye-i/06 FENDI ROCKA.m4a",
+          "credits": "(prod. Gabe Shaddow & damn james!)"
+        },
+        {
+          "title": "City In The Sky (VZ Version)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ye-i/07 CITY IN THE SKY (VZ VERSION).m4a",
+          "credits": "(prod. Gabe Shaddow & damn james!)"
+        }
+      ]
+    }
+  ]
+}
