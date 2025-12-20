@@ -45,11 +45,13 @@
   .now-playing-title {
     white-space: normal;
     word-break: break-word;
+    line-clamp: 1;
   }
 
   .now-playing-subtitle {
     white-space: normal;
     word-break: break-word;
+    line-clamp: 1;
   }
 
   .player-audio {
@@ -64,11 +66,20 @@
     flex: 1;
   }
 
+  .player-songs-list {
+    font-size: 13px;
+    padding: 12px 0;
+  }
+
   .detail-view {
     padding-bottom: 20px;
   }
 
   .grid-view {
     padding-bottom: 20px;
+  }
+
+  .header-dice-btn {
+    right: calc(350px + 20px);
   }
 }

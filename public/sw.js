@@ -1,12 +1,12 @@
 // Service Worker for PWA functionality
 
 // Install event
-self.addEventListener("install", (event) => {
+self.addEventListener("install", () => {
   self.skipWaiting()
 })
 
 // Activate event
-self.addEventListener("activate", (event) => {
+self.addEventListener("activate", () => {
   self.clients.claim()
 })
 

@@ -21,7 +21,10 @@ interface MusicData {
 }
 
 // Load music data from JSON file
-const dataPath = join(import.meta.dir, "../data-jsdelivr.json")
+// Use local data for development, CDN data for production
+const isProduction = process.env.NODE_ENV === "production" || process.env.BUN_ENV === "production"
+const dataFile = isProduction ? "data-jsdelivr.json" : "data.json"
+const dataPath = join(import.meta.dir, `../${dataFile}`)
 const musicData: MusicData = JSON.parse(readFileSync(dataPath, "utf-8"))
 
 const publicDir = join(import.meta.dir, "../public")

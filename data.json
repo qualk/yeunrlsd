@@ -3,7 +3,7 @@
     {
       "id": "grad",
       "name": "Graduation",
-      "image": "/img/grad.png",
+      "image": "/img/grad.avif",
       "anim": null,
       "songs": [
         {
@@ -16,7 +16,7 @@
     {
       "id": "gaj",
       "name": "Good Ass Job",
-      "image": "/img/gaj.avif",
+      "image": "/img/gaj_bear.avif",
       "anim": null,
       "songs": [
         {
@@ -66,8 +66,14 @@
       "id": "yeezus2",
       "name": "Yeezus 2",
       "image": "/img/yeezus2.avif",
-      "anim": null,
-      "songs": []
+      "anim": "/anim/yeezus2.avif",
+      "songs": [
+        {
+          "title": "After You",
+          "file": "/music/yeezus2/01 KW - After You Ref 83 BPM (4.21.14).m4a",
+          "credits": "(prod. Dom $olo)"
+        }
+      ]
     },
     {
       "id": "shmG",
@@ -191,6 +197,11 @@
           "title": "New Body",
           "file": "/music/Gc/01_New_Body_-_07.10.20_Ye_Edit.mp3",
           "credits": "(feat. Ty Dolla $ign & Nicki Minaj) (prod. BoogzDaBeast, CuBeatz, Ty Dolla $ign & Kanye West)"
+        },
+        {
+          "title": "South Florida",
+          "file": "/music/Gc/01 South Florida 81 - 01.24.20 Kaycyy Ref.mp3",
+          "credits": "(ref. KayCyy)"
         }
       ]
     },

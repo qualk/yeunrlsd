@@ -96,6 +96,7 @@ body {
   padding: 20px;
   text-align: center;
   flex-shrink: 0;
+  position: relative;
 }
 
 .header-title {
@@ -146,20 +147,61 @@ body {
   display: none;
 }
 
-.back-btn {
+.header-back-btn {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
   background: none;
   border: none;
   font-family: inherit;
-  font-size: 16px;
+  font-size: 28px;
   cursor: pointer;
-  padding: 8px 16px;
-  margin-bottom: 20px;
+  padding: 8px;
   color: var(--foreground);
-  transition: opacity 0.2s;
+  opacity: 0.6;
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
 
-.back-btn:hover {
-  opacity: 0.7;
+.header-back-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-50%) translateX(-4px);
+}
+
+.detail-view ~ .app-header .header-back-btn,
+.app-header .header-back-btn.visible {
+  display: flex;
+}
+
+.header-dice-btn {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 8px;
+  color: var(--foreground);
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  z-index: 100;
+}
+
+.header-dice-btn:hover {
+  opacity: 0.9;
 }
 
 /* =====================
@@ -375,6 +417,12 @@ body {
   border-radius: 4px;
   object-fit: cover;
   background: var(--border);
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.player-art:hover {
+  opacity: 0.8;
 }
 
 .now-playing-info {
@@ -385,17 +433,37 @@ body {
 .now-playing-title {
   font-weight: 500;
   font-size: 14px;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  line-height: 1.3;
+}
+
+.now-playing-title:hover {
+  opacity: 0.8;
 }
 
 .now-playing-subtitle {
   font-size: 12px;
   opacity: 0.7;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  line-height: 1.3;
+}
+
+.now-playing-subtitle:hover {
+  opacity: 0.9;
 }
 
 .roulette-container {
@@ -455,6 +523,66 @@ body {
 
 .player-btn:active {
   opacity: 0.9;
+}
+
+.player-songs-list {
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 12px;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+
+.player-song-row {
+  padding: 8px 0;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--foreground);
+  opacity: 0.7;
+  transition: all 0.2s;
+  border-left: 2px solid transparent;
+  padding-left: 8px;
+}
+
+.player-song-row:hover {
+  opacity: 1;
+  background: var(--muted);
+}
+
+.player-song-row.active {
+  opacity: 1;
+  font-weight: 500;
+  color: var(--accent);
+  border-left-color: var(--accent);
+  background: var(--muted);
+}
+
+.player-album-group {
+  margin-top: 8px;
+}
+
+.player-album-header {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 4px;
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+}
+
+.player-album-thumb {
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.player-album-title {
+  font-size: 13px;
 }
 
 /* =====================

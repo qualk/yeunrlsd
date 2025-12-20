@@ -1,6 +1,7 @@
 // Global application state
 let albums = []
 let currentAlbum = null
+let currentPlayingAlbum = null
 let _currentPlaylist = []
 
 // Cache DOM elements
@@ -23,6 +24,8 @@ async function init() {
     const data = await response.json()
     albums = data.albums
     renderAlbumGrid()
+    // Refresh player queue (in case player wants to show albums when no song playing)
+    if (window.updateSongsList) window.updateSongsList()
     handleRouting()
   } catch (error) {
     console.error("Failed to load albums:", error)
@@ -32,10 +35,19 @@ async function init() {
   elements.backBtn?.addEventListener("click", goBack)
   elements.headerLogo?.addEventListener("click", (e) => {
     e.preventDefault()
-    window.history.pushState({}, "", "/")
-    handleRouting()
+    goHome()
   })
   window.addEventListener("popstate", handleRouting)
+}
+
+/**
+ * Go to home view
+ */
+function goHome() {
+  if (window.location.pathname !== "/") {
+    window.history.pushState({}, "", "/")
+    handleRouting()
+  }
 }
 
 /**
@@ -93,6 +105,7 @@ async function showAlbumDetail(albumId) {
 
     const album = await response.json()
     currentAlbum = album
+    window.currentAlbum = album
     _currentPlaylist = album.songs || []
 
     // Update history
@@ -104,6 +117,7 @@ async function showAlbumDetail(albumId) {
     // Switch views
     elements.gridView.classList.add("hidden")
     elements.detailView.classList.remove("hidden")
+    updateBackButtonVisibility()
 
     // Scroll to top
     elements.detailView.scrollTop = 0
@@ -174,6 +188,9 @@ function renderAlbumDetail(album) {
  * Play a song
  */
 function playSong(song, album) {
+  currentPlayingAlbum = album
+  _currentPlaylist = album.songs || []
+
   const player = document.getElementById("player")
   const playerTitle = document.getElementById("player-title")
   const playerSubtitle = document.getElementById("player-subtitle")
@@ -181,10 +198,10 @@ function playSong(song, album) {
 
   playerTitle.textContent = song.title
   playerSubtitle.textContent = song.credits || album.name
-  
+
   // Set initial art (player.js will handle animation switch on play event)
   playerArt.src = album.image || "/img/placeholder.avif"
-  
+
   player.src = song.file
   player.play()
 }
@@ -217,6 +234,8 @@ async function playRandomSong() {
 
 // Expose to window for player.js
 window.playRandomSong = playRandomSong
+window.showAlbumDetail = showAlbumDetail
+window.currentAlbum = currentAlbum
 
 /**
  * Go back to grid view
@@ -243,8 +262,25 @@ function handleRouting() {
   }
 
   // Default to grid view
+  currentAlbum = null
   elements.gridView.classList.remove("hidden")
   elements.detailView.classList.add("hidden")
+  updateBackButtonVisibility()
+}
+
+/**
+ * Update back button visibility based on current view
+ */
+function updateBackButtonVisibility() {
+  const backBtn = document.getElementById("back-btn")
+  if (!backBtn) return
+
+  const isDetailView = !elements.detailView.classList.contains("hidden")
+  if (isDetailView) {
+    backBtn.classList.add("visible")
+  } else {
+    backBtn.classList.remove("visible")
+  }
 }
 
 /**
@@ -276,13 +312,13 @@ function enhanceImages() {
  * Keyboard shortcuts
  */
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && currentAlbum) {
-    goBack()
+  if (event.key === "Escape") {
+    goHome()
   }
   if (event.code === "Space") {
     event.preventDefault()
     const player = document.getElementById("player")
-    if (player && player.src) {
+    if (player?.src) {
       if (player.paused) {
         player.play()
       } else {
