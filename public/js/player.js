@@ -62,7 +62,7 @@ function updateMediaSessionMetadata() {
   const title = playerTitle?.textContent || "Unknown Track"
   const artist = playerSubtitle?.textContent || "Unknown Artist"
   const album = currentPlayingAlbum?.name || "Unknown Album"
-  const artwork = currentPlayingAlbum?.image || "/img/placeholder.avif"
+  const artwork = currentPlayingAlbum?.image || "/icons/placeholder.avif"
 
   navigator.mediaSession.metadata = new MediaMetadata({
     title: title === "Select a song" ? "Unknown Track" : title,
@@ -219,7 +219,7 @@ async function updateSongsList() {
     .map((album) => {
       const header = `
       <div class="player-album-header" data-album-id="${album.id}">
-        <img class="player-album-thumb" src="${album.image || '/img/placeholder.avif'}" alt="${album.name}">
+        <img class="player-album-thumb" src="${album.image || '/icons/placeholder.avif'}" alt="${album.name}">
         <div class="player-album-title">${album.name}</div>
       </div>`
 
@@ -380,7 +380,7 @@ function updatePlayerArt() {
       playerArt.src = playingAlbum.anim
     }
   } else {
-    const imageSrc = playingAlbum.image || "/img/placeholder.avif"
+    const imageSrc = playingAlbum.image || "/icons/placeholder.avif"
     // Only switch if not already showing image
     if (!playerArt.src.includes(imageSrc)) {
       playerArt.src = imageSrc

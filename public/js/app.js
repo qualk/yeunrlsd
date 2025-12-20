@@ -62,7 +62,7 @@ function renderAlbumGrid() {
          tabindex="${album.hasSongs ? "0" : "-1"}"
          aria-disabled="${!album.hasSongs ? "true" : "false"}"
          ${album.hasSongs ? `data-album-id="${album.id}"` : ""}>
-      <img src="${album.image || "/img/placeholder.avif"}" 
+      <img src="${album.image || "/icons/placeholder.avif"}" 
            alt="${album.name}" 
            class="album-image"
            loading="lazy">
@@ -149,7 +149,7 @@ function renderAlbumDetail(album) {
   elements.albumDetail.innerHTML = `
       <div class="album-cover-section">
         <h2 class="album-title album-title--cover">${album.name}</h2>
-        <img src="${album.image || "/img/placeholder.avif"}" 
+        <img src="${album.image || "/icons/placeholder.avif"}" 
              alt="${album.name}" 
              class="album-detail-image"
              loading="eager">
@@ -200,7 +200,7 @@ function playSong(song, album) {
   playerSubtitle.textContent = song.credits || album.name
 
   // Set initial art (player.js will handle animation switch on play event)
-  playerArt.src = album.image || "/img/placeholder.avif"
+  playerArt.src = album.image || "/icons/placeholder.avif"
 
   player.src = song.file
   player.play()
