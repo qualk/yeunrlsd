@@ -15,13 +15,7 @@ const elements = {
   menuBtn: document.getElementById("menu-btn"),
   headerMenu: document.getElementById("header-menu"),
   navAbout: document.getElementById("nav-about"),
-  aboutModal: document.getElementById("about-modal"),
-  modalOverlay: document.getElementById("modal-overlay"),
-  modalClose: document.getElementById("modal-close"),
   navSettings: document.getElementById("nav-settings"),
-  settingsModal: document.getElementById("settings-modal"),
-  settingsModalOverlay: document.getElementById("settings-modal-overlay"),
-  settingsModalClose: document.getElementById("settings-modal-close"),
   lastfmStatusText: document.getElementById("lastfm-status-text"),
   lastfmConnectBtn: document.getElementById("lastfm-connect-btn"),
   lastfmDisconnectBtn: document.getElementById("lastfm-disconnect-btn"),
@@ -36,17 +30,24 @@ async function init() {
     const response = await fetch("/api/albums")
     const data = await response.json()
     albums = data.albums
-    
+    const serverVersion = data.version
+
     // Expose state to window for cross-script access
     window.albums = albums
     window._currentPlaylist = _currentPlaylist
     window.currentPlayingAlbum = currentPlayingAlbum
     window.currentAlbum = currentAlbum
-    
+
     renderAlbumGrid()
     // Refresh player queue (in case player wants to show albums when no song playing)
     if (window.updateSongsList) window.updateSongsList()
     handleRouting()
+
+    // Initialize download manager
+    if (window.initDownloadManager) window.initDownloadManager()
+
+    // Check for updates
+    checkUpdates(serverVersion)
   } catch (error) {
     console.error("Failed to load albums:", error)
   }
@@ -57,46 +58,59 @@ async function init() {
     e.preventDefault()
     goHome()
   })
-  
+
   // Menu button listener
   elements.menuBtn?.addEventListener("click", toggleMenu)
-  
+
   // Close menu when clicking nav items
   document.querySelectorAll(".header-nav-btn").forEach((btn) => {
     btn.addEventListener("click", closeMenu)
   })
-  
+
   // About modal listeners
-  elements.navAbout?.addEventListener("click", openAboutModal)
-  elements.modalOverlay?.addEventListener("click", closeAboutModal)
-  elements.modalClose?.addEventListener("click", closeAboutModal)
-  
+  elements.navAbout?.addEventListener("click", () => window.Modal.open("about-modal"))
+
   // Settings modal listeners
-  elements.navSettings?.addEventListener("click", openSettingsModal)
-  elements.settingsModalOverlay?.addEventListener("click", closeSettingsModal)
-  elements.settingsModalClose?.addEventListener("click", closeSettingsModal)
+  elements.navSettings?.addEventListener("click", () => {
+    updateLastFMStatus()
+    window.Modal.open("settings-modal")
+  })
   elements.lastfmConnectBtn?.addEventListener("click", connectLastFM)
   elements.lastfmDisconnectBtn?.addEventListener("click", disconnectLastFM)
-  
-  // Close modal on Escape key
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      closeAboutModal()
-      closeSettingsModal()
-    }
-  })
-  
+
   // Close menu when clicking elsewhere
   document.addEventListener("click", (e) => {
-    if (
-      !e.target.closest(".header-menu-btn") &&
-      !e.target.closest(".header-menu")
-    ) {
+    if (!e.target.closest(".header-menu-btn") && !e.target.closest(".header-menu")) {
       closeMenu()
     }
   })
-  
+
   window.addEventListener("popstate", handleRouting)
+}
+
+/**
+ * Check for server updates
+ */
+async function checkUpdates(serverVersion) {
+  if (!window.db) return
+
+  const localVersion = await window.db.getMetadata("app_version")
+  const isDownloaded = await window.db.getMetadata("full_download_complete")
+
+  if (localVersion && serverVersion !== localVersion && isDownloaded) {
+    // Notify user of update
+    const updateConfirmed = confirm(
+      "A new update is available. Would you like to sync your offline library?"
+    )
+    if (updateConfirmed) {
+      if (window.startFullDownload) {
+        window.startFullDownload()
+      }
+    }
+  }
+
+  // Update local version
+  await window.db.setMetadata("app_version", serverVersion)
 }
 
 /**
@@ -128,35 +142,6 @@ function closeMenu() {
 }
 
 /**
- * Open about modal
- */
-function openAboutModal() {
-  elements.aboutModal?.classList.remove("hidden")
-}
-
-/**
- * Close about modal
- */
-function closeAboutModal() {
-  elements.aboutModal?.classList.add("hidden")
-}
-
-/**
- * Open settings modal
- */
-function openSettingsModal() {
-  updateLastFMStatus()
-  elements.settingsModal?.classList.remove("hidden")
-}
-
-/**
- * Close settings modal
- */
-function closeSettingsModal() {
-  elements.settingsModal?.classList.add("hidden")
-}
-
-/**
  * Update Last.fm status display
  */
 function updateLastFMStatus() {
@@ -181,20 +166,23 @@ async function connectLastFM() {
 
   try {
     const authData = await window.lastfm.getAuthURL()
-    const authWindow = window.open(authData.url, 'lastfm-auth', 'width=800,height=600')
-    
+    const authWindow = window.open(authData.url, "lastfm-auth", "width=800,height=600")
+
     if (!authWindow) {
-      alert('Pop-up blocked. Please allow pop-ups for Last.fm authentication.')
+      alert("Pop-up blocked. Please allow pop-ups for Last.fm authentication.")
       return
     }
 
     // Poll for authentication completion with timeout
     let pollTimer
-    const timeoutTimer = setTimeout(() => {
-      clearInterval(pollTimer)
-      console.warn('Last.fm authentication timeout')
-    }, 5 * 60 * 1000) // 5 minute timeout
-    
+    const timeoutTimer = setTimeout(
+      () => {
+        clearInterval(pollTimer)
+        console.warn("Last.fm authentication timeout")
+      },
+      5 * 60 * 1000
+    ) // 5 minute timeout
+
     pollTimer = setInterval(async () => {
       try {
         if (authWindow.closed) {
@@ -209,14 +197,13 @@ async function connectLastFM() {
       } catch (error) {
         clearInterval(pollTimer)
         clearTimeout(timeoutTimer)
-        console.error('Authentication failed:', error)
-        alert('Failed to connect to Last.fm. Please try again.')
+        console.error("Authentication failed:", error)
+        alert("Failed to connect to Last.fm. Please try again.")
       }
     }, 1000)
-
   } catch (error) {
-    console.error('Failed to start Last.fm authentication:', error)
-    alert('Failed to start Last.fm authentication. Please try again.')
+    console.error("Failed to start Last.fm authentication:", error)
+    alert("Failed to start Last.fm authentication. Please try again.")
   }
 }
 
@@ -226,7 +213,7 @@ async function connectLastFM() {
 function disconnectLastFM() {
   if (!window.lastfm) return
 
-  if (confirm('Are you sure you want to disconnect from Last.fm?')) {
+  if (confirm("Are you sure you want to disconnect from Last.fm?")) {
     window.lastfm.clearSession()
     updateLastFMStatus()
   }
@@ -380,7 +367,7 @@ function renderAlbumDetail(album) {
 /**
  * Play a song
  */
-function playSong(song, album) {
+async function playSong(song, album) {
   currentPlayingAlbum = album
   window.currentPlayingAlbum = album
   _currentPlaylist = album.songs || []
@@ -397,21 +384,32 @@ function playSong(song, album) {
   // Set the player art - will use animation if available and playing
   const imageSrc = album.image || "/icons/placeholder.avif"
   const animSrc = album.anim
+  const targetArt = animSrc || imageSrc
+
+  // Try to get from DB first
+  const artUrl = await window.db.getFileUrl(targetArt)
+  const songUrl = await window.db.getFileUrl(song.file)
 
   // Preload both images
   const img = new Image()
   img.onload = () => {
-    // Use animation if available, otherwise use static image
-    playerArt.src = animSrc || imageSrc
+    playerArt.src = artUrl
   }
   img.onerror = () => {
-    // Fallback if image fails to load
     playerArt.src = "/icons/placeholder.avif"
   }
-  img.src = animSrc || imageSrc
+  img.src = artUrl
 
-  player.src = song.file
+  player.src = songUrl
   player.play()
+
+  // Cache in background if it was a network URL
+  if (songUrl === song.file) {
+    window.db.cacheFileInBackground(song.file)
+  }
+  if (artUrl === targetArt) {
+    window.db.cacheFileInBackground(targetArt)
+  }
 }
 
 /**
@@ -524,7 +522,9 @@ function enhanceImages() {
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     // Only go home if no modal is open
-    const isModalOpen = !elements.aboutModal?.classList.contains("hidden") || !elements.settingsModal?.classList.contains("hidden")
+    const isModalOpen =
+      !elements.aboutModal?.classList.contains("hidden") ||
+      !elements.settingsModal?.classList.contains("hidden")
     if (!isModalOpen) {
       goHome()
     }

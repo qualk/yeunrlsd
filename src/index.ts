@@ -16,6 +16,7 @@ interface Album {
 }
 
 interface MusicData {
+  version?: string
   albums: Album[]
 }
 
@@ -148,12 +149,14 @@ const server = Bun.serve({
     if (pathname === "/api/albums" && req.method === "GET") {
       return new Response(
         JSON.stringify({
+          version: musicData.version || "1.0.0",
           albums: musicData.albums.map((album) => ({
             id: album.id,
             name: album.name,
             image: album.image,
             anim: album.anim,
             hasSongs: album.songs.length > 0,
+            songCount: album.songs.length,
           })),
         }),
         { headers: { "Content-Type": "application/json" } }
@@ -191,4 +194,3 @@ const server = Bun.serve({
 })
 
 console.log(`🎵 Server running on http://localhost:${server.port}`)
-

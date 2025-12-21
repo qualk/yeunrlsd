@@ -300,26 +300,8 @@
       "anim": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/anim/war.avif",
       "songs": [
         {
-          "title": "It's Not Supposed To Be Perfect",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/It's Not Supposed To Be Perfect.mp3",
-          "credits": "(prod. James Blake & No I.D.)",
-          "artist": "Kanye West, James Blake"
-        },
-        {
-          "title": "This One Here (Showtime)",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Showtime.mp3",
-          "credits": "(prod. James Blake & No I.D.)",
-          "artist": "Kanye West, James Blake"
-        },
-        {
-          "title": "Precious",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Precious.mp3",
-          "credits": "(prod. James Blake & No I.D.)",
-          "artist": "Kanye West, James Blake"
-        },
-        {
-          "title": "Hold Up, Get Up",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/04. HOLD UP, GET UP.mp3",
+          "title": "For Once In My Life",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/01. FOR ONCE IN MY LIFE.mp3",
           "credits": "(prod. James Blake & No I.D.)",
           "artist": "Kanye West, James Blake"
         },
@@ -330,8 +312,20 @@
           "artist": "Kanye West, James Blake"
         },
         {
+          "title": "Talking",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Talking.mp3",
+          "credits": "(prod. James Blake, No I.D. & Dom Maker)",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "Hold Up, Get Up",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/04. HOLD UP, GET UP.mp3",
+          "credits": "(prod. James Blake & No I.D.)",
+          "artist": "Kanye West, James Blake"
+        },
+        {
           "title": "Quiet",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Quiet.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/05. QUIET.mp3",
           "credits": "(prod. James Blake & No I.D.)",
           "artist": "Kanye West, James Blake"
         },
@@ -342,14 +336,26 @@
           "artist": "Kanye West, James Blake"
         },
         {
+          "title": "All In Love",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/07. ALL IN LOVE.mp3",
+          "credits": "(prod. James Blake)",
+          "artist": "Kanye West, James Blake"
+        },
+        {
           "title": "Through The High Wire",
           "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/08. THROUGH THE HIGH WIRE.mp3",
           "credits": "(prod. James Blake & No I.D.)",
           "artist": "Kanye West, James Blake"
         },
         {
-          "title": "Never Coming Back",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Never Coming Back.mp3",
+          "title": "This One Here (Yedit)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/It's Not Supposed To Be Perfect.mp3",
+          "credits": "(prod. James Blake & No I.D.)",
+          "artist": "Kanye West, James Blake"
+        },
+        {
+          "title": "Precious",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Precious.mp3",
           "credits": "(prod. James Blake & No I.D.)",
           "artist": "Kanye West, James Blake"
         },
@@ -357,12 +363,6 @@
           "title": "Spiky",
           "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Spiky.mp3",
           "credits": "(prod. James Blake)",
-          "artist": "Kanye West"
-        },
-        {
-          "title": "Talking",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Talking.mp3",
-          "credits": "(prod. James Blake, No I.D. & Dom Maker)",
           "artist": "Kanye West"
         },
         {
@@ -376,12 +376,6 @@
           "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/My Way.mp3",
           "credits": "Yedit (feat. Frank Sinatra)",
           "artist": "Kanye West"
-        },
-        {
-          "title": "All In Love",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/All In Love.mp3",
-          "credits": "(prod. James Blake)",
-          "artist": "Kanye West, James Blake"
         }
       ]
     },

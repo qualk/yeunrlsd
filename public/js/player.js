@@ -180,7 +180,7 @@ async function updateSongsList() {
 
   // Get all albums with songs, prioritize those with songs
   const albumsWithSongs = (window.albums || []).filter((a) => a.hasSongs)
-  
+
   // If no albums data yet, show nothing (will be called again once albums load)
   if (albumsWithSongs.length === 0) {
     songsList.innerHTML = ""
@@ -203,7 +203,9 @@ async function updateSongsList() {
       const songs = (album.songs || [])
         .map((song, idx) => {
           const isActive =
-            window.currentPlayingAlbum && window.currentPlayingAlbum.id === album.id && currentSongIndex === idx
+            window.currentPlayingAlbum &&
+            window.currentPlayingAlbum.id === album.id &&
+            currentSongIndex === idx
           return `
           <div class="player-song-row ${isActive ? "active" : ""}" data-album-id="${album.id}" data-song-index="${idx}" title="${song.title}">
             ${song.title}
@@ -265,7 +267,8 @@ function togglePlayPause() {
  */
 async function playNext() {
   // Ensure we have prerequisites
-  if (!window._currentPlaylist?.length || !window.currentPlayingAlbum || !window.albums?.length) return
+  if (!window._currentPlaylist?.length || !window.currentPlayingAlbum || !window.albums?.length)
+    return
 
   // Within current album - next song
   if (currentSongIndex < window._currentPlaylist.length - 1) {
@@ -295,7 +298,8 @@ async function playNext() {
  */
 async function playPrevious() {
   // Ensure we have prerequisites
-  if (!window._currentPlaylist?.length || !window.currentPlayingAlbum || !window.albums?.length) return
+  if (!window._currentPlaylist?.length || !window.currentPlayingAlbum || !window.albums?.length)
+    return
 
   // Within current album - previous song
   if (currentSongIndex > 0) {
@@ -407,15 +411,18 @@ function updatePlayPauseButton() {
 function initPlaySongOverride() {
   // Only override if app.js has loaded
   if (!window.playSong) return
-  
+
   const originalPlaySong = window.playSong
   window.playSong = (song, album) => {
     // Find index in current playlist with bounds check
     if (!album?.songs) {
-      console.warn('playSong: album or songs undefined')
+      console.warn("playSong: album or songs undefined")
       return
     }
-    currentSongIndex = Math.max(0, album.songs.findIndex((s) => s.title === song.title))
+    currentSongIndex = Math.max(
+      0,
+      album.songs.findIndex((s) => s.title === song.title)
+    )
     // Call original function
     originalPlaySong(song, album)
     // Update UI
@@ -426,9 +433,9 @@ function initPlaySongOverride() {
     if (window.lastfm) {
       window.lastfm.onTrackChange({
         title: song.title,
-        artist: song.artist || 'Kanye West',
+        artist: song.artist || "Kanye West",
         album: album.name,
-        duration: song.duration
+        duration: song.duration,
       })
     }
   }

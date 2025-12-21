@@ -16,6 +16,7 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="/css/styles.css">
   <link rel="stylesheet" href="/css/desktop-player.css">
+  <link rel="stylesheet" href="/css/modal.css">
   
   <!-- Fonts -->
   <link rel="preconnect" href="file:///public/fonts">
@@ -98,13 +99,44 @@
       </div>
     </aside>
 
+    <!-- Download Modal -->
+    <div id="download-modal" class="modal-overlay">
+      <div class="modal-content download-modal">
+        <div class="modal-header">
+          <h2>Downloading Albums</h2>
+          <button class="modal-close-btn" aria-label="Close">✕</button>
+        </div>
+        <div class="download-stats">
+          <div class="stat-item">
+            <span class="stat-label">Overall Progress</span>
+            <span id="overall-progress-text" class="stat-value">0%</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Downloaded</span>
+            <span id="total-downloaded-size" class="stat-value">0.0 MB</span>
+          </div>
+        </div>
+        <div class="overall-progress-bar-container">
+          <div id="overall-progress-bar" class="progress-bar-fill" style="width: 0%"></div>
+        </div>
+        <div id="download-album-list" class="download-album-list">
+          <!-- Album rows will be added here -->
+        </div>
+        <div class="modal-footer">
+          <button id="download-reset-btn" class="modal-btn reset-btn" aria-label="Reset downloads">Reset</button>
+          <button id="download-done-btn" class="modal-btn hidden">Done</button>
+        </div>
+      </div>
+    </div>
+
     <!-- About Modal -->
-    <div id="about-modal" class="modal hidden">
-      <div class="modal-overlay" id="modal-overlay"></div>
+    <div id="about-modal" class="modal-overlay">
       <div class="modal-content">
-        <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
-        <div class="modal-body">
+        <div class="modal-header">
           <h2>[yeunrlsd]</h2>
+          <button class="modal-close-btn" aria-label="Close">✕</button>
+        </div>
+        <div class="modal-body">
           <p>a zero dependency fan project</p>
           <p>not affiliated with yeunrlsd or YZY</p>
           <p>all rights owned by and credit owed to YZY</p>
@@ -113,12 +145,13 @@
     </div>
 
     <!-- Settings Modal -->
-    <div id="settings-modal" class="modal modal--settings hidden">
-      <div class="modal-overlay" id="settings-modal-overlay"></div>
+    <div id="settings-modal" class="modal-overlay">
       <div class="modal-content">
-        <button class="modal-close" id="settings-modal-close" aria-label="Close">✕</button>
-        <div class="modal-body">
+        <div class="modal-header">
           <h2>Settings</h2>
+          <button class="modal-close-btn" aria-label="Close">✕</button>
+        </div>
+        <div class="modal-body">
           <div class="settings-section">
             <div>
               <h3>Last.fm Scrobbling</h3>
@@ -137,8 +170,11 @@
   </div>
 
   <!-- Scripts -->
-  <script src="/js/app.js" defer></script>
+  <script src="/js/db.js" defer></script>
+  <script src="/js/modal.js" defer></script>
+  <script src="/js/download.js" defer></script>
   <script src="/js/player.js" defer></script>
+  <script src="/js/app.js" defer></script>
   <script src="/js/lastfm.js" defer></script>
   <script>
     // Register service worker for PWA

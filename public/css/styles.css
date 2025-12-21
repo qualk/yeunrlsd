@@ -663,7 +663,126 @@ body {
 .player-album-title {
   font-size: 13px;
 }
+.header-nav-btn.downloaded {
+  color: #22c55e;
+}
 
+/* =====================
+   Download Modal
+====================== */
+
+.download-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.overall-progress-bar-container {
+  height: 8px;
+  background: #eee;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.download-modal.download-complete .overall-progress-bar-container,
+.download-modal.download-complete .download-stats {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.download-album-list {
+  max-height: 400px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.download-album-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.download-album-row.completed {
+  background: #f0fdf4;
+}
+
+.download-album-row.completed .download-album-art {
+  outline: 2px solid #22c55e;
+}
+
+.download-album-art {
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.download-album-info {
+  flex: 1;
+}
+
+.download-album-name {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.album-progress-bar-container {
+  height: 4px;
+  background: #eee;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.modal-footer {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-btn {
+  padding: 8px 24px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.modal-btn:hover {
+  opacity: 0.8;
+}
 /* =====================
    Modal
 ====================== */
@@ -681,112 +800,11 @@ body {
   transition: opacity 0.3s;
 }
 
-.modal.hidden {
-  display: none;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.modal-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  cursor: pointer;
-}
-
-.modal-content {
-  position: relative;
-  background: var(--background);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 40px;
-  max-width: 500px;
-  width: 90%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-  animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.modal-close {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: var(--foreground);
-  opacity: 0.6;
-  transition: opacity 0.2s;
-  padding: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 4px;
-  line-height: 1;
-}
-
-.modal-close:hover {
-  opacity: 0.9;
-  background: var(--muted);
-}
-
-.modal-body {
-  text-align: center;
-}
-
-.modal-body h2 {
-  font-size: 24px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  margin-bottom: 16px;
-}
-
-.modal-body p {
-  font-size: 14px;
-  color: var(--foreground);
-  opacity: 0.7;
-  margin-bottom: 8px;
-  letter-spacing: 0.5px;
-}
-
-.modal-body p:last-child {
-  margin-bottom: 0;
-}
-
 /* =====================
-   Settings Modal (modular, equal two-column layout)
+   Settings Modal
 ====================== */
 
-/* Use a modifier so base modal styles stay reusable */
-.modal--settings .modal-content {
-  /* slightly tighter vertical padding so header sits higher */
-  padding: 24px 40px;
-}
-
-.modal--settings .modal-body h2 {
-  margin-top: 0;
-  margin-bottom: 20px;
-}
-
 .settings-section {
-  /* strict two equal columns */
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
@@ -796,7 +814,6 @@ body {
 
 .settings-section > div:first-child {
   text-align: left;
-  /* ensure content can shrink without forcing overflow */
   min-width: 0;
 }
 
@@ -808,11 +825,10 @@ body {
 }
 
 .settings-section .button-group {
-  /* center horizontally and vertically within the right column */
   display: flex;
   gap: 8px;
-  justify-self: center; /* centers the group in the right column */
-  align-self: center; /* vertically centers relative to left content */
+  justify-self: center;
+  align-self: center;
 }
 
 .lastfm-status {

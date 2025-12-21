@@ -1,0 +1,121 @@
+/* Standard Modal Styles */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-content {
+  transform: translateY(0);
+}
+
+.modal-header {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--foreground);
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  padding: 4px;
+  line-height: 1;
+}
+
+.modal-close-btn:hover {
+  opacity: 1;
+}
+
+/* Background fading */
+.app-container {
+  transition: filter 0.3s ease;
+}
+
+/* Only blur non-modal children so modals remain sharp even when they are inside the container */
+body.modal-open .app-container > :not(.modal-overlay) {
+  filter: blur(4px);
+  pointer-events: none; /* avoid interacting with background while modal open */
+}
+
+/* Ensure modal overlays remain interactive */
+.app-container .modal-overlay {
+  pointer-events: auto;
+}
+
+/* Modal buttons */
+.modal-btn {
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  background: var(--background);
+  color: var(--foreground);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.modal-btn:hover {
+  background: var(--foreground);
+  color: var(--background);
+}
+
+.modal-btn.hidden {
+  display: none;
+}
+
+/* Modal footer with flex for button positioning */
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.modal-footer .reset-btn {
+  order: -1; /* Push to left */
+}
+
