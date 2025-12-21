@@ -1,7 +1,6 @@
 // Global application state
 let albums = []
 let currentAlbum = null
-let currentPlayingAlbum = null
 let _currentPlaylist = []
 
 // Cache DOM elements

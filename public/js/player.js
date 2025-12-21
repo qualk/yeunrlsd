@@ -16,12 +16,12 @@ async function getAlbumData(albumId) {
   if (albumCache.has(albumId)) return albumCache.get(albumId)
   try {
     const res = await fetch(`/api/albums/${albumId}`)
-    if (!res.ok) throw new Error('Failed to fetch album')
+    if (!res.ok) throw new Error("Failed to fetch album")
     const data = await res.json()
     albumCache.set(albumId, data)
     return data
   } catch (err) {
-    console.error('getAlbumData error:', err)
+    console.error("getAlbumData error:", err)
     return null
   }
 }
@@ -46,6 +46,7 @@ function initMediaSession() {
   navigator.mediaSession.setActionHandler("seekto", (event) => {
     if (player && event.seekTime !== undefined) {
       player.currentTime = event.seekTime
+      updateMediaSessionPlaybackState()
     }
   })
 }
@@ -99,7 +100,10 @@ function updateMediaSessionPlaybackState() {
  */
 function handlePlayerClick() {
   // If there's a currently playing album and it's not already being viewed
-  if (currentPlayingAlbum && (!window.currentAlbum || window.currentAlbum.id !== currentPlayingAlbum.id)) {
+  if (
+    currentPlayingAlbum &&
+    (!window.currentAlbum || window.currentAlbum.id !== currentPlayingAlbum.id)
+  ) {
     // Navigate to the album detail view
     if (window.showAlbumDetail) {
       window.showAlbumDetail(currentPlayingAlbum.id)
@@ -177,19 +181,20 @@ async function updateSongsList() {
   const albumsWithSongs = (albums || []).filter((a) => a.hasSongs)
   if (albumsWithSongs.length === 0) {
     // Simple fallback to current playlist
-    songsList.innerHTML = _currentPlaylist && _currentPlaylist.length > 0
-      ? _currentPlaylist
-          .map(
-            (song, index) => `
+    songsList.innerHTML =
+      _currentPlaylist && _currentPlaylist.length > 0
+        ? _currentPlaylist
+            .map(
+              (song, index) => `
       <div class="player-song-row ${index === currentSongIndex ? "active" : ""}" 
-           data-album-id="${currentPlayingAlbum?.id || ''}" data-song-index="${index}"
+           data-album-id="${currentPlayingAlbum?.id || ""}" data-song-index="${index}"
            title="${song.title}">
         ${song.title}
       </div>
     `
-          )
-          .join("")
-      : ""
+            )
+            .join("")
+        : ""
 
     songsList.querySelectorAll(".player-song-row").forEach((row) => {
       row.addEventListener("click", async () => {
@@ -203,15 +208,13 @@ async function updateSongsList() {
       })
     })
 
-    const active = songsList.querySelector('.player-song-row.active')
-    if (active) active.scrollIntoView({ block: 'center', behavior: 'smooth' })
+    const active = songsList.querySelector(".player-song-row.active")
+    if (active) active.scrollIntoView({ block: "center", behavior: "smooth" })
     return
   }
 
   // Fetch album details in parallel (with caching)
-  const albumDetails = await Promise.all(
-    albumsWithSongs.map((a) => getAlbumData(a.id))
-  )
+  const albumDetails = await Promise.all(albumsWithSongs.map((a) => getAlbumData(a.id)))
 
   // Build grouped HTML for all albums (so queue shows even when no song is playing)
   const html = albumDetails
@@ -219,15 +222,16 @@ async function updateSongsList() {
     .map((album) => {
       const header = `
       <div class="player-album-header" data-album-id="${album.id}">
-        <img class="player-album-thumb" src="${album.image || '/icons/placeholder.avif'}" alt="${album.name}">
+        <img class="player-album-thumb" src="${album.image || "/icons/placeholder.avif"}" alt="${album.name}">
         <div class="player-album-title">${album.name}</div>
       </div>`
 
       const songs = (album.songs || [])
         .map((song, idx) => {
-          const isActive = currentPlayingAlbum && currentPlayingAlbum.id === album.id && currentSongIndex === idx
+          const isActive =
+            currentPlayingAlbum && currentPlayingAlbum.id === album.id && currentSongIndex === idx
           return `
-          <div class="player-song-row ${isActive ? 'active' : ''}" data-album-id="${album.id}" data-song-index="${idx}" title="${song.title}">
+          <div class="player-song-row ${isActive ? "active" : ""}" data-album-id="${album.id}" data-song-index="${idx}" title="${song.title}">
             ${song.title}
           </div>`
         })
@@ -240,19 +244,19 @@ async function updateSongsList() {
   songsList.innerHTML = html
 
   // Add handlers: header -> show album, rows -> play song
-  songsList.querySelectorAll('.player-album-header').forEach((hdr) => {
-    hdr.addEventListener('click', () => {
+  songsList.querySelectorAll(".player-album-header").forEach((hdr) => {
+    hdr.addEventListener("click", () => {
       const albumId = hdr.dataset.albumId
       if (window.showAlbumDetail) window.showAlbumDetail(albumId)
     })
   })
 
-  songsList.querySelectorAll('.player-song-row').forEach((row) => {
-    row.addEventListener('click', async () => {
+  songsList.querySelectorAll(".player-song-row").forEach((row) => {
+    row.addEventListener("click", async () => {
       const albumId = row.dataset.albumId
       const idx = parseInt(row.dataset.songIndex, 10)
       const album = await getAlbumData(albumId)
-      if (album && album.songs && album.songs[idx]) {
+      if (album?.songs?.[idx]) {
         currentSongIndex = idx
         playSong(album.songs[idx], album)
       }
@@ -260,8 +264,8 @@ async function updateSongsList() {
   })
 
   // Scroll active into view (if any)
-  const active = songsList.querySelector('.player-song-row.active')
-  if (active) active.scrollIntoView({ block: 'center', behavior: 'smooth' })
+  const active = songsList.querySelector(".player-song-row.active")
+  if (active) active.scrollIntoView({ block: "center", behavior: "smooth" })
 }
 
 /**
@@ -296,13 +300,13 @@ async function playNext() {
   }
 
   // At end of album - find next album with songs
-  let currentAlbumIndex = albums.findIndex((a) => a.id === currentPlayingAlbum.id)
+  const currentAlbumIndex = albums.findIndex((a) => a.id === currentPlayingAlbum.id)
   if (currentAlbumIndex < 0) return
 
   for (let i = currentAlbumIndex + 1; i < albums.length; i++) {
     if (albums[i].hasSongs) {
       const albumData = await getAlbumData(albums[i].id)
-      if (albumData && albumData.songs && albumData.songs.length > 0) {
+      if (albumData?.songs && albumData.songs.length > 0) {
         playSong(albumData.songs[0], albumData)
         return
       }
@@ -324,13 +328,13 @@ async function playPrevious() {
   }
 
   // At beginning of album - find previous album with songs
-  let currentAlbumIndex = albums.findIndex((a) => a.id === currentPlayingAlbum.id)
+  const currentAlbumIndex = albums.findIndex((a) => a.id === currentPlayingAlbum.id)
   if (currentAlbumIndex < 0) return
 
   for (let i = currentAlbumIndex - 1; i >= 0; i--) {
     if (albums[i].hasSongs) {
       const albumData = await getAlbumData(albums[i].id)
-      if (albumData && albumData.songs && albumData.songs.length > 0) {
+      if (albumData?.songs && albumData.songs.length > 0) {
         playSong(albumData.songs[albumData.songs.length - 1], albumData)
         return
       }
