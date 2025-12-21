@@ -107,6 +107,11 @@ async function startFullDownload() {
   const fileMap = {} // url -> size in bytes
   const albumUrls = {} // albumId -> [urls]
 
+  // Show initial progress to indicate activity
+  if (downloadElements.overallProgressText) {
+    downloadElements.overallProgressText.innerText = "Calculating..."
+  }
+
   for (const albumSummary of albums) {
     const urls = []
     if (albumSummary.image) urls.push(albumSummary.image)
@@ -136,12 +141,20 @@ async function startFullDownload() {
 
       try {
         const res = await fetch(url, { method: "HEAD" })
+        // jsDelivr might not return content-length on HEAD, or might have CORS issues
         const size = parseInt(res.headers.get("content-length") || "0", 10)
         fileMap[url] = Math.max(size, 0)
+        
+        // If size is 0, try a small GET range request or just assume a default size for progress
+        if (fileMap[url] === 0) {
+          fileMap[url] = url.endsWith(".mp3") || url.endsWith(".m4a") ? 5000000 : 200000 // 5MB for audio, 200KB for images
+        }
+        
         totalExpectedBytes += fileMap[url]
       } catch (_e) {
-        // Fallback: assume 0, will be updated during download
-        fileMap[url] = 0
+        // Fallback: assume default sizes
+        fileMap[url] = url.endsWith(".mp3") || url.endsWith(".m4a") ? 5000000 : 200000
+        totalExpectedBytes += fileMap[url]
       }
     }
   }
@@ -189,6 +202,12 @@ async function startFullDownload() {
   for (const albumSummary of albums) {
     const progress = albumProgressElements[albumSummary.id]
     if (!progress) continue
+
+    // Auto-scroll to current album
+    const row = document.getElementById(`download-row-${albumSummary.id}`)
+    if (row) {
+      row.scrollIntoView({ behavior: "smooth", block: "nearest" })
+    }
 
     let album = albumSummary
     try {
