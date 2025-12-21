@@ -932,6 +932,130 @@ body {
 }
 
 /* =====================
+   404 Error Page
+====================== */
+
+html:has(.error-404),
+body:has(.error-404) {
+  overflow: hidden;
+  height: 100svh;
+}
+
+.error-404 {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100svh;
+  padding: clamp(24px, 6vw, 64px) clamp(12px, 4vw, 48px);
+  background-color: var(--background);
+  box-sizing: border-box;
+}
+
+.vinyl-container {
+  margin-bottom: clamp(24px, 5vw, 64px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vinyl-record {
+  width: clamp(120px, 30vw, 320px);
+  aspect-ratio: 1 / 1;
+  max-width: 100vw;
+  animation: spin-vinyl 6s linear infinite;
+}
+
+@keyframes spin-vinyl {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error-content {
+  text-align: center;
+  max-width: min(90vw, 400px);
+}
+
+.error-content h1 {
+  font-size: clamp(18px, 4vw, 32px);
+  font-weight: 600;
+  margin-bottom: clamp(10px, 2vw, 24px);
+  letter-spacing: 0.05em;
+  font-family: "JetBrains Mono", "Courier New", monospace;
+}
+
+.error-content p {
+  font-size: clamp(13px, 2vw, 18px);
+  color: #666;
+  margin-bottom: clamp(6px, 1vw, 16px);
+  line-height: 1.6;
+}
+
+.error-code {
+  font-family: "JetBrains Mono", "Courier New", monospace;
+  font-weight: 600;
+  font-size: clamp(12px, 1.5vw, 18px);
+  letter-spacing: 0.1em;
+  margin: clamp(12px, 2vw, 24px) 0;
+  color: var(--foreground);
+}
+
+.back-home-btn {
+  display: inline-block;
+  margin-top: clamp(10px, 2vw, 24px);
+  padding: clamp(8px, 1.5vh, 16px) clamp(16px, 3vw, 36px);
+  background-color: var(--foreground);
+  color: var(--background);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: clamp(12px, 1.5vw, 18px);
+  letter-spacing: 0.05em;
+  transition: opacity 0.2s ease;
+  font-family: "JetBrains Mono", "Courier New", monospace;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.back-home-btn:hover {
+  opacity: 0.8;
+  text-decoration: none;
+}
+
+.break-sm {
+  display: inline;
+}
+
+@media (max-width: 640px), (max-height: 360px) {
+  .error-content h1 {
+    font-size: 24px;
+  }
+
+  .error-content p {
+    font-size: 14px;
+  }
+
+  .break-sm {
+    display: block;
+    margin-top: 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vinyl-record {
+    animation: none;
+    transform: none;
+  }
+}
+
+/* =====================
    Utilities
 ====================== */
 

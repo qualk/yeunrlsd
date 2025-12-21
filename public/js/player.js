@@ -73,6 +73,7 @@ function updateMediaSessionMetadata() {
       { src: artwork, sizes: "128x128", type: "image/avif" },
       { src: artwork, sizes: "192x192", type: "image/avif" },
       { src: artwork, sizes: "256x256", type: "image/avif" },
+      { src: artwork, sizes: "384x384", type: "image/avif" },
       { src: artwork, sizes: "512x512", type: "image/avif" },
     ],
   })

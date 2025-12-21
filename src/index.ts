@@ -126,7 +126,16 @@ async function handleStaticFile(filePath: string): Promise<Response> {
       })
     }
 
-    // Fall back to index.html for SPA routing
+    // 404 handling
+    if (filePath.startsWith("/") && !filePath.includes(".")) {
+      const notFoundFile = Bun.file(join(publicDir, "404.html"))
+      return new Response(notFoundFile, {
+        status: 404,
+        headers: { "Content-Type": "text/html; charset=utf-8" },
+      })
+    }
+
+    // Fall back to index.html for other cases (SPA routing)
     const indexFile = Bun.file(join(publicDir, "index.html"))
     return new Response(indexFile, {
       headers: { "Content-Type": "text/html; charset=utf-8" },

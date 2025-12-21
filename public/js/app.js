@@ -431,7 +431,11 @@ async function playRandomSong() {
 
     if (album.songs && album.songs.length > 0) {
       const randomSong = album.songs[Math.floor(Math.random() * album.songs.length)]
-      playSong(randomSong, album)
+      if (window.playSong) {
+        window.playSong(randomSong, album)
+      } else {
+        playSong(randomSong, album)
+      }
     }
   } catch (error) {
     console.error("Failed to play random song:", error)
@@ -522,9 +526,7 @@ function enhanceImages() {
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     // Only go home if no modal is open
-    const isModalOpen =
-      !elements.aboutModal?.classList.contains("hidden") ||
-      !elements.settingsModal?.classList.contains("hidden")
+    const isModalOpen = document.querySelector(".modal-overlay.active")
     if (!isModalOpen) {
       goHome()
     }

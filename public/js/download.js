@@ -301,7 +301,9 @@ async function checkDownloadStatus() {
  * Reset all downloads by clearing IndexedDB and metadata
  */
 async function resetDownloads() {
-  if (!confirm("Are you sure you want to reset all downloads? This will clear all offline files.")) {
+  if (
+    !confirm("Are you sure you want to reset all downloads? This will clear all offline files.")
+  ) {
     return
   }
 

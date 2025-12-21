@@ -118,4 +118,3 @@ body.modal-open .app-container > :not(.modal-overlay) {
 .modal-footer .reset-btn {
   order: -1; /* Push to left */
 }
-
