@@ -62,8 +62,8 @@ function updateMediaSessionMetadata() {
 
   const title = playerTitle?.textContent || "Unknown Track"
   const artist = playerSubtitle?.textContent || "Unknown Artist"
-  const album = currentPlayingAlbum?.name || "Unknown Album"
-  const artwork = currentPlayingAlbum?.image || "/icons/placeholder.avif"
+  const album = window.currentPlayingAlbum?.name || "Unknown Album"
+  const artwork = window.currentPlayingAlbum?.image || "/icons/placeholder.avif"
 
   navigator.mediaSession.metadata = new MediaMetadata({
     title: title === "Select a song" ? "Unknown Track" : title,
@@ -101,14 +101,14 @@ function updateMediaSessionPlaybackState() {
 function handlePlayerClick() {
   // If there's a currently playing album and it's not already being viewed
   if (
-    currentPlayingAlbum &&
-    (!window.currentAlbum || window.currentAlbum.id !== currentPlayingAlbum.id)
+    window.currentPlayingAlbum &&
+    (!window.currentAlbum || window.currentAlbum.id !== window.currentPlayingAlbum.id)
   ) {
     // Navigate to the album detail view
     if (window.showAlbumDetail) {
-      window.showAlbumDetail(currentPlayingAlbum.id)
+      window.showAlbumDetail(window.currentPlayingAlbum.id)
     }
-  } else if (!currentPlayingAlbum) {
+  } else if (!window.currentPlayingAlbum) {
     // No song playing, play a random song
     if (window.playRandomSong) {
       window.playRandomSong()
@@ -145,6 +145,7 @@ function initPlayer() {
     player.addEventListener("loadedmetadata", () => {
       updateMediaSessionPlaybackState()
     })
+    player.addEventListener("timeupdate", onTimeUpdate)
 
     // Initial UI state
     updatePlayerUI()
@@ -177,39 +178,12 @@ async function updateSongsList() {
   const songsList = document.getElementById("player-songs-list")
   if (!songsList) return
 
-  // If we don't yet have album data (empty albums list), fall back to playlist rows
-  const albumsWithSongs = (albums || []).filter((a) => a.hasSongs)
+  // Get all albums with songs, prioritize those with songs
+  const albumsWithSongs = (window.albums || []).filter((a) => a.hasSongs)
+  
+  // If no albums data yet, show nothing (will be called again once albums load)
   if (albumsWithSongs.length === 0) {
-    // Simple fallback to current playlist
-    songsList.innerHTML =
-      _currentPlaylist && _currentPlaylist.length > 0
-        ? _currentPlaylist
-            .map(
-              (song, index) => `
-      <div class="player-song-row ${index === currentSongIndex ? "active" : ""}" 
-           data-album-id="${currentPlayingAlbum?.id || ""}" data-song-index="${index}"
-           title="${song.title}">
-        ${song.title}
-      </div>
-    `
-            )
-            .join("")
-        : ""
-
-    songsList.querySelectorAll(".player-song-row").forEach((row) => {
-      row.addEventListener("click", async () => {
-        const albumId = row.dataset.albumId
-        const index = parseInt(row.dataset.songIndex, 10)
-        const album = albumId ? await getAlbumData(albumId) : currentPlayingAlbum
-        if (album && index >= 0 && index < (album.songs || _currentPlaylist).length) {
-          currentSongIndex = index
-          playSong((album.songs || _currentPlaylist)[index], album)
-        }
-      })
-    })
-
-    const active = songsList.querySelector(".player-song-row.active")
-    if (active) active.scrollIntoView({ block: "center", behavior: "smooth" })
+    songsList.innerHTML = ""
     return
   }
 
@@ -229,7 +203,7 @@ async function updateSongsList() {
       const songs = (album.songs || [])
         .map((song, idx) => {
           const isActive =
-            currentPlayingAlbum && currentPlayingAlbum.id === album.id && currentSongIndex === idx
+            window.currentPlayingAlbum && window.currentPlayingAlbum.id === album.id && currentSongIndex === idx
           return `
           <div class="player-song-row ${isActive ? "active" : ""}" data-album-id="${album.id}" data-song-index="${idx}" title="${song.title}">
             ${song.title}
@@ -290,23 +264,25 @@ function togglePlayPause() {
  * Play next song or next album
  */
 async function playNext() {
-  if (_currentPlaylist.length === 0 || !currentPlayingAlbum) return
+  // Ensure we have prerequisites
+  if (!window._currentPlaylist?.length || !window.currentPlayingAlbum || !window.albums?.length) return
 
-  // Within current album
-  if (currentSongIndex < _currentPlaylist.length - 1) {
+  // Within current album - next song
+  if (currentSongIndex < window._currentPlaylist.length - 1) {
     currentSongIndex++
-    playSong(_currentPlaylist[currentSongIndex], currentPlayingAlbum)
+    playSong(window._currentPlaylist[currentSongIndex], window.currentPlayingAlbum)
     return
   }
 
-  // At end of album - find next album with songs
-  const currentAlbumIndex = albums.findIndex((a) => a.id === currentPlayingAlbum.id)
+  // At end of current album - find next album with songs
+  const currentAlbumIndex = window.albums.findIndex((a) => a.id === window.currentPlayingAlbum.id)
   if (currentAlbumIndex < 0) return
 
-  for (let i = currentAlbumIndex + 1; i < albums.length; i++) {
-    if (albums[i].hasSongs) {
-      const albumData = await getAlbumData(albums[i].id)
-      if (albumData?.songs && albumData.songs.length > 0) {
+  for (let i = currentAlbumIndex + 1; i < window.albums.length; i++) {
+    if (window.albums[i].hasSongs) {
+      const albumData = await getAlbumData(window.albums[i].id)
+      if (albumData?.songs?.length > 0) {
+        currentSongIndex = 0
         playSong(albumData.songs[0], albumData)
         return
       }
@@ -318,24 +294,26 @@ async function playNext() {
  * Play previous song or previous album
  */
 async function playPrevious() {
-  if (_currentPlaylist.length === 0 || !currentPlayingAlbum) return
+  // Ensure we have prerequisites
+  if (!window._currentPlaylist?.length || !window.currentPlayingAlbum || !window.albums?.length) return
 
-  // Within current album
+  // Within current album - previous song
   if (currentSongIndex > 0) {
     currentSongIndex--
-    playSong(_currentPlaylist[currentSongIndex], currentPlayingAlbum)
+    playSong(window._currentPlaylist[currentSongIndex], window.currentPlayingAlbum)
     return
   }
 
-  // At beginning of album - find previous album with songs
-  const currentAlbumIndex = albums.findIndex((a) => a.id === currentPlayingAlbum.id)
+  // At beginning of current album - find previous album with songs
+  const currentAlbumIndex = window.albums.findIndex((a) => a.id === window.currentPlayingAlbum.id)
   if (currentAlbumIndex < 0) return
 
   for (let i = currentAlbumIndex - 1; i >= 0; i--) {
-    if (albums[i].hasSongs) {
-      const albumData = await getAlbumData(albums[i].id)
-      if (albumData?.songs && albumData.songs.length > 0) {
-        playSong(albumData.songs[albumData.songs.length - 1], albumData)
+    if (window.albums[i].hasSongs) {
+      const albumData = await getAlbumData(window.albums[i].id)
+      if (albumData?.songs?.length > 0) {
+        currentSongIndex = albumData.songs.length - 1
+        playSong(albumData.songs[currentSongIndex], albumData)
         return
       }
     }
@@ -368,6 +346,19 @@ function onPause() {
   updatePlayPauseButton()
   updatePlayerArt()
   updateMediaSessionPlaybackState()
+  // Notify Last.fm of playback stop
+  if (window.lastfm) {
+    window.lastfm.onPlaybackStop()
+  }
+}
+
+/**
+ * Called when player time updates
+ */
+function onTimeUpdate() {
+  if (window.lastfm && isPlaying) {
+    window.lastfm.onPlaybackProgress(player.currentTime)
+  }
 }
 
 /**
@@ -375,7 +366,7 @@ function onPause() {
  */
 function updatePlayerArt() {
   const playerArt = document.getElementById("player-art")
-  const playingAlbum = currentPlayingAlbum
+  const playingAlbum = window.currentPlayingAlbum
   if (!playerArt || !playingAlbum) return
 
   if (isPlaying && playingAlbum.anim) {
@@ -411,18 +402,36 @@ function updatePlayPauseButton() {
 }
 
 /**
- * Override playSong to track current index
+ * Play a song - override from app.js
  */
-const originalPlaySong = window.playSong
-window.playSong = (song, album) => {
-  // Find index in current playlist
-  currentSongIndex = album.songs.findIndex((s) => s.title === song.title)
-  // Call original function
-  originalPlaySong(song, album)
-  // Update UI
-  updatePlayerUI()
-  // Update media session metadata on track change only
-  updateMediaSessionMetadata()
+function initPlaySongOverride() {
+  // Only override if app.js has loaded
+  if (!window.playSong) return
+  
+  const originalPlaySong = window.playSong
+  window.playSong = (song, album) => {
+    // Find index in current playlist with bounds check
+    if (!album?.songs) {
+      console.warn('playSong: album or songs undefined')
+      return
+    }
+    currentSongIndex = Math.max(0, album.songs.findIndex((s) => s.title === song.title))
+    // Call original function
+    originalPlaySong(song, album)
+    // Update UI
+    updatePlayerUI()
+    // Update media session metadata on track change only
+    updateMediaSessionMetadata()
+    // Update Last.fm
+    if (window.lastfm) {
+      window.lastfm.onTrackChange({
+        title: song.title,
+        artist: song.artist || 'Kanye West',
+        album: album.name,
+        duration: song.duration
+      })
+    }
+  }
 }
 
 // Expose updateSongsList so other modules can refresh the queue
@@ -430,7 +439,12 @@ window.updateSongsList = updateSongsList
 
 // Initialize when DOM is ready
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initPlayer)
+  document.addEventListener("DOMContentLoaded", () => {
+    initPlayer()
+    // Wait a moment for app.js to load playSong, then override it
+    setTimeout(initPlaySongOverride, 100)
+  })
 } else {
   initPlayer()
+  setTimeout(initPlaySongOverride, 100)
 }

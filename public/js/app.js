@@ -1,6 +1,7 @@
 // Global application state
 let albums = []
 let currentAlbum = null
+let currentPlayingAlbum = null
 let _currentPlaylist = []
 
 // Cache DOM elements
@@ -11,6 +12,19 @@ const elements = {
   albumDetail: document.getElementById("album-detail"),
   backBtn: document.getElementById("back-btn"),
   headerLogo: document.getElementById("header-logo"),
+  menuBtn: document.getElementById("menu-btn"),
+  headerMenu: document.getElementById("header-menu"),
+  navAbout: document.getElementById("nav-about"),
+  aboutModal: document.getElementById("about-modal"),
+  modalOverlay: document.getElementById("modal-overlay"),
+  modalClose: document.getElementById("modal-close"),
+  navSettings: document.getElementById("nav-settings"),
+  settingsModal: document.getElementById("settings-modal"),
+  settingsModalOverlay: document.getElementById("settings-modal-overlay"),
+  settingsModalClose: document.getElementById("settings-modal-close"),
+  lastfmStatusText: document.getElementById("lastfm-status-text"),
+  lastfmConnectBtn: document.getElementById("lastfm-connect-btn"),
+  lastfmDisconnectBtn: document.getElementById("lastfm-disconnect-btn"),
 }
 
 /**
@@ -22,6 +36,13 @@ async function init() {
     const response = await fetch("/api/albums")
     const data = await response.json()
     albums = data.albums
+    
+    // Expose state to window for cross-script access
+    window.albums = albums
+    window._currentPlaylist = _currentPlaylist
+    window.currentPlayingAlbum = currentPlayingAlbum
+    window.currentAlbum = currentAlbum
+    
     renderAlbumGrid()
     // Refresh player queue (in case player wants to show albums when no song playing)
     if (window.updateSongsList) window.updateSongsList()
@@ -36,7 +57,179 @@ async function init() {
     e.preventDefault()
     goHome()
   })
+  
+  // Menu button listener
+  elements.menuBtn?.addEventListener("click", toggleMenu)
+  
+  // Close menu when clicking nav items
+  document.querySelectorAll(".header-nav-btn").forEach((btn) => {
+    btn.addEventListener("click", closeMenu)
+  })
+  
+  // About modal listeners
+  elements.navAbout?.addEventListener("click", openAboutModal)
+  elements.modalOverlay?.addEventListener("click", closeAboutModal)
+  elements.modalClose?.addEventListener("click", closeAboutModal)
+  
+  // Settings modal listeners
+  elements.navSettings?.addEventListener("click", openSettingsModal)
+  elements.settingsModalOverlay?.addEventListener("click", closeSettingsModal)
+  elements.settingsModalClose?.addEventListener("click", closeSettingsModal)
+  elements.lastfmConnectBtn?.addEventListener("click", connectLastFM)
+  elements.lastfmDisconnectBtn?.addEventListener("click", disconnectLastFM)
+  
+  // Close modal on Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeAboutModal()
+      closeSettingsModal()
+    }
+  })
+  
+  // Close menu when clicking elsewhere
+  document.addEventListener("click", (e) => {
+    if (
+      !e.target.closest(".header-menu-btn") &&
+      !e.target.closest(".header-menu")
+    ) {
+      closeMenu()
+    }
+  })
+  
   window.addEventListener("popstate", handleRouting)
+}
+
+/**
+ * Toggle menu open/closed
+ */
+function toggleMenu() {
+  const isOpen = elements.headerMenu?.classList.contains("open")
+  if (isOpen) {
+    closeMenu()
+  } else {
+    openMenu()
+  }
+}
+
+/**
+ * Open menu
+ */
+function openMenu() {
+  elements.headerMenu?.classList.add("open")
+  elements.menuBtn?.setAttribute("aria-expanded", "true")
+}
+
+/**
+ * Close menu
+ */
+function closeMenu() {
+  elements.headerMenu?.classList.remove("open")
+  elements.menuBtn?.setAttribute("aria-expanded", "false")
+}
+
+/**
+ * Open about modal
+ */
+function openAboutModal() {
+  elements.aboutModal?.classList.remove("hidden")
+}
+
+/**
+ * Close about modal
+ */
+function closeAboutModal() {
+  elements.aboutModal?.classList.add("hidden")
+}
+
+/**
+ * Open settings modal
+ */
+function openSettingsModal() {
+  updateLastFMStatus()
+  elements.settingsModal?.classList.remove("hidden")
+}
+
+/**
+ * Close settings modal
+ */
+function closeSettingsModal() {
+  elements.settingsModal?.classList.add("hidden")
+}
+
+/**
+ * Update Last.fm status display
+ */
+function updateLastFMStatus() {
+  if (!window.lastfm) return
+
+  if (window.lastfm.isAuthenticated()) {
+    elements.lastfmStatusText.textContent = `Connected as ${window.lastfm.username}`
+    elements.lastfmConnectBtn.classList.add("hidden")
+    elements.lastfmDisconnectBtn.classList.remove("hidden")
+  } else {
+    elements.lastfmStatusText.textContent = "Not connected"
+    elements.lastfmConnectBtn.classList.remove("hidden")
+    elements.lastfmDisconnectBtn.classList.add("hidden")
+  }
+}
+
+/**
+ * Connect to Last.fm
+ */
+async function connectLastFM() {
+  if (!window.lastfm) return
+
+  try {
+    const authData = await window.lastfm.getAuthURL()
+    const authWindow = window.open(authData.url, 'lastfm-auth', 'width=800,height=600')
+    
+    if (!authWindow) {
+      alert('Pop-up blocked. Please allow pop-ups for Last.fm authentication.')
+      return
+    }
+
+    // Poll for authentication completion with timeout
+    let pollTimer
+    const timeoutTimer = setTimeout(() => {
+      clearInterval(pollTimer)
+      console.warn('Last.fm authentication timeout')
+    }, 5 * 60 * 1000) // 5 minute timeout
+    
+    pollTimer = setInterval(async () => {
+      try {
+        if (authWindow.closed) {
+          clearInterval(pollTimer)
+          clearTimeout(timeoutTimer)
+          const result = await window.lastfm.completeAuthentication(authData.token)
+          if (result.success) {
+            updateLastFMStatus()
+            alert(`Successfully connected to Last.fm as ${result.username}!`)
+          }
+        }
+      } catch (error) {
+        clearInterval(pollTimer)
+        clearTimeout(timeoutTimer)
+        console.error('Authentication failed:', error)
+        alert('Failed to connect to Last.fm. Please try again.')
+      }
+    }, 1000)
+
+  } catch (error) {
+    console.error('Failed to start Last.fm authentication:', error)
+    alert('Failed to start Last.fm authentication. Please try again.')
+  }
+}
+
+/**
+ * Disconnect from Last.fm
+ */
+function disconnectLastFM() {
+  if (!window.lastfm) return
+
+  if (confirm('Are you sure you want to disconnect from Last.fm?')) {
+    window.lastfm.clearSession()
+    updateLastFMStatus()
+  }
 }
 
 /**
@@ -106,6 +299,7 @@ async function showAlbumDetail(albumId) {
     currentAlbum = album
     window.currentAlbum = album
     _currentPlaylist = album.songs || []
+    window._currentPlaylist = _currentPlaylist
 
     // Update history
     window.history.pushState({ albumId }, album.name, `/album/${albumId}`)
@@ -188,7 +382,9 @@ function renderAlbumDetail(album) {
  */
 function playSong(song, album) {
   currentPlayingAlbum = album
+  window.currentPlayingAlbum = album
   _currentPlaylist = album.songs || []
+  window._currentPlaylist = _currentPlaylist
 
   const player = document.getElementById("player")
   const playerTitle = document.getElementById("player-title")
@@ -196,10 +392,23 @@ function playSong(song, album) {
   const playerArt = document.getElementById("player-art")
 
   playerTitle.textContent = song.title
-  playerSubtitle.textContent = song.credits || album.name
+  playerSubtitle.textContent = song.artist || album.name
 
-  // Set initial art (player.js will handle animation switch on play event)
-  playerArt.src = album.image || "/icons/placeholder.avif"
+  // Set the player art - will use animation if available and playing
+  const imageSrc = album.image || "/icons/placeholder.avif"
+  const animSrc = album.anim
+
+  // Preload both images
+  const img = new Image()
+  img.onload = () => {
+    // Use animation if available, otherwise use static image
+    playerArt.src = animSrc || imageSrc
+  }
+  img.onerror = () => {
+    // Fallback if image fails to load
+    playerArt.src = "/icons/placeholder.avif"
+  }
+  img.src = animSrc || imageSrc
 
   player.src = song.file
   player.play()
@@ -231,16 +440,15 @@ async function playRandomSong() {
   }
 }
 
-// Expose to window for player.js
+// Expose functions to window for player.js
 window.playRandomSong = playRandomSong
 window.showAlbumDetail = showAlbumDetail
-window.currentAlbum = currentAlbum
 
 /**
  * Go back to grid view
  */
 function goBack() {
-  window.history.back()
+  goHome()
 }
 
 /**
@@ -272,13 +480,16 @@ function handleRouting() {
  */
 function updateBackButtonVisibility() {
   const backBtn = document.getElementById("back-btn")
+  const menuBtn = document.getElementById("menu-btn")
   if (!backBtn) return
 
   const isDetailView = !elements.detailView.classList.contains("hidden")
   if (isDetailView) {
     backBtn.classList.add("visible")
+    menuBtn?.style.setProperty("display", "none")
   } else {
     backBtn.classList.remove("visible")
+    menuBtn?.style.setProperty("display", "flex")
   }
 }
 
@@ -312,7 +523,11 @@ function enhanceImages() {
  */
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
-    goHome()
+    // Only go home if no modal is open
+    const isModalOpen = !elements.aboutModal?.classList.contains("hidden") || !elements.settingsModal?.classList.contains("hidden")
+    if (!isModalOpen) {
+      goHome()
+    }
   }
   if (event.code === "Space") {
     event.preventDefault()

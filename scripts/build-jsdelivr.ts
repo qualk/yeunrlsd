@@ -8,6 +8,7 @@ interface Song {
   title: string
   file: string
   credits?: string
+  artist?: string
 }
 
 interface Album {
@@ -43,6 +44,7 @@ function buildJsDelivrFile(): void {
               title: song.title,
               file: transformPath(song.file),
               credits: song.credits,
+              artist: song.artist,
             }))
           : undefined,
       })),

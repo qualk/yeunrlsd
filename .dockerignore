@@ -1,10 +1,12 @@
-# dependencies (bun install)
+# dependencies
 node_modules
 
 # output
 out
 dist
 build
+*.log
+*.tgz
 
 # Bun
 bun.lockb
@@ -17,13 +19,6 @@ bun.lockb
 *.swo
 *~
 .DS_Store
-
-# Runtime
-.env
-.env.local
-*.log
-dist
-*.tgz
 
 # code coverage
 coverage
@@ -45,9 +40,6 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 .eslintcache
 .cache
 *.tsbuildinfo
-
-# IntelliJ based IDEs
-.idea
 
 # yeunrlsd
 public/img

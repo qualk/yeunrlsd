@@ -179,6 +179,85 @@ body {
   display: flex;
 }
 
+/* =====================
+   Header Menu
+====================== */
+
+.header-menu-btn {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px;
+  color: var(--foreground);
+  opacity: 0.6;
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  z-index: 101;
+}
+
+.header-menu-btn:hover {
+  opacity: 0.9;
+}
+
+.header-menu-btn[aria-expanded="true"] {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.header-menu {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: var(--muted);
+  border-right: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 20px;
+  padding-left: 60px;
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 100;
+}
+
+.header-menu.open {
+  transform: translateX(0);
+}
+
+.header-nav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 16px;
+  color: var(--foreground);
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.header-nav-btn:hover {
+  opacity: 0.9;
+}
+
+.header-nav-btn svg {
+  stroke-width: 1.5;
+}
+
 .header-dice-btn {
   position: absolute;
   right: 20px;
@@ -583,6 +662,191 @@ body {
 
 .player-album-title {
   font-size: 13px;
+}
+
+/* =====================
+   Modal
+====================== */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s;
+}
+
+.modal.hidden {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.modal-content {
+  position: relative;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 40px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--foreground);
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  opacity: 0.9;
+  background: var(--muted);
+}
+
+.modal-body {
+  text-align: center;
+}
+
+.modal-body h2 {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+.modal-body p {
+  font-size: 14px;
+  color: var(--foreground);
+  opacity: 0.7;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.modal-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* =====================
+   Settings Modal (modular, equal two-column layout)
+====================== */
+
+/* Use a modifier so base modal styles stay reusable */
+.modal--settings .modal-content {
+  /* slightly tighter vertical padding so header sits higher */
+  padding: 24px 40px;
+}
+
+.modal--settings .modal-body h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.settings-section {
+  /* strict two equal columns */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+  margin-bottom: 24px;
+}
+
+.settings-section > div:first-child {
+  text-align: left;
+  /* ensure content can shrink without forcing overflow */
+  min-width: 0;
+}
+
+.settings-section h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  color: var(--foreground);
+}
+
+.settings-section .button-group {
+  /* center horizontally and vertically within the right column */
+  display: flex;
+  gap: 8px;
+  justify-self: center; /* centers the group in the right column */
+  align-self: center; /* vertically centers relative to left content */
+}
+
+.lastfm-status {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lastfm-status p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--foreground);
+  opacity: 0.8;
+}
+
+.settings-btn {
+  background: var(--accent);
+  color: var(--background);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.settings-btn:hover {
+  opacity: 0.9;
+}
+
+.settings-btn.hidden {
+  display: none;
 }
 
 /* =====================

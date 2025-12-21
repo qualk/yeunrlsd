@@ -24,10 +24,35 @@
   <div class="app-container">
     <!-- Header -->
     <header class="app-header">
-      <button class="header-back-btn" id="back-btn" aria-label="Go back">‹</button>
+      <button class="header-menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false">≡</button>
+      <nav class="header-menu" id="header-menu" role="navigation">
+        <button class="header-nav-btn" id="nav-download" aria-label="Download">
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+        </button>
+        <button class="header-nav-btn" id="nav-settings" aria-label="Settings">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 17H5"/>
+            <path d="M19 7h-9"/>
+            <circle cx="17" cy="17" r="3"/>
+            <circle cx="7" cy="7" r="3"/>
+          </svg>
+        </button>
+        <button class="header-nav-btn" id="nav-about" aria-label="About">
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <line x1="12" y1="16" x2="12" y2="12" />
+            <line x1="12" y1="8" x2="12.01" y2="8" />
+          </svg>
+        </button>
+      </nav>
       <div class="header-content">
         <a href="/" id="header-logo"><h1 class="header-title">[yeunrlsd]</h1></a>
       </div>
+      <button class="header-back-btn" id="back-btn" aria-label="Go back">‹</button>
       <button class="header-dice-btn" id="header-dice-btn" aria-label="Play random song">🎲</button>
     </header>
 
@@ -72,11 +97,49 @@
         </div>
       </div>
     </aside>
+
+    <!-- About Modal -->
+    <div id="about-modal" class="modal hidden">
+      <div class="modal-overlay" id="modal-overlay"></div>
+      <div class="modal-content">
+        <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+        <div class="modal-body">
+          <h2>[yeunrlsd]</h2>
+          <p>a zero dependency fan project</p>
+          <p>not affiliated with yeunrlsd or YZY</p>
+          <p>all rights owned by and credit owed to YZY</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal modal--settings hidden">
+      <div class="modal-overlay" id="settings-modal-overlay"></div>
+      <div class="modal-content">
+        <button class="modal-close" id="settings-modal-close" aria-label="Close">✕</button>
+        <div class="modal-body">
+          <h2>Settings</h2>
+          <div class="settings-section">
+            <div>
+              <h3>Last.fm Scrobbling</h3>
+              <div id="lastfm-status" class="lastfm-status">
+                <p id="lastfm-status-text">Not connected</p>
+              </div>
+            </div>
+            <div class="button-group">
+              <button id="lastfm-connect-btn" class="settings-btn">Connect to Last.fm</button>
+              <button id="lastfm-disconnect-btn" class="settings-btn hidden">Disconnect</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Scripts -->
   <script src="/js/app.js" defer></script>
   <script src="/js/player.js" defer></script>
+  <script src="/js/lastfm.js" defer></script>
   <script>
     // Register service worker for PWA
     if ('serviceWorker' in navigator) {

@@ -16,7 +16,15 @@
     "@types/bun": "latest",
     "typescript": "^5"
   },
-  "dependencies": {
-    "elysia": "^1.4.19"
+  "dependencies": {},
+  "devEngines": {
+    "runtime": {
+      "name": "bun",
+      "onFail": "error"
+    },
+    "packageManager": {
+      "name": "bun",
+      "onFail": "error"
+    }
   }
 }
