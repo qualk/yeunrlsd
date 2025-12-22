@@ -1,5 +1,5 @@
 {
-  "version": "0.0.1",
+  "version": "0.0.5",
   "albums": [
     {
       "id": "grad",
@@ -8,49 +8,157 @@
       "anim": null,
       "songs": [
         {
+          "title": "Flashing Lights (Remix)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/grad/Flashing Lights (Remix).mp3",
+          "artist": "Kanye West, Dwele, Clipse"
+        },
+        {
+          "title": "Building",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/grad/Building.mp3",
+          "artist": "Kanye West, JAY-Z"
+        },
+        {
           "title": "Piano",
           "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/grad/Piano.mp3",
-          "credits": "Kanye West, Jon Brion",
           "artist": "Kanye West"
+        },
+        {
+          "title": "Bittersweet Poetry (Yedit)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/grad/Bittersweet Poetry (Yedit).mp3",
+          "artist": "Kanye West, John Mayer"
         }
       ]
     },
     {
       "id": "gaj",
       "name": "Good Ass Job",
-      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/gaj_bear.avif",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/gaj.avif",
       "anim": null,
       "songs": [
         {
-          "title": "Lonely",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Lonely.mp3",
-          "credits": "Kanye West, Madcliff",
-          "artist": "Kanye West"
+          "title": "Flashing Lights 2 (Yedit)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Flashing Lights 2.mp3",
+          "artist": "Kanye West, Charlie Wilson, The WRLDFMS Tony Williams, Connie Mitchell"
         },
         {
           "title": "Ghetto University",
           "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Ghetto University.mp3",
-          "credits": "(feat. Charlie Wilson, The WRLDFMS Tony Williams & John Legend) (prod. Jeff Bhasker & MIKE DEAN)",
+          "artist": "Kanye West, Charlie Wilson, The WRLDFMS Tony Williams, John Legend"
+        },
+        {
+          "title": "Ice Cube",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Ice Cube.mp3",
           "artist": "Kanye West"
+        },
+        {
+          "title": "Live Fast Die Young",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Live Fast Die Young.mp3",
+          "artist": "Kanye West, Rick Ross, Big Sean, John Legend, The WRLDFMS Tony Williams"
+        },
+        {
+          "title": "Down Town",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Down Town.mp3",
+          "artist": "Kanye West, Jeff Bhasker"
+        },
+        {
+          "title": "Eyes Closed",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Eyes Closed.mp3",
+          "artist": "Kanye West, John Legend, Bon Iver"
+        },
+        {
+          "title": "Shoot Up The Station",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Shoot Up The Station.mp3",
+          "artist": "Kanye West, Bon Iver, Santigold"
+        },
+        {
+          "title": "Mama's Boyfriend (Yedit)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Mama's Boyfriend (Yedit).mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "Crazy Life",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Crazy Life.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "Throw Money Everywhere",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Throw Money Everywhere.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "That's My Bitch",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/That's My Bitch.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "White Dress",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/White Dress.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "Heartbreaker",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Heartbreaker.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "Lonely",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Lonely.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "I'll Be Alright",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/I'll Be Alright.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "Diamonds",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Diamonds.mp3",
+          "artist": "Kanye West, Christina Milian"
+        },
+        {
+          "title": "See Me Again",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/See Me Again.mp3",
+          "artist": "Kanye West, Bon Iver, The WRLDFMS Tony Williams, Elly Jackson"
+        },
+        {
+          "title": "Don't Look Down",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Don't Look Down.mp3",
+          "artist": "Kanye West, Lupe Fiasco"
         }
       ]
     },
     {
       "id": "tgfd",
-      "name": "Thank G-d for Drugs",
+      "name": "Thank God For Drugs",
       "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/tgfd.avif",
-      "anim": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/anim/tgfd.avif",
+      "anim": null,
       "songs": [
-        {
-          "title": "Awesome",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/tgfd/Awesome.mp3",
-          "credits": "(feat. Charlie Wilson & Stevie Wonder) (prod. Sak Pase)",
-          "artist": "Kanye West"
-        },
         {
           "title": "Nobody To Love",
           "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/tgfd/Nobody To Love.mp3",
-          "credits": "(feat. Charlie Wilson, John Legend & Elon Rutberg) (prod. No I.D., Tyler, The Creator & MIKE DEAN)",
+          "artist": "Kanye West, Charlie Wilson, John Legend, Elon Rutberg"
+        },
+        {
+          "title": "Awesome",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/tgfd/Awesome.mp3",
+          "artist": "Kanye West, Charlie Wilson, Stevie Wonder"
+        },
+        {
+          "title": "Padded Walls",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/tgfd/Padded Walls.mp3",
+          "artist": "Kanye West, Azealia Banks"
+        }
+      ]
+    },
+    {
+      "id": "yeezus2",
+      "name": "Yeezus 2",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/yeezus2.avif",
+      "anim": null,
+      "songs": [
+        {
+          "title": "After You",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yeezus2/After You.m4a",
           "artist": "Kanye West"
         }
       ]
@@ -63,46 +171,10 @@
       "songs": [
         {
           "title": "Panda (Remix)",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cw/PANDA Remix (9.6.15).mp3",
-          "credits": "(with Desiigner & Sia) (prod. MIKE DEAN & Menace)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cw/Panda (Remix).mp3",
           "artist": "Kanye West, Desiigner, Sia"
         }
       ]
-    },
-    {
-      "id": "yeezus2",
-      "name": "Yeezus 2",
-      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/yeezus2.avif",
-      "anim": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/anim/yeezus2.avif",
-      "songs": [
-        {
-          "title": "After You",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yeezus2/01 KW - After You Ref 83 BPM (4.21.14).m4a",
-          "credits": "(prod. Dom $olo)",
-          "artist": "Kanye West"
-        }
-      ]
-    },
-    {
-      "id": "shmG",
-      "name": "So Help Me God",
-      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/shmC.avif",
-      "anim": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/shmG-moses.avif",
-      "songs": []
-    },
-    {
-      "id": "swish",
-      "name": "Swish",
-      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/swish.avif",
-      "anim": null,
-      "songs": []
-    },
-    {
-      "id": "waves",
-      "name": "Waves",
-      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/waves.avif",
-      "anim": null,
-      "songs": []
     },
     {
       "id": "tgx",
@@ -111,38 +183,37 @@
       "anim": null,
       "songs": [
         {
-          "title": "Can't Look In My Eyes",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/tgx/Can't Look In My Eyes.mp3",
-          "credits": "Kanye West, Kid Cudi",
-          "artist": "Kanye West"
+          "title": "Bad Night",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/tgx/Bad Night.mp3",
+          "artist": "Kanye West, Young Thug"
+        },
+        {
+          "title": "Damn Come On",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/tgx/Damn Come On.mp3",
+          "artist": "Kanye West, Kid Cudi"
+        },
+        {
+          "title": "Hold Tight",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/tgx/Hold Tight.mp3",
+          "artist": "Kanye West, Migos, Young Thug"
         }
       ]
     },
     {
-      "id": "wolves",
-      "name": "Wolves",
-      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/wolves.avif",
-      "anim": null,
-      "songs": []
-    },
-    {
       "id": "le",
-      "name": "Love Everyone",
+      "name": "LOVE EVERYONE",
       "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/le.avif",
-      "anim": null,
-      "songs": []
-    },
-    {
-      "id": "ksg2",
-      "name": "Kids See Ghosts 2",
-      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/ksg2.avif",
       "anim": null,
       "songs": [
         {
-          "title": "Thank You (Vol. 2)",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ksg2/Thank You Vol. 2.mp3",
-          "credits": "(prod. Ty Dolla $ign & damn james!)",
-          "artist": "Kanye West"
+          "title": "Fine Line",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/le/Fine Line.mp3",
+          "artist": "Kanye West, Bon Iver"
+        },
+        {
+          "title": "Skeletons",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/le/Skeletons.mp3",
+          "artist": "Kanye West, Travis Scott, The Weeknd, Pharrell Williams"
         }
       ]
     },
@@ -150,50 +221,166 @@
       "id": "yandhi",
       "name": "Yandhi",
       "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/yandhi.avif",
-      "anim": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/anim/yandhi.avif",
+      "anim": null,
       "songs": [
         {
-          "title": "City In The Sky",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/City In The Sky.mp3",
-          "credits": "(feat. Ty Dolla $ign, Ant Clemons, Desiigner, 070 Shake & Kid Cudi) (prod. damn james!, Ty Dolla $ign, MIKE DEAN)",
+          "title": "Chakras",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Chakras.mp3",
+          "artist": "Kanye West, The-Dream, Caroline Shaw, BONGO ByTheWay, Ant Clemons"
+        },
+        {
+          "title": "Calm (Interlude)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Calm (Interlude).mp3",
           "artist": "Kanye West"
         },
         {
-          "title": "On God",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/On God.mp3",
-          "credits": "Dua Lipa, BSB Dante",
+          "title": "The Storm",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/The Storm.mp3",
+          "artist": "Kanye West, Ant Clemons, Ty Dolla $ign, Kid Cudi, XXXTENTACION"
+        },
+        {
+          "title": "Ego Death",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Ego Death.mp3",
+          "artist": "Kanye West, Ty Dolla $ign, FKA twigs, Skrillex"
+        },
+        {
+          "title": "I Love It",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/I Love It.mp3",
+          "artist": "Kanye West, Lil Pump"
+        },
+        {
+          "title": "Spread Your Wings",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Spread Your Wings.mp3",
           "artist": "Kanye West"
+        },
+        {
+          "title": "New Body",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/New Body.mp3",
+          "artist": "Kanye West, Ty Dolla $ign, Nicki Minaj"
+        },
+        {
+          "title": "Tom Raider 7",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Tom Raider 7.mp3",
+          "artist": "Kanye West, YNW Melly"
+        },
+        {
+          "title": "House Party",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/House Party.mp3",
+          "artist": "Kanye West, Ant Clemons"
+        },
+        {
+          "title": "Hurricane",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Hurricane.mp3",
+          "artist": "Kanye West, Big Sean, Ty Dolla $ign"
+        },
+        {
+          "title": "Alien (Interlude)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Alien (Interlude).mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "Alien",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Alien.mp3",
+          "artist": "Kanye West, Ant Clemons, Young Thug, Quavo, Kid Cudi"
+        },
+        {
+          "title": "Bye Bye Baby",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Bye Bye Baby.mp3",
+          "artist": "Kanye West, Mykki Blanco"
+        },
+        {
+          "title": "Simulation Baptize",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Simulation Baptize.mp3",
+          "artist": "Kanye West, Pardison Fontaine, A$AP Rocky"
+        },
+        {
+          "title": "Photo",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Photo.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "Color 1",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Color 1.mp3",
+          "artist": "Kanye West, YNW Melly"
+        },
+        {
+          "title": "Me Too",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Me Too.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "City In The Sky",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/City In The Sky.mp3",
+          "artist": "Kanye West, 070 Shake, Desiigner, Jeremih, Kid Cudi, Ty Dolla $ign"
         },
         {
           "title": "Brothers",
           "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Brothers.mp3",
-          "credits": "(feat. Charlie Wilson) (prod. 7 Aurelius, Irv Gotti & Bink!)",
-          "artist": "Kanye West"
-        }
-      ]
-    },
-    {
-      "id": "JiK",
-      "name": "Jesus Is King",
-      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/JiK.avif",
-      "anim": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/anim/JiK.avif",
-      "songs": [
+          "artist": "Kanye West, Charlie Wilson"
+        },
         {
-          "title": "Hurricane",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK/Hurricane.mp3",
-          "credits": "(prod. RONNY J)",
+          "title": "Real Soul",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Real Soul.mp3",
+          "artist": "Kanye West, YNW Melly"
+        },
+        {
+          "title": "Cash To Burn",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Cash To Burn.mp3",
+          "artist": "Kanye West, Ant Clemons"
+        },
+        {
+          "title": "The Garden",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/The Garden.mp3",
+          "artist": "Kanye West, Ty Dolla $ign, Ant Clemons, Teyana Taylor, The-Dream"
+        },
+        {
+          "title": "Last Name",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Last Name.mp3",
+          "artist": "Kanye West, Ant Clemons"
+        },
+        {
+          "title": "All Dreams Real",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/All Dreams Real.mp3",
           "artist": "Kanye West"
         },
         {
-          "title": "LA Monster",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK/LA Monster.mp3",
-          "credits": "(prod. Angel Lopez)",
+          "title": "We Got Love",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/We Got Love.mp3",
+          "artist": "Kanye West, Teyana Taylor, Ms. Lauryn Hill"
+        },
+        {
+          "title": "Nyce Vieux",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Nyce Vieux.mp3",
           "artist": "Kanye West"
         },
         {
-          "title": "Bound 3",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK/Bound 3.mp3",
-          "credits": "(feat. Sunday Service Choir) (prod. Budgie Beats & Sunday Service Choir)",
+          "title": "Law Of Attraction",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Law Of Attraction.mp3",
+          "artist": "Kanye West, Ant Clemons"
+        },
+        {
+          "title": "On God (Yedit)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/On God (Yedit).mp3",
+          "artist": "Kanye West, Dua Lipa"
+        },
+        {
+          "title": "Selah",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Selah.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "Home",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Home.mp3",
+          "artist": "Kanye West, Ant Clemons"
+        },
+        {
+          "title": "Dip",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Dip.mp3",
+          "artist": "Kanye West, Tyga"
+        },
+        {
+          "title": "End Of It",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/End Of It.mp3",
           "artist": "Kanye West"
         }
       ]
@@ -205,66 +392,409 @@
       "anim": null,
       "songs": [
         {
-          "title": "Let The Spirit Go Wild",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/KW_Let_The_Spirit_Go_Wild_-_07.16.20_RJ.mp3",
-          "credits": "(feat. Abstract Mindstate) (prod. FnZ, RONNY J & Styalz Fuego)",
+          "title": "Welcome To My Life",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/Welcome To My Life.mp3",
+          "artist": "Kanye West, Ty Dolla $ign"
+        },
+        {
+          "title": "God's Country",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/God's Country.mp3",
+          "artist": "Kanye West, Travis Scott"
+        },
+        {
+          "title": "Awakening",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/Awakening.mp3",
+          "artist": "Kanye West, Victory"
+        },
+        {
+          "title": "Future Sounds",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/Future Sounds.mp3",
+          "artist": "Kanye West, Travis Scott, Victory"
+        },
+        {
+          "title": "12,000 Acres",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/12,000 Acres.mp3",
           "artist": "Kanye West"
         },
         {
-          "title": "New Body",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/01_New_Body_-_07.10.20_Ye_Edit.mp3",
-          "credits": "(feat. Ty Dolla $ign & Nicki Minaj) (prod. BoogzDaBeast, CuBeatz, Ty Dolla $ign & Kanye West)",
+          "title": "Everything",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/Everything.mp3",
+          "artist": "Kanye West, Jozzy"
+        },
+        {
+          "title": "I Feel Terrific",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/I Feel Terrific.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "Keep My Spirit Alive",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/Keep My Spirit Alive.mp3",
+          "artist": "Kanye West, KayCyy"
+        },
+        {
+          "title": "Skuuurrr",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/Skuuurrr.mp3",
+          "artist": "Kanye West, KayCyy"
+        },
+        {
+          "title": "Praise God",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/Praise God.mp3",
+          "artist": "Kanye West, Travis Scott, KayCyy"
+        },
+        {
+          "title": "Tell The Vision",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/Tell The Vision.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "Off The Grid",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/Off The Grid.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "Lord I Need You",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/Lord I Need You.mp3",
           "artist": "Kanye West"
         },
         {
           "title": "South Florida",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/01 South Florida 81 - 01.24.20 Kaycyy Ref.mp3",
-          "credits": "(ref. KayCyy)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/South Florida.mp3",
+          "artist": "Kanye West, KayCyy"
+        },
+        {
+          "title": "Let The Spirit Go Wild",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/Let The Spirit Go Wild.mp3",
+          "artist": "Kanye West, Abstract Mindstate"
+        },
+        {
+          "title": "Tulsa",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/Tulsa.mp3",
+          "artist": "Kanye West, KayCyy"
+        },
+        {
+          "title": "New Body",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/New Body.mp3",
+          "artist": "Kanye West, Ty Dolla $ign, Nicki Minaj"
+        }
+      ]
+    },
+    {
+      "id": "JiK",
+      "name": "JESUS IS KING",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/JiK.avif",
+      "anim": null,
+      "songs": [
+        {
+          "title": "Hurricane",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK/Hurricane.mp3",
           "artist": "Kanye West"
+        },
+        {
+          "title": "Follow God (Remix)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK/Follow God (Remix).mp3",
+          "artist": "Kanye West, Clipse"
+        },
+        {
+          "title": "LA Monster",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK/LA Monster.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "Bound 3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK/Bound 3.mp3",
+          "artist": "Kanye West, Swizz Beatz"
+        },
+        {
+          "title": "Wake The Dead",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK/Wake The Dead.mp3",
+          "artist": "Kanye West"
+        }
+      ]
+    },
+    {
+      "id": "JiK2",
+      "name": "JESUS IS KING: The Dr. Dre Version",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/JiK2.avif",
+      "anim": null,
+      "songs": [
+        {
+          "title": "Selah (Remix)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK2/Selah (Remix).mp3",
+          "artist": "Kanye West, Dr. Dre, Sunday Service Choir, Marsha Ambrosius"
+        },
+        {
+          "title": "LA Monster",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK2/LA Monster.mp3",
+          "artist": "Kanye West, Dr. Dre, A$AP Ferg"
+        },
+        {
+          "title": "Water (Remix)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK2/Water (Remix).mp3",
+          "artist": "Kanye West, Dr. Dre, Marsha Ambrosius, Ant Clemons"
+        },
+        {
+          "title": "Closed On Sunday (Remix)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK2/Closed On Sunday (Remix).mp3",
+          "artist": "Kanye West, Dr. Dre, Anderson .Paak"
+        },
+        {
+          "title": "On God (Remix)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK2/On God (Remix).mp3",
+          "artist": "Kanye West, Dr. Dre, THURZ"
+        },
+        {
+          "title": "I Need The Lord",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK2/I Need The Lord.mp3",
+          "artist": "Kanye West, Dr. Dre, Sunday Service Choir, Marsha Ambrosius"
+        },
+        {
+          "title": "Hands On (Remix)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK2/Hands On (Remix).mp3",
+          "artist": "Kanye West, Dr. Dre, Travis Scott, The WRLDFMS Tony Williams, Fred Hammond"
+        },
+        {
+          "title": "Everything We Need (Remix)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK2/Everything We Need (Remix).mp3",
+          "artist": "Kanye West, Dr. Dre, Ty Dolla $ign, Ant Clemons"
+        },
+        {
+          "title": "Ashes (Remix)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK2/Ashes (Remix).mp3",
+          "artist": "Kanye West, Dr. Dre, Sunday Service Choir, Marsha Ambrosius"
+        },
+        {
+          "title": "God Is (Remix)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK2/God Is (Remix).mp3",
+          "artist": "Kanye West, Dr. Dre, Sunday Service Choir"
+        },
+        {
+          "title": "Use This Gospel (Remix)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK2/Use This Gospel (Remix).mp3",
+          "artist": "Kanye West, Dr. Dre, Eminem"
+        },
+        {
+          "title": "Glory",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK2/Glory.mp3",
+          "artist": "Kanye West, Dr. Dre, Snoop Dogg, Dem Jointz"
         }
       ]
     },
     {
       "id": "donda",
       "name": "Donda",
-      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/donda_float.avif",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/donda.avif",
       "anim": null,
       "songs": [
         {
-          "title": "See Me Again",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/See Me Again.mp3",
-          "credits": "(feat. Bon Iver, The WRLDFMS Tony Williams, John Legend & Elly Jackson)",
-          "artist": "Kanye West"
+          "title": "Welcome To My Life",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/Welcome To My Life.mp3",
+          "artist": "Kanye West, Ty Dolla $ign"
         },
         {
-          "title": "Star Time",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/IDK_x_Kanye_West_X_Anderson_Paak_X_88-Keys.mp3",
-          "credits": "(feat. IDK & Anderson .Paak) (prod. 88-Keys & MIKE DEAN)",
-          "artist": "Kanye West, 88-Keys"
+          "title": "Nah Nah Nah",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/Nah Nah Nah.mp3",
+          "artist": "Kanye West, DaBaby, 2 Chainz"
         },
         {
-          "title": "24",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/VERT_24 V4 (extra sunday service percussion at end).mp3",
-          "credits": "(ref. Dem Jointz) (feat. KayCyy & Sunday Service Choir) (prod. BoogzDaBeast, FnZ, Dem Jointz, Rico Nichols & Darius Woodley)",
-          "artist": "Kanye West"
+          "title": "Tell The Vision",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/Tell The Vision.mp3",
+          "artist": "Kanye West, 2 Chainz, Conway the Machine, Pop Smoke"
+        },
+        {
+          "title": "Donda",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/Donda.mp3",
+          "artist": "Kanye West, Consequence, Dem Jointz"
+        },
+        {
+          "title": "Eternal Life",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/Eternal Life.mp3",
+          "artist": "Kanye West, Big Sean, Sheck Wes"
         },
         {
           "title": "God's Test",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/01_GODS_TEST_Ye__Toni_164bpm_ST_3.mp3",
-          "credits": "(ref. Dem Jointz) (feat. 2 Chainz & KayCyy) (prod. Dem Jointz)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/God's Test.mp3",
+          "artist": "Kanye West, KayCyy, 2 Chainz"
+        },
+        {
+          "title": "Hold The Line",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/Hold The Line.mp3",
           "artist": "Kanye West"
+        },
+        {
+          "title": "Pray For Me",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/Pray For Me.mp3",
+          "artist": "Kanye West, SAINt JHN"
+        },
+        {
+          "title": "Keep My Spirit Alive",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/Keep My Spirit Alive.mp3",
+          "artist": "Kanye West, KayCyy, Westside Gunn, Conway the Machine"
+        },
+        {
+          "title": "In God's Country",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/In God's Country.mp3",
+          "artist": "Kanye West, Justin Bieber, KayCyy, Common, Todd Rundgren"
+        },
+        {
+          "title": "City Of Lost Angels",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/City Of Lost Angels.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "Bound",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/Bound.mp3",
+          "artist": "Kanye West, Swizz Beatz"
+        },
+        {
+          "title": "All These Friends Of Mine",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/All These Friends Of Mine.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "Crash Landing",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/Crash Landing.mp3",
+          "artist": "Kanye West, Sheck Wes, KayCyy"
+        },
+        {
+          "title": "24",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/24.mp3",
+          "artist": "Kanye West, KayCyy, Sunday Service Choir"
+        },
+        {
+          "title": "Future Sounds",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/Future Sounds.mp3",
+          "artist": "Kanye West, Travis Scott, Harmony"
+        },
+        {
+          "title": "By Your Side",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/By Your Side.mp3",
+          "artist": "Kanye West, Ty Dolla $ign"
         },
         {
           "title": "He Gave It All",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/He Gave It All ojivolta chords v.1.mp3",
-          "credits": "(ref. KayCyy) (feat. Boyz II Men, Wanya & Sunday Service Choir) (prod. Ojivolta)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/He Gave It All.mp3",
+          "artist": "Kanye West, KayCyy, Boyz II Men, Wanya, Sunday Service Choir"
+        },
+        {
+          "title": "Star Time",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/Star Time.mp3",
           "artist": "Kanye West"
         },
         {
-          "title": "God Got Me",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/VERT_God_Got_Me_-_21.05.13_Tracking_Ref.mp3",
-          "credits": "(prod. 88-Keys & Ojivolta)",
+          "title": "See Me Again",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/See Me Again.mp3",
+          "artist": "Kanye West, Bon Iver, The WRLDFMS Tony Williams, John Legend, Elly Jackson"
+        }
+      ]
+    },
+    {
+      "id": "donda2",
+      "name": "DONDA 2",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/donda2.avif",
+      "anim": null,
+      "songs": [
+        {
+          "title": "PABLO",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda2/PABLO.mp3",
+          "artist": "Kanye West, Travis Scott, Future"
+        },
+        {
+          "title": "MR MIYAGI",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda2/MR MIYAGI.mp3",
+          "artist": "Kanye West, Future, Playboi Carti"
+        },
+        {
+          "title": "HAPPY",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda2/HAPPY.mp3",
+          "artist": "Kanye West, Future"
+        },
+        {
+          "title": "WE DID IT",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda2/WE DID IT.mp3",
+          "artist": "Kanye West, Baby Keem, Migos"
+        },
+        {
+          "title": "SELFISH",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda2/SELFISH.mp3",
+          "artist": "Kanye West, XXXTENTACION"
+        },
+        {
+          "title": "Happy Birthday",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda2/Happy Birthday.mp3",
           "artist": "Kanye West"
+        }
+      ]
+    },
+    {
+      "id": "war",
+      "name": "WAR",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/war.avif",
+      "anim": null,
+      "songs": [
+        {
+          "title": "For Once In My Life",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/For Once In My Life.mp3",
+          "artist": "Kanye West, James Blake"
+        },
+        {
+          "title": "Virgil's Funeral",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Virgil's Funeral.mp3",
+          "artist": "Kanye West, James Blake, Vory"
+        },
+        {
+          "title": "Talking",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Talking.mp3",
+          "artist": "Kanye West, James Blake"
+        },
+        {
+          "title": "Hold Up, Get Up",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Hold Up, Get Up.mp3",
+          "artist": "Kanye West, James Blake"
+        },
+        {
+          "title": "Quiet",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Quiet.mp3",
+          "artist": "Kanye West, James Blake"
+        },
+        {
+          "title": "Bobby Digital",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Bobby Digital.mp3",
+          "artist": "Kanye West, James Blake"
+        },
+        {
+          "title": "All In Love",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/All In Love.mp3",
+          "artist": "Kanye West, James Blake"
+        },
+        {
+          "title": "Through The High Wire",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Through The High Wire.mp3",
+          "artist": "Kanye West, James Blake"
+        },
+        {
+          "title": "Let It In",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Let It In.mp3",
+          "artist": "Kanye West, James Blake"
+        },
+        {
+          "title": "Spiky",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Spiky.mp3",
+          "artist": "Kanye West, James Blake"
+        },
+        {
+          "title": "My Way (Yedit)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/My Way (Yedit).mp3",
+          "artist": "Kanye West, James Blake"
+        },
+        {
+          "title": "Showtime (Yedit)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Showtime (Yedit).mp3",
+          "artist": "Kanye West, James Blake"
+        },
+        {
+          "title": "Magic",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Magic.mp3",
+          "artist": "Kanye West, James Blake"
         }
       ]
     },
@@ -275,240 +805,322 @@
       "anim": null,
       "songs": [
         {
-          "title": "Someday We'll All Be Free",
+          "title": "Love Love Love (Yedit)",
           "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yebu/Someday We'll All Be Free.mp3",
-          "credits": "aka 'Censori Overload'. (prod. John Cunningham)",
           "artist": "Kanye West"
         },
         {
-          "title": "Love Love Love",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yebu/Love Love Love.mp3",
-          "credits": "Yedit (prod. John Cunningham)",
+          "title": "Love Love Love (Yedit)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yebu/Love Love Love (Yedit).mp3",
           "artist": "Kanye West"
         },
         {
           "title": "Unlock",
           "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yebu/Unlock.mp3",
-          "credits": "(prod. 88-Keys & Digital Nas)",
           "artist": "Kanye West"
         }
       ]
     },
     {
-      "id": "war",
-      "name": "War",
-      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/war.avif",
-      "anim": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/anim/war.avif",
+      "id": "ksg2",
+      "name": "KIDS SEE GHOSTS 2",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/ksg2.avif",
+      "anim": null,
       "songs": [
         {
-          "title": "For Once In My Life",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/01. FOR ONCE IN MY LIFE.mp3",
-          "credits": "(prod. James Blake & No I.D.)",
-          "artist": "Kanye West, James Blake"
-        },
-        {
-          "title": "What I Would've Said At Virgil's Funeral",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/What I Would've Said At Virgil's Funeral.mp3",
-          "credits": "(prod. James Blake & No I.D.)",
-          "artist": "Kanye West, James Blake"
-        },
-        {
-          "title": "Talking",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Talking.mp3",
-          "credits": "(prod. James Blake, No I.D. & Dom Maker)",
-          "artist": "Kanye West"
-        },
-        {
-          "title": "Hold Up, Get Up",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/04. HOLD UP, GET UP.mp3",
-          "credits": "(prod. James Blake & No I.D.)",
-          "artist": "Kanye West, James Blake"
-        },
-        {
-          "title": "Quiet",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/05. QUIET.mp3",
-          "credits": "(prod. James Blake & No I.D.)",
-          "artist": "Kanye West, James Blake"
-        },
-        {
-          "title": "Bobby Digital",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/06. BOBBY DIGITAL.mp3",
-          "credits": "(prod. James Blake & No I.D.)",
-          "artist": "Kanye West, James Blake"
-        },
-        {
-          "title": "All In Love",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/07. ALL IN LOVE.mp3",
-          "credits": "(prod. James Blake)",
-          "artist": "Kanye West, James Blake"
-        },
-        {
-          "title": "Through The High Wire",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/08. THROUGH THE HIGH WIRE.mp3",
-          "credits": "(prod. James Blake & No I.D.)",
-          "artist": "Kanye West, James Blake"
-        },
-        {
-          "title": "This One Here (Yedit)",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/It's Not Supposed To Be Perfect.mp3",
-          "credits": "(prod. James Blake & No I.D.)",
-          "artist": "Kanye West, James Blake"
-        },
-        {
-          "title": "Precious",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Precious.mp3",
-          "credits": "(prod. James Blake & No I.D.)",
-          "artist": "Kanye West, James Blake"
-        },
-        {
-          "title": "Spiky",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Spiky.mp3",
-          "credits": "(prod. James Blake)",
-          "artist": "Kanye West"
-        },
-        {
-          "title": "530",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/530.mp3",
-          "credits": "(prod. James Blake & No I.D.)",
-          "artist": "Kanye West"
-        },
-        {
-          "title": "My Way",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/My Way.mp3",
-          "credits": "Yedit (feat. Frank Sinatra)",
-          "artist": "Kanye West"
+          "title": "Thank You (Vol. 2)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ksg2/Thank You Vol. 2.mp3",
+          "artist": "Kanye West, Kid Cudi"
         }
       ]
     },
     {
       "id": "vultures1",
-      "name": "Vultures 1",
+      "name": "VULTURES 1",
       "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/vultures1.avif",
       "anim": null,
       "songs": [
         {
-          "title": "Everybody",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures1/Everybody.mp3",
-          "credits": "(feat. Charlie Wilson & Lil Baby) (prod. London on da Track)",
-          "artist": "¥$"
+          "title": "EVERYBODY",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures1/EVERYBODY.mp3",
+          "artist": "Kanye West, Ty Dolla $ign, Charlie Wilson, Lil Baby"
         },
         {
-          "title": "So Called Friends",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures1/So Called Friends.mp3",
-          "credits": "(feat. Freddie Gibbs)",
-          "artist": "¥$"
+          "title": "SO CALLED FRIENDS",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures1/SO CALLED FRIENDS.mp3",
+          "artist": "Kanye West, Ty Dolla $ign"
         }
       ]
     },
     {
       "id": "vultures2",
-      "name": "Vultures 2",
+      "name": "VULTURES 2",
       "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/vultures2.avif",
       "anim": null,
       "songs": [
         {
-          "title": "Pay Per View",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures2/Pay Per View.mp3",
-          "credits": "(ref. Young Moose) (feat. Project Pat) (prod. Nico Baran, Juicy J, DJ Paul & Ojivolta)",
-          "artist": "¥$"
+          "title": "CAN U BE",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures2/CAN U BE.mp3",
+          "artist": "Kanye West, Ty Dolla $ign, Travis Scott"
         },
         {
-          "title": "Melrose",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures2/Melrose.mp3",
-          "credits": "(feat. Playboi Carti) (prod. TheLabCook & Ojivolta)",
-          "artist": "¥$"
+          "title": "CAN U BE (REMIX)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures2/CAN U BE (REMIX).mp3",
+          "artist": "Kanye West, Ty Dolla $ign, Travis Scott, Kirby Lauryen, brolyongod!"
+        },
+        {
+          "title": "TAKE OFF YOUR DRESS",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures2/TAKE OFF YOUR DRESS.mp3",
+          "artist": "Kanye West, Ty Dolla $ign"
+        },
+        {
+          "title": "PAY PER VIEW",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures2/PAY PER VIEW.mp3",
+          "artist": "Kanye West, Young Moose, Project Pat"
+        },
+        {
+          "title": "DRUNK",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures2/DRUNK.mp3",
+          "artist": "Kanye West, Ty Dolla $ign, Bad Bunny, Kodak Black"
+        },
+        {
+          "title": "MELROSE",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures2/MELROSE.mp3",
+          "artist": "Kanye West, Playboi Carti"
+        },
+        {
+          "title": "GUN TO MY HEAD",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures2/GUN TO MY HEAD.mp3",
+          "artist": "Kanye West, Ty Dolla $ign, Kid Cudi"
+        },
+        {
+          "title": "BELIEVER",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures2/BELIEVER.mp3",
+          "artist": "Kanye West, Ty Dolla $ign"
         }
       ]
     },
     {
       "id": "vultures3",
-      "name": "Vultures 3",
+      "name": "VULTURES 3",
       "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/vultures3.avif",
       "anim": null,
       "songs": [
         {
-          "title": "Don't Kill The Party",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures3/Don't Kill The Party.mp3",
-          "credits": "(feat. Tyga) (prod. BNYX®, Ojivolta, BBYKOBE, Matt Spatola, Lasik & 206DEREK)",
-          "artist": "¥$"
-        }
-      ]
-    },
-    {
-      "id": "donda2",
-      "name": "Donda 2",
-      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/donda2.avif",
-      "anim": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/anim/donda2.avif",
-      "songs": [
+          "title": "LOVE AGAIN",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures3/LOVE AGAIN.mp3",
+          "artist": "Kanye West, Ty Dolla $ign"
+        },
         {
-          "title": "Happy Birthday",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda2/Happy Birthday.mp3",
-          "credits": "(prod. Digital Nas)",
-          "artist": "Ye"
+          "title": "NEXT TIME",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures3/NEXT TIME.mp3",
+          "artist": "Kanye West, Ty Dolla $ign, Young Moose"
+        },
+        {
+          "title": "DON'T KILL THE PARTY",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures3/DON'T KILL THE PARTY.mp3",
+          "artist": "Kanye West, Ty Dolla $ign, Quavo, Juicy J"
+        },
+        {
+          "title": "APEROL SPRITZ (Yedit)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures3/APEROL SPRITZ (Yedit).mp3",
+          "artist": "Kanye West, Ty Dolla $ign, Ant Clemons"
+        },
+        {
+          "title": "THIRSTY",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures3/THIRSTY.mp3",
+          "artist": "Kanye West, Ty Dolla $ign, Teezo Touchdown, Cruza"
+        },
+        {
+          "title": "WORSHIP",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures3/WORSHIP.mp3",
+          "artist": "Kanye West, Ty Dolla $ign, Chloe Bailey"
+        },
+        {
+          "title": "FEAR",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures3/FEAR.mp3",
+          "artist": "Kanye West, Ty Dolla $ign"
+        },
+        {
+          "title": "LET GO",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures3/LET GO.mp3",
+          "artist": "Kanye West, Ty Dolla $ign"
         }
       ]
     },
     {
       "id": "bully",
-      "name": "Bully",
+      "name": "BULLY",
       "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/bully.avif",
       "anim": null,
       "songs": [
         {
-          "title": "Dark Matter (Instrumental)",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/Dark Matter - Diskrypt.mp3",
-          "credits": "(Yedit by Diskrypt)",
-          "artist": "Ye"
+          "title": "PREACHER MAN",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/PREACHER MAN.mp3",
+          "artist": "Kanye West"
         },
         {
-          "title": "Bulletproof",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/Bulletproof.mp3",
-          "credits": "(feat. Kodak Black) (prod. DrZeus, Rvei, The Legendary Traxster & OLYEVNS)",
-          "artist": "Ye, Kodak Black"
+          "title": "BEAUTY AND THE BEAST",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/BEAUTY AND THE BEAST.mp3",
+          "artist": "Kanye West"
         },
         {
-          "title": "Mission Control",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/Mission Control.mp3",
-          "credits": "(feat. The WRLDFMS Tony Williams)",
-          "artist": "Ye"
+          "title": "DAMN",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/DAMN.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "LAST BREATH",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/LAST BREATH.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "LOSING YOUR MIND",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/LOSING YOUR MIND.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "HIGHS AND LOWS",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/HIGHS AND LOWS.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "WHITE LINES",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/WHITE LINES.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "BULLY",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/BULLY.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "CIRCLES",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/CIRCLES.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "PEOPLE LIKE ME",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/PEOPLE LIKE ME.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "CAN'T HURRY LOVE",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/CAN'T HURRY LOVE.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "THIS ONE HERE",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/THIS ONE HERE.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "MISSION CONTROL",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/MISSION CONTROL.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "DARK MATTER (Yedit, Instrumental)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/DARK MATTER (Yedit, Instrumental).mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "ALPHA OMEGA",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/ALPHA OMEGA.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "RED EYE (Yedit)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/RED EYE (Yedit).mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "MELROSE",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/MELROSE.mp3",
+          "artist": "Kanye West"
         }
       ]
     },
     {
-      "id": "iapw",
-      "name": "In a Perfect World",
-      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/iapw.avif",
+      "id": "cukkk",
+      "name": "CUKKK",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/cukkk.avif",
       "anim": null,
       "songs": [
         {
-          "title": "Bianca",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/iapw/Bianca.mp3",
-          "credits": "(ref. Dave Blunts)",
-          "artist": "Ye"
-        },
-        {
           "title": "WW3",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/iapw/WW3.mp3",
-          "credits": "(prod. 1SRAEL, Quadwoofer, Sheffmade, Theevoni, G06 Beatz & FVBII)",
-          "artist": "Ye"
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/WW3.mp3",
+          "artist": "Kanye West"
         },
         {
-          "title": "Thousand Miles",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/iapw/Thousand Miles.mp3",
-          "credits": "Ty Dolla $ign (prod. Peter Lee Johnson)",
-          "artist": "Ty Dolla $ign"
+          "title": "COSBY",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/COSBY.mp3",
+          "artist": "Kanye West"
         },
         {
-          "title": "Cosby",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/iapw/Cosby.mp3",
-          "credits": "(prod. Quadwoofer & Sheffmade)",
-          "artist": "Ye"
+          "title": "DIDDY FREE",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/DIDDY FREE.mp3",
+          "artist": "Kanye West"
         },
         {
-          "title": "Cousins",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/iapw/Cousins.mp3",
-          "credits": "(ref. Dave Blunts) (prod. Kanye West, Digital Nas & Chuki Beats)",
-          "artist": "Ye"
+          "title": "DIRTY MAGAZINES",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/DIRTY MAGAZINES.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "JESUS",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/JESUS.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "BIANCA",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/BIANCA.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "COUSINS",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/COUSINS.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "VIRGIL",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/VIRGIL.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "UNCLE",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/UNCLE.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "FREE MY KIDS",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/FREE MY KIDS.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "HEIL HITLER",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/HEIL HITLER.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "GAS CHAMBERS",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/GAS CHAMBERS.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "HITLER YE JESUS",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/HITLER YE JESUS.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "JARED",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/JARED.mp3",
+          "artist": "Kanye West"
+        },
+        {
+          "title": "NITROUS",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/NITROUS.mp3",
+          "artist": "Kanye West"
         }
       ]
     },
@@ -519,46 +1131,39 @@
       "anim": null,
       "songs": [
         {
-          "title": "Shine The Darkest",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ye-i/01 SHINE THE DARKEST.m4a",
-          "credits": "(prod. Gabe Shaddow & damn james!)",
-          "artist": "Gabe Shaddow & damn james!"
+          "title": "SHINE THE DARKEST",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ye-i/SHINE THE DARKEST.m4a",
+          "artist": "damn james!, Gabe Shaddow"
         },
         {
-          "title": "Crowd Pleaser",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ye-i/02 CROWD PLEASER.m4a",
-          "credits": "(prod. Gabe Shaddow & damn james!)",
-          "artist": "Gabe Shaddow & damn james!"
+          "title": "CROWD PLEASER",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ye-i/CROWD PLEASER.m4a",
+          "artist": "damn james!, Gabe Shaddow"
         },
         {
-          "title": "Mind Gone",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ye-i/03 MIND GONE.m4a",
-          "credits": "(prod. Gabe Shaddow & damn james!)",
-          "artist": "Gabe Shaddow & damn james!"
+          "title": "MIND GONE",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ye-i/MIND GONE.m4a",
+          "artist": "damn james!, Gabe Shaddow"
         },
         {
-          "title": "Scary",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ye-i/04 SCARY.m4a",
-          "credits": "(prod. Gabe Shaddow & damn james!)",
-          "artist": "Gabe Shaddow & damn james!"
+          "title": "SCARY",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ye-i/SCARY.m4a",
+          "artist": "damn james!, Gabe Shaddow"
         },
         {
-          "title": "The Awakening (im not crazy)",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ye-i/05 THE AWAKENING (im not crazy).m4a",
-          "credits": "(prod. Gabe Shaddow & damn james!)",
-          "artist": "Gabe Shaddow & damn james!"
+          "title": "THE AWAKENING (im not crazy)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ye-i/THE AWAKENING (im not crazy).m4a",
+          "artist": "damn james!, Gabe Shaddow"
         },
         {
-          "title": "Fendi Rocka",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ye-i/06 FENDI ROCKA.m4a",
-          "credits": "(prod. Gabe Shaddow & damn james!)",
-          "artist": "Gabe Shaddow & damn james!"
+          "title": "FENDI ROCKA",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ye-i/FENDI ROCKA.m4a",
+          "artist": "damn james!, Gabe Shaddow"
         },
         {
-          "title": "City In The Sky (VZ Version)",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ye-i/07 CITY IN THE SKY (VZ VERSION).m4a",
-          "credits": "(prod. Gabe Shaddow & damn james!)",
-          "artist": "Gabe Shaddow & damn james!"
+          "title": "CITY IN THE SKY (VZ VERSION)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ye-i/CITY IN THE SKY (VZ VERSION).m4a",
+          "artist": "damn james!, Gabe Shaddow"
         }
       ]
     }

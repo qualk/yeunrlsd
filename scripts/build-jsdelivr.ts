@@ -6,7 +6,6 @@ const CDN_URL = "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public"
 interface Song {
   title: string
   file: string
-  credits?: string
   artist?: string
 }
 
@@ -16,7 +15,7 @@ interface Album {
   image: string | null
   anim: string | null
   songs?: Song[]
-}
+} 
 
 interface DataFile {
   version?: string
@@ -44,8 +43,7 @@ async function buildJsDelivrFile(): Promise<void> {
           ? album.songs.map((song) => ({
               title: song.title,
               file: transformPath(song.file),
-              credits: song.credits,
-              artist: song.artist,
+              artist: (song as any).artist ?? (song as any).credits ?? undefined,
             }))
           : undefined,
       })),

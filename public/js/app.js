@@ -366,7 +366,7 @@ async function renderAlbumDetail(album) {
       <div class="song-main" data-song-title="${song.title}" data-song-file="${songUrl}">
         <div class="song-left">
           <span class="song-title">${song.title}</span>
-          ${song.credits ? `<span class="song-credits">${song.credits}</span>` : ""}
+          ${song.artist ? `<span class="song-artist">${song.artist}</span>` : ""} 
         </div>
       </div>
       <a href="${songUrl}" class="song-download" download="${filename}" aria-label="Download">↓</a>

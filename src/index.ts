@@ -3,7 +3,8 @@ import { join } from "node:path"
 interface Song {
   title: string
   file: string
-  credits: string | null
+  artist?: string | null
+  year?: number | null
 }
 
 interface Album {
@@ -12,7 +13,7 @@ interface Album {
   image: string | null
   anim: string | null
   songs: Song[]
-}
+} 
 
 interface MusicData {
   version?: string

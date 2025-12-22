@@ -16,7 +16,9 @@
     "@types/bun": "latest",
     "typescript": "^5"
   },
-  "dependencies": {},
+  "dependencies": {
+    "music-metadata": "^11.10.3"
+  },
   "devEngines": {
     "runtime": {
       "name": "bun",
