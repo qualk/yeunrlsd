@@ -44,6 +44,8 @@ const Modal = {
     document.querySelectorAll(".modal-overlay").forEach((overlay) => {
       overlay.addEventListener("click", (e) => {
         if (e.target === overlay) {
+          // If the modal is forced (data-force="true"), do not allow overlay click to close it
+          if (overlay.dataset && overlay.dataset.force === "true") return
           this.close(overlay.id)
         }
       })
@@ -54,6 +56,8 @@ const Modal = {
       if (e.key === "Escape") {
         const activeModal = document.querySelector(".modal-overlay.active")
         if (activeModal) {
+          // Respect forced modals which should not close via Escape
+          if (activeModal.dataset && activeModal.dataset.force === "true") return
           this.close(activeModal.id)
         }
       }

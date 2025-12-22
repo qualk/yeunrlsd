@@ -11,6 +11,14 @@ const STORES = {
 }
 
 let db = null
+// Cache for object URLs created from blobs to avoid creating many URLs and leaking memory
+const blobUrlCache = new Map()
+// Standardized metadata keys
+const METADATA_KEYS = {
+  FULL_DONE: "full_download_complete",
+  TOTAL_SIZE: "total_downloaded_size",
+  APP_VERSION: "app_version",
+}
 
 /**
  * Initialize the database
@@ -57,6 +65,13 @@ async function saveFile(url, blob) {
   return new Promise((resolve, reject) => {
     const transaction = database.transaction([STORES.FILES], "readwrite")
     const store = transaction.objectStore(STORES.FILES)
+    // If we already created an object URL for this url, revoke it since content will change
+    if (blobUrlCache.has(url)) {
+      try {
+        URL.revokeObjectURL(blobUrlCache.get(url))
+      } catch (_e) {}
+      blobUrlCache.delete(url)
+    }
     const request = store.put(blob, url)
 
     request.onsuccess = () => resolve()
@@ -147,12 +162,77 @@ async function getFileUrl(url) {
   try {
     const blob = await getFile(url)
     if (blob) {
-      return URL.createObjectURL(blob)
+      console.log(`🎵 Cache hit: ${url}`)
+      if (blobUrlCache.has(url)) return blobUrlCache.get(url)
+      const objectUrl = URL.createObjectURL(blob)
+      blobUrlCache.set(url, objectUrl)
+      return objectUrl
+    } else {
+      console.log(`🌐 Cache miss: ${url}`)
     }
   } catch (e) {
     console.error("Error getting file from DB:", e)
   }
   return url
+}
+
+/**
+ * Revoke a previously created object URL for a cached file
+ */
+function revokeFileUrl(url) {
+  const obj = blobUrlCache.get(url)
+  if (obj) {
+    try {
+      URL.revokeObjectURL(obj)
+    } catch (_e) {
+      /* ignore */
+    }
+    blobUrlCache.delete(url)
+  }
+}
+
+/**
+ * Revoke all cached object URLs (useful when clearing DB)
+ */
+function revokeAllFileUrls() {
+  for (const obj of blobUrlCache.values()) {
+    try {
+      URL.revokeObjectURL(obj)
+    } catch (_e) {
+      /* ignore */
+    }
+  }
+  blobUrlCache.clear()
+}
+
+/**
+ * Compute total downloaded size by iterating files store and summing blob sizes.
+ * Saves the result to metadata key 'total_downloaded_size'.
+ */
+async function computeTotalDownloadedSize() {
+  const database = await initDB()
+  return new Promise((resolve, reject) => {
+    try {
+      const tx = database.transaction([STORES.FILES], "readonly")
+      const store = tx.objectStore(STORES.FILES)
+      const req = store.openCursor()
+      let total = 0
+      req.onsuccess = (event) => {
+        const cursor = event.target.result
+        if (cursor) {
+          const blob = cursor.value
+          if (blob && typeof blob.size === "number") total += blob.size
+          cursor.continue()
+        } else {
+          // done
+          setMetadata(METADATA_KEYS.TOTAL_SIZE, total).then(() => resolve(total))
+        }
+      }
+      req.onerror = (e) => reject(e)
+    } catch (e) {
+      reject(e)
+    }
+  })
 }
 
 /**
@@ -184,3 +264,9 @@ window.db = {
   getMetadata,
   cacheFileInBackground,
 }
+
+// Expose helper functions for managing object URLs and computing sizes
+window.db.revokeFileUrl = revokeFileUrl
+window.db.revokeAllFileUrls = revokeAllFileUrls
+window.db.computeTotalDownloadedSize = computeTotalDownloadedSize
+window.db.METADATA_KEYS = METADATA_KEYS

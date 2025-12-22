@@ -66,7 +66,12 @@
     flex: 1;
   }
 
+  .player-expand-btn {
+    display: none;
+  }
+
   .player-songs-list {
+    display: block;
     font-size: 13px;
     padding: 12px 0;
   }

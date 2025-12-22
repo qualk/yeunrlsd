@@ -4,8 +4,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "bun run --hot src/index.ts",
-    "build": "bun run ./scripts/build-jsdelivr.ts",
+    "dev": "bun --hot run src/index.ts",
+    "build-data": "bun run ./scripts/build-jsdelivr.ts",
     "start": "bun run src/index.ts",
     "lint": "biome lint --write .",
     "format": "biome format --write .",

@@ -54,6 +54,14 @@
   font-weight: 600;
 }
 
+/* Small muted version text used in modal headers */
+.modal-version {
+  font-size: 0.85em;
+  margin-left: 8px;
+  opacity: 0.6;
+  font-weight: 400;
+}
+
 .modal-close-btn {
   background: none;
   border: none;
@@ -78,7 +86,8 @@
 /* Only blur non-modal children so modals remain sharp even when they are inside the container */
 body.modal-open .app-container > :not(.modal-overlay) {
   filter: blur(4px);
-  pointer-events: none; /* avoid interacting with background while modal open */
+  pointer-events: none;
+  /* avoid interacting with background while modal open */
 }
 
 /* Ensure modal overlays remain interactive */
@@ -116,5 +125,6 @@ body.modal-open .app-container > :not(.modal-overlay) {
 }
 
 .modal-footer .reset-btn {
-  order: -1; /* Push to left */
+  order: -1;
+  /* Push to left */
 }

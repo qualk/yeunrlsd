@@ -27,10 +27,13 @@ const elements = {
 async function init() {
   // Load albums from API
   try {
-    const response = await fetch("/api/albums")
-    const data = await response.json()
+    const data = window.api
+      ? await window.api.getAlbumList()
+      : await (await fetch("/api/albums")).json()
     albums = data.albums
     const serverVersion = data.version
+    // Expose server version to other modules
+    window.serverVersion = serverVersion
 
     // Expose state to window for cross-script access
     window.albums = albums
@@ -45,6 +48,12 @@ async function init() {
 
     // Initialize download manager
     if (window.initDownloadManager) window.initDownloadManager()
+
+    // Populate About and Download version displays (if present)
+    const aboutVerEl = document.getElementById("about-version")
+    const downloadVerEl = document.getElementById("download-version")
+    if (aboutVerEl) aboutVerEl.innerText = serverVersion || "-"
+    if (downloadVerEl) downloadVerEl.innerText = serverVersion || "-"
 
     // Check for updates
     checkUpdates(serverVersion)
@@ -94,23 +103,58 @@ async function init() {
 async function checkUpdates(serverVersion) {
   if (!window.db) return
 
-  const localVersion = await window.db.getMetadata("app_version")
-  const isDownloaded = await window.db.getMetadata("full_download_complete")
+  const localVersion = await window.db.getMetadata(window.db.METADATA_KEYS.APP_VERSION)
+  const isDownloaded = await window.db.getMetadata(window.db.METADATA_KEYS.FULL_DONE)
 
   if (localVersion && serverVersion !== localVersion && isDownloaded) {
-    // Notify user of update
-    const updateConfirmed = confirm(
-      "A new update is available. Would you like to sync your offline library?"
-    )
-    if (updateConfirmed) {
-      if (window.startFullDownload) {
-        window.startFullDownload()
-      }
+    // Open forced update modal and display versions
+    const serverEl = document.getElementById("server-version")
+    const localEl = document.getElementById("local-version")
+    if (serverEl) serverEl.innerText = serverVersion || "-"
+    if (localEl) localEl.innerText = localVersion || "-"
+
+    // Update header badge: "local ➜ server"
+    const headerBadge = document.getElementById("update-version")
+    if (headerBadge) headerBadge.innerText = `${localVersion || "-"} ➜ ${serverVersion || "-"}`
+
+    window.Modal.open("update-modal")
+
+    // Wire update button (guard to avoid duplicate handlers)
+    const btn = document.getElementById("update-now-btn")
+    if (btn && !btn.dataset.bound) {
+      btn.addEventListener("click", async () => {
+        try {
+          btn.disabled = true
+          // Close the update modal immediately so the download modal is visible
+          window.Modal.close("update-modal")
+          // Open the download modal UI and start the full download
+          window.Modal.open("download-modal")
+          if (window.startFullDownload) await window.startFullDownload()
+
+          // After successful download, update stored app version
+          try {
+            await window.db.setMetadata(window.db.METADATA_KEYS.APP_VERSION, serverVersion)
+          } catch (_e) {
+            // ignore
+          }
+        } finally {
+          btn.disabled = false
+          // Close the forced update modal (programmatic close allowed)
+          window.Modal.close("update-modal")
+        }
+      })
+      btn.dataset.bound = "true"
     }
   }
 
-  // Update local version
-  await window.db.setMetadata("app_version", serverVersion)
+  // If we have no recorded localVersion, set it to serverVersion (first-run sync marker)
+  if (!localVersion) {
+    try {
+      await window.db.setMetadata(window.db.METADATA_KEYS.APP_VERSION, serverVersion)
+    } catch (_e) {
+      // ignore
+    }
+  }
 }
 
 /**
@@ -276,13 +320,16 @@ function renderAlbumGrid() {
  */
 async function showAlbumDetail(albumId) {
   try {
-    const response = await fetch(`/api/albums/${albumId}`)
-    if (!response.ok) {
+    const album = window.api
+      ? await window.api.getAlbumData(albumId)
+      : await (async () => {
+          const res = await fetch(`/api/albums/${albumId}`)
+          return res.ok ? res.json() : null
+        })()
+    if (!album) {
       console.error("Album not found")
       return
     }
-
-    const album = await response.json()
     currentAlbum = album
     window.currentAlbum = album
     _currentPlaylist = album.songs || []
@@ -292,7 +339,7 @@ async function showAlbumDetail(albumId) {
     window.history.pushState({ albumId }, album.name, `/album/${albumId}`)
 
     // Render detail view
-    renderAlbumDetail(album)
+    await renderAlbumDetail(album)
 
     // Switch views
     elements.gridView.classList.add("hidden")
@@ -309,22 +356,24 @@ async function showAlbumDetail(albumId) {
 /**
  * Render album detail
  */
-function renderAlbumDetail(album) {
-  const songsHtml = album.songs
-    .map(
-      (song, index) => `
+async function renderAlbumDetail(album) {
+  const songsHtml = await Promise.all(
+    album.songs.map(async (song, index) => {
+      const songUrl = await window.db.getFileUrl(song.file)
+      const filename = song.file.split("/").pop()
+      return `
     <li class="song-row" data-song-index="${index}">
-      <div class="song-main" data-song-title="${song.title}" data-song-file="${song.file}">
+      <div class="song-main" data-song-title="${song.title}" data-song-file="${songUrl}">
         <div class="song-left">
           <span class="song-title">${song.title}</span>
           ${song.credits ? `<span class="song-credits">${song.credits}</span>` : ""}
         </div>
       </div>
-      <a href="${song.file}" class="song-download" download aria-label="Download">↓</a>
+      <a href="${songUrl}" class="song-download" download="${filename}" aria-label="Download">↓</a>
     </li>
   `
-    )
-    .join("")
+    })
+  ).then((results) => results.join(""))
 
   elements.albumDetail.innerHTML = `
       <div class="album-cover-section">
@@ -368,6 +417,8 @@ function renderAlbumDetail(album) {
  * Play a song
  */
 async function playSong(song, album) {
+  console.log(`🎶 Playing: ${song.title} from ${album.name}`)
+
   currentPlayingAlbum = album
   window.currentPlayingAlbum = album
   _currentPlaylist = album.songs || []
@@ -386,30 +437,27 @@ async function playSong(song, album) {
   const animSrc = album.anim
   const targetArt = animSrc || imageSrc
 
-  // Try to get from DB first
-  const artUrl = await window.db.getFileUrl(targetArt)
+  // Try to get song URL from DB (audio may be cached)
   const songUrl = await window.db.getFileUrl(song.file)
 
-  // Preload both images
-  const img = new Image()
-  img.onload = () => {
+  // Set player art via centralized helper that prefers cached files and preloads
+  if (window.media?.setImageFromPath) {
+    window.media.setImageFromPath(playerArt, targetArt).catch((err) => {
+      console.warn("media: failed to set player art", targetArt, err)
+      playerArt.src = "/icons/placeholder.avif"
+    })
+  } else {
+    // Fallback: immediate set
     playerArt.src = artUrl
+    playerArt.dataset.src = targetArt
   }
-  img.onerror = () => {
-    playerArt.src = "/icons/placeholder.avif"
-  }
-  img.src = artUrl
 
   player.src = songUrl
   player.play()
 
-  // Cache in background if it was a network URL
-  if (songUrl === song.file) {
-    window.db.cacheFileInBackground(song.file)
-  }
-  if (artUrl === targetArt) {
-    window.db.cacheFileInBackground(targetArt)
-  }
+  // Cache in background (db method is idempotent and will skip if already cached)
+  window.db.cacheFileInBackground(song.file)
+  if (targetArt) window.db.cacheFileInBackground(targetArt)
 }
 
 /**
@@ -426,8 +474,12 @@ async function playRandomSong() {
   const randomAlbumInfo = eligibleAlbums[Math.floor(Math.random() * eligibleAlbums.length)]
 
   try {
-    const response = await fetch(`/api/albums/${randomAlbumInfo.id}`)
-    const album = await response.json()
+    const album = window.api
+      ? await window.api.getAlbumData(randomAlbumInfo.id)
+      : await (async () => {
+          const response = await fetch(`/api/albums/${randomAlbumInfo.id}`)
+          return response.ok ? response.json() : null
+        })()
 
     if (album.songs && album.songs.length > 0) {
       const randomSong = album.songs[Math.floor(Math.random() * album.songs.length)]

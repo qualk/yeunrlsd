@@ -28,16 +28,17 @@ function initDownloadManager() {
   downloadElements.doneBtn = document.getElementById("download-done-btn")
   downloadElements.resetBtn = document.getElementById("download-reset-btn")
 
-  downloadElements.downloadBtn?.addEventListener("click", () => {
+  downloadElements.downloadBtn?.addEventListener("click", async () => {
+    // Ensure modal shows server version
+    const downloadVerEl = document.getElementById("download-version")
+    if (downloadVerEl) downloadVerEl.innerText = window.serverVersion || "-"
     window.Modal.open("download-modal")
-    const complete = downloadElements.downloadBtn.classList.contains("downloaded")
+    const complete = await window.db.getMetadata(window.db.METADATA_KEYS.FULL_DONE)
     if (!isDownloading) {
       if (!complete) {
         startFullDownload()
       } else {
-        // Show done state for already-completed download
-        downloadElements.doneBtn?.classList.remove("hidden")
-        downloadElements.resetBtn?.classList.remove("hidden")
+        showCompletedDownloadView()
       }
     }
   })
@@ -135,24 +136,38 @@ async function startFullDownload() {
 
     albumUrls[albumSummary.id] = urls
 
-    // Get size for each file via HEAD request
+    // (sizes will be fetched in batch later) -- continue building albumUrls
     for (const url of urls) {
-      if (fileMap[url]) continue // Already fetched
+      // ensure entry exists so later loop is simpler
+      if (!fileMap[url]) fileMap[url] = 0
+    }
+  }
 
-      try {
-        const res = await fetch(url, { method: "HEAD" })
-        // jsDelivr might not return content-length on HEAD, or might have CORS issues
-        const size = parseInt(res.headers.get("content-length") || "0", 10)
-        fileMap[url] = Math.max(size, 0)
-        
-        // If size is 0, try a small GET range request or just assume a default size for progress
-        if (fileMap[url] === 0) {
-          fileMap[url] = url.endsWith(".mp3") || url.endsWith(".m4a") ? 5000000 : 200000 // 5MB for audio, 200KB for images
-        }
-        
-        totalExpectedBytes += fileMap[url]
-      } catch (_e) {
-        // Fallback: assume default sizes
+  // Parallelize size HEAD checks for all unique URLs to speed up preflight
+  const uniqueUrls = Object.keys(fileMap)
+  const headResults = await Promise.allSettled(
+    uniqueUrls.map((url) =>
+      fetch(url, { method: "HEAD" })
+        .then((res) => ({ url, size: parseInt(res.headers.get("content-length") || "0", 10) }))
+        .catch(() => ({ url, size: 0 }))
+    )
+  )
+  for (const r of headResults) {
+    if (r.status === "fulfilled") {
+      const { url, size } = r.value
+      const finalSize = Math.max(0, size || 0)
+      fileMap[url] =
+        finalSize === 0
+          ? url.endsWith(".mp3") || url.endsWith(".m4a")
+            ? 5000000
+            : 200000
+          : finalSize
+      totalExpectedBytes += fileMap[url]
+    } else {
+      // Best-effort default
+      const errUrl = r.reason?.url || null
+      const url = errUrl || r.value?.url || null
+      if (url) {
         fileMap[url] = url.endsWith(".mp3") || url.endsWith(".m4a") ? 5000000 : 200000
         totalExpectedBytes += fileMap[url]
       }
@@ -167,18 +182,7 @@ async function startFullDownload() {
   // Create album rows and progress trackers
   const albumProgressElements = {}
   albums.forEach((album) => {
-    const row = document.createElement("div")
-    row.className = "download-album-row"
-    row.id = `download-row-${album.id}`
-    row.innerHTML = `
-      <img src="${album.image || "/icons/placeholder.avif"}" class="download-album-art" alt="${album.name}">
-      <div class="download-album-info">
-        <div class="download-album-name">${album.name}</div>
-        <div class="album-progress-bar-container">
-          <div id="progress-${album.id}" class="progress-bar-fill" style="width: 0%"></div>
-        </div>
-      </div>
-    `
+    const row = createAlbumRow(album)
     downloadElements.albumList.appendChild(row)
 
     albumProgressElements[album.id] = {
@@ -211,10 +215,13 @@ async function startFullDownload() {
 
     let album = albumSummary
     try {
-      const res = await fetch(`/api/albums/${albumSummary.id}`)
-      if (res.ok) {
-        album = await res.json()
-      }
+      const fetched = window.api
+        ? await window.api.getAlbumData(albumSummary.id)
+        : await (async () => {
+            const res = await fetch(`/api/albums/${albumSummary.id}`)
+            return res.ok ? res.json() : null
+          })()
+      if (fetched) album = fetched
     } catch (_e) {
       // Use previously fetched data
     }
@@ -244,7 +251,8 @@ async function startFullDownload() {
   isDownloading = false
   downloadElements.doneBtn?.classList.remove("hidden")
   document.getElementById("download-modal")?.classList.add("download-complete")
-  await window.db.setMetadata("full_download_complete", true)
+  await window.db.setMetadata(window.db.METADATA_KEYS.FULL_DONE, true)
+  await window.db.setMetadata(window.db.METADATA_KEYS.TOTAL_SIZE, totalDownloadedBytes)
   checkDownloadStatus()
 }
 
@@ -310,15 +318,65 @@ function updateProgress(progress, sizeBytes) {
  * Check if everything is downloaded and update button UI
  */
 async function checkDownloadStatus() {
-  const complete = await window.db.getMetadata("full_download_complete")
+  const complete = await window.db.getMetadata(window.db.METADATA_KEYS.FULL_DONE)
   if (complete) {
-    downloadElements.downloadBtn?.classList.add("downloaded")
+    await showCompletedDownloadView()
   }
 }
 
 /**
- * Reset all downloads by clearing IndexedDB and metadata
+ * Create an album row element for the download list
  */
+function createAlbumRow(album) {
+  const row = document.createElement("div")
+  row.className = "download-album-row"
+  row.id = `download-row-${album.id}`
+  row.innerHTML = `
+    <img src="${album.image || "/icons/placeholder.avif"}" class="download-album-art" alt="${album.name}">
+    <div class="download-album-info">
+      <div class="download-album-name">${album.name}</div>
+      <div class="album-progress-bar-container">
+        <div id="progress-${album.id}" class="progress-bar-fill" style="width: 0%"></div>
+      </div>
+    </div>
+  `
+  return row
+}
+/**
+ * Render the completed-download UI and populate album rows at 100%
+ */
+async function showCompletedDownloadView() {
+  downloadElements.downloadBtn?.classList.add("downloaded")
+  // Show completed UI (populate albums, set progress to 100%)
+  downloadElements.albumList.innerHTML = ""
+  window.albums.forEach((album) => {
+    const row = createAlbumRow(album)
+    const progressBar = row.querySelector(`#progress-${album.id}`)
+    if (progressBar) progressBar.style.width = "100%"
+    row.classList.add("completed")
+    downloadElements.albumList.appendChild(row)
+  })
+  if (downloadElements.overallProgress) downloadElements.overallProgress.style.width = "100%"
+  if (downloadElements.overallProgressText) downloadElements.overallProgressText.innerText = "100%"
+
+  // Ensure we have total size metadata; compute if missing
+  let totalSize = await window.db.getMetadata(window.db.METADATA_KEYS.TOTAL_SIZE)
+  if (!totalSize && window.db && window.db.computeTotalDownloadedSize) {
+    try {
+      totalSize = await window.db.computeTotalDownloadedSize()
+    } catch (e) {
+      console.warn("Failed to compute total downloaded size:", e)
+    }
+  }
+  if (totalSize && downloadElements.totalSize) {
+    downloadElements.totalSize.innerText = `${(totalSize / (1024 * 1024)).toFixed(1)} MB`
+  }
+
+  // Show controls
+  downloadElements.doneBtn?.classList.remove("hidden")
+  downloadElements.resetBtn?.classList.remove("hidden")
+  document.getElementById("download-modal")?.classList.add("download-complete")
+}
 async function resetDownloads() {
   if (
     !confirm("Are you sure you want to reset all downloads? This will clear all offline files.")
@@ -337,6 +395,16 @@ async function resetDownloads() {
     const metadataTx = database.transaction(["metadata"], "readwrite")
     const metadataStore = metadataTx.objectStore("metadata")
     metadataStore.clear()
+    // Revoke any object URLs held in memory and reset related metadata
+    if (window.db?.revokeAllFileUrls) {
+      window.db.revokeAllFileUrls()
+    }
+    try {
+      await window.db.setMetadata(window.db.METADATA_KEYS.FULL_DONE, false)
+      await window.db.setMetadata(window.db.METADATA_KEYS.TOTAL_SIZE, 0)
+    } catch (_e) {
+      // ignore metadata set errors
+    }
   } catch (e) {
     console.error("Failed to clear IndexedDB:", e)
     alert("Failed to reset downloads. Please try again.")

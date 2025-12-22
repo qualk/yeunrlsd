@@ -1,4 +1,3 @@
-import { readFileSync } from "node:fs"
 import { join } from "node:path"
 
 interface Song {
@@ -25,9 +24,17 @@ interface MusicData {
 const isProduction = Bun.env.NODE_ENV === "production" || Bun.env.BUN_ENV === "production"
 const dataFile = isProduction ? "data-jsdelivr.json" : "data.json"
 const dataPath = join(import.meta.dir, `../${dataFile}`)
-const musicData: MusicData = JSON.parse(readFileSync(dataPath, "utf-8"))
+const file = Bun.file(dataPath)
+const musicData: MusicData = JSON.parse(await file.text())
 
 const publicDir = join(import.meta.dir, "../public")
+
+// Warn in server console when Last.fm credentials are not configured
+if (!Bun.env.LASTFM_API_KEY || !Bun.env.LASTFM_API_SECRET) {
+  console.warn(
+    "⚠️  Last.fm credentials are not configured. Last.fm features (scrobbling) will be disabled. Set LASTFM_API_KEY and LASTFM_API_SECRET to enable."
+  )
+}
 
 // MIME type map for static files
 const MIME_TYPES: Record<string, string> = {
@@ -126,20 +133,29 @@ async function handleStaticFile(filePath: string): Promise<Response> {
       })
     }
 
-    // 404 handling
-    if (filePath.startsWith("/") && !filePath.includes(".")) {
-      const notFoundFile = Bun.file(join(publicDir, "404.html"))
-      return new Response(notFoundFile, {
-        status: 404,
+    // SPA routing: serve index.html for home and album pages
+    if (filePath === "/" || filePath.startsWith("/album/")) {
+      const indexFile = Bun.file(join(publicDir, "index.html"))
+      return new Response(indexFile, {
         headers: { "Content-Type": "text/html; charset=utf-8" },
       })
     }
 
-    // Fall back to index.html for other cases (SPA routing)
-    const indexFile = Bun.file(join(publicDir, "index.html"))
-    return new Response(indexFile, {
-      headers: { "Content-Type": "text/html; charset=utf-8" },
-    })
+    // For other non-file paths, serve 404.html
+    if (!filePath.includes(".")) {
+      const notFoundFile = Bun.file(join(publicDir, "404.html"))
+      if (await notFoundFile.exists()) {
+        return new Response(notFoundFile, {
+          headers: { "Content-Type": "text/html; charset=utf-8" },
+          status: 404,
+        })
+      } else {
+        return new Response("Not found", { status: 404 })
+      }
+    }
+
+    // 404 handling for actual file requests that don't exist
+    return new Response("Not found", { status: 404 })
   } catch (error) {
     console.error("Error serving file:", error)
     return new Response("Not found", { status: 404 })

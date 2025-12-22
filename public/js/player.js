@@ -4,26 +4,24 @@ const playPauseBtn = document.getElementById("play-pause-btn")
 const prevBtn = document.getElementById("prev-btn")
 const nextBtn = document.getElementById("next-btn")
 const headerDiceBtn = document.getElementById("header-dice-btn")
-const playerContainer = document.querySelector(".player")
+const playerExpandBtn = document.getElementById("player-expand-btn")
+const playerContainer = document.querySelector(".player-container")
 
 let currentSongIndex = -1
 let isPlaying = false
 
-// Cache album details to avoid repeated network requests
-const albumCache = new Map()
-
-async function getAlbumData(albumId) {
-  if (albumCache.has(albumId)) return albumCache.get(albumId)
-  try {
-    const res = await fetch(`/api/albums/${albumId}`)
-    if (!res.ok) throw new Error("Failed to fetch album")
-    const data = await res.json()
-    albumCache.set(albumId, data)
-    return data
-  } catch (err) {
-    console.error("getAlbumData error:", err)
-    return null
+// Use shared API helpers exposed on window.api
+function getAlbumData(albumId) {
+  if (!window.api || !window.api.getAlbumData) {
+    // Fallback to direct fetch if api.js not available
+    return fetch(`/api/albums/${albumId}`)
+      .then((r) => (r.ok ? r.json() : null))
+      .catch((e) => {
+        console.error("getAlbumData fallback error:", e)
+        return null
+      })
   }
+  return window.api.getAlbumData(albumId)
 }
 
 /**
@@ -127,6 +125,31 @@ function initPlayer() {
   headerDiceBtn?.addEventListener("click", () => {
     if (window.playRandomSong) {
       window.playRandomSong()
+    }
+  })
+
+  playerExpandBtn?.addEventListener("click", async () => {
+    const expanded = playerContainer?.classList.toggle("expanded")
+    console.log(`📱 Player ${expanded ? "expanded" : "collapsed"}`)
+
+    // Update body overflow to prevent scrolling when expanded
+    if (expanded) {
+      document.body.style.overflow = "hidden"
+
+      // Ensure songs are up-to-date, then scroll to the currently playing album if any
+      await updateSongsList()
+      const songsList = document.getElementById("player-songs-list")
+      const targetId = window.currentPlayingAlbum?.id
+      if (songsList && targetId) {
+        // Find the album header and scroll into view smoothly
+        const header = songsList.querySelector(`.player-album-header[data-album-id="${targetId}"]`)
+        if (header) {
+          console.log(`🎯 Scrolling to album: ${window.currentPlayingAlbum.name}`)
+          header.scrollIntoView({ block: "center", behavior: "smooth" })
+        }
+      }
+    } else {
+      document.body.style.overflow = ""
     }
   })
 
@@ -243,6 +266,14 @@ async function updateSongsList() {
   // Scroll active into view (if any)
   const active = songsList.querySelector(".player-song-row.active")
   if (active) active.scrollIntoView({ block: "center", behavior: "smooth" })
+
+  // If the player is expanded, ensure the current album header is visible
+  if (playerContainer?.classList.contains("expanded") && window.currentPlayingAlbum) {
+    const header = songsList.querySelector(
+      `.player-album-header[data-album-id="${window.currentPlayingAlbum.id}"]`
+    )
+    if (header) header.scrollIntoView({ block: "center", behavior: "smooth" })
+  }
 }
 
 /**
@@ -373,18 +404,20 @@ function updatePlayerArt() {
   const playerArt = document.getElementById("player-art")
   const playingAlbum = window.currentPlayingAlbum
   if (!playerArt || !playingAlbum) return
-
-  if (isPlaying && playingAlbum.anim) {
-    // Only switch if not already showing anim
-    if (!playerArt.src.includes(playingAlbum.anim)) {
-      playerArt.src = playingAlbum.anim
-    }
+  // Delegate loading to shared media helper to prefer cached blob URLs and avoid duplicate requests
+  const desired =
+    isPlaying && playingAlbum.anim
+      ? playingAlbum.anim
+      : playingAlbum.image || "/icons/placeholder.avif"
+  if (window.media?.setImageFromPath) {
+    window.media.setImageFromPath(playerArt, desired).catch((err) => {
+      console.warn("media: failed to set player art", desired, err)
+      playerArt.src = "/icons/placeholder.avif"
+    })
   } else {
-    const imageSrc = playingAlbum.image || "/icons/placeholder.avif"
-    // Only switch if not already showing image
-    if (!playerArt.src.includes(imageSrc)) {
-      playerArt.src = imageSrc
-    }
+    if (playerArt.dataset && playerArt.dataset.src === desired) return
+    playerArt.src = desired
+    playerArt.dataset.src = desired
   }
 }
 

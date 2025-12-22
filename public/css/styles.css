@@ -117,6 +117,7 @@ body {
   overflow: hidden;
   display: flex;
   position: relative;
+  transition: opacity 0.35s ease;
 }
 
 .grid-view {
@@ -375,6 +376,7 @@ body {
   .album-title--cover {
     display: none;
   }
+
   .album-title--info {
     display: block;
   }
@@ -474,6 +476,15 @@ body {
   border-top: 1px solid var(--border);
   flex-shrink: 0;
   z-index: 20;
+  transition:
+    height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s ease;
+}
+
+.player-container.expanded {
+  height: 100dvh;
+  z-index: 1000;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
 }
 
 .player {
@@ -482,6 +493,50 @@ body {
   height: 100%;
   padding: 12px;
   gap: 12px;
+  position: relative;
+}
+
+.now-playing {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  position: relative;
+}
+
+.player-expand-btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: var(--foreground);
+  opacity: 0.65;
+  transition:
+    transform 0.25s ease,
+    opacity 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.player-expand-btn:hover {
+  opacity: 1;
+}
+
+.player-container.expanded .player-expand-btn {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.player-container.expanded ~ .app-main {
+  /* fade main content instead of removing immediately to avoid visual popping */
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.35s ease;
 }
 
 .now-playing {
@@ -564,12 +619,12 @@ body {
   transform: scale(1.2) rotate(10deg);
 }
 
-.player.is-empty .player-audio,
-.player.is-empty .player-controls {
+.player-container.is-empty .player-audio,
+.player-container.is-empty .player-controls {
   display: none;
 }
 
-.player.is-empty .roulette-container {
+.player-container.is-empty .roulette-container {
   display: flex;
 }
 
@@ -610,6 +665,11 @@ body {
   margin-top: 12px;
   border-top: 1px solid var(--border);
   padding-top: 12px;
+  display: none;
+}
+
+.player-container.expanded .player-songs-list {
+  display: block;
 }
 
 .player-song-row {
@@ -663,6 +723,7 @@ body {
 .player-album-title {
   font-size: 13px;
 }
+
 .header-nav-btn.downloaded {
   color: #22c55e;
 }
@@ -783,6 +844,7 @@ body {
 .modal-btn:hover {
   opacity: 0.8;
 }
+
 /* =====================
    Modal
 ====================== */
@@ -907,14 +969,21 @@ body {
   }
 
   .song-row {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
     gap: 8px;
+    justify-content: space-between;
+  }
+
+  .song-main {
+    flex: 1;
+    min-width: 0;
   }
 
   .song-download {
-    width: 100%;
-    text-align: center;
+    padding: 4px 8px;
+    font-size: 12px;
+    margin-left: 8px;
   }
 
   :root {

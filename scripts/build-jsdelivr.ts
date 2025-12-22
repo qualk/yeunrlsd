@@ -1,5 +1,4 @@
 #!/usr/bin/env bun
-import { readFileSync, writeFileSync } from "node:fs"
 import { join } from "node:path"
 
 const CDN_URL = "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public"
@@ -20,6 +19,7 @@ interface Album {
 }
 
 interface DataFile {
+  version?: string
   albums: Album[]
 }
 
@@ -28,12 +28,13 @@ function transformPath(path: string): string {
   return `${CDN_URL}${path}`
 }
 
-function buildJsDelivrFile(): void {
+async function buildJsDelivrFile(): Promise<void> {
   try {
     const dataPath = join(import.meta.dir, "..", "data.json")
-    const data: DataFile = JSON.parse(readFileSync(dataPath, "utf-8"))
+    const data: DataFile = JSON.parse(await Bun.file(dataPath).text())
 
     const transformed: DataFile = {
+      version: data.version,
       albums: data.albums.map((album) => ({
         id: album.id,
         name: album.name,
@@ -51,7 +52,7 @@ function buildJsDelivrFile(): void {
     }
 
     const outputPath = join(import.meta.dir, "..", "data-jsdelivr.json")
-    writeFileSync(outputPath, `${JSON.stringify(transformed, null, 2)}\n`)
+    await Bun.write(outputPath, `${JSON.stringify(transformed, null, 2)}\n`)
 
     console.log("✓ Built data-jsdelivr.json successfully")
   } catch (error) {
