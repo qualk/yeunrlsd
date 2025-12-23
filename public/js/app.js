@@ -3,6 +3,16 @@ let albums = []
 let currentAlbum = null
 let currentPlayingAlbum = null
 let _currentPlaylist = []
+let titleCaseEnabled = localStorage.getItem("titleCase") === "true" // default false
+let yeditHighlightingEnabled = localStorage.getItem("yeditHighlight") !== "false" // default true
+
+// Expose to window so other modules (player) can read initial values
+window.titleCaseEnabled = titleCaseEnabled
+window.yeditHighlightingEnabled = yeditHighlightingEnabled
+
+// Expose to window immediately
+window.titleCaseEnabled = titleCaseEnabled
+window.yeditHighlightingEnabled = yeditHighlightingEnabled
 
 // Cache DOM elements
 const elements = {
@@ -83,6 +93,40 @@ async function init() {
   elements.navSettings?.addEventListener("click", () => {
     updateLastFMStatus()
     window.Modal.open("settings-modal")
+
+    // Set checkbox states
+    setTimeout(() => {
+      const titleCaseCheckbox = document.getElementById("title-case-checkbox")
+      const yeditCheckbox = document.getElementById("yedit-highlighting-checkbox")
+      
+      if (titleCaseCheckbox) titleCaseCheckbox.checked = titleCaseEnabled
+      if (yeditCheckbox) yeditCheckbox.checked = yeditHighlightingEnabled
+
+      // Add event listeners
+      titleCaseCheckbox?.addEventListener("change", (e) => {
+        titleCaseEnabled = e.target.checked
+        window.titleCaseEnabled = titleCaseEnabled
+        localStorage.setItem("titleCase", titleCaseEnabled)
+        // Re-render to apply changes
+        renderAlbumGrid()
+        if (currentAlbum) {
+          renderAlbumDetail(currentAlbum)
+        }
+        if (window.updateSongsList) window.updateSongsList()
+      })
+
+      yeditCheckbox?.addEventListener("change", (e) => {
+        yeditHighlightingEnabled = e.target.checked
+        window.yeditHighlightingEnabled = yeditHighlightingEnabled
+        localStorage.setItem("yeditHighlight", yeditHighlightingEnabled)
+        // Re-render to apply changes
+        renderAlbumGrid()
+        if (currentAlbum) {
+          renderAlbumDetail(currentAlbum)
+        }
+        if (window.updateSongsList) window.updateSongsList()
+      })
+    }, 100)
   })
   elements.lastfmConnectBtn?.addEventListener("click", connectLastFM)
   elements.lastfmDisconnectBtn?.addEventListener("click", disconnectLastFM)
@@ -96,6 +140,17 @@ async function init() {
 
   window.addEventListener("popstate", handleRouting)
 }
+
+/**
+ * Apply title case to a string if enabled
+ */
+function applyTitleCase(str) {
+  if (!titleCaseEnabled) return str
+  return str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase())
+}
+
+// Expose to window for cross-script access
+window.applyTitleCase = applyTitleCase
 
 /**
  * Check for server updates
@@ -289,7 +344,7 @@ function renderAlbumGrid() {
            alt="${album.name}" 
            class="album-image"
            loading="lazy">
-      <p class="album-name">${album.name}</p>
+      <p class="album-name">${applyTitleCase(album.name)}</p>
     </div>
   `
     )
@@ -361,11 +416,13 @@ async function renderAlbumDetail(album) {
     album.songs.map(async (song, index) => {
       const songUrl = await window.db.getFileUrl(song.file)
       const filename = song.file.split("/").pop()
+      const isYedit = /\s*\(Yedit\)\s*$/i.test(song.title)
+      const yClass = (isYedit && yeditHighlightingEnabled) ? " yedit" : ""
       return `
-    <li class="song-row" data-song-index="${index}">
+    <li class="song-row${yClass}" data-song-index="${index}" data-yedit="${isYedit ? "true" : "false"}">
       <div class="song-main" data-song-title="${song.title}" data-song-file="${songUrl}">
         <div class="song-left">
-          <span class="song-title">${song.title}</span>
+          <span class="song-title">${applyTitleCase(song.title)}</span>
           ${song.artist ? `<span class="song-artist">${song.artist}</span>` : ""} 
         </div>
       </div>
@@ -377,14 +434,14 @@ async function renderAlbumDetail(album) {
 
   elements.albumDetail.innerHTML = `
       <div class="album-cover-section">
-        <h2 class="album-title album-title--cover">${album.name}</h2>
+        <h2 class="album-title album-title--cover">${applyTitleCase(album.name)}</h2>
         <img src="${album.image || "/icons/placeholder.avif"}" 
              alt="${album.name}" 
              class="album-detail-image"
              loading="eager">
       </div>
       <div class="album-info-section">
-        <h2 class="album-title album-title--info">${album.name}</h2>
+        <h2 class="album-title album-title--info">${applyTitleCase(album.name)}</h2>
         <div class="songs-section">
           <ul class="songs-list">
             ${songsHtml || '<li class="no-songs">No songs available yet.</li>'}
@@ -429,7 +486,7 @@ async function playSong(song, album) {
   const playerSubtitle = document.getElementById("player-subtitle")
   const playerArt = document.getElementById("player-art")
 
-  playerTitle.textContent = song.title
+  playerTitle.textContent = applyTitleCase(song.title)
   playerSubtitle.textContent = song.artist || album.name
 
   // Set the player art - will use animation if available and playing

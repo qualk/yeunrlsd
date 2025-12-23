@@ -58,7 +58,8 @@ function updateMediaSessionMetadata() {
   const playerTitle = document.getElementById("player-title")
   const playerSubtitle = document.getElementById("player-subtitle")
 
-  const title = playerTitle?.textContent || "Unknown Track"
+  const rawTitle = playerTitle?.textContent || "Unknown Track"
+  const title = String(rawTitle).replace(/\s*\(Yedit\)\s*$/i, "").trim() || rawTitle
   const artist = playerSubtitle?.textContent || "Unknown Artist"
   const album = window.currentPlayingAlbum?.name || "Unknown Album"
   const artwork = window.currentPlayingAlbum?.image || "/icons/placeholder.avif"
@@ -221,7 +222,7 @@ async function updateSongsList() {
       const header = `
       <div class="player-album-header" data-album-id="${album.id}">
         <img class="player-album-thumb" src="${album.image || "/icons/placeholder.avif"}" alt="${album.name}">
-        <div class="player-album-title">${album.name}</div>
+        <div class="player-album-title">${window.applyTitleCase ? window.applyTitleCase(album.name) : album.name}</div>
       </div>`
 
       const songs = (album.songs || [])
@@ -230,9 +231,11 @@ async function updateSongsList() {
             window.currentPlayingAlbum &&
             window.currentPlayingAlbum.id === album.id &&
             currentSongIndex === idx
+          const isYedit = /\s*\(Yedit\)\s*$/i.test(song.title)
+          const displayTitle = window.applyTitleCase ? window.applyTitleCase(song.title) : song.title
           return `
-          <div class="player-song-row ${isActive ? "active" : ""}" data-album-id="${album.id}" data-song-index="${idx}" title="${song.title}">
-            ${song.title}
+          <div class="player-song-row ${isActive ? "active" : ""}${(isYedit && (window.yeditHighlightingEnabled !== false)) ? " yedit" : ""}" data-album-id="${album.id}" data-song-index="${idx}" title="${song.title}">
+            ${displayTitle}
           </div>`
         })
         .join("")
@@ -465,8 +468,9 @@ function initPlaySongOverride() {
     updateMediaSessionMetadata()
     // Update Last.fm
     if (window.lastfm) {
+      const sanitizedTitle = String(song.title).replace(/\s*\(Yedit\)\s*$/i, "").trim()
       window.lastfm.onTrackChange({
-        title: song.title,
+        title: sanitizedTitle,
         artist: song.artist || "Kanye West",
         album: album.name,
         duration: song.duration,

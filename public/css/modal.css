@@ -116,6 +116,9 @@ body.modal-open .app-container > :not(.modal-overlay) {
   display: none;
 }
 
+/* Settings description text */
+
+
 /* Modal footer with flex for button positioning */
 .modal-footer {
   display: flex;
@@ -127,4 +130,186 @@ body.modal-open .app-container > :not(.modal-overlay) {
 .modal-footer .reset-btn {
   order: -1;
   /* Push to left */
+}
+
+/* =====================
+   Download Modal
+====================== */
+
+.download-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.overall-progress-bar-container {
+  height: 8px;
+  background: #eee;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.download-modal.download-complete .overall-progress-bar-container,
+.download-modal.download-complete .download-stats {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.download-album-list {
+  max-height: 400px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.download-album-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.download-album-row.completed {
+  background: #f0fdf4;
+}
+
+.download-album-row.completed .download-album-art {
+  outline: 2px solid #22c55e;
+}
+
+.download-album-art {
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.download-album-info {
+  flex: 1;
+}
+
+.download-album-name {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.album-progress-bar-container {
+  height: 4px;
+  background: #eee;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+/* =====================
+   Settings Modal
+====================== */
+
+.settings-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+  margin-bottom: 24px;
+}
+
+.settings-section > div:first-child {
+  text-align: left;
+  min-width: 0;
+}
+
+.settings-section h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  color: var(--foreground);
+}
+
+.settings-section .button-group {
+  display: flex;
+  gap: 8px;
+  justify-self: center;
+  align-self: center;
+}
+
+.settings-section .button-group input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+}
+
+.settings-description {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.settings-description p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--foreground);
+  opacity: 0.8;
+}
+
+.settings-btn {
+  background: var(--accent);
+  color: var(--background);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.settings-btn:hover {
+  opacity: 0.9;
+}
+
+.settings-btn.hidden {
+  display: none;
+}
+
+/* Download modal specific button styles */
+.download-modal .modal-btn {
+  padding: 8px 24px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.download-modal .modal-btn:hover {
+  opacity: 0.8;
 }

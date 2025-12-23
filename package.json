@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "bun --hot run src/index.ts",
-    "build-data": "bun run ./scripts/build-jsdelivr.ts",
+    "update-data": "bun run ./scripts/update-data.ts",
+    "build-data": "bun run ./scripts/update-data.ts && bun run ./scripts/build-jsdelivr.ts",
     "start": "bun run src/index.ts",
     "lint": "biome lint --write .",
     "format": "biome format --write .",

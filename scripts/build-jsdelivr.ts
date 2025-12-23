@@ -1,4 +1,6 @@
 #!/usr/bin/env bun
+import { execSync } from "node:child_process"
+import { existsSync } from "node:fs"
 import { join } from "node:path"
 
 const CDN_URL = "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public"
@@ -7,6 +9,7 @@ interface Song {
   title: string
   file: string
   artist?: string
+  year?: number
 }
 
 interface Album {
@@ -14,8 +17,10 @@ interface Album {
   name: string
   image: string | null
   anim: string | null
+  year?: number
+  attribute?: string | null
   songs?: Song[]
-} 
+}
 
 interface DataFile {
   version?: string
@@ -39,11 +44,14 @@ async function buildJsDelivrFile(): Promise<void> {
         name: album.name,
         image: album.image ? transformPath(album.image) : null,
         anim: album.anim ? transformPath(album.anim) : null,
+        year: album.year ?? undefined,
+        attribute: album.attribute ?? null,
         songs: album.songs
           ? album.songs.map((song) => ({
               title: song.title,
               file: transformPath(song.file),
-              artist: (song as any).artist ?? (song as any).credits ?? undefined,
+              artist: song.artist,
+              year: song.year ?? undefined,
             }))
           : undefined,
       })),
@@ -53,6 +61,74 @@ async function buildJsDelivrFile(): Promise<void> {
     await Bun.write(outputPath, `${JSON.stringify(transformed, null, 2)}\n`)
 
     console.log("✓ Built data-jsdelivr.json successfully")
+
+    // Output jsDelivr URLs for files marked modified/staged/untracked by git (changes until commit)
+    try {
+      const modifiedRaw = execSync("git ls-files -m", { encoding: "utf8" })
+        .split(/\r?\n/)
+        .filter(Boolean)
+      const stagedRaw = execSync("git diff --name-only --cached", { encoding: "utf8" })
+        .split(/\r?\n/)
+        .filter(Boolean)
+      const untrackedRaw = execSync("git ls-files -o --exclude-standard", { encoding: "utf8" })
+        .split(/\r?\n/)
+        .filter(Boolean)
+
+      // Include committed-but-unpushed (committed locally but not pushed to upstream)
+      let unpushedRaw: string[] = []
+      try {
+        const upstream = execSync("git rev-parse --abbrev-ref --symbolic-full-name @{u}", {
+          encoding: "utf8",
+        }).trim()
+        unpushedRaw = execSync(`git diff --name-only ${upstream}..HEAD`, { encoding: "utf8" })
+          .split(/\r?\n/)
+          .filter(Boolean)
+      } catch (_e) {
+        try {
+          const branch = execSync("git rev-parse --abbrev-ref HEAD", { encoding: "utf8" }).trim()
+          const originRef = `origin/${branch}`
+          execSync(`git rev-parse --verify ${originRef}`, { stdio: "ignore" })
+          unpushedRaw = execSync(`git diff --name-only ${originRef}..HEAD`, { encoding: "utf8" })
+            .split(/\r?\n/)
+            .filter(Boolean)
+        } catch (_) {
+          unpushedRaw = []
+        }
+      }
+
+      const allSet = new Set([...modifiedRaw, ...stagedRaw, ...untrackedRaw, ...unpushedRaw])
+      const all = Array.from(allSet)
+      const publicModified = all
+        .filter(
+          (p) =>
+            p.startsWith("public/img/") ||
+            p.startsWith("public/anim/") ||
+            p.startsWith("public/music/")
+        )
+        .sort()
+
+      if (publicModified.length === 0) {
+        console.log(
+          "No modified/staged/untracked files under public/img, public/anim or public/music"
+        )
+      } else {
+        console.log(
+          "Files changed (modified/staged/untracked) under public/img, public/anim, public/music (jsDelivr URLs):"
+        )
+        let count = 0
+        for (const p of publicModified) {
+          const rel = p.replace(/^public/, "")
+          const fullLocal = join(import.meta.dir, "..", p)
+          if (!existsSync(fullLocal)) continue
+          console.log(transformPath(rel))
+          count++
+          if (count % 10 === 0) console.log("")
+        }
+        if (count % 10 !== 0) console.log("")
+      }
+    } catch (err) {
+      console.error("✗ Failed to determine git changed files:", err)
+    }
   } catch (error) {
     console.error("✗ Failed to build data-jsdelivr.json:", error)
     process.exit(1)

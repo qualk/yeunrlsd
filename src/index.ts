@@ -12,8 +12,10 @@ interface Album {
   name: string
   image: string | null
   anim: string | null
+  year?: number
+  attribute?: string | null
   songs: Song[]
-} 
+}
 
 interface MusicData {
   version?: string

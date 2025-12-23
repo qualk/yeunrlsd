@@ -50,7 +50,7 @@ async function setImageFromPath(el, path) {
       el.src = "/icons/placeholder.avif"
       delete el.dataset.srcPending
       el.dataset.src = ""
-    } catch (_e) { }
+    } catch (_e) {}
   }
 }
 

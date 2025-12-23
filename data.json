@@ -1,5 +1,5 @@
 {
-  "version": "0.0.5",
+  "version": "0.1.0",
   "albums": [
     {
       "id": "grad",
@@ -7,6 +7,7 @@
       "image": "/img/grad.avif",
       "anim": null,
       "year": 2005,
+      "attribute": null,
       "songs": [
         {
           "title": "Flashing Lights (Remix)",
@@ -40,6 +41,7 @@
       "image": "/img/gaj.avif",
       "anim": null,
       "year": 2009,
+      "attribute": null,
       "songs": [
         {
           "title": "Flashing Lights 2 (Yedit)",
@@ -155,8 +157,9 @@
       "id": "tgfd",
       "name": "Thank God For Drugs",
       "image": "/img/tgfd.avif",
-      "anim": null,
+      "anim": "/anim/tgfd.avif",
       "year": 2013,
+      "attribute": null,
       "songs": [
         {
           "title": "Nobody To Love",
@@ -175,6 +178,12 @@
           "file": "/music/tgfd/Padded Walls.mp3",
           "artist": "Kanye West, Azealia Banks",
           "year": 2013
+        },
+        {
+          "title": "On Site",
+          "file": "/music/tgfd/On Site.mp3",
+          "artist": "Kanye West",
+          "year": 2012
         }
       ]
     },
@@ -182,8 +191,9 @@
       "id": "yeezus2",
       "name": "Yeezus 2",
       "image": "/img/yeezus2.avif",
-      "anim": null,
+      "anim": "/anim/yeezus2.avif",
       "year": 2014,
+      "attribute": "Safe",
       "songs": [
         {
           "title": "After You",
@@ -199,6 +209,7 @@
       "image": "/img/cw.avif",
       "anim": null,
       "year": 2016,
+      "attribute": null,
       "songs": [
         {
           "title": "Panda (Remix)",
@@ -214,6 +225,7 @@
       "image": "/img/tgx.avif",
       "anim": null,
       "year": 2016,
+      "attribute": null,
       "songs": [
         {
           "title": "Bad Night",
@@ -241,6 +253,7 @@
       "image": "/img/le.avif",
       "anim": null,
       "year": 2018,
+      "attribute": null,
       "songs": [
         {
           "title": "Fine Line",
@@ -259,8 +272,9 @@
       "id": "yandhi",
       "name": "Yandhi",
       "image": "/img/yandhi.avif",
-      "anim": null,
+      "anim": "/anim/yandhi.avif",
       "year": 2018,
+      "attribute": null,
       "songs": [
         {
           "title": "Chakras",
@@ -302,6 +316,12 @@
           "title": "New Body",
           "file": "/music/yandhi/New Body.mp3",
           "artist": "Kanye West, Ty Dolla $ign, Nicki Minaj",
+          "year": 2018
+        },
+        {
+          "title": "Dip",
+          "file": "/music/yandhi/Dip.mp3",
+          "artist": "Kanye West, Tyga",
           "year": 2018
         },
         {
@@ -371,15 +391,15 @@
           "year": 2018
         },
         {
-          "title": "Brothers",
-          "file": "/music/yandhi/Brothers.mp3",
-          "artist": "Kanye West, Charlie Wilson",
-          "year": 2018
-        },
-        {
           "title": "Real Soul",
           "file": "/music/yandhi/Real Soul.mp3",
           "artist": "Kanye West, YNW Melly",
+          "year": 2018
+        },
+        {
+          "title": "Brothers",
+          "file": "/music/yandhi/Brothers.mp3",
+          "artist": "Kanye West, Charlie Wilson",
           "year": 2018
         },
         {
@@ -397,6 +417,12 @@
         {
           "title": "Last Name",
           "file": "/music/yandhi/Last Name.mp3",
+          "artist": "Kanye West, Ant Clemons",
+          "year": 2018
+        },
+        {
+          "title": "Home",
+          "file": "/music/yandhi/Home.mp3",
           "artist": "Kanye West, Ant Clemons",
           "year": 2018
         },
@@ -431,28 +457,50 @@
           "year": 2018
         },
         {
-          "title": "Selah",
-          "file": "/music/yandhi/Selah.mp3",
-          "artist": "Kanye West",
-          "year": 2018
-        },
-        {
-          "title": "Home",
-          "file": "/music/yandhi/Home.mp3",
-          "artist": "Kanye West, Ant Clemons",
-          "year": 2018
-        },
-        {
-          "title": "Dip",
-          "file": "/music/yandhi/Dip.mp3",
-          "artist": "Kanye West, Tyga",
-          "year": 2018
-        },
-        {
           "title": "End Of It",
           "file": "/music/yandhi/End Of It.mp3",
           "artist": "Kanye West",
           "year": 2018
+        }
+      ]
+    },
+    {
+      "id": "JiK",
+      "name": "JESUS IS KING",
+      "image": "/img/JiK.avif",
+      "anim": "/anim/JiK.avif",
+      "year": 2019,
+      "attribute": "Gospel",
+      "songs": [
+        {
+          "title": "Hurricane",
+          "file": "/music/JiK/Hurricane.mp3",
+          "artist": "Kanye West",
+          "year": 2019
+        },
+        {
+          "title": "Follow God (Remix)",
+          "file": "/music/JiK/Follow God (Remix).mp3",
+          "artist": "Kanye West, Clipse",
+          "year": 2019
+        },
+        {
+          "title": "LA Monster",
+          "file": "/music/JiK/LA Monster.mp3",
+          "artist": "Kanye West",
+          "year": 2019
+        },
+        {
+          "title": "Bound 3",
+          "file": "/music/JiK/Bound 3.mp3",
+          "artist": "Kanye West, Swizz Beatz",
+          "year": 2019
+        },
+        {
+          "title": "Wake The Dead",
+          "file": "/music/JiK/Wake The Dead.mp3",
+          "artist": "Kanye West",
+          "year": 2019
         }
       ]
     },
@@ -462,6 +510,7 @@
       "image": "/img/Gc.avif",
       "anim": null,
       "year": 2019,
+      "attribute": "Gospel",
       "songs": [
         {
           "title": "Welcome To My Life",
@@ -568,50 +617,12 @@
       ]
     },
     {
-      "id": "JiK",
-      "name": "JESUS IS KING",
-      "image": "/img/JiK.avif",
-      "anim": null,
-      "year": 2019,
-      "songs": [
-        {
-          "title": "Hurricane",
-          "file": "/music/JiK/Hurricane.mp3",
-          "artist": "Kanye West",
-          "year": 2019
-        },
-        {
-          "title": "Follow God (Remix)",
-          "file": "/music/JiK/Follow God (Remix).mp3",
-          "artist": "Kanye West, Clipse",
-          "year": 2019
-        },
-        {
-          "title": "LA Monster",
-          "file": "/music/JiK/LA Monster.mp3",
-          "artist": "Kanye West",
-          "year": 2019
-        },
-        {
-          "title": "Bound 3",
-          "file": "/music/JiK/Bound 3.mp3",
-          "artist": "Kanye West, Swizz Beatz",
-          "year": 2019
-        },
-        {
-          "title": "Wake The Dead",
-          "file": "/music/JiK/Wake The Dead.mp3",
-          "artist": "Kanye West",
-          "year": 2019
-        }
-      ]
-    },
-    {
       "id": "JiK2",
       "name": "JESUS IS KING: The Dr. Dre Version",
       "image": "/img/JiK2.avif",
       "anim": null,
       "year": 2019,
+      "attribute": "Gospel",
       "songs": [
         {
           "title": "Selah (Remix)",
@@ -693,6 +704,7 @@
       "image": "/img/donda.avif",
       "anim": null,
       "year": 2021,
+      "attribute": "Gospel",
       "songs": [
         {
           "title": "Welcome To My Life",
@@ -791,12 +803,6 @@
           "year": 2021
         },
         {
-          "title": "By Your Side",
-          "file": "/music/donda/By Your Side.mp3",
-          "artist": "Kanye West, Ty Dolla $ign",
-          "year": 2021
-        },
-        {
           "title": "He Gave It All",
           "file": "/music/donda/He Gave It All.mp3",
           "artist": "Kanye West, KayCyy, Boyz II Men, Wanya, Sunday Service Choir",
@@ -805,13 +811,19 @@
         {
           "title": "Star Time",
           "file": "/music/donda/Star Time.mp3",
-          "artist": "Kanye West",
+          "artist": "Kanye West, IDK, Anderson .Paak",
           "year": 2020
         },
         {
           "title": "See Me Again",
           "file": "/music/donda/See Me Again.mp3",
           "artist": "Kanye West, Bon Iver, The WRLDFMS Tony Williams, John Legend, Elly Jackson",
+          "year": 2021
+        },
+        {
+          "title": "By Your Side",
+          "file": "/music/donda/By Your Side.mp3",
+          "artist": "Kanye West, Ty Dolla $ign",
           "year": 2021
         }
       ]
@@ -820,8 +832,9 @@
       "id": "donda2",
       "name": "DONDA 2",
       "image": "/img/donda2.avif",
-      "anim": null,
+      "anim": "/anim/donda2.avif",
       "year": 2022,
+      "attribute": null,
       "songs": [
         {
           "title": "PABLO",
@@ -860,8 +873,9 @@
       "id": "war",
       "name": "WAR",
       "image": "/img/war.avif",
-      "anim": null,
+      "anim": "/anim/war.avif",
       "year": 2022,
+      "attribute": "Safe",
       "songs": [
         {
           "title": "For Once In My Life",
@@ -949,9 +963,10 @@
       "image": "/img/yebu.avif",
       "anim": null,
       "year": 2022,
+      "attribute": "Hip Hop",
       "songs": [
         {
-          "title": "Love Love Love (Yedit)",
+          "title": "Someday We'll All Be Free",
           "file": "/music/yebu/Someday We'll All Be Free.mp3",
           "artist": "Kanye West",
           "year": 2022
@@ -967,6 +982,12 @@
           "file": "/music/yebu/Unlock.mp3",
           "artist": "Kanye West",
           "year": 2022
+        },
+        {
+          "title": "So Soon",
+          "file": "/music/yebu/So Soon.mp3",
+          "artist": "Kanye West",
+          "year": 2022
         }
       ]
     },
@@ -976,6 +997,7 @@
       "image": "/img/ksg2.avif",
       "anim": null,
       "year": 2023,
+      "attribute": null,
       "songs": [
         {
           "title": "Thank You (Vol. 2)",
@@ -991,6 +1013,7 @@
       "image": "/img/vultures1.avif",
       "anim": null,
       "year": 2023,
+      "attribute": "Adult",
       "songs": [
         {
           "title": "EVERYBODY",
@@ -1001,7 +1024,7 @@
         {
           "title": "SO CALLED FRIENDS",
           "file": "/music/vultures1/SO CALLED FRIENDS.mp3",
-          "artist": "Kanye West, Ty Dolla $ign",
+          "artist": "Kanye West, Ty Dolla $ign, Freddie Gibbs",
           "year": 2023
         }
       ]
@@ -1012,6 +1035,7 @@
       "image": "/img/vultures2.avif",
       "anim": null,
       "year": 2024,
+      "attribute": "Adult",
       "songs": [
         {
           "title": "CAN U BE",
@@ -1034,7 +1058,7 @@
         {
           "title": "PAY PER VIEW",
           "file": "/music/vultures2/PAY PER VIEW.mp3",
-          "artist": "Kanye West, Young Moose, Project Pat",
+          "artist": "Kanye West, Ty Dolla $ign, Young Moose, Project Pat",
           "year": 2024
         },
         {
@@ -1046,7 +1070,7 @@
         {
           "title": "MELROSE",
           "file": "/music/vultures2/MELROSE.mp3",
-          "artist": "Kanye West, Playboi Carti",
+          "artist": "Kanye West, Ty Dolla $ign, Playboi Carti",
           "year": 2024
         },
         {
@@ -1068,6 +1092,7 @@
       "image": "/img/vultures3.avif",
       "anim": null,
       "year": 2024,
+      "attribute": "Adult",
       "songs": [
         {
           "title": "LOVE AGAIN",
@@ -1100,8 +1125,8 @@
           "year": 2024
         },
         {
-          "title": "WORSHIP",
-          "file": "/music/vultures3/WORSHIP.mp3",
+          "title": "WORSHIP (Yedit)",
+          "file": "/music/vultures3/WORSHIP (Yedit).mp3",
           "artist": "Kanye West, Ty Dolla $ign, Chloe Bailey",
           "year": 2024
         },
@@ -1125,6 +1150,7 @@
       "image": "/img/bully.avif",
       "anim": null,
       "year": 2025,
+      "attribute": "Safe",
       "songs": [
         {
           "title": "PREACHER MAN",
@@ -1201,7 +1227,7 @@
         {
           "title": "MISSION CONTROL",
           "file": "/music/bully/MISSION CONTROL.mp3",
-          "artist": "Kanye West",
+          "artist": "Kanye West, The WRLDFMS Tony Williams",
           "year": 2025
         },
         {
@@ -1213,7 +1239,7 @@
         {
           "title": "ALPHA OMEGA",
           "file": "/music/bully/ALPHA OMEGA.mp3",
-          "artist": "Kanye West",
+          "artist": "Kanye West, Skepta",
           "year": 2025
         },
         {
@@ -1225,7 +1251,7 @@
         {
           "title": "MELROSE",
           "file": "/music/bully/MELROSE.mp3",
-          "artist": "Kanye West",
+          "artist": "Kanye West, Ty Dolla $ign, Playboi Carti",
           "year": 2025
         }
       ]
@@ -1236,6 +1262,7 @@
       "image": "/img/cukkk.avif",
       "anim": null,
       "year": 2025,
+      "attribute": "Adult",
       "songs": [
         {
           "title": "WW3",
@@ -1335,6 +1362,7 @@
       "image": "/img/ye-i.avif",
       "anim": null,
       "year": 2025,
+      "attribute": "AI",
       "songs": [
         {
           "title": "SHINE THE DARKEST",
