@@ -12,7 +12,6 @@ WORKDIR /app
 # Set production environment
 ENV NODE_ENV="production"
 
-
 # Throw-away build stage to reduce size of final image
 FROM base AS build
 
@@ -33,7 +32,6 @@ COPY . .
 # Remove development dependencies
 RUN rm -rf node_modules && \
     bun install --ci
-
 
 # Final stage for app image
 FROM base

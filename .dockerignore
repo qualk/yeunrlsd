@@ -42,6 +42,8 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 *.tsbuildinfo
 
 # yeunrlsd
-public/img/**
-public/anim/**
-public/music/**
+public/img
+public/anim
+public/music
+scripts
+.git
