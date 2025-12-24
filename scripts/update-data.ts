@@ -25,7 +25,7 @@ function sortAndMapSongs(songMetas: SongMeta[]): Song[] {
 async function getFirstSongMetadata(
   songMetas: SongMeta[],
   files: string[],
-  albumDir: string
+  albumDir: string,
 ): Promise<IAudioMetadata | null> {
   if (songMetas.length === 0) return null
   const firstFile = files[0]
@@ -56,7 +56,7 @@ function inferAttributeFromGenre(meta: IAudioMetadata | null): string | null {
 
 function extractYearFromMetadata(
   meta: IAudioMetadata | null,
-  fallbackYear?: number | null
+  fallbackYear?: number | null,
 ): number | undefined {
   if (fallbackYear != null) return fallbackYear
   const commonYear = meta?.common?.year as unknown
@@ -82,7 +82,7 @@ async function processSongFile(
   file: string,
   fullPath: string,
   albumId: string,
-  albumSongs?: Song[]
+  albumSongs?: Song[],
 ): Promise<{
   title: string
   file: string
@@ -102,7 +102,7 @@ async function processSongFile(
     const track = meta?.common?.track?.no as number | undefined
     const year = extractYearFromMetadata(
       meta,
-      albumSongs?.find((s) => s.file?.endsWith(`/${file}`))?.year
+      albumSongs?.find((s) => s.file?.endsWith(`/${file}`))?.year,
     )
     return { title, file: `/music/${albumId}/${file}`, artist, track, year }
   } catch (err) {
@@ -128,7 +128,7 @@ async function updateDataFromMetadata(): Promise<void> {
         const files = readdirSync(albumDir).filter((f) => /\.(mp3|m4a|wav|flac|aac|ogg)$/i.test(f))
 
         const songPromises = files.map((file) =>
-          processSongFile(file, join(albumDir, file), album.id, album.songs)
+          processSongFile(file, join(albumDir, file), album.id, album.songs),
         )
         const songResults = await Promise.all(songPromises)
         const songMetas: SongMeta[] = songResults.filter((s): s is SongMeta => s != null)
@@ -163,7 +163,7 @@ async function updateDataFromMetadata(): Promise<void> {
     const musicDir = join(process.cwd(), "public", "music")
     if (existsSync(musicDir)) {
       const dirs = readdirSync(musicDir).filter(
-        (d) => statSync(join(musicDir, d)).isDirectory() && !existingIds.has(d)
+        (d) => statSync(join(musicDir, d)).isDirectory() && !existingIds.has(d),
       )
       for (const dir of dirs) {
         const answer = await prompt(`Add new album "${dir}"? (y/n): `)

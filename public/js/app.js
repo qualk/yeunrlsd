@@ -5,14 +5,17 @@ let currentPlayingAlbum = null
 let _currentPlaylist = []
 let titleCaseEnabled = localStorage.getItem("titleCase") === "true" // default false
 let yeditHighlightingEnabled = localStorage.getItem("yeditHighlight") !== "false" // default true
+let autoplayEnabled = localStorage.getItem("autoplay") !== "false" // default true
 
 // Expose to window so other modules (player) can read initial values
 window.titleCaseEnabled = titleCaseEnabled
 window.yeditHighlightingEnabled = yeditHighlightingEnabled
+window.autoplayEnabled = autoplayEnabled
 
 // Expose to window immediately
 window.titleCaseEnabled = titleCaseEnabled
 window.yeditHighlightingEnabled = yeditHighlightingEnabled
+window.autoplayEnabled = autoplayEnabled
 
 // Cache DOM elements
 const elements = {
@@ -98,9 +101,11 @@ async function init() {
     setTimeout(() => {
       const titleCaseCheckbox = document.getElementById("title-case-checkbox")
       const yeditCheckbox = document.getElementById("yedit-highlighting-checkbox")
+      const autoplayCheckbox = document.getElementById("autoplay-checkbox")
 
       if (titleCaseCheckbox) titleCaseCheckbox.checked = titleCaseEnabled
       if (yeditCheckbox) yeditCheckbox.checked = yeditHighlightingEnabled
+      if (autoplayCheckbox) autoplayCheckbox.checked = autoplayEnabled
 
       // Add event listeners
       titleCaseCheckbox?.addEventListener("change", (e) => {
@@ -125,6 +130,12 @@ async function init() {
           renderAlbumDetail(currentAlbum)
         }
         if (window.updateSongsList) window.updateSongsList()
+      })
+
+      autoplayCheckbox?.addEventListener("change", (e) => {
+        autoplayEnabled = e.target.checked
+        window.autoplayEnabled = autoplayEnabled
+        localStorage.setItem("autoplay", autoplayEnabled)
       })
     }, 100)
   })
@@ -279,7 +290,7 @@ async function connectLastFM() {
         clearInterval(pollTimer)
         console.warn("Last.fm authentication timeout")
       },
-      5 * 60 * 1000
+      5 * 60 * 1000,
     ) // 5 minute timeout
 
     pollTimer = setInterval(async () => {
@@ -346,7 +357,7 @@ function renderAlbumGrid() {
            loading="lazy">
       <p class="album-name">${applyTitleCase(album.name)}</p>
     </div>
-  `
+  `,
     )
     .join("")
 
@@ -429,7 +440,7 @@ async function renderAlbumDetail(album) {
       <a href="${songUrl}" class="song-download" download="${filename}" aria-label="Download">↓</a>
     </li>
   `
-    })
+    }),
   ).then((results) => results.join(""))
 
   elements.albumDetail.innerHTML = `
@@ -517,38 +528,61 @@ async function playSong(song, album) {
   if (targetArt) window.db.cacheFileInBackground(targetArt)
 }
 
-/**
- * Play a random song from any album
- */
+// Play a random song
+
 async function playRandomSong() {
-  if (albums.length === 0) return
+  if (!albums || albums.length === 0) return
 
-  // Filter albums that have songs
-  const eligibleAlbums = albums.filter((a) => a.hasSongs)
-  if (eligibleAlbums.length === 0) return
+  const fetchAlbum = async (id) => {
+    try {
+      if (window.api?.getAlbumData) return await window.api.getAlbumData(id)
+      const res = await fetch(`/api/albums/${id}`)
+      return res.ok ? await res.json() : null
+    } catch (err) {
+      console.error("fetchAlbum error:", err)
+      return null
+    }
+  }
 
-  // Pick a random album
-  const randomAlbumInfo = eligibleAlbums[Math.floor(Math.random() * eligibleAlbums.length)]
+  // Prefer current (enlarged) album when visible
+  const detailOpen = elements?.detailView && !elements.detailView.classList.contains("hidden")
+  if (detailOpen && currentAlbum) {
+    // Try cached songs first
+    if (currentAlbum.songs && currentAlbum.songs.length > 0) {
+      const song = currentAlbum.songs[Math.floor(Math.random() * currentAlbum.songs.length)]
+      if (song) return (window.playSong || playSong)(song, currentAlbum)
+    }
 
-  try {
-    const album = window.api
-      ? await window.api.getAlbumData(randomAlbumInfo.id)
-      : await (async () => {
-          const response = await fetch(`/api/albums/${randomAlbumInfo.id}`)
-          return response.ok ? response.json() : null
-        })()
-
-    if (album.songs && album.songs.length > 0) {
-      const randomSong = album.songs[Math.floor(Math.random() * album.songs.length)]
-      if (window.playSong) {
-        window.playSong(randomSong, album)
-      } else {
-        playSong(randomSong, album)
+    // Try fetching the current album if cached version has no songs
+    if (currentAlbum.id) {
+      const albumData = await fetchAlbum(currentAlbum.id)
+      if (albumData?.songs?.length) {
+        const song = albumData.songs[Math.floor(Math.random() * albumData.songs.length)]
+        if (song) return (window.playSong || playSong)(song, albumData)
       }
     }
-  } catch (error) {
-    console.error("Failed to play random song:", error)
   }
+
+  // Fallback: pick a random album with songs
+  const candidates = (albums || []).filter((a) => a.hasSongs)
+  if (!candidates.length) return
+
+  // Shuffle candidates (Fisher-Yates)
+  const shuffled = candidates.slice()
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+  }
+
+  for (const info of shuffled) {
+    const album = await fetchAlbum(info.id)
+    if (album?.songs?.length) {
+      const song = album.songs[Math.floor(Math.random() * album.songs.length)]
+      if (song) return (window.playSong || playSong)(song, album)
+    }
+  }
+
+  console.warn("🎲: no songs found in any candidate album")
 }
 
 // Expose functions to window for player.js

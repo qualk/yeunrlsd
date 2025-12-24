@@ -41,7 +41,7 @@ self.addEventListener("fetch", (event) => {
 
         // Fallback to network
         return fetch(event.request)
-      })()
+      })(),
     )
   } else {
     event.respondWith(fetch(event.request))

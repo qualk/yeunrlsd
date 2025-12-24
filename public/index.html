@@ -117,7 +117,7 @@
     <div id="download-modal" class="modal-overlay">
       <div class="modal-content download-modal">
         <div class="modal-header">
-          <h2>Downloading Albums <small class="modal-version" id="download-version"></small></h2>
+          <h2>Downloading Albums</h2>
           <button class="modal-close-btn" aria-label="Close">✕</button>
         </div>
         <div class="download-stats">
@@ -138,6 +138,7 @@
         </div>
         <div class="modal-footer">
           <button id="download-reset-btn" class="modal-btn reset-btn" aria-label="Reset downloads">Reset</button>
+          <small class="modal-version" id="download-version"></small>
           <button id="download-done-btn" class="modal-btn hidden">Done</button>
         </div>
       </div>
@@ -147,7 +148,7 @@
     <div id="about-modal" class="modal-overlay">
       <div class="modal-content">
         <div class="modal-header">
-          <h2>[yeunrlsd] <small class="modal-version muted" id="about-version"></small></h2>
+          <h2>[yeunrlsd] <small class="modal-version" id="about-version"></small></h2>
           <button class="modal-close-btn" aria-label="Close">✕</button>
         </div>
         <div class="modal-body">
@@ -158,11 +159,11 @@
       </div>
     </div>
 
-    <!-- Update Modal (forced) -->
+    <!-- Update Modal -->
     <div id="update-modal" class="modal-overlay" data-force="true">
       <div class="modal-content">
         <div class="modal-header">
-          <h2>Update Available <small class="modal-version muted" id="update-version"></small></h2>
+          <h2>Update Available <small class="modal-version" id="update-version"></small></h2>
           <!-- No close button: this modal is forced -->
         </div>
         <div class="modal-body">
@@ -194,7 +195,7 @@
               <button id="lastfm-disconnect-btn" class="settings-btn hidden">Disconnect</button>
             </div>
           </div>
-          <div class="settings-section">
+          <label class="settings-section clickable">
             <div>
               <h3>Title Case</h3>
               <div class="settings-description">
@@ -204,8 +205,8 @@
             <div class="button-group">
               <input type="checkbox" id="title-case-checkbox">
             </div>
-          </div>
-          <div class="settings-section">
+          </label>
+          <label class="settings-section clickable">
             <div>
               <h3>Yedit Highlighting</h3>
               <div class="settings-description">
@@ -215,7 +216,18 @@
             <div class="button-group">
               <input type="checkbox" id="yedit-highlighting-checkbox" checked>
             </div>
-          </div>
+          </label>
+          <label class="settings-section clickable">
+            <div>
+              <h3>Autoplay</h3>
+              <div class="settings-description">
+                <p>Automatically advance to the next track when a song ends</p>
+              </div>
+            </div>
+            <div class="button-group">
+              <input type="checkbox" id="autoplay-checkbox" checked>
+            </div>
+          </label>
         </div>
       </div>
     </div>

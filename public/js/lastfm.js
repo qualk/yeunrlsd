@@ -32,7 +32,7 @@ class LastFMScrobbler {
       JSON.stringify({
         key: key,
         username: username,
-      })
+      }),
     )
   }
 

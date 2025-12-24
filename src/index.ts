@@ -14,7 +14,7 @@ const publicDir = join(import.meta.dir, "../public")
 // Warn in server console when Last.fm credentials are not configured
 if (!Bun.env.LASTFM_API_KEY || !Bun.env.LASTFM_API_SECRET) {
   console.warn(
-    "⚠️  Last.fm credentials are not configured. Last.fm features (scrobbling) will be disabled. Set LASTFM_API_KEY and LASTFM_API_SECRET to enable."
+    "⚠️  Last.fm credentials are not configured. Last.fm features (scrobbling) will be disabled. Set LASTFM_API_KEY and LASTFM_API_SECRET to enable.",
   )
 }
 
@@ -166,7 +166,7 @@ const server = Bun.serve({
             songCount: album.songs.length,
           })),
         }),
-        { headers: { "Content-Type": "application/json" } }
+        { headers: { "Content-Type": "application/json" } },
       )
     }
 

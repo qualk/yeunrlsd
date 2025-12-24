@@ -83,7 +83,7 @@ async function buildJsDelivrFile(): Promise<void> {
           (p) =>
             p.startsWith("public/img/") ||
             p.startsWith("public/anim/") ||
-            p.startsWith("public/music/")
+            p.startsWith("public/music/"),
         )
         .sort()
 

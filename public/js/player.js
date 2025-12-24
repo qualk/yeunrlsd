@@ -102,20 +102,17 @@ function updateMediaSessionPlaybackState() {
  * Handle clicks on player elements to navigate to album or play random
  */
 function handlePlayerClick() {
-  // If there's a currently playing album and it's not already being viewed
-  if (
-    window.currentPlayingAlbum &&
-    (!window.currentAlbum || window.currentAlbum.id !== window.currentPlayingAlbum.id)
-  ) {
-    // Navigate to the album detail view
+  // If there's a currently playing album, navigate to its album detail view.
+  if (window.currentPlayingAlbum) {
     if (window.showAlbumDetail) {
       window.showAlbumDetail(window.currentPlayingAlbum.id)
     }
-  } else if (!window.currentPlayingAlbum) {
-    // No song playing, play a random song
-    if (window.playRandomSong) {
-      window.playRandomSong()
-    }
+    return
+  }
+
+  // No song playing, play a random song
+  if (window.playRandomSong) {
+    window.playRandomSong()
   }
 }
 
@@ -278,7 +275,7 @@ async function updateSongsList() {
   // If the player is expanded, ensure the current album header is visible
   if (playerContainer?.classList.contains("expanded") && window.currentPlayingAlbum) {
     const header = songsList.querySelector(
-      `.player-album-header[data-album-id="${window.currentPlayingAlbum.id}"]`
+      `.player-album-header[data-album-id="${window.currentPlayingAlbum.id}"]`,
     )
     if (header) header.scrollIntoView({ block: "center", behavior: "smooth" })
   }
@@ -368,6 +365,7 @@ async function playPrevious() {
  * Called when song finishes
  */
 function onSongEnded() {
+  if (window.autoplayEnabled === false) return
   playNext()
 }
 
@@ -463,7 +461,7 @@ function initPlaySongOverride() {
     }
     currentSongIndex = Math.max(
       0,
-      album.songs.findIndex((s) => s.title === song.title)
+      album.songs.findIndex((s) => s.title === song.title),
     )
     // Call original function
     originalPlaySong(song, album)

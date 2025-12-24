@@ -149,8 +149,8 @@ async function startFullDownload() {
     uniqueUrls.map((url) =>
       fetch(url, { method: "HEAD" })
         .then((res) => ({ url, size: parseInt(res.headers.get("content-length") || "0", 10) }))
-        .catch(() => ({ url, size: 0 }))
-    )
+        .catch(() => ({ url, size: 0 })),
+    ),
   )
   for (const r of headResults) {
     if (r.status === "fulfilled") {

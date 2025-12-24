@@ -1,11 +1,11 @@
 {
-  "version": "0.1.2",
+  "version": "0.1.3",
   "albums": [
     {
       "id": "grad",
       "name": "Graduation",
       "image": "/img/grad.avif",
-      "anim": null,
+      "anim": "/anim/grad.avif",
       "year": 2005,
       "attribute": null,
       "songs": [
@@ -157,7 +157,7 @@
       "id": "mbdtf",
       "name": "My Beautiful Dark Twisted Fantasy",
       "image": "/img/mbdtf.avif",
-      "anim": null,
+      "anim": "/anim/mbdtf.avif",
       "year": 2010,
       "attribute": null,
       "songs": [
@@ -234,11 +234,18 @@
     {
       "id": "shmG",
       "name": "So Help Me God",
-      "image": "/img/shmC.avif",
-      "anim": "/img/shmG-moses.avif",
+      "image": "/img/shmG.avif",
+      "anim": "/img/shmC.avif",
       "year": 2014,
       "attribute": "Safe",
-      "songs": []
+      "songs": [
+        {
+          "title": "Star Time (Yedit)",
+          "file": "/music/shmG/Star Time (Yedit).mp3",
+          "artist": "Kanye West, IDK, Anderson .Paak",
+          "year": null
+        }
+      ]
     },
     {
       "id": "swish",
@@ -364,12 +371,6 @@
           "year": 2018
         },
         {
-          "title": "Calm (Interlude)",
-          "file": "/music/yandhi/Calm (Interlude).mp3",
-          "artist": "Kanye West",
-          "year": 2018
-        },
-        {
           "title": "The Storm",
           "file": "/music/yandhi/The Storm.mp3",
           "artist": "Kanye West, Ant Clemons, Ty Dolla $ign, Kid Cudi, XXXTENTACION",
@@ -424,15 +425,9 @@
           "year": 2018
         },
         {
-          "title": "Alien (Interlude)",
-          "file": "/music/yandhi/Alien (Interlude).mp3",
-          "artist": "Kanye West",
-          "year": 2018
-        },
-        {
-          "title": "Alien",
-          "file": "/music/yandhi/Alien.mp3",
-          "artist": "Kanye West, Ant Clemons, Young Thug, Quavo, Kid Cudi",
+          "title": "Alien (Yedit)",
+          "file": "/music/yandhi/Alien (Yedit).mp3",
+          "artist": "Kanye West, Ant Clemons, Quavo, Kid Cudi",
           "year": 2018
         },
         {
@@ -484,8 +479,8 @@
           "year": 2018
         },
         {
-          "title": "Cash To Burn",
-          "file": "/music/yandhi/Cash To Burn.mp3",
+          "title": "Cash To Burn (Yedit)",
+          "file": "/music/yandhi/Cash To Burn (Yedit).mp3",
           "artist": "Kanye West, Ant Clemons",
           "year": 2018
         },
