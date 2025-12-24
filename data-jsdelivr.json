@@ -1,5 +1,5 @@
 {
-  "version": "0.1.1",
+  "version": "0.1.2",
   "albums": [
     {
       "id": "grad",
@@ -11,25 +11,25 @@
       "songs": [
         {
           "title": "Flashing Lights (Remix)",
-          "file": "/music/grad/Flashing Lights (Remix).mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/grad/Flashing Lights (Remix).mp3",
           "artist": "Kanye West, Dwele, Clipse",
           "year": 2005
         },
         {
           "title": "Building",
-          "file": "/music/grad/Building.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/grad/Building.mp3",
           "artist": "Kanye West, JAY-Z",
           "year": 2005
         },
         {
           "title": "Piano",
-          "file": "/music/grad/Piano.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/grad/Piano.mp3",
           "artist": "Kanye West",
           "year": 2005
         },
         {
           "title": "Bittersweet Poetry (Yedit)",
-          "file": "/music/grad/Bittersweet Poetry (Yedit).mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/grad/Bittersweet Poetry (Yedit).mp3",
           "artist": "Kanye West, John Mayer",
           "year": 2005
         }
@@ -45,109 +45,109 @@
       "songs": [
         {
           "title": "Flashing Lights 2 (Yedit)",
-          "file": "/music/gaj/Flashing Lights 2.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Flashing Lights 2.mp3",
           "artist": "Kanye West, Charlie Wilson, The WRLDFMS Tony Williams, Connie Mitchell",
           "year": 2009
         },
         {
           "title": "Ghetto University",
-          "file": "/music/gaj/Ghetto University.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Ghetto University.mp3",
           "artist": "Kanye West, Charlie Wilson, The WRLDFMS Tony Williams, John Legend",
           "year": 2009
         },
         {
           "title": "Ice Cube",
-          "file": "/music/gaj/Ice Cube.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Ice Cube.mp3",
           "artist": "Kanye West",
           "year": 2009
         },
         {
           "title": "Live Fast Die Young",
-          "file": "/music/gaj/Live Fast Die Young.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Live Fast Die Young.mp3",
           "artist": "Kanye West, Rick Ross, Big Sean, John Legend, The WRLDFMS Tony Williams",
           "year": 2009
         },
         {
           "title": "Down Town",
-          "file": "/music/gaj/Down Town.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Down Town.mp3",
           "artist": "Kanye West, Jeff Bhasker",
           "year": 2009
         },
         {
           "title": "Eyes Closed",
-          "file": "/music/gaj/Eyes Closed.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Eyes Closed.mp3",
           "artist": "Kanye West, John Legend, Bon Iver",
           "year": 2009
         },
         {
           "title": "Shoot Up The Station",
-          "file": "/music/gaj/Shoot Up The Station.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Shoot Up The Station.mp3",
           "artist": "Kanye West, Bon Iver, Santigold",
           "year": 2009
         },
         {
           "title": "Mama's Boyfriend (Yedit)",
-          "file": "/music/gaj/Mama's Boyfriend (Yedit).mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Mama's Boyfriend (Yedit).mp3",
           "artist": "Kanye West",
           "year": 2009
         },
         {
           "title": "Crazy Life",
-          "file": "/music/gaj/Crazy Life.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Crazy Life.mp3",
           "artist": "Kanye West",
           "year": 2009
         },
         {
           "title": "Throw Money Everywhere",
-          "file": "/music/gaj/Throw Money Everywhere.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Throw Money Everywhere.mp3",
           "artist": "Kanye West",
           "year": 2009
         },
         {
           "title": "That's My Bitch",
-          "file": "/music/gaj/That's My Bitch.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/That's My Bitch.mp3",
           "artist": "Kanye West",
           "year": 2009
         },
         {
           "title": "White Dress",
-          "file": "/music/gaj/White Dress.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/White Dress.mp3",
           "artist": "Kanye West",
           "year": 2009
         },
         {
           "title": "Heartbreaker",
-          "file": "/music/gaj/Heartbreaker.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Heartbreaker.mp3",
           "artist": "Kanye West",
           "year": 2009
         },
         {
           "title": "Lonely",
-          "file": "/music/gaj/Lonely.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Lonely.mp3",
           "artist": "Kanye West",
           "year": 2009
         },
         {
           "title": "I'll Be Alright",
-          "file": "/music/gaj/I'll Be Alright.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/I'll Be Alright.mp3",
           "artist": "Kanye West",
           "year": 2009
         },
         {
           "title": "Diamonds",
-          "file": "/music/gaj/Diamonds.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Diamonds.mp3",
           "artist": "Kanye West, Christina Milian",
           "year": 2009
         },
         {
           "title": "See Me Again",
-          "file": "/music/gaj/See Me Again.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/See Me Again.mp3",
           "artist": "Kanye West, Bon Iver, The WRLDFMS Tony Williams, Elly Jackson",
           "year": 2009
         },
         {
           "title": "Don't Look Down",
-          "file": "/music/gaj/Don't Look Down.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Don't Look Down.mp3",
           "artist": "Kanye West, Lupe Fiasco",
           "year": 2009
         }
@@ -163,21 +163,20 @@
       "songs": [
         {
           "title": "Chain Heavy",
-          "file": "/music/mbdtf/Chain Heavy.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/mbdtf/Chain Heavy.mp3",
           "artist": "Kanye West, Talib Kweli, Consequence",
           "year": 2010
         },
         {
           "title": "Power (Remix)",
-          "file": "/music/mbdtf/Power (Remix).mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/mbdtf/Power (Remix).mp3",
           "artist": "Kanye West, Jay-Z, Swizz Beatz",
           "year": 2010
         },
         {
           "title": "Wild'n Cuz I'm Young",
-          "file": "/music/mbdtf/Wild'n Cuz I'm Young.mp3",
-          "artist": "Kid Cudi, Kanye West",
-          "year": null
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/mbdtf/Wild'n Cuz I'm Young.mp3",
+          "artist": "Kid Cudi, Kanye West"
         }
       ]
     },
@@ -191,25 +190,25 @@
       "songs": [
         {
           "title": "Nobody To Love",
-          "file": "/music/tgfd/Nobody To Love.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/tgfd/Nobody To Love.mp3",
           "artist": "Kanye West, Charlie Wilson, John Legend, Elon Rutberg",
           "year": 2013
         },
         {
           "title": "Awesome",
-          "file": "/music/tgfd/Awesome.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/tgfd/Awesome.mp3",
           "artist": "Kanye West, Charlie Wilson, Stevie Wonder",
           "year": 2013
         },
         {
           "title": "Padded Walls",
-          "file": "/music/tgfd/Padded Walls.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/tgfd/Padded Walls.mp3",
           "artist": "Kanye West, Azealia Banks",
           "year": 2013
         },
         {
           "title": "On Site",
-          "file": "/music/tgfd/On Site.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/tgfd/On Site.mp3",
           "artist": "Kanye West",
           "year": 2012
         }
@@ -225,7 +224,7 @@
       "songs": [
         {
           "title": "After You",
-          "file": "/music/yeezus2/After You.m4a",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yeezus2/After You.m4a",
           "artist": "Kanye West",
           "year": 2014
         }
@@ -268,7 +267,7 @@
       "songs": [
         {
           "title": "Panda (Remix)",
-          "file": "/music/cw/Panda (Remix).mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cw/Panda (Remix).mp3",
           "artist": "Kanye West, Desiigner, Sia",
           "year": 2016
         }
@@ -284,19 +283,19 @@
       "songs": [
         {
           "title": "Bad Night",
-          "file": "/music/tgx/Bad Night.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/tgx/Bad Night.mp3",
           "artist": "Kanye West, Young Thug",
           "year": 2016
         },
         {
           "title": "Damn Come On",
-          "file": "/music/tgx/Damn Come On.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/tgx/Damn Come On.mp3",
           "artist": "Kanye West, Kid Cudi",
           "year": 2016
         },
         {
           "title": "Hold Tight",
-          "file": "/music/tgx/Hold Tight.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/tgx/Hold Tight.mp3",
           "artist": "Kanye West, Migos, Young Thug",
           "year": 2016
         }
@@ -321,7 +320,7 @@
       "songs": [
         {
           "title": "Only One",
-          "file": "/music/tlop/Only One.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/tlop/Only One.mp3",
           "artist": "Kanye West, Paul McCartney, Caroline Shaw, Ty Dolla $ign",
           "year": 2016
         }
@@ -337,13 +336,12 @@
       "songs": [
         {
           "title": "Fine Line",
-          "file": "/music/le/Fine Line.mp3",
-          "artist": "Kanye West, Bon Iver",
-          "year": null
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/le/Fine Line.mp3",
+          "artist": "Kanye West, Bon Iver"
         },
         {
           "title": "Skeletons",
-          "file": "/music/le/Skeletons.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/le/Skeletons.mp3",
           "artist": "Kanye West, Travis Scott, The Weeknd, Pharrell Williams",
           "year": 2018
         }
@@ -359,187 +357,187 @@
       "songs": [
         {
           "title": "Chakras",
-          "file": "/music/yandhi/Chakras.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Chakras.mp3",
           "artist": "Kanye West, The-Dream, Caroline Shaw, BONGO ByTheWay, Ant Clemons",
           "year": 2018
         },
         {
           "title": "Calm (Interlude)",
-          "file": "/music/yandhi/Calm (Interlude).mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Calm (Interlude).mp3",
           "artist": "Kanye West",
           "year": 2018
         },
         {
           "title": "The Storm",
-          "file": "/music/yandhi/The Storm.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/The Storm.mp3",
           "artist": "Kanye West, Ant Clemons, Ty Dolla $ign, Kid Cudi, XXXTENTACION",
           "year": 2018
         },
         {
           "title": "Ego Death",
-          "file": "/music/yandhi/Ego Death.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Ego Death.mp3",
           "artist": "Kanye West, Ty Dolla $ign, FKA twigs, Skrillex",
           "year": 2018
         },
         {
           "title": "I Love It",
-          "file": "/music/yandhi/I Love It.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/I Love It.mp3",
           "artist": "Kanye West, Lil Pump",
           "year": 2018
         },
         {
           "title": "Spread Your Wings",
-          "file": "/music/yandhi/Spread Your Wings.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Spread Your Wings.mp3",
           "artist": "Kanye West",
           "year": 2018
         },
         {
           "title": "New Body",
-          "file": "/music/yandhi/New Body.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/New Body.mp3",
           "artist": "Kanye West, Ty Dolla $ign, Nicki Minaj",
           "year": 2018
         },
         {
           "title": "Dip",
-          "file": "/music/yandhi/Dip.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Dip.mp3",
           "artist": "Kanye West, Tyga",
           "year": 2018
         },
         {
           "title": "Tom Raider 7",
-          "file": "/music/yandhi/Tom Raider 7.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Tom Raider 7.mp3",
           "artist": "Kanye West, YNW Melly",
           "year": 2018
         },
         {
           "title": "House Party",
-          "file": "/music/yandhi/House Party.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/House Party.mp3",
           "artist": "Kanye West, Ant Clemons",
           "year": 2018
         },
         {
           "title": "Hurricane",
-          "file": "/music/yandhi/Hurricane.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Hurricane.mp3",
           "artist": "Kanye West, Big Sean, Ty Dolla $ign",
           "year": 2018
         },
         {
           "title": "Alien (Interlude)",
-          "file": "/music/yandhi/Alien (Interlude).mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Alien (Interlude).mp3",
           "artist": "Kanye West",
           "year": 2018
         },
         {
           "title": "Alien",
-          "file": "/music/yandhi/Alien.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Alien.mp3",
           "artist": "Kanye West, Ant Clemons, Young Thug, Quavo, Kid Cudi",
           "year": 2018
         },
         {
           "title": "Bye Bye Baby",
-          "file": "/music/yandhi/Bye Bye Baby.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Bye Bye Baby.mp3",
           "artist": "Kanye West, Mykki Blanco",
           "year": 2018
         },
         {
           "title": "Simulation Baptize",
-          "file": "/music/yandhi/Simulation Baptize.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Simulation Baptize.mp3",
           "artist": "Kanye West, Pardison Fontaine, A$AP Rocky",
           "year": 2018
         },
         {
           "title": "Photo",
-          "file": "/music/yandhi/Photo.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Photo.mp3",
           "artist": "Kanye West",
           "year": 2018
         },
         {
           "title": "Color 1",
-          "file": "/music/yandhi/Color 1.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Color 1.mp3",
           "artist": "Kanye West, YNW Melly",
           "year": 2018
         },
         {
           "title": "Me Too",
-          "file": "/music/yandhi/Me Too.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Me Too.mp3",
           "artist": "Kanye West",
           "year": 2018
         },
         {
           "title": "City In The Sky",
-          "file": "/music/yandhi/City In The Sky.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/City In The Sky.mp3",
           "artist": "Kanye West, 070 Shake, Desiigner, Jeremih, Kid Cudi, Ty Dolla $ign",
           "year": 2018
         },
         {
           "title": "Real Soul",
-          "file": "/music/yandhi/Real Soul.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Real Soul.mp3",
           "artist": "Kanye West, YNW Melly",
           "year": 2018
         },
         {
           "title": "Brothers",
-          "file": "/music/yandhi/Brothers.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Brothers.mp3",
           "artist": "Kanye West, Charlie Wilson",
           "year": 2018
         },
         {
           "title": "Cash To Burn",
-          "file": "/music/yandhi/Cash To Burn.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Cash To Burn.mp3",
           "artist": "Kanye West, Ant Clemons",
           "year": 2018
         },
         {
           "title": "The Garden",
-          "file": "/music/yandhi/The Garden.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/The Garden.mp3",
           "artist": "Kanye West, Ty Dolla $ign, Ant Clemons, Teyana Taylor, The-Dream",
           "year": 2018
         },
         {
           "title": "Last Name",
-          "file": "/music/yandhi/Last Name.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Last Name.mp3",
           "artist": "Kanye West, Ant Clemons",
           "year": 2018
         },
         {
           "title": "Home",
-          "file": "/music/yandhi/Home.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Home.mp3",
           "artist": "Kanye West, Ant Clemons",
           "year": 2018
         },
         {
           "title": "All Dreams Real",
-          "file": "/music/yandhi/All Dreams Real.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/All Dreams Real.mp3",
           "artist": "Kanye West",
           "year": 2018
         },
         {
           "title": "We Got Love",
-          "file": "/music/yandhi/We Got Love.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/We Got Love.mp3",
           "artist": "Kanye West, Teyana Taylor, Ms. Lauryn Hill",
           "year": 2018
         },
         {
           "title": "Nyce Vieux",
-          "file": "/music/yandhi/Nyce Vieux.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Nyce Vieux.mp3",
           "artist": "Kanye West",
           "year": 2018
         },
         {
           "title": "Law Of Attraction",
-          "file": "/music/yandhi/Law Of Attraction.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/Law Of Attraction.mp3",
           "artist": "Kanye West, Ant Clemons",
           "year": 2018
         },
         {
           "title": "On God (Yedit)",
-          "file": "/music/yandhi/On God (Yedit).mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/On God (Yedit).mp3",
           "artist": "Kanye West, Dua Lipa",
           "year": 2018
         },
         {
           "title": "End Of It",
-          "file": "/music/yandhi/End Of It.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yandhi/End Of It.mp3",
           "artist": "Kanye West",
           "year": 2018
         }
@@ -555,31 +553,31 @@
       "songs": [
         {
           "title": "Hurricane",
-          "file": "/music/JiK/Hurricane.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK/Hurricane.mp3",
           "artist": "Kanye West",
           "year": 2019
         },
         {
           "title": "Follow God (Remix)",
-          "file": "/music/JiK/Follow God (Remix).mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK/Follow God (Remix).mp3",
           "artist": "Kanye West, Clipse",
           "year": 2019
         },
         {
           "title": "LA Monster",
-          "file": "/music/JiK/LA Monster.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK/LA Monster.mp3",
           "artist": "Kanye West",
           "year": 2019
         },
         {
           "title": "Bound 3",
-          "file": "/music/JiK/Bound 3.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK/Bound 3.mp3",
           "artist": "Kanye West, Swizz Beatz",
           "year": 2019
         },
         {
           "title": "Wake The Dead",
-          "file": "/music/JiK/Wake The Dead.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK/Wake The Dead.mp3",
           "artist": "Kanye West",
           "year": 2019
         }
@@ -595,103 +593,103 @@
       "songs": [
         {
           "title": "Welcome To My Life",
-          "file": "/music/Gc/Welcome To My Life.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/Welcome To My Life.mp3",
           "artist": "Kanye West, Ty Dolla $ign",
           "year": 2019
         },
         {
           "title": "God's Country",
-          "file": "/music/Gc/God's Country.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/God's Country.mp3",
           "artist": "Kanye West, Travis Scott",
           "year": 2019
         },
         {
           "title": "Awakening",
-          "file": "/music/Gc/Awakening.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/Awakening.mp3",
           "artist": "Kanye West, Victory",
           "year": 2019
         },
         {
           "title": "Future Sounds",
-          "file": "/music/Gc/Future Sounds.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/Future Sounds.mp3",
           "artist": "Kanye West, Travis Scott, Victory",
           "year": 2019
         },
         {
           "title": "12,000 Acres",
-          "file": "/music/Gc/12,000 Acres.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/12,000 Acres.mp3",
           "artist": "Kanye West",
           "year": 2019
         },
         {
           "title": "Everything",
-          "file": "/music/Gc/Everything.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/Everything.mp3",
           "artist": "Kanye West, Jozzy",
           "year": 2019
         },
         {
           "title": "I Feel Terrific",
-          "file": "/music/Gc/I Feel Terrific.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/I Feel Terrific.mp3",
           "artist": "Kanye West",
           "year": 2019
         },
         {
           "title": "Keep My Spirit Alive",
-          "file": "/music/Gc/Keep My Spirit Alive.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/Keep My Spirit Alive.mp3",
           "artist": "Kanye West, KayCyy",
           "year": 2019
         },
         {
           "title": "Skuuurrr",
-          "file": "/music/Gc/Skuuurrr.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/Skuuurrr.mp3",
           "artist": "Kanye West, KayCyy",
           "year": 2019
         },
         {
           "title": "Praise God",
-          "file": "/music/Gc/Praise God.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/Praise God.mp3",
           "artist": "Kanye West, Travis Scott, KayCyy",
           "year": 2019
         },
         {
           "title": "Tell The Vision",
-          "file": "/music/Gc/Tell The Vision.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/Tell The Vision.mp3",
           "artist": "Kanye West",
           "year": 2019
         },
         {
           "title": "Off The Grid",
-          "file": "/music/Gc/Off The Grid.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/Off The Grid.mp3",
           "artist": "Kanye West",
           "year": 2019
         },
         {
           "title": "Lord I Need You",
-          "file": "/music/Gc/Lord I Need You.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/Lord I Need You.mp3",
           "artist": "Kanye West",
           "year": 2019
         },
         {
           "title": "South Florida",
-          "file": "/music/Gc/South Florida.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/South Florida.mp3",
           "artist": "Kanye West, KayCyy",
           "year": 2019
         },
         {
           "title": "Let The Spirit Go Wild",
-          "file": "/music/Gc/Let The Spirit Go Wild.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/Let The Spirit Go Wild.mp3",
           "artist": "Kanye West, Abstract Mindstate",
           "year": 2019
         },
         {
           "title": "Tulsa",
-          "file": "/music/Gc/Tulsa.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/Tulsa.mp3",
           "artist": "Kanye West, KayCyy",
           "year": 2019
         },
         {
           "title": "New Body",
-          "file": "/music/Gc/New Body.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/Gc/New Body.mp3",
           "artist": "Kanye West, Ty Dolla $ign, Nicki Minaj",
           "year": 2019
         }
@@ -707,73 +705,73 @@
       "songs": [
         {
           "title": "Selah (Remix)",
-          "file": "/music/JiK2/Selah (Remix).mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK2/Selah (Remix).mp3",
           "artist": "Kanye West, Dr. Dre, Sunday Service Choir, Marsha Ambrosius",
           "year": 2019
         },
         {
           "title": "LA Monster",
-          "file": "/music/JiK2/LA Monster.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK2/LA Monster.mp3",
           "artist": "Kanye West, Dr. Dre, A$AP Ferg",
           "year": 2019
         },
         {
           "title": "Water (Remix)",
-          "file": "/music/JiK2/Water (Remix).mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK2/Water (Remix).mp3",
           "artist": "Kanye West, Dr. Dre, Marsha Ambrosius, Ant Clemons",
           "year": 2019
         },
         {
           "title": "Closed On Sunday (Remix)",
-          "file": "/music/JiK2/Closed On Sunday (Remix).mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK2/Closed On Sunday (Remix).mp3",
           "artist": "Kanye West, Dr. Dre, Anderson .Paak",
           "year": 2019
         },
         {
           "title": "On God (Remix)",
-          "file": "/music/JiK2/On God (Remix).mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK2/On God (Remix).mp3",
           "artist": "Kanye West, Dr. Dre, THURZ",
           "year": 2019
         },
         {
           "title": "I Need The Lord",
-          "file": "/music/JiK2/I Need The Lord.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK2/I Need The Lord.mp3",
           "artist": "Kanye West, Dr. Dre, Sunday Service Choir, Marsha Ambrosius",
           "year": 2019
         },
         {
           "title": "Hands On (Remix)",
-          "file": "/music/JiK2/Hands On (Remix).mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK2/Hands On (Remix).mp3",
           "artist": "Kanye West, Dr. Dre, Travis Scott, The WRLDFMS Tony Williams, Fred Hammond",
           "year": 2019
         },
         {
           "title": "Everything We Need (Remix)",
-          "file": "/music/JiK2/Everything We Need (Remix).mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK2/Everything We Need (Remix).mp3",
           "artist": "Kanye West, Dr. Dre, Ty Dolla $ign, Ant Clemons",
           "year": 2019
         },
         {
           "title": "Ashes (Remix)",
-          "file": "/music/JiK2/Ashes (Remix).mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK2/Ashes (Remix).mp3",
           "artist": "Kanye West, Dr. Dre, Sunday Service Choir, Marsha Ambrosius",
           "year": 2019
         },
         {
           "title": "God Is (Remix)",
-          "file": "/music/JiK2/God Is (Remix).mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK2/God Is (Remix).mp3",
           "artist": "Kanye West, Dr. Dre, Sunday Service Choir",
           "year": 2019
         },
         {
           "title": "Use This Gospel (Remix)",
-          "file": "/music/JiK2/Use This Gospel (Remix).mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK2/Use This Gospel (Remix).mp3",
           "artist": "Kanye West, Dr. Dre, Eminem",
           "year": 2019
         },
         {
           "title": "Glory",
-          "file": "/music/JiK2/Glory.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/JiK2/Glory.mp3",
           "artist": "Kanye West, Dr. Dre, Snoop Dogg, Dem Jointz",
           "year": 2019
         }
@@ -789,121 +787,121 @@
       "songs": [
         {
           "title": "Welcome To My Life",
-          "file": "/music/donda/Welcome To My Life.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/Welcome To My Life.mp3",
           "artist": "Kanye West, Ty Dolla $ign",
           "year": 2021
         },
         {
           "title": "Nah Nah Nah",
-          "file": "/music/donda/Nah Nah Nah.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/Nah Nah Nah.mp3",
           "artist": "Kanye West, DaBaby, 2 Chainz",
           "year": 2021
         },
         {
           "title": "Tell The Vision",
-          "file": "/music/donda/Tell The Vision.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/Tell The Vision.mp3",
           "artist": "Kanye West, 2 Chainz, Conway the Machine, Pop Smoke",
           "year": 2020
         },
         {
           "title": "Donda",
-          "file": "/music/donda/Donda.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/Donda.mp3",
           "artist": "Kanye West, Consequence, Dem Jointz",
           "year": 2021
         },
         {
           "title": "Eternal Life",
-          "file": "/music/donda/Eternal Life.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/Eternal Life.mp3",
           "artist": "Kanye West, Big Sean, Sheck Wes",
           "year": 2021
         },
         {
           "title": "God's Test",
-          "file": "/music/donda/God's Test.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/God's Test.mp3",
           "artist": "Kanye West, KayCyy, 2 Chainz",
           "year": 2021
         },
         {
           "title": "Hold The Line",
-          "file": "/music/donda/Hold The Line.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/Hold The Line.mp3",
           "artist": "Kanye West",
           "year": 2021
         },
         {
           "title": "Pray For Me",
-          "file": "/music/donda/Pray For Me.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/Pray For Me.mp3",
           "artist": "Kanye West, SAINt JHN",
           "year": 2021
         },
         {
           "title": "Keep My Spirit Alive",
-          "file": "/music/donda/Keep My Spirit Alive.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/Keep My Spirit Alive.mp3",
           "artist": "Kanye West, KayCyy, Westside Gunn, Conway the Machine",
           "year": 2021
         },
         {
           "title": "In God's Country",
-          "file": "/music/donda/In God's Country.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/In God's Country.mp3",
           "artist": "Kanye West, Justin Bieber, KayCyy, Common, Todd Rundgren",
           "year": 2021
         },
         {
           "title": "City Of Lost Angels",
-          "file": "/music/donda/City Of Lost Angels.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/City Of Lost Angels.mp3",
           "artist": "Kanye West",
           "year": 2021
         },
         {
           "title": "Bound",
-          "file": "/music/donda/Bound.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/Bound.mp3",
           "artist": "Kanye West, Swizz Beatz",
           "year": 2021
         },
         {
           "title": "All These Friends Of Mine",
-          "file": "/music/donda/All These Friends Of Mine.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/All These Friends Of Mine.mp3",
           "artist": "Kanye West",
           "year": 2021
         },
         {
           "title": "Crash Landing",
-          "file": "/music/donda/Crash Landing.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/Crash Landing.mp3",
           "artist": "Kanye West, Sheck Wes, KayCyy",
           "year": 2021
         },
         {
           "title": "24",
-          "file": "/music/donda/24.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/24.mp3",
           "artist": "Kanye West, KayCyy, Sunday Service Choir",
           "year": 2020
         },
         {
           "title": "Future Sounds",
-          "file": "/music/donda/Future Sounds.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/Future Sounds.mp3",
           "artist": "Kanye West, Travis Scott, Harmony",
           "year": 2021
         },
         {
           "title": "He Gave It All",
-          "file": "/music/donda/He Gave It All.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/He Gave It All.mp3",
           "artist": "Kanye West, KayCyy, Boyz II Men, Wanya, Sunday Service Choir",
           "year": 2022
         },
         {
           "title": "Star Time",
-          "file": "/music/donda/Star Time.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/Star Time.mp3",
           "artist": "Kanye West, IDK, Anderson .Paak",
           "year": 2020
         },
         {
           "title": "See Me Again",
-          "file": "/music/donda/See Me Again.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/See Me Again.mp3",
           "artist": "Kanye West, Bon Iver, The WRLDFMS Tony Williams, John Legend, Elly Jackson",
           "year": 2021
         },
         {
           "title": "By Your Side",
-          "file": "/music/donda/By Your Side.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/By Your Side.mp3",
           "artist": "Kanye West, Ty Dolla $ign",
           "year": 2021
         }
@@ -919,37 +917,32 @@
       "songs": [
         {
           "title": "PABLO",
-          "file": "/music/donda2/PABLO.mp3",
-          "artist": "Kanye West, Travis Scott, Future",
-          "year": null
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda2/PABLO.mp3",
+          "artist": "Kanye West, Travis Scott, Future"
         },
         {
           "title": "MR MIYAGI",
-          "file": "/music/donda2/MR MIYAGI.mp3",
-          "artist": "Kanye West, Future, Playboi Carti",
-          "year": null
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda2/MR MIYAGI.mp3",
+          "artist": "Kanye West, Future, Playboi Carti"
         },
         {
           "title": "HAPPY",
-          "file": "/music/donda2/HAPPY.mp3",
-          "artist": "Kanye West, Future",
-          "year": null
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda2/HAPPY.mp3",
+          "artist": "Kanye West, Future"
         },
         {
           "title": "WE DID IT",
-          "file": "/music/donda2/WE DID IT.mp3",
-          "artist": "Kanye West, Baby Keem, Migos",
-          "year": null
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda2/WE DID IT.mp3",
+          "artist": "Kanye West, Baby Keem, Migos"
         },
         {
           "title": "SELFISH",
-          "file": "/music/donda2/SELFISH.mp3",
-          "artist": "Kanye West, XXXTENTACION",
-          "year": null
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda2/SELFISH.mp3",
+          "artist": "Kanye West, XXXTENTACION"
         },
         {
           "title": "Happy Birthday",
-          "file": "/music/donda2/Happy Birthday.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda2/Happy Birthday.mp3",
           "artist": "Kanye West",
           "year": 2022
         }
@@ -965,79 +958,79 @@
       "songs": [
         {
           "title": "For Once In My Life",
-          "file": "/music/war/For Once In My Life.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/For Once In My Life.mp3",
           "artist": "Kanye West, James Blake",
           "year": 2022
         },
         {
           "title": "Virgil's Funeral",
-          "file": "/music/war/Virgil's Funeral.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Virgil's Funeral.mp3",
           "artist": "Kanye West, James Blake, Vory",
           "year": 2022
         },
         {
           "title": "Talking",
-          "file": "/music/war/Talking.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Talking.mp3",
           "artist": "Kanye West, James Blake",
           "year": 2022
         },
         {
           "title": "Hold Up, Get Up",
-          "file": "/music/war/Hold Up, Get Up.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Hold Up, Get Up.mp3",
           "artist": "Kanye West, James Blake",
           "year": 2022
         },
         {
           "title": "Quiet",
-          "file": "/music/war/Quiet.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Quiet.mp3",
           "artist": "Kanye West, James Blake",
           "year": 2022
         },
         {
           "title": "Bobby Digital",
-          "file": "/music/war/Bobby Digital.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Bobby Digital.mp3",
           "artist": "Kanye West, James Blake",
           "year": 2022
         },
         {
           "title": "All In Love",
-          "file": "/music/war/All In Love.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/All In Love.mp3",
           "artist": "Kanye West, James Blake",
           "year": 2022
         },
         {
           "title": "Through The High Wire",
-          "file": "/music/war/Through The High Wire.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Through The High Wire.mp3",
           "artist": "Kanye West, James Blake",
           "year": 2022
         },
         {
           "title": "Let It In",
-          "file": "/music/war/Let It In.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Let It In.mp3",
           "artist": "Kanye West, James Blake",
           "year": 2022
         },
         {
           "title": "Spiky",
-          "file": "/music/war/Spiky.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Spiky.mp3",
           "artist": "Kanye West, James Blake",
           "year": 2022
         },
         {
           "title": "My Way (Yedit)",
-          "file": "/music/war/My Way (Yedit).mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/My Way (Yedit).mp3",
           "artist": "Kanye West, James Blake",
           "year": 2022
         },
         {
           "title": "Showtime (Yedit)",
-          "file": "/music/war/Showtime (Yedit).mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Showtime (Yedit).mp3",
           "artist": "Kanye West, James Blake",
           "year": 2022
         },
         {
           "title": "Magic",
-          "file": "/music/war/Magic.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Magic.mp3",
           "artist": "Kanye West, James Blake",
           "year": 2022
         }
@@ -1053,25 +1046,25 @@
       "songs": [
         {
           "title": "Someday We'll All Be Free",
-          "file": "/music/yebu/Someday We'll All Be Free.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yebu/Someday We'll All Be Free.mp3",
           "artist": "Kanye West",
           "year": 2022
         },
         {
           "title": "Love Love Love (Yedit)",
-          "file": "/music/yebu/Love Love Love (Yedit).mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yebu/Love Love Love (Yedit).mp3",
           "artist": "Kanye West",
           "year": 2022
         },
         {
           "title": "Unlock",
-          "file": "/music/yebu/Unlock.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yebu/Unlock.mp3",
           "artist": "Kanye West",
           "year": 2022
         },
         {
           "title": "So Soon",
-          "file": "/music/yebu/So Soon.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/yebu/So Soon.mp3",
           "artist": "Kanye West",
           "year": 2022
         }
@@ -1087,7 +1080,7 @@
       "songs": [
         {
           "title": "Thank You (Vol. 2)",
-          "file": "/music/ksg2/Thank You Vol. 2.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ksg2/Thank You Vol. 2.mp3",
           "artist": "Kanye West, Kid Cudi",
           "year": 2023
         }
@@ -1103,13 +1096,13 @@
       "songs": [
         {
           "title": "EVERYBODY",
-          "file": "/music/vultures1/EVERYBODY.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures1/EVERYBODY.mp3",
           "artist": "Kanye West, Ty Dolla $ign, Charlie Wilson, Lil Baby",
           "year": 2023
         },
         {
           "title": "SO CALLED FRIENDS",
-          "file": "/music/vultures1/SO CALLED FRIENDS.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures1/SO CALLED FRIENDS.mp3",
           "artist": "Kanye West, Ty Dolla $ign, Freddie Gibbs",
           "year": 2023
         }
@@ -1125,51 +1118,50 @@
       "songs": [
         {
           "title": "CAN U BE",
-          "file": "/music/vultures2/CAN U BE.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures2/CAN U BE.mp3",
           "artist": "Kanye West, Ty Dolla $ign, Travis Scott",
           "year": 2024
         },
         {
           "title": "CAN U BE (REMIX)",
-          "file": "/music/vultures2/CAN U BE (REMIX).mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures2/CAN U BE (REMIX).mp3",
           "artist": "Kanye West, Ty Dolla $ign, Travis Scott, Kirby Lauryen, brolyongod!",
           "year": 2024
         },
         {
           "title": "TAKE OFF YOUR DRESS",
-          "file": "/music/vultures2/TAKE OFF YOUR DRESS.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures2/TAKE OFF YOUR DRESS.mp3",
           "artist": "Kanye West, Ty Dolla $ign",
           "year": 2024
         },
         {
           "title": "PAY PER VIEW",
-          "file": "/music/vultures2/PAY PER VIEW.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures2/PAY PER VIEW.mp3",
           "artist": "Kanye West, Ty Dolla $ign, Young Moose, Project Pat",
           "year": 2024
         },
         {
           "title": "DRUNK",
-          "file": "/music/vultures2/DRUNK.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures2/DRUNK.mp3",
           "artist": "Kanye West, Ty Dolla $ign, Bad Bunny, Kodak Black",
           "year": 2024
         },
         {
           "title": "MELROSE",
-          "file": "/music/vultures2/MELROSE.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures2/MELROSE.mp3",
           "artist": "Kanye West, Ty Dolla $ign, Playboi Carti",
           "year": 2024
         },
         {
           "title": "GUN TO MY HEAD",
-          "file": "/music/vultures2/GUN TO MY HEAD.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures2/GUN TO MY HEAD.mp3",
           "artist": "Kanye West, Ty Dolla $ign, Kid Cudi",
           "year": 2024
         },
         {
           "title": "BELIEVER",
-          "file": "/music/vultures2/BELIEVER.mp3",
-          "artist": "Kanye West, Ty Dolla $ign",
-          "year": null
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures2/BELIEVER.mp3",
+          "artist": "Kanye West, Ty Dolla $ign"
         }
       ]
     },
@@ -1183,49 +1175,49 @@
       "songs": [
         {
           "title": "LOVE AGAIN",
-          "file": "/music/vultures3/LOVE AGAIN.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures3/LOVE AGAIN.mp3",
           "artist": "Kanye West, Ty Dolla $ign",
           "year": 2024
         },
         {
           "title": "NEXT TIME",
-          "file": "/music/vultures3/NEXT TIME.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures3/NEXT TIME.mp3",
           "artist": "Kanye West, Ty Dolla $ign, Young Moose",
           "year": 2024
         },
         {
           "title": "DON'T KILL THE PARTY",
-          "file": "/music/vultures3/DON'T KILL THE PARTY.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures3/DON'T KILL THE PARTY.mp3",
           "artist": "Kanye West, Ty Dolla $ign, Quavo, Juicy J",
           "year": 2024
         },
         {
           "title": "APEROL SPRITZ (Yedit)",
-          "file": "/music/vultures3/APEROL SPRITZ (Yedit).mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures3/APEROL SPRITZ (Yedit).mp3",
           "artist": "Kanye West, Ty Dolla $ign, Ant Clemons",
           "year": 2024
         },
         {
           "title": "THIRSTY",
-          "file": "/music/vultures3/THIRSTY.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures3/THIRSTY.mp3",
           "artist": "Kanye West, Ty Dolla $ign, Teezo Touchdown, Cruza",
           "year": 2024
         },
         {
           "title": "WORSHIP (Yedit)",
-          "file": "/music/vultures3/WORSHIP (Yedit).mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures3/WORSHIP (Yedit).mp3",
           "artist": "Kanye West, Ty Dolla $ign, Chloe Bailey",
           "year": 2024
         },
         {
           "title": "FEAR",
-          "file": "/music/vultures3/FEAR.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures3/FEAR.mp3",
           "artist": "Kanye West, Ty Dolla $ign",
           "year": 2024
         },
         {
           "title": "LET GO",
-          "file": "/music/vultures3/LET GO.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/vultures3/LET GO.mp3",
           "artist": "Kanye West, Ty Dolla $ign",
           "year": 2024
         }
@@ -1241,103 +1233,103 @@
       "songs": [
         {
           "title": "PREACHER MAN",
-          "file": "/music/bully/PREACHER MAN.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/PREACHER MAN.mp3",
           "artist": "Kanye West",
           "year": 2025
         },
         {
           "title": "BEAUTY AND THE BEAST",
-          "file": "/music/bully/BEAUTY AND THE BEAST.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/BEAUTY AND THE BEAST.mp3",
           "artist": "Kanye West",
           "year": 2025
         },
         {
           "title": "DAMN",
-          "file": "/music/bully/DAMN.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/DAMN.mp3",
           "artist": "Kanye West",
           "year": 2025
         },
         {
           "title": "LAST BREATH",
-          "file": "/music/bully/LAST BREATH.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/LAST BREATH.mp3",
           "artist": "Kanye West",
           "year": 2025
         },
         {
           "title": "LOSING YOUR MIND",
-          "file": "/music/bully/LOSING YOUR MIND.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/LOSING YOUR MIND.mp3",
           "artist": "Kanye West",
           "year": 2025
         },
         {
           "title": "HIGHS AND LOWS",
-          "file": "/music/bully/HIGHS AND LOWS.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/HIGHS AND LOWS.mp3",
           "artist": "Kanye West",
           "year": 2025
         },
         {
           "title": "WHITE LINES",
-          "file": "/music/bully/WHITE LINES.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/WHITE LINES.mp3",
           "artist": "Kanye West",
           "year": 2025
         },
         {
           "title": "BULLY",
-          "file": "/music/bully/BULLY.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/BULLY.mp3",
           "artist": "Kanye West",
           "year": 2025
         },
         {
           "title": "CIRCLES",
-          "file": "/music/bully/CIRCLES.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/CIRCLES.mp3",
           "artist": "Kanye West",
           "year": 2025
         },
         {
           "title": "PEOPLE LIKE ME",
-          "file": "/music/bully/PEOPLE LIKE ME.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/PEOPLE LIKE ME.mp3",
           "artist": "Kanye West",
           "year": 2025
         },
         {
           "title": "CAN'T HURRY LOVE",
-          "file": "/music/bully/CAN'T HURRY LOVE.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/CAN'T HURRY LOVE.mp3",
           "artist": "Kanye West",
           "year": 2025
         },
         {
           "title": "THIS ONE HERE",
-          "file": "/music/bully/THIS ONE HERE.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/THIS ONE HERE.mp3",
           "artist": "Kanye West",
           "year": 2025
         },
         {
           "title": "MISSION CONTROL",
-          "file": "/music/bully/MISSION CONTROL.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/MISSION CONTROL.mp3",
           "artist": "Kanye West, The WRLDFMS Tony Williams",
           "year": 2025
         },
         {
           "title": "DARK MATTER (Yedit, Instrumental)",
-          "file": "/music/bully/DARK MATTER (Yedit, Instrumental).mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/DARK MATTER (Yedit, Instrumental).mp3",
           "artist": "Kanye West",
           "year": 2025
         },
         {
           "title": "ALPHA OMEGA",
-          "file": "/music/bully/ALPHA OMEGA.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/ALPHA OMEGA.mp3",
           "artist": "Kanye West, Skepta",
           "year": 2025
         },
         {
           "title": "RED EYE (Yedit)",
-          "file": "/music/bully/RED EYE (Yedit).mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/RED EYE (Yedit).mp3",
           "artist": "Kanye West",
           "year": 2025
         },
         {
           "title": "MELROSE",
-          "file": "/music/bully/MELROSE.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/MELROSE.mp3",
           "artist": "Kanye West, Ty Dolla $ign, Playboi Carti",
           "year": 2025
         }
@@ -1353,91 +1345,91 @@
       "songs": [
         {
           "title": "WW3",
-          "file": "/music/cukkk/WW3.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/WW3.mp3",
           "artist": "Kanye West",
           "year": 2025
         },
         {
           "title": "COSBY",
-          "file": "/music/cukkk/COSBY.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/COSBY.mp3",
           "artist": "Kanye West",
           "year": 2025
         },
         {
           "title": "DIDDY FREE",
-          "file": "/music/cukkk/DIDDY FREE.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/DIDDY FREE.mp3",
           "artist": "Kanye West",
           "year": 2025
         },
         {
           "title": "DIRTY MAGAZINES",
-          "file": "/music/cukkk/DIRTY MAGAZINES.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/DIRTY MAGAZINES.mp3",
           "artist": "Kanye West",
           "year": 2025
         },
         {
           "title": "JESUS",
-          "file": "/music/cukkk/JESUS.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/JESUS.mp3",
           "artist": "Kanye West",
           "year": 2025
         },
         {
           "title": "BIANCA",
-          "file": "/music/cukkk/BIANCA.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/BIANCA.mp3",
           "artist": "Kanye West",
           "year": 2025
         },
         {
           "title": "COUSINS",
-          "file": "/music/cukkk/COUSINS.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/COUSINS.mp3",
           "artist": "Kanye West",
           "year": 2025
         },
         {
           "title": "VIRGIL",
-          "file": "/music/cukkk/VIRGIL.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/VIRGIL.mp3",
           "artist": "Kanye West",
           "year": 2025
         },
         {
           "title": "UNCLE",
-          "file": "/music/cukkk/UNCLE.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/UNCLE.mp3",
           "artist": "Kanye West",
           "year": 2025
         },
         {
           "title": "FREE MY KIDS",
-          "file": "/music/cukkk/FREE MY KIDS.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/FREE MY KIDS.mp3",
           "artist": "Kanye West",
           "year": 2025
         },
         {
           "title": "HEIL HITLER",
-          "file": "/music/cukkk/HEIL HITLER.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/HEIL HITLER.mp3",
           "artist": "Kanye West",
           "year": 2025
         },
         {
           "title": "GAS CHAMBERS",
-          "file": "/music/cukkk/GAS CHAMBERS.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/GAS CHAMBERS.mp3",
           "artist": "Kanye West",
           "year": 2025
         },
         {
           "title": "HITLER YE JESUS",
-          "file": "/music/cukkk/HITLER YE JESUS.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/HITLER YE JESUS.mp3",
           "artist": "Kanye West",
           "year": 2025
         },
         {
           "title": "JARED",
-          "file": "/music/cukkk/JARED.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/JARED.mp3",
           "artist": "Kanye West",
           "year": 2025
         },
         {
           "title": "NITROUS",
-          "file": "/music/cukkk/NITROUS.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/cukkk/NITROUS.mp3",
           "artist": "Kanye West",
           "year": 2025
         }
@@ -1453,43 +1445,43 @@
       "songs": [
         {
           "title": "SHINE THE DARKEST",
-          "file": "/music/ye-i/SHINE THE DARKEST.m4a",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ye-i/SHINE THE DARKEST.m4a",
           "artist": "damn james!, Gabe Shaddow",
           "year": 2025
         },
         {
           "title": "CROWD PLEASER",
-          "file": "/music/ye-i/CROWD PLEASER.m4a",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ye-i/CROWD PLEASER.m4a",
           "artist": "damn james!, Gabe Shaddow",
           "year": 2025
         },
         {
           "title": "MIND GONE",
-          "file": "/music/ye-i/MIND GONE.m4a",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ye-i/MIND GONE.m4a",
           "artist": "damn james!, Gabe Shaddow",
           "year": 2025
         },
         {
           "title": "SCARY",
-          "file": "/music/ye-i/SCARY.m4a",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ye-i/SCARY.m4a",
           "artist": "damn james!, Gabe Shaddow",
           "year": 2025
         },
         {
           "title": "THE AWAKENING (im not crazy)",
-          "file": "/music/ye-i/THE AWAKENING (im not crazy).m4a",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ye-i/THE AWAKENING (im not crazy).m4a",
           "artist": "damn james!, Gabe Shaddow",
           "year": 2025
         },
         {
           "title": "FENDI ROCKA",
-          "file": "/music/ye-i/FENDI ROCKA.m4a",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ye-i/FENDI ROCKA.m4a",
           "artist": "damn james!, Gabe Shaddow",
           "year": 2025
         },
         {
           "title": "CITY IN THE SKY (VZ VERSION)",
-          "file": "/music/ye-i/CITY IN THE SKY (VZ VERSION).m4a",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ye-i/CITY IN THE SKY (VZ VERSION).m4a",
           "artist": "damn james!, Gabe Shaddow",
           "year": 2025
         }

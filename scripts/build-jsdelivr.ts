@@ -25,7 +25,12 @@ async function buildJsDelivrFile(): Promise<void> {
         anim: album.anim ? transformPath(album.anim) : null,
         year: album.year ?? undefined,
         attribute: album.attribute ?? null,
-        songs: album.songs || [],
+        songs: album.songs.map((song) => ({
+          title: song.title,
+          file: transformPath(song.file),
+          artist: song.artist,
+          year: song.year ?? undefined,
+        })),
       })),
     }
 
