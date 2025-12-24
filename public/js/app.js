@@ -98,7 +98,7 @@ async function init() {
     setTimeout(() => {
       const titleCaseCheckbox = document.getElementById("title-case-checkbox")
       const yeditCheckbox = document.getElementById("yedit-highlighting-checkbox")
-      
+
       if (titleCaseCheckbox) titleCaseCheckbox.checked = titleCaseEnabled
       if (yeditCheckbox) yeditCheckbox.checked = yeditHighlightingEnabled
 
@@ -417,7 +417,7 @@ async function renderAlbumDetail(album) {
       const songUrl = await window.db.getFileUrl(song.file)
       const filename = song.file.split("/").pop()
       const isYedit = /\s*\(Yedit\)\s*$/i.test(song.title)
-      const yClass = (isYedit && yeditHighlightingEnabled) ? " yedit" : ""
+      const yClass = isYedit && yeditHighlightingEnabled ? " yedit" : ""
       return `
     <li class="song-row${yClass}" data-song-index="${index}" data-yedit="${isYedit ? "true" : "false"}">
       <div class="song-main" data-song-title="${song.title}" data-song-file="${songUrl}">

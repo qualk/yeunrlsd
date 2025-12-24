@@ -1,5 +1,13 @@
 /* Standard Modal Styles */
 
+:root {
+  --modal-bg: var(--background);
+  --modal-border: var(--border);
+  --modal-muted: #f9f9f9;
+  --modal-success: #22c55e;
+  --modal-success-bg: #f0fdf4;
+}
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -16,300 +24,301 @@
   transition:
     opacity 0.3s ease,
     visibility 0.3s ease;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .modal-content {
+    background: var(--modal-bg);
+    border: 1px solid var(--modal-border);
+    border-radius: 12px;
+    padding: 32px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+    overscroll-behavior: contain;
+
+    &.open {
+      transform: translateY(0);
+    }
+
+    .modal-header {
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      h2 {
+        font-size: 24px;
+        font-weight: 600;
+      }
+    }
+
+    .modal-version {
+      font-size: 0.85em;
+      margin-left: 8px;
+      opacity: 0.6;
+      font-weight: 400;
+    }
+
+    .modal-close-btn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--foreground);
+      opacity: 0.5;
+      transition: opacity 0.2s;
+      padding: 4px;
+      line-height: 1;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &:focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 2px;
+      }
+    }
+
+    .modal-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 24px;
+
+      .reset-btn {
+        order: -1;
+      }
+    }
+
+    .modal-btn {
+      padding: 8px 16px;
+      border: 1px solid var(--modal-border);
+      background: var(--modal-bg);
+      color: var(--foreground);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s;
+
+      &:hover {
+        background: var(--foreground);
+        color: var(--background);
+      }
+
+      &.hidden {
+        display: none;
+      }
+    }
+
+    /* Download modal specific adjustments */
+    &.download-modal {
+      /* Download stats (summary at top of download modal) */
+      .download-stats {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+
+      .stat-item {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .stat-label {
+        font-size: 12px;
+        color: #666;
+        margin-bottom: 4px;
+      }
+
+      .stat-value {
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      .modal-btn {
+        padding: 8px 24px;
+        background: #000;
+        color: #fff;
+        border: none;
+      }
+
+      .modal-btn:hover {
+        opacity: 0.8;
+      }
+
+      .overall-progress-bar-container {
+        height: 8px;
+        background: var(--modal-muted);
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 24px;
+      }
+
+      .progress-bar-fill {
+        height: 100%;
+        background: var(--accent);
+        transition: width 0.3s ease;
+      }
+
+      &.download-complete {
+        .overall-progress-bar-container,
+        .download-stats {
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.5s ease;
+        }
+      }
+
+      .download-album-list {
+        max-height: 400px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .download-album-row {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 12px;
+        background: var(--modal-muted);
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .download-album-row.completed {
+        background: var(--modal-success-bg);
+      }
+
+      .download-album-row.completed .download-album-art {
+        outline: 2px solid var(--modal-success);
+      }
+
+      .download-album-art {
+        width: 48px;
+        height: 48px;
+        border-radius: 4px;
+        object-fit: cover;
+      }
+
+      .download-album-info {
+        flex: 1;
+      }
+
+      .download-album-name {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .album-progress-bar-container {
+        height: 4px;
+        background: var(--modal-muted);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+    }
+
+    /* Settings modal */
+    .settings-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 24px;
+
+      > div:first-child {
+        text-align: left;
+        min-width: 0;
+      }
+
+      h3 {
+        font-size: 18px;
+        font-weight: 600;
+        margin: 0 0 8px 0;
+        color: var(--foreground);
+      }
+
+      .button-group {
+        display: flex;
+        gap: 8px;
+        justify-self: center;
+        align-self: center;
+
+        input[type="checkbox"] {
+          width: 16px;
+          height: 16px;
+        }
+      }
+
+      .settings-description {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        p {
+          margin: 0;
+          font-size: 14px;
+          color: var(--foreground);
+          opacity: 0.8;
+        }
+      }
+
+      .settings-btn {
+        background: var(--accent);
+        color: var(--background);
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-family: inherit;
+        font-size: 14px;
+        cursor: pointer;
+        transition: opacity 0.2s;
+        white-space: nowrap;
+
+        &:hover {
+          opacity: 0.9;
+        }
+
+        &.hidden {
+          display: none;
+        }
+      }
+    }
+  }
 }
 
-.modal-overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.modal-content {
-  background: var(--background);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 32px;
-  max-width: 500px;
-  width: 90%;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  transform: translateY(20px);
-  transition: transform 0.3s ease;
-}
-
-.modal-overlay.active .modal-content {
-  transform: translateY(0);
-}
-
-.modal-header {
-  margin-bottom: 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.modal-header h2 {
-  font-size: 24px;
-  font-weight: 600;
-}
-
-/* Small muted version text used in modal headers */
-.modal-version {
-  font-size: 0.85em;
-  margin-left: 8px;
-  opacity: 0.6;
-  font-weight: 400;
-}
-
-.modal-close-btn {
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: var(--foreground);
-  opacity: 0.5;
-  transition: opacity 0.2s;
-  padding: 4px;
-  line-height: 1;
-}
-
-.modal-close-btn:hover {
-  opacity: 1;
-}
-
-/* Background fading */
-.app-container {
-  transition: filter 0.3s ease;
-}
-
-/* Only blur non-modal children so modals remain sharp even when they are inside the container */
-body.modal-open .app-container > :not(.modal-overlay) {
-  filter: blur(4px);
-  pointer-events: none;
-  /* avoid interacting with background while modal open */
-}
-
-/* Ensure modal overlays remain interactive */
+/* Keep modal container interactive when in .app-container */
 .app-container .modal-overlay {
   pointer-events: auto;
 }
 
-/* Modal buttons */
-.modal-btn {
-  padding: 8px 16px;
-  border: 1px solid var(--border);
-  background: var(--background);
-  color: var(--foreground);
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: all 0.2s;
-}
-
-.modal-btn:hover {
-  background: var(--foreground);
-  color: var(--background);
-}
-
-.modal-btn.hidden {
-  display: none;
-}
-
-/* Settings description text */
-
-
-/* Modal footer with flex for button positioning */
-.modal-footer {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  margin-top: 24px;
-}
-
-.modal-footer .reset-btn {
-  order: -1;
-  /* Push to left */
-}
-
-/* =====================
-   Download Modal
-====================== */
-
-.download-stats {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.stat-item {
-  display: flex;
-  flex-direction: column;
-}
-
-.stat-label {
-  font-size: 12px;
-  color: #666;
-  margin-bottom: 4px;
-}
-
-.stat-value {
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.overall-progress-bar-container {
-  height: 8px;
-  background: #eee;
-  border-radius: 4px;
-  overflow: hidden;
-  margin-bottom: 24px;
-}
-
-.progress-bar-fill {
-  height: 100%;
-  background: var(--accent);
-  transition: width 0.3s ease;
-}
-
-.download-modal.download-complete .overall-progress-bar-container,
-.download-modal.download-complete .download-stats {
-  opacity: 0;
+/* Blur background children when modal is open */
+body.modal-open .app-container > :not(.modal-overlay) {
+  filter: blur(4px);
   pointer-events: none;
-  transition: opacity 0.5s ease;
 }
 
-.download-album-list {
-  max-height: 400px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.download-album-row {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 12px;
-  background: #f9f9f9;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
-
-.download-album-row.completed {
-  background: #f0fdf4;
-}
-
-.download-album-row.completed .download-album-art {
-  outline: 2px solid #22c55e;
-}
-
-.download-album-art {
-  width: 48px;
-  height: 48px;
-  border-radius: 4px;
-  object-fit: cover;
-}
-
-.download-album-info {
-  flex: 1;
-}
-
-.download-album-name {
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-.album-progress-bar-container {
-  height: 4px;
-  background: #eee;
-  border-radius: 2px;
+body.modal-open {
   overflow: hidden;
 }
 
-/* =====================
-   Settings Modal
-====================== */
-
-.settings-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  align-items: start;
-  margin-bottom: 24px;
-}
-
-.settings-section > div:first-child {
-  text-align: left;
-  min-width: 0;
-}
-
-.settings-section h3 {
-  font-size: 18px;
-  font-weight: 600;
-  margin: 0 0 8px 0;
-  color: var(--foreground);
-}
-
-.settings-section .button-group {
-  display: flex;
-  gap: 8px;
-  justify-self: center;
-  align-self: center;
-}
-
-.settings-section .button-group input[type="checkbox"] {
-  width: 16px;
-  height: 16px;
-}
-
-.settings-description {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.settings-description p {
-  margin: 0;
-  font-size: 14px;
-  color: var(--foreground);
-  opacity: 0.8;
-}
-
-.settings-btn {
-  background: var(--accent);
-  color: var(--background);
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  font-family: inherit;
-  font-size: 14px;
-  cursor: pointer;
-  transition: opacity 0.2s;
-  white-space: nowrap;
-}
-
-.settings-btn:hover {
-  opacity: 0.9;
-}
-
-.settings-btn.hidden {
-  display: none;
-}
-
-/* Download modal specific button styles */
-.download-modal .modal-btn {
-  padding: 8px 24px;
-  background: #000;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-family: inherit;
-}
-
-.download-modal .modal-btn:hover {
-  opacity: 0.8;
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .modal-overlay,
+  .modal-content {
+    transition: none;
+    transform: none;
+  }
 }

@@ -1,26 +1,5 @@
 import { join } from "node:path"
-
-interface Song {
-  title: string
-  file: string
-  artist?: string | null
-  year?: number | null
-}
-
-interface Album {
-  id: string
-  name: string
-  image: string | null
-  anim: string | null
-  year?: number
-  attribute?: string | null
-  songs: Song[]
-}
-
-interface MusicData {
-  version?: string
-  albums: Album[]
-}
+import type { DataFile } from "./types"
 
 // Load music data from JSON file
 // Use local data for development, CDN data for production
@@ -28,7 +7,7 @@ const isProduction = Bun.env.NODE_ENV === "production" || Bun.env.BUN_ENV === "p
 const dataFile = isProduction ? "data-jsdelivr.json" : "data.json"
 const dataPath = join(import.meta.dir, `../${dataFile}`)
 const file = Bun.file(dataPath)
-const musicData: MusicData = JSON.parse(await file.text())
+const musicData: DataFile = JSON.parse(await file.text())
 
 const publicDir = join(import.meta.dir, "../public")
 

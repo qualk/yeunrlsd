@@ -59,7 +59,10 @@ function updateMediaSessionMetadata() {
   const playerSubtitle = document.getElementById("player-subtitle")
 
   const rawTitle = playerTitle?.textContent || "Unknown Track"
-  const title = String(rawTitle).replace(/\s*\(Yedit\)\s*$/i, "").trim() || rawTitle
+  const title =
+    String(rawTitle)
+      .replace(/\s*\(Yedit\)\s*$/i, "")
+      .trim() || rawTitle
   const artist = playerSubtitle?.textContent || "Unknown Artist"
   const album = window.currentPlayingAlbum?.name || "Unknown Album"
   const artwork = window.currentPlayingAlbum?.image || "/icons/placeholder.avif"
@@ -232,9 +235,11 @@ async function updateSongsList() {
             window.currentPlayingAlbum.id === album.id &&
             currentSongIndex === idx
           const isYedit = /\s*\(Yedit\)\s*$/i.test(song.title)
-          const displayTitle = window.applyTitleCase ? window.applyTitleCase(song.title) : song.title
+          const displayTitle = window.applyTitleCase
+            ? window.applyTitleCase(song.title)
+            : song.title
           return `
-          <div class="player-song-row ${isActive ? "active" : ""}${(isYedit && (window.yeditHighlightingEnabled !== false)) ? " yedit" : ""}" data-album-id="${album.id}" data-song-index="${idx}" title="${song.title}">
+          <div class="player-song-row ${isActive ? "active" : ""}${isYedit && window.yeditHighlightingEnabled !== false ? " yedit" : ""}" data-album-id="${album.id}" data-song-index="${idx}" title="${song.title}">
             ${displayTitle}
           </div>`
         })
@@ -468,7 +473,9 @@ function initPlaySongOverride() {
     updateMediaSessionMetadata()
     // Update Last.fm
     if (window.lastfm) {
-      const sanitizedTitle = String(song.title).replace(/\s*\(Yedit\)\s*$/i, "").trim()
+      const sanitizedTitle = String(song.title)
+        .replace(/\s*\(Yedit\)\s*$/i, "")
+        .trim()
       window.lastfm.onTrackChange({
         title: sanitizedTitle,
         artist: song.artist || "Kanye West",

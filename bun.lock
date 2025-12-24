@@ -4,12 +4,10 @@
   "workspaces": {
     "": {
       "name": "yeunrlsd",
-      "dependencies": {
-        "music-metadata": "^11.10.3",
-      },
       "devDependencies": {
         "@biomejs/biome": "^2.3.10",
         "@types/bun": "latest",
+        "music-metadata": "^11.10.3",
         "typescript": "^5",
       },
     },

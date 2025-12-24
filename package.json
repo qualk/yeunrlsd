@@ -15,10 +15,8 @@
   "devDependencies": {
     "@biomejs/biome": "^2.3.10",
     "@types/bun": "latest",
+    "music-metadata": "^11.10.3",
     "typescript": "^5"
-  },
-  "dependencies": {
-    "music-metadata": "^11.10.3"
   },
   "devEngines": {
     "runtime": {

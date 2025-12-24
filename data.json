@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.1",
   "albums": [
     {
       "id": "grad",
@@ -154,6 +154,34 @@
       ]
     },
     {
+      "id": "mbdtf",
+      "name": "My Beautiful Dark Twisted Fantasy",
+      "image": "/img/mbdtf.avif",
+      "anim": null,
+      "year": 2010,
+      "attribute": null,
+      "songs": [
+        {
+          "title": "Chain Heavy",
+          "file": "/music/mbdtf/Chain Heavy.mp3",
+          "artist": "Kanye West, Talib Kweli, Consequence",
+          "year": 2010
+        },
+        {
+          "title": "Power (Remix)",
+          "file": "/music/mbdtf/Power (Remix).mp3",
+          "artist": "Kanye West, Jay-Z, Swizz Beatz",
+          "year": 2010
+        },
+        {
+          "title": "Wild'n Cuz I'm Young",
+          "file": "/music/mbdtf/Wild'n Cuz I'm Young.mp3",
+          "artist": "Kid Cudi, Kanye West",
+          "year": null
+        }
+      ]
+    },
+    {
       "id": "tgfd",
       "name": "Thank God For Drugs",
       "image": "/img/tgfd.avif",
@@ -204,6 +232,33 @@
       ]
     },
     {
+      "id": "shmG",
+      "name": "So Help Me God",
+      "image": "/img/shmC.avif",
+      "anim": "/img/shmG-moses.avif",
+      "year": 2014,
+      "attribute": "Safe",
+      "songs": []
+    },
+    {
+      "id": "swish",
+      "name": "Swish",
+      "image": "/img/swish.avif",
+      "anim": null,
+      "year": 2014,
+      "attribute": null,
+      "songs": []
+    },
+    {
+      "id": "waves",
+      "name": "Waves",
+      "image": "/img/waves.avif",
+      "anim": null,
+      "year": 2014,
+      "attribute": null,
+      "songs": []
+    },
+    {
       "id": "cw",
       "name": "Cruel Winter",
       "image": "/img/cw.avif",
@@ -248,6 +303,31 @@
       ]
     },
     {
+      "id": "wolves",
+      "name": "Wolves",
+      "image": "/img/wolves.avif",
+      "anim": null,
+      "year": 2016,
+      "attribute": null,
+      "songs": []
+    },
+    {
+      "id": "tlop",
+      "name": "The Life Of Pablo",
+      "image": "/img/tlop.avif",
+      "anim": null,
+      "year": 2016,
+      "attribute": null,
+      "songs": [
+        {
+          "title": "Only One",
+          "file": "/music/tlop/Only One.mp3",
+          "artist": "Kanye West, Paul McCartney, Caroline Shaw, Ty Dolla $ign",
+          "year": 2016
+        }
+      ]
+    },
+    {
       "id": "le",
       "name": "LOVE EVERYONE",
       "image": "/img/le.avif",
@@ -258,7 +338,8 @@
         {
           "title": "Fine Line",
           "file": "/music/le/Fine Line.mp3",
-          "artist": "Kanye West, Bon Iver"
+          "artist": "Kanye West, Bon Iver",
+          "year": null
         },
         {
           "title": "Skeletons",
@@ -839,27 +920,32 @@
         {
           "title": "PABLO",
           "file": "/music/donda2/PABLO.mp3",
-          "artist": "Kanye West, Travis Scott, Future"
+          "artist": "Kanye West, Travis Scott, Future",
+          "year": null
         },
         {
           "title": "MR MIYAGI",
           "file": "/music/donda2/MR MIYAGI.mp3",
-          "artist": "Kanye West, Future, Playboi Carti"
+          "artist": "Kanye West, Future, Playboi Carti",
+          "year": null
         },
         {
           "title": "HAPPY",
           "file": "/music/donda2/HAPPY.mp3",
-          "artist": "Kanye West, Future"
+          "artist": "Kanye West, Future",
+          "year": null
         },
         {
           "title": "WE DID IT",
           "file": "/music/donda2/WE DID IT.mp3",
-          "artist": "Kanye West, Baby Keem, Migos"
+          "artist": "Kanye West, Baby Keem, Migos",
+          "year": null
         },
         {
           "title": "SELFISH",
           "file": "/music/donda2/SELFISH.mp3",
-          "artist": "Kanye West, XXXTENTACION"
+          "artist": "Kanye West, XXXTENTACION",
+          "year": null
         },
         {
           "title": "Happy Birthday",
@@ -959,7 +1045,7 @@
     },
     {
       "id": "yebu",
-      "name": "Yebu",
+      "name": " YEBU",
       "image": "/img/yebu.avif",
       "anim": null,
       "year": 2022,
@@ -1082,7 +1168,8 @@
         {
           "title": "BELIEVER",
           "file": "/music/vultures2/BELIEVER.mp3",
-          "artist": "Kanye West, Ty Dolla $ign"
+          "artist": "Kanye West, Ty Dolla $ign",
+          "year": null
         }
       ]
     },

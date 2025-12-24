@@ -19,8 +19,16 @@
   display: none;
 }
 
-*:focus {
+/* Prefer focus-visible for keyboard users, remove outline only when not focus-visible */
+:focus:not(:focus-visible) {
   outline: none;
+}
+
+button:focus-visible,
+a:focus-visible,
+.modal-close-btn:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
 }
 
 html {
@@ -302,15 +310,15 @@ body {
     opacity 0.2s;
   border-radius: 4px;
   overflow: hidden;
-}
 
-.album-item:not(.empty):hover {
-  transform: scale(1.05);
-}
+  &:not(.empty):hover {
+    transform: scale(1.05);
+  }
 
-.album-item.empty {
-  cursor: not-allowed;
-  opacity: 0.5;
+  &.empty {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
 }
 
 .album-image {
@@ -321,10 +329,10 @@ body {
   background: var(--muted);
   opacity: 0;
   transition: opacity 0.3s ease-out;
-}
 
-.album-image.img-loaded {
-  opacity: 1;
+  &.img-loaded {
+    opacity: 1;
+  }
 }
 
 .album-name {
@@ -362,14 +370,14 @@ body {
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 10px;
-}
 
-.album-title--cover {
-  display: block;
-}
+  &--cover {
+    display: block;
+  }
 
-.album-title--info {
-  display: none;
+  &--info {
+    display: none;
+  }
 }
 
 @media (min-width: 768px) {
@@ -391,10 +399,10 @@ body {
   background: var(--muted);
   opacity: 0;
   transition: opacity 0.3s ease-out;
-}
 
-.album-detail-image.img-loaded {
-  opacity: 1;
+  &.img-loaded {
+    opacity: 1;
+  }
 }
 
 .album-info-section {
@@ -417,17 +425,18 @@ body {
   margin-bottom: 8px;
   cursor: pointer;
   transition: background-color 0.2s;
+
+  &:hover {
+    background-color: var(--muted);
+  }
+
+  &.yedit {
+    background-color: rgba(220, 38, 38, 0.06);
+    /* subtle red tint */
+    border-color: rgba(220, 38, 38, 0.12);
+  }
 }
 
-.song-row:hover {
-  background-color: var(--muted);
-}
-
-/* Yedit styling */
-.song-row.yedit {
-  background-color: rgba(220, 38, 38, 0.06); /* subtle red tint */
-  border-color: rgba(220, 38, 38, 0.12);
-}
 .player-song-row.yedit {
   background-color: rgba(220, 38, 38, 0.1);
 }
@@ -458,10 +467,10 @@ body {
   font-size: 14px;
   transition: opacity 0.2s;
   margin-left: 10px;
-}
 
-.song-download:hover {
-  opacity: 0.8;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .no-songs {
@@ -735,26 +744,6 @@ body {
 
 .header-nav-btn.downloaded {
   color: #22c55e;
-}
-
-.modal-footer {
-  margin-top: 24px;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.modal-btn {
-  padding: 8px 24px;
-  background: #000;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-family: inherit;
-}
-
-.modal-btn:hover {
-  opacity: 0.8;
 }
 
 /* =====================
