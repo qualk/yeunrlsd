@@ -79,7 +79,7 @@ async function cacheImagesInBackground() {
     "/icons/icon-192x192.avif",
     "/icons/icon-384x384.avif",
     "/icons/icon-512x512.avif",
-    "/icons/placeholder.avif",
+    "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/icons/placeholder.avif",
   ]
 
   for (const icon of icons) {
@@ -218,9 +218,9 @@ async function startFullDownload() {
       const fetched = window.api
         ? await window.api.getAlbumData(albumSummary.id)
         : await (async () => {
-            const res = await fetch(`/api/albums/${albumSummary.id}`)
-            return res.ok ? res.json() : null
-          })()
+          const res = await fetch(`/api/albums/${albumSummary.id}`)
+          return res.ok ? res.json() : null
+        })()
       if (fetched) album = fetched
     } catch (_e) {
       // Use previously fetched data
@@ -332,7 +332,7 @@ function createAlbumRow(album) {
   row.className = "download-album-row"
   row.id = `download-row-${album.id}`
   row.innerHTML = `
-    <img src="${album.image || "/icons/placeholder.avif"}" class="download-album-art" alt="${album.name}">
+    <img src="${album.image || "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/icons/placeholder.avif"}" class="download-album-art" alt="${album.name}">
     <div class="download-album-info">
       <div class="download-album-name">${album.name}</div>
       <div class="album-progress-bar-container">

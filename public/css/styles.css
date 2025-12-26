@@ -66,22 +66,6 @@ body {
    Typography & Fonts
 ====================== */
 
-@font-face {
-  font-display: swap;
-  font-family: "JetBrains Mono";
-  font-style: normal;
-  font-weight: 500;
-  src: url("/fonts/jetbrains-mono-v24-latin/jetbrains-mono-v24-latin-500.woff2") format("woff2");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "JetBrains Mono";
-  font-style: normal;
-  font-weight: 600;
-  src: url("/fonts/jetbrains-mono-v24-latin/jetbrains-mono-v24-latin-600.woff2") format("woff2");
-}
-
 ::selection {
   background-color: var(--accent);
   color: var(--background);
@@ -133,8 +117,8 @@ body {
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 20px;
-  padding-bottom: calc(var(--player-height) + 20px);
+  padding: 16px;
+  padding-bottom: calc(var(--player-height) + 16px);
 }
 
 .detail-view {

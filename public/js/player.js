@@ -65,7 +65,9 @@ function updateMediaSessionMetadata() {
       .trim() || rawTitle
   const artist = playerSubtitle?.textContent || "Unknown Artist"
   const album = window.currentPlayingAlbum?.name || "Unknown Album"
-  const artwork = window.currentPlayingAlbum?.image || "/icons/placeholder.avif"
+  const artwork =
+    window.currentPlayingAlbum?.image ||
+    "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/icons/placeholder.avif"
 
   navigator.mediaSession.metadata = new MediaMetadata({
     title: title === "Select a song" ? "Unknown Track" : title,
@@ -221,7 +223,7 @@ async function updateSongsList() {
     .map((album) => {
       const header = `
       <div class="player-album-header" data-album-id="${album.id}">
-        <img class="player-album-thumb" src="${album.image || "/icons/placeholder.avif"}" alt="${album.name}">
+        <img class="player-album-thumb" src="${album.image || "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/icons/placeholder.avif"}" alt="${album.name}">
         <div class="player-album-title">${window.applyTitleCase ? window.applyTitleCase(album.name) : album.name}</div>
       </div>`
 
@@ -414,11 +416,13 @@ function updatePlayerArt() {
   const desired =
     isPlaying && playingAlbum.anim
       ? playingAlbum.anim
-      : playingAlbum.image || "/icons/placeholder.avif"
+      : playingAlbum.image ||
+      "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/icons/placeholder.avif"
   if (window.media?.setImageFromPath) {
     window.media.setImageFromPath(playerArt, desired).catch((err) => {
       console.warn("media: failed to set player art", desired, err)
-      playerArt.src = "/icons/placeholder.avif"
+      playerArt.src =
+        "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/icons/placeholder.avif"
     })
   } else {
     if (playerArt.dataset && playerArt.dataset.src === desired) return

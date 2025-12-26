@@ -26,4 +26,5 @@ export interface Album {
 export interface DataFile {
   version?: string
   albums: Album[]
+  icons?: Record<string, string>
 }

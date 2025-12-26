@@ -10,6 +10,7 @@ const file = Bun.file(dataPath)
 const musicData: DataFile = JSON.parse(await file.text())
 
 const publicDir = join(import.meta.dir, "../public")
+const CDN_URL = "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public"
 
 // Warn in server console when Last.fm credentials are not configured
 if (!Bun.env.LASTFM_API_KEY || !Bun.env.LASTFM_API_SECRET) {
@@ -31,7 +32,6 @@ const MIME_TYPES: Record<string, string> = {
   ".gif": "image/gif",
   ".svg": "image/svg+xml",
   ".mp3": "audio/mpeg",
-  ".woff2": "font/woff2",
 }
 
 function getContentType(filePath: string): string {
@@ -196,6 +196,14 @@ const server = Bun.serve({
     }
 
     // Static files and SPA routing
+    // Redirect icon requests to jsDelivr in production to avoid origin delivery
+    if (isProduction && pathname.startsWith("/icons/")) {
+      return new Response(null, {
+        status: 302,
+        headers: { Location: `${CDN_URL}${pathname}` },
+      })
+    }
+
     return handleStaticFile(pathname)
   },
 })

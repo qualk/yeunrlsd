@@ -47,10 +47,10 @@ async function setImageFromPath(el, path) {
     console.warn("media.setImageFromPath: failed to set image", e)
     // Fallback to placeholder if available
     try {
-      el.src = "/icons/placeholder.avif"
+      el.src = "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/icons/placeholder.avif"
       delete el.dataset.srcPending
       el.dataset.src = ""
-    } catch (_e) {}
+    } catch (_e) { }
   }
 }
 

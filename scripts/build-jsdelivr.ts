@@ -34,6 +34,23 @@ async function buildJsDelivrFile(): Promise<void> {
       })),
     }
 
+    // Include icons from public/icons as CDN URLs
+    try {
+      const iconsDir = join(import.meta.dir, "..", "public", "icons")
+      if (existsSync(iconsDir)) {
+        const iconFiles = execSync(`ls ${iconsDir}`, { encoding: "utf8" })
+          .split(/\r?\n/)
+          .filter(Boolean)
+        const icons: Record<string, string> = {}
+        for (const f of iconFiles) {
+          icons[`/icons/${f}`] = transformPath(`/icons/${f}`)
+        }
+        ; (transformed as DataFile).icons = icons
+      }
+    } catch (_err) {
+      // best effort: if we can't read icons, skip adding them
+    }
+
     const outputPath = join(import.meta.dir, "..", "data-jsdelivr.json")
     await Bun.write(outputPath, `${JSON.stringify(transformed, null, 2)}\n`)
 
@@ -83,7 +100,8 @@ async function buildJsDelivrFile(): Promise<void> {
           (p) =>
             p.startsWith("public/img/") ||
             p.startsWith("public/anim/") ||
-            p.startsWith("public/music/"),
+            p.startsWith("public/music/") ||
+            p.startsWith("public/icons/"),
         )
         .sort()
 

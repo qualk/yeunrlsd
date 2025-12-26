@@ -20,7 +20,9 @@
   <link rel="stylesheet" href="/css/modal.css">
 
   <!-- Fonts -->
-  <link rel="preconnect" href="file:///public/fonts">
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500..600&display=swap&text=1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz[]{}()?↓≡‹%20!%22%23%24%25%26%27%22%2C"
+    rel="stylesheet">
 </head>
 
 <body>
@@ -60,7 +62,12 @@
           <h1 class="header-title">[yeunrlsd]</h1>
         </a>
       </div>
-      <button class="header-back-btn" id="back-btn" aria-label="Go back">‹</button>
+      <button class="header-back-btn" id="back-btn" aria-label="Go back">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 6 9 12 15 18"></polyline>
+        </svg>
+      </button>
       <button class="header-dice-btn" id="header-dice-btn" aria-label="Play random song">🎲</button>
     </header>
 
@@ -68,7 +75,9 @@
     <aside class="player-container">
       <div class="player">
         <div class="now-playing">
-          <img id="player-art" class="player-art" src="/icons/placeholder.avif" alt="Album art">
+          <img id="player-art" class="player-art"
+            src="https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/icons/placeholder.avif" alt="Album art"
+            width="60" height="60" loading="eager">
           <div class="now-playing-info">
             <div class="now-playing-title" id="player-title">Select a song</div>
             <div class="now-playing-subtitle" id="player-subtitle"></div>

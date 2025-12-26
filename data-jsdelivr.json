@@ -1481,5 +1481,14 @@
         }
       ]
     }
-  ]
+  ],
+  "icons": {
+    "/icons/404.ico": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/icons/404.ico",
+    "/icons/favicon.ico": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/icons/favicon.ico",
+    "/icons/icon-128x128.avif": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/icons/icon-128x128.avif",
+    "/icons/icon-192x192.avif": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/icons/icon-192x192.avif",
+    "/icons/icon-384x384.avif": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/icons/icon-384x384.avif",
+    "/icons/icon-512x512.avif": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/icons/icon-512x512.avif",
+    "/icons/placeholder.avif": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/icons/placeholder.avif"
+  }
 }

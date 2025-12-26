@@ -346,18 +346,18 @@ function renderAlbumGrid() {
   elements.albumGrid.innerHTML = albums
     .map(
       (album) => `
-    <div class="album-item ${!album.hasSongs ? "empty" : ""}" 
-         role="listitem" 
-         tabindex="${album.hasSongs ? "0" : "-1"}"
-         aria-disabled="${!album.hasSongs ? "true" : "false"}"
-         ${album.hasSongs ? `data-album-id="${album.id}"` : ""}>
-      <img src="${album.image || "/icons/placeholder.avif"}" 
-           alt="${album.name}" 
-           class="album-image"
-           loading="lazy">
-      <p class="album-name">${applyTitleCase(album.name)}</p>
-    </div>
-  `,
+      <div class="album-item ${!album.hasSongs ? "empty" : ""}" 
+           role="listitem" 
+           tabindex="${album.hasSongs ? "0" : "-1"}"
+           aria-disabled="${!album.hasSongs ? "true" : "false"}"
+           ${album.hasSongs ? `data-album-id="${album.id}"` : ""}>
+        <img src="${album.image || "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/icons/placeholder.avif"}" 
+             alt="${album.name}" 
+             class="album-image"
+             loading="lazy">
+        <p class="album-name">${applyTitleCase(album.name)}</p>
+      </div>
+    `,
     )
     .join("")
 
@@ -389,9 +389,9 @@ async function showAlbumDetail(albumId) {
     const album = window.api
       ? await window.api.getAlbumData(albumId)
       : await (async () => {
-          const res = await fetch(`/api/albums/${albumId}`)
-          return res.ok ? res.json() : null
-        })()
+        const res = await fetch(`/api/albums/${albumId}`)
+        return res.ok ? res.json() : null
+      })()
     if (!album) {
       console.error("Album not found")
       return
@@ -446,7 +446,7 @@ async function renderAlbumDetail(album) {
   elements.albumDetail.innerHTML = `
       <div class="album-cover-section">
         <h2 class="album-title album-title--cover">${applyTitleCase(album.name)}</h2>
-        <img src="${album.image || "/icons/placeholder.avif"}" 
+        <img src="${album.image || "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/icons/placeholder.avif"}" 
              alt="${album.name}" 
              class="album-detail-image"
              loading="eager">
@@ -501,7 +501,8 @@ async function playSong(song, album) {
   playerSubtitle.textContent = song.artist || album.name
 
   // Set the player art - will use animation if available and playing
-  const imageSrc = album.image || "/icons/placeholder.avif"
+  const imageSrc =
+    album.image || "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/icons/placeholder.avif"
   const animSrc = album.anim
   const targetArt = animSrc || imageSrc
 
@@ -512,7 +513,8 @@ async function playSong(song, album) {
   if (window.media?.setImageFromPath) {
     window.media.setImageFromPath(playerArt, targetArt).catch((err) => {
       console.warn("media: failed to set player art", targetArt, err)
-      playerArt.src = "/icons/placeholder.avif"
+      playerArt.src =
+        "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/icons/placeholder.avif"
     })
   } else {
     // Fallback: immediate set
@@ -571,7 +573,7 @@ async function playRandomSong() {
   const shuffled = candidates.slice()
   for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
-    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+      ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
   }
 
   for (const info of shuffled) {
