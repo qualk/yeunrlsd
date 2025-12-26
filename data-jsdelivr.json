@@ -1,5 +1,5 @@
 {
-  "version": "0.1.3",
+  "version": "0.1.4",
   "albums": [
     {
       "id": "grad",
@@ -999,6 +999,12 @@
           "year": 2022
         },
         {
+          "title": "This One Here",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/This One Here.mp3",
+          "artist": "Kanye West, James Blake",
+          "year": 2022
+        },
+        {
           "title": "Let It In",
           "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Let It In.mp3",
           "artist": "Kanye West, James Blake",
@@ -1013,12 +1019,6 @@
         {
           "title": "My Way (Yedit)",
           "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/My Way (Yedit).mp3",
-          "artist": "Kanye West, James Blake",
-          "year": 2022
-        },
-        {
-          "title": "Showtime (Yedit)",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/war/Showtime (Yedit).mp3",
           "artist": "Kanye West, James Blake",
           "year": 2022
         },

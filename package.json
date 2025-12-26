@@ -5,12 +5,12 @@
   "private": true,
   "scripts": {
     "dev": "bun --hot run src/index.ts",
-    "update-data": "bun run ./scripts/update-data.ts",
     "build-data": "bun run ./scripts/update-data.ts && bun run ./scripts/build-jsdelivr.ts",
     "start": "bun run src/index.ts",
     "lint": "biome lint --write .",
     "format": "biome format --write .",
-    "check": "biome check --write ."
+    "check": "biome check --write .",
+    "deploy": "fly deploy --ignorefile .dockerignore"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.10",

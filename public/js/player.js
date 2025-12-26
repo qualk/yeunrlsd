@@ -131,6 +131,18 @@ function initPlayer() {
     }
   })
 
+  // Player keyboard shortcuts
+  document.addEventListener("keydown", (event) => {
+    // 'r' = random/dice
+    const k = event.key?.toLowerCase()
+    if (!k) return
+    const t = event.target
+    if (t?.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t?.nodeName ?? "")) return
+    if (k === "r") return window.playRandomSong?.()
+  
+    if (k === "0" && player) player.currentTime = 0 // '0' = seek to beginning
+  })
+
   playerExpandBtn?.addEventListener("click", async () => {
     const expanded = playerContainer?.classList.toggle("expanded")
     console.log(`📱 Player ${expanded ? "expanded" : "collapsed"}`)
