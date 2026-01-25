@@ -1,5 +1,5 @@
 {
-  "version": "0.1.4",
+  "version": "0.1.5",
   "albums": [
     {
       "id": "grad",
@@ -45,7 +45,7 @@
       "songs": [
         {
           "title": "Flashing Lights 2 (Yedit)",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Flashing Lights 2.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/gaj/Flashing Lights 2 (Yedit).mp3",
           "artist": "Kanye West, Charlie Wilson, The WRLDFMS Tony Williams, Connie Mitchell",
           "year": 2009
         },
@@ -233,11 +233,16 @@
     {
       "id": "shmG",
       "name": "So Help Me God",
-      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/shmG.avif",
-      "anim": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/shmC.avif",
+      "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/shmC.avif",
+      "anim": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/shmG.avif",
       "year": 2014,
       "attribute": "Safe",
       "songs": [
+        {
+          "title": "All Day",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/shmG/All Day.mp3",
+          "artist": "Kanye West, Kendrick Lamar, Theophilus London, Allan Kingdom, Paul McCartney"
+        },
         {
           "title": "Star Time (Yedit)",
           "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/shmG/Star Time (Yedit).mp3",
@@ -898,6 +903,12 @@
           "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/By Your Side.mp3",
           "artist": "Kanye West, Ty Dolla $ign",
           "year": 2021
+        },
+        {
+          "title": "Fighting Fires",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/donda/Fighting Fires.mp3",
+          "artist": "Kanye West, Arrowstar, Israel Boyd, Sunday Service Choir",
+          "year": 2020
         }
       ]
     },
@@ -1074,7 +1085,7 @@
       "songs": [
         {
           "title": "Thank You (Vol. 2)",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ksg2/Thank You Vol. 2.mp3",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/ksg2/Thank You (Vol. 2).mp3",
           "artist": "Kanye West, Kid Cudi",
           "year": 2023
         }
@@ -1084,7 +1095,7 @@
       "id": "vultures1",
       "name": "VULTURES 1",
       "image": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/img/vultures1.avif",
-      "anim": null,
+      "anim": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/anim/vultures1.avif",
       "year": 2023,
       "attribute": "Adult",
       "songs": [
@@ -1304,8 +1315,8 @@
           "year": 2025
         },
         {
-          "title": "DARK MATTER (Yedit, Instrumental)",
-          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/DARK MATTER (Yedit, Instrumental).mp3",
+          "title": "DARK MATTER (Yedit)",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/bully/DARK MATTER (Yedit).mp3",
           "artist": "Kanye West",
           "year": 2025
         },

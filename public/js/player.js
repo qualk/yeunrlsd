@@ -246,11 +246,12 @@ async function updateSongsList() {
             window.currentPlayingAlbum.id === album.id &&
             currentSongIndex === idx
           const isYedit = /\s*\(Yedit\)\s*$/i.test(song.title)
+          const displayTitleRaw = String(song.title).replace(/\s*\(Yedit\)\s*$/i, "").trim()
           const displayTitle = window.applyTitleCase
-            ? window.applyTitleCase(song.title)
-            : song.title
+            ? window.applyTitleCase(displayTitleRaw)
+            : displayTitleRaw
           return `
-          <div class="player-song-row ${isActive ? "active" : ""}${isYedit && window.yeditHighlightingEnabled !== false ? " yedit" : ""}" data-album-id="${album.id}" data-song-index="${idx}" title="${song.title}">
+          <div class="player-song-row ${isActive ? "active" : ""}${isYedit && window.yeditHighlightingEnabled !== false ? " yedit" : ""}" data-album-id="${album.id}" data-song-index="${idx}" title="${displayTitle}">
             ${displayTitle}
           </div>`
         })

@@ -97,7 +97,7 @@ async function processSongFile(
       return null
     }
     const meta = (await parseFile(fullPath).catch(() => null)) as IAudioMetadata | null
-    const title = (meta?.common?.title as string) ?? file.replace(/\.[^.]+$/, "")
+    const title = file.replace(/\.[^.]+$/, "")
     const artist = (meta?.common?.artist as string) ?? undefined
     const track = meta?.common?.track?.no as number | undefined
     const year = extractYearFromMetadata(

@@ -429,11 +429,13 @@ async function renderAlbumDetail(album) {
       const filename = song.file.split("/").pop()
       const isYedit = /\s*\(Yedit\)\s*$/i.test(song.title)
       const yClass = isYedit && yeditHighlightingEnabled ? " yedit" : ""
+      const displayTitleRaw = String(song.title).replace(/\s*\(Yedit\)\s*$/i, "").trim()
+      const displayTitle = applyTitleCase(displayTitleRaw)
       return `
     <li class="song-row${yClass}" data-song-index="${index}" data-yedit="${isYedit ? "true" : "false"}">
-      <div class="song-main" data-song-title="${song.title}" data-song-file="${songUrl}">
+      <div class="song-main" data-song-title="${song.title}" data-song-file="${songUrl}" title="${displayTitle}">
         <div class="song-left">
-          <span class="song-title">${applyTitleCase(song.title)}</span>
+          <span class="song-title">${displayTitle}</span>
           ${song.artist ? `<span class="song-artist">${song.artist}</span>` : ""} 
         </div>
       </div>
@@ -485,7 +487,9 @@ async function renderAlbumDetail(album) {
  * Play a song
  */
 async function playSong(song, album) {
-  console.log(`🎶 Playing: ${song.title} from ${album.name}`)
+  const displayTitleRaw = String(song.title).replace(/\s*\(Yedit\)\s*$/i, "").trim()
+  const displayTitle = applyTitleCase(displayTitleRaw)
+  console.log(`🎶 Playing: ${displayTitle} from ${album.name}`)
 
   currentPlayingAlbum = album
   window.currentPlayingAlbum = album
@@ -497,7 +501,7 @@ async function playSong(song, album) {
   const playerSubtitle = document.getElementById("player-subtitle")
   const playerArt = document.getElementById("player-art")
 
-  playerTitle.textContent = applyTitleCase(song.title)
+  playerTitle.textContent = displayTitle
   playerSubtitle.textContent = song.artist || album.name
 
   // Set the player art - will use animation if available and playing
