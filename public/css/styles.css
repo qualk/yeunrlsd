@@ -701,6 +701,12 @@ body {
   background: var(--muted);
 }
 
+.player-song-row.active.yedit,
+.player-song-row.yedit.active {
+  /* slightly stronger red tint while preserving the active accent color */
+  background: rgba(220, 38, 38, 0.12);
+}
+
 .player-album-group {
   margin-top: 8px;
 }

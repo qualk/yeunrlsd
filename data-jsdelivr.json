@@ -1,5 +1,5 @@
 {
-  "version": "0.1.5",
+  "version": "0.1.6",
   "albums": [
     {
       "id": "grad",
@@ -32,6 +32,18 @@
           "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/grad/Bittersweet Poetry (Yedit).mp3",
           "artist": "Kanye West, John Mayer",
           "year": 2005
+        },
+        {
+          "title": "Got Money",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/grad/Got Money.mp3",
+          "artist": "Kanye West, Jeezy",
+          "year": 2006
+        },
+        {
+          "title": "Homecoming",
+          "file": "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/music/grad/Homecoming.mp3",
+          "artist": "Kanye West, Chris Martin, The WRLDFMS Tony Williams",
+          "year": 2007
         }
       ]
     },
