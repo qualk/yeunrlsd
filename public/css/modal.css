@@ -30,10 +30,6 @@
     visibility: visible;
   }
 
-  &.active .modal-content {
-    transform: translateY(0);
-  }
-
   .modal-content {
     background: var(--modal-bg);
     border: 1px solid var(--modal-border);
@@ -206,15 +202,15 @@
         background: var(--modal-success-bg);
       }
 
-      .download-album-row.completed .download-album-art {
-        outline: 2px solid var(--modal-success);
-      }
-
       .download-album-art {
         width: 48px;
         height: 48px;
         border-radius: 4px;
         object-fit: cover;
+      }
+
+      .download-album-row.completed .download-album-art {
+        outline: 2px solid var(--modal-success);
       }
 
       .download-album-info {
@@ -308,6 +304,10 @@
         }
       }
     }
+
+    &.active .modal-content {
+      transform: translateY(0);
+    }
   }
 }
 
@@ -329,8 +329,11 @@ body.modal-open {
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .modal-overlay,
-  .modal-content {
+  .modal-overlay.active .modal-content {
     transition: none;
+  }
+
+  .modal-overlay.active .modal-content {
     transform: none;
   }
 }

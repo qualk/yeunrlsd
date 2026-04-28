@@ -40,9 +40,8 @@ const elements = {
 async function init() {
   // Load albums from API
   try {
-    const data = window.api
-      ? await window.api.getAlbumList()
-      : await (await fetch("/api/albums")).json()
+    const _getAlbumList = window.api?.getAlbumList || window.getAlbumList
+    const data = await _getAlbumList()
     albums = data.albums
     const serverVersion = data.version
     // Expose server version to other modules
@@ -386,12 +385,8 @@ function renderAlbumGrid() {
  */
 async function showAlbumDetail(albumId) {
   try {
-    const album = window.api
-      ? await window.api.getAlbumData(albumId)
-      : await (async () => {
-        const res = await fetch(`/api/albums/${albumId}`)
-        return res.ok ? res.json() : null
-      })()
+    const _getAlbumData = window.api?.getAlbumData || window.getAlbumData
+    const album = await _getAlbumData(albumId)
     if (!album) {
       console.error("Album not found")
       return
@@ -429,7 +424,9 @@ async function renderAlbumDetail(album) {
       const filename = song.file.split("/").pop()
       const isYedit = /\s*\(Yedit\)\s*$/i.test(song.title)
       const yClass = isYedit && yeditHighlightingEnabled ? " yedit" : ""
-      const displayTitleRaw = String(song.title).replace(/\s*\(Yedit\)\s*$/i, "").trim()
+      const displayTitleRaw = String(song.title)
+        .replace(/\s*\(Yedit\)\s*$/i, "")
+        .trim()
       const displayTitle = applyTitleCase(displayTitleRaw)
       return `
     <li class="song-row${yClass}" data-song-index="${index}" data-yedit="${isYedit ? "true" : "false"}">
@@ -487,7 +484,9 @@ async function renderAlbumDetail(album) {
  * Play a song
  */
 async function playSong(song, album) {
-  const displayTitleRaw = String(song.title).replace(/\s*\(Yedit\)\s*$/i, "").trim()
+  const displayTitleRaw = String(song.title)
+    .replace(/\s*\(Yedit\)\s*$/i, "")
+    .trim()
   const displayTitle = applyTitleCase(displayTitleRaw)
   console.log(`🎶 Playing: ${displayTitle} from ${album.name}`)
 
@@ -539,16 +538,7 @@ async function playSong(song, album) {
 async function playRandomSong() {
   if (!albums || albums.length === 0) return
 
-  const fetchAlbum = async (id) => {
-    try {
-      if (window.api?.getAlbumData) return await window.api.getAlbumData(id)
-      const res = await fetch(`/api/albums/${id}`)
-      return res.ok ? await res.json() : null
-    } catch (err) {
-      console.error("fetchAlbum error:", err)
-      return null
-    }
-  }
+  const _fetchAlbumData = window.api?.getAlbumData || window.getAlbumData
 
   // Prefer current (enlarged) album when visible
   const detailOpen = elements?.detailView && !elements.detailView.classList.contains("hidden")
@@ -561,7 +551,7 @@ async function playRandomSong() {
 
     // Try fetching the current album if cached version has no songs
     if (currentAlbum.id) {
-      const albumData = await fetchAlbum(currentAlbum.id)
+      const albumData = await _fetchAlbumData(currentAlbum.id)
       if (albumData?.songs?.length) {
         const song = albumData.songs[Math.floor(Math.random() * albumData.songs.length)]
         if (song) return (window.playSong || playSong)(song, albumData)
@@ -577,11 +567,11 @@ async function playRandomSong() {
   const shuffled = candidates.slice()
   for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
-      ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
   }
 
   for (const info of shuffled) {
-    const album = await fetchAlbum(info.id)
+    const album = await _fetchAlbumData(info.id)
     if (album?.songs?.length) {
       const song = album.songs[Math.floor(Math.random() * album.songs.length)]
       if (song) return (window.playSong || playSong)(song, album)

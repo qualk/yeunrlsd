@@ -120,9 +120,10 @@ async function startFullDownload() {
 
     let album = albumSummary
     try {
-      const res = await fetch(`/api/albums/${albumSummary.id}`)
-      if (res.ok) {
-        album = await res.json()
+      const _fetchAlbumData = window.api?.getAlbumData || window.getAlbumData
+      const fetched = await _fetchAlbumData(albumSummary.id)
+      if (fetched) {
+        album = fetched
       }
     } catch (e) {
       console.error(`Failed to fetch full data for ${albumSummary.id}`, e)
@@ -215,12 +216,8 @@ async function startFullDownload() {
 
     let album = albumSummary
     try {
-      const fetched = window.api
-        ? await window.api.getAlbumData(albumSummary.id)
-        : await (async () => {
-          const res = await fetch(`/api/albums/${albumSummary.id}`)
-          return res.ok ? res.json() : null
-        })()
+      const _fetchAlbumData = window.api?.getAlbumData || window.getAlbumData
+      const fetched = await _fetchAlbumData(albumSummary.id)
       if (fetched) album = fetched
     } catch (_e) {
       // Use previously fetched data

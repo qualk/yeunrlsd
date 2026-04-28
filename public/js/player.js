@@ -10,19 +10,7 @@ const playerContainer = document.querySelector(".player-container")
 let currentSongIndex = -1
 let isPlaying = false
 
-// Use shared API helpers exposed on window.api
-function getAlbumData(albumId) {
-  if (!window.api || !window.api.getAlbumData) {
-    // Fallback to direct fetch if api.js not available
-    return fetch(`/api/albums/${albumId}`)
-      .then((r) => (r.ok ? r.json() : null))
-      .catch((e) => {
-        console.error("getAlbumData fallback error:", e)
-        return null
-      })
-  }
-  return window.api.getAlbumData(albumId)
-}
+const fetchAlbumData = window.api?.getAlbumData || window.getAlbumData
 
 /**
  * Initialize media session
@@ -139,7 +127,7 @@ function initPlayer() {
     const t = event.target
     if (t?.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t?.nodeName ?? "")) return
     if (k === "r") return window.playRandomSong?.()
-  
+
     if (k === "0" && player) player.currentTime = 0 // '0' = seek to beginning
   })
 
@@ -227,7 +215,7 @@ async function updateSongsList() {
   }
 
   // Fetch album details in parallel (with caching)
-  const albumDetails = await Promise.all(albumsWithSongs.map((a) => getAlbumData(a.id)))
+  const albumDetails = await Promise.all(albumsWithSongs.map((a) => fetchAlbumData(a.id)))
 
   // Build grouped HTML for all albums (so queue shows even when no song is playing)
   const html = albumDetails
@@ -246,7 +234,9 @@ async function updateSongsList() {
             window.currentPlayingAlbum.id === album.id &&
             currentSongIndex === idx
           const isYedit = /\s*\(Yedit\)\s*$/i.test(song.title)
-          const displayTitleRaw = String(song.title).replace(/\s*\(Yedit\)\s*$/i, "").trim()
+          const displayTitleRaw = String(song.title)
+            .replace(/\s*\(Yedit\)\s*$/i, "")
+            .trim()
           const displayTitle = window.applyTitleCase
             ? window.applyTitleCase(displayTitleRaw)
             : displayTitleRaw
@@ -275,7 +265,7 @@ async function updateSongsList() {
     row.addEventListener("click", async () => {
       const albumId = row.dataset.albumId
       const idx = parseInt(row.dataset.songIndex, 10)
-      const album = await getAlbumData(albumId)
+      const album = await fetchAlbumData(albumId)
       if (album?.songs?.[idx]) {
         currentSongIndex = idx
         playSong(album.songs[idx], album)
@@ -335,7 +325,7 @@ async function playNext() {
 
   for (let i = currentAlbumIndex + 1; i < window.albums.length; i++) {
     if (window.albums[i].hasSongs) {
-      const albumData = await getAlbumData(window.albums[i].id)
+      const albumData = await fetchAlbumData(window.albums[i].id)
       if (albumData?.songs?.length > 0) {
         currentSongIndex = 0
         playSong(albumData.songs[0], albumData)
@@ -366,7 +356,7 @@ async function playPrevious() {
 
   for (let i = currentAlbumIndex - 1; i >= 0; i--) {
     if (window.albums[i].hasSongs) {
-      const albumData = await getAlbumData(window.albums[i].id)
+      const albumData = await fetchAlbumData(window.albums[i].id)
       if (albumData?.songs?.length > 0) {
         currentSongIndex = albumData.songs.length - 1
         playSong(albumData.songs[currentSongIndex], albumData)
@@ -430,7 +420,7 @@ function updatePlayerArt() {
     isPlaying && playingAlbum.anim
       ? playingAlbum.anim
       : playingAlbum.image ||
-      "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/icons/placeholder.avif"
+        "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/icons/placeholder.avif"
   if (window.media?.setImageFromPath) {
     window.media.setImageFromPath(playerArt, desired).catch((err) => {
       console.warn("media: failed to set player art", desired, err)

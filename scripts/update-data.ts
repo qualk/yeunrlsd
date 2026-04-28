@@ -59,22 +59,18 @@ function extractYearFromMetadata(
   fallbackYear?: number | null,
 ): number | undefined {
   if (fallbackYear != null) return fallbackYear
-  const commonYear = meta?.common?.year as unknown
-  if (commonYear != null) {
-    if (typeof commonYear === "number") return commonYear
-    if (typeof commonYear === "string") {
-      const m = String(commonYear).match(/\d{4}/)
-      return m ? parseInt(m[0], 10) : undefined
-    }
-    if (Array.isArray(commonYear) && commonYear.length) {
-      const first = commonYear[0] as unknown
-      if (typeof first === "number") return first as number
-      if (typeof first === "string") {
-        const m = String(first).match(/\d{4}/)
-        return m ? parseInt(m[0], 10) : undefined
-      }
-    }
+
+  let commonYear = meta?.common?.year as unknown
+  if (Array.isArray(commonYear) && commonYear.length) {
+    commonYear = commonYear[0]
   }
+
+  if (typeof commonYear === "number") return commonYear
+  if (typeof commonYear === "string") {
+    const m = commonYear.match(/\d{4}/)
+    return m ? parseInt(m[0], 10) : undefined
+  }
+
   return undefined
 }
 

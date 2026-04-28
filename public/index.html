@@ -29,18 +29,18 @@
   <div class="app-container">
     <!-- Header -->
     <header class="app-header">
-      <button class="header-menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false">≡</button>
+      <button type="button" class="header-menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false">≡</button>
       <nav class="header-menu" id="header-menu" role="navigation">
-        <button class="header-nav-btn" id="nav-download" aria-label="Download">
-          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-linecap="round"
+        <button type="button" class="header-nav-btn" id="nav-download" aria-label="Download">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-linecap="round"
             stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
             <polyline points="7 10 12 15 17 10" />
             <line x1="12" y1="15" x2="12" y2="3" />
           </svg>
         </button>
-        <button class="header-nav-btn" id="nav-settings" aria-label="Settings">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+        <button type="button" class="header-nav-btn" id="nav-settings" aria-label="Settings">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
             <path d="M14 17H5" />
             <path d="M19 7h-9" />
@@ -48,8 +48,8 @@
             <circle cx="7" cy="7" r="3" />
           </svg>
         </button>
-        <button class="header-nav-btn" id="nav-about" aria-label="About">
-          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-linecap="round"
+        <button type="button" class="header-nav-btn" id="nav-about" aria-label="About">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-linecap="round"
             stroke-linejoin="round">
             <circle cx="12" cy="12" r="10" />
             <line x1="12" y1="16" x2="12" y2="12" />
@@ -62,13 +62,13 @@
           <h1 class="header-title">[yeunrlsd]</h1>
         </a>
       </div>
-      <button class="header-back-btn" id="back-btn" aria-label="Go back">
-        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+      <button type="button" class="header-back-btn" id="back-btn" aria-label="Go back">
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
           stroke-linecap="round" stroke-linejoin="round">
           <polyline points="15 6 9 12 15 18"></polyline>
         </svg>
       </button>
-      <button class="header-dice-btn" id="header-dice-btn" aria-label="Play random song">🎲</button>
+      <button type="button" class="header-dice-btn" id="header-dice-btn" aria-label="Play random song">🎲</button>
     </header>
 
     <!-- Player -->
@@ -83,20 +83,22 @@
             <div class="now-playing-subtitle" id="player-subtitle"></div>
           </div>
           <!-- chevron to expand tracklist -->
-          <button id="player-expand-btn" class="player-expand-btn" aria-label="Expand tracklist">
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+          <button type="button" id="player-expand-btn" class="player-expand-btn" aria-label="Expand tracklist">
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
               stroke-linecap="round" stroke-linejoin="round">
               <polyline points="18 15 12 9 6 15"></polyline>
             </svg>
           </button>
         </div>
 
-        <audio id="player" class="player-audio" controls></audio>
+        <audio id="player" class="player-audio" controls>
+          <track kind="captions" srclang="en" label="English captions" src="data:text/vtt,WEBVTT" default>
+        </audio>
 
         <div class="player-controls">
-          <button class="player-btn" id="prev-btn" aria-label="Previous">⏮</button>
-          <button class="player-btn" id="play-pause-btn" aria-label="Play/Pause">▶</button>
-          <button class="player-btn" id="next-btn" aria-label="Next">⏭</button>
+          <button type="button" class="player-btn" id="prev-btn" aria-label="Previous">⏮</button>
+          <button type="button" class="player-btn" id="play-pause-btn" aria-label="Play/Pause">▶</button>
+          <button type="button" class="player-btn" id="next-btn" aria-label="Next">⏭</button>
         </div>
 
         <div id="player-songs-list" class="player-songs-list">
@@ -127,7 +129,7 @@
       <div class="modal-content download-modal">
         <div class="modal-header">
           <h2>Downloading Albums</h2>
-          <button class="modal-close-btn" aria-label="Close">✕</button>
+          <button type="button" class="modal-close-btn" aria-label="Close">✕</button>
         </div>
         <div class="download-stats">
           <div class="stat-item">
@@ -146,9 +148,9 @@
           <!-- Album rows will be added here -->
         </div>
         <div class="modal-footer">
-          <button id="download-reset-btn" class="modal-btn reset-btn" aria-label="Reset downloads">Reset</button>
+          <button type="button" id="download-reset-btn" class="modal-btn reset-btn" aria-label="Reset downloads">Reset</button>
           <small class="modal-version" id="download-version"></small>
-          <button id="download-done-btn" class="modal-btn hidden">Done</button>
+          <button type="button" id="download-done-btn" class="modal-btn hidden">Done</button>
         </div>
       </div>
     </div>
@@ -158,7 +160,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h2>[yeunrlsd] <small class="modal-version" id="about-version"></small></h2>
-          <button class="modal-close-btn" aria-label="Close">✕</button>
+          <button type="button" class="modal-close-btn" aria-label="Close">✕</button>
         </div>
         <div class="modal-body">
           <p>a zero dependency fan project</p>
@@ -178,7 +180,7 @@
           <p>A new version of the catalog is available and your offline library needs to be synced.</p>
         </div>
         <div class="modal-footer">
-          <button id="update-now-btn" class="modal-btn primary">Update now</button>
+          <button type="button" id="update-now-btn" class="modal-btn primary">Update now</button>
         </div>
       </div>
     </div>
@@ -188,7 +190,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h2>Settings</h2>
-          <button class="modal-close-btn" aria-label="Close">✕</button>
+          <button type="button" class="modal-close-btn" aria-label="Close">✕</button>
         </div>
         <div class="modal-body">
           <div class="settings-section">
@@ -199,8 +201,8 @@
               </div>
             </div>
             <div class="button-group">
-              <button id="lastfm-connect-btn" class="settings-btn">Connect to Last.fm</button>
-              <button id="lastfm-disconnect-btn" class="settings-btn hidden">Disconnect</button>
+              <button type="button" id="lastfm-connect-btn" class="settings-btn">Connect to Last.fm</button>
+              <button type="button" id="lastfm-disconnect-btn" class="settings-btn hidden">Disconnect</button>
             </div>
           </div>
           <label class="settings-section clickable">

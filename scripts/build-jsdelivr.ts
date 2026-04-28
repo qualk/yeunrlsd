@@ -45,7 +45,7 @@ async function buildJsDelivrFile(): Promise<void> {
         for (const f of iconFiles) {
           icons[`/icons/${f}`] = transformPath(`/icons/${f}`)
         }
-        ; (transformed as DataFile).icons = icons
+        ;(transformed as DataFile).icons = icons
       }
     } catch (_err) {
       // best effort: if we can't read icons, skip adding them
@@ -57,40 +57,31 @@ async function buildJsDelivrFile(): Promise<void> {
     console.log("✓ Built data-jsdelivr.json successfully")
 
     // Output jsDelivr URLs for modified files (unstaged, staged, unpushed)
-    try {
-      const modifiedRaw = execSync("git diff --name-only", { encoding: "utf8" })
-        .split(/\r?\n/)
-        .filter(Boolean)
-      const stagedRaw = execSync("git diff --cached --name-only --diff-filter=M", {
-        encoding: "utf8",
-      })
-        .split(/\r?\n/)
-        .filter(Boolean)
+    const getDiff = (args: string): string[] => {
+      try {
+        return execSync(`git ${args}`, { encoding: "utf8" }).split(/\r?\n/).filter(Boolean)
+      } catch {
+        return []
+      }
+    }
 
-      // Include committed-but-unpushed modified files
+    try {
+      const modifiedRaw = getDiff("diff --name-only")
+      const stagedRaw = getDiff("diff --cached --name-only --diff-filter=M")
+
       let unpushedRaw: string[] = []
       try {
         const upstream = execSync("git rev-parse --abbrev-ref --symbolic-full-name @{u}", {
           encoding: "utf8",
         }).trim()
-        unpushedRaw = execSync(`git diff --name-only --diff-filter=M ${upstream}..HEAD`, {
-          encoding: "utf8",
-        })
-          .split(/\r?\n/)
-          .filter(Boolean)
+        unpushedRaw = getDiff(`diff --name-only --diff-filter=M ${upstream}..HEAD`)
       } catch (_e) {
         try {
           const branch = execSync("git rev-parse --abbrev-ref HEAD", { encoding: "utf8" }).trim()
           const originRef = `origin/${branch}`
           execSync(`git rev-parse --verify ${originRef}`, { stdio: "ignore" })
-          unpushedRaw = execSync(`git diff --name-only --diff-filter=M ${originRef}..HEAD`, {
-            encoding: "utf8",
-          })
-            .split(/\r?\n/)
-            .filter(Boolean)
-        } catch (_) {
-          unpushedRaw = []
-        }
+          unpushedRaw = getDiff(`diff --name-only --diff-filter=M ${originRef}..HEAD`)
+        } catch (_) {}
       }
 
       const allSet = new Set([...modifiedRaw, ...stagedRaw, ...unpushedRaw])

@@ -13,10 +13,10 @@
     "deploy": "fly deploy --ignorefile .dockerignore"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.3.10",
+    "@biomejs/biome": "^2.4.13",
     "@types/bun": "latest",
-    "music-metadata": "^11.10.3",
-    "typescript": "^5"
+    "music-metadata": "^11.12.3",
+    "typescript": "^6"
   },
   "devEngines": {
     "runtime": {
