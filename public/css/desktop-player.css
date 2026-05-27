@@ -149,6 +149,10 @@
     top: auto;
     left: auto;
     right: auto;
+    padding-block: 10px;
+    margin-block: -10px;
+    box-sizing: content-box;
+    background-clip: content-box;
   }
 
   .player-progress-fill {
@@ -222,7 +226,11 @@
   }
 
   .volume-icon-max {
+    width: 18px;
+    height: 18px;
     padding: 4px;
+    flex-shrink: 0;
+    cursor: pointer;
   }
 
   .player-volume {
@@ -232,6 +240,10 @@
     border-radius: 2px;
     position: relative;
     cursor: pointer;
+    padding-block: 10px;
+    margin-block: -10px;
+    box-sizing: content-box;
+    background-clip: content-box;
   }
 
   .player-volume-fill {

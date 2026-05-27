@@ -1,5 +1,5 @@
 {
-  "version": "0.6.7",
+  "version": "0.6.8",
   "albums": [
     {
       "id": "grad",
@@ -695,6 +695,12 @@
           "file": "/music/JiK/190806 Victory KW Ref 1.mp3",
           "artist": "Kanye West",
           "year": 2019
+        },
+        {
+          "title": "Don't Give Up",
+          "file": "/music/JiK/Dont Give Up - 10.22.19 For Mix.mp3",
+          "artist": "Kanye West, Cyhi The Prynce",
+          "year": 2019
         }
       ]
     },
@@ -1311,6 +1317,12 @@
         {
           "title": "SO SOON",
           "file": "/music/vultures2/So Soon - WES x TAY Edit.mp3",
+          "artist": "Kanye West, Ty Dolla $ign",
+          "year": 2024
+        },
+        {
+          "title": "LET GO",
+          "file": "/music/vultures2/let go - r3.mp3",
           "artist": "Kanye West, Ty Dolla $ign",
           "year": 2024
         }
