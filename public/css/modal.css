@@ -1,11 +1,11 @@
 /* Standard Modal Styles */
 
 :root {
-  --modal-bg: var(--background);
-  --modal-border: var(--border);
-  --modal-muted: #f9f9f9;
-  --modal-success: #22c55e;
-  --modal-success-bg: #f0fdf4;
+  --modal-bg: var(--background-secondary);
+  --modal-border: var(--glass-border);
+  --modal-muted: var(--muted);
+  --modal-success: #30d158;
+  --modal-success-bg: rgba(48, 209, 88, 0.1);
 }
 
 .modal-overlay {
@@ -14,7 +14,9 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,16 +35,16 @@
   .modal-content {
     background: var(--modal-bg);
     border: 1px solid var(--modal-border);
-    border-radius: 12px;
+    border-radius: var(--xl-radius);
     padding: 32px;
     max-width: 500px;
     width: 90%;
     max-height: 90vh;
     overflow-y: auto;
     position: relative;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    transform: translateY(20px);
-    transition: transform 0.3s ease;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    transform: translateY(20px) scale(0.98);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     overscroll-behavior: contain;
 
     .modal-header {
@@ -53,23 +55,36 @@
 
       h2 {
         font-size: 24px;
-        font-weight: 600;
+        font-weight: 800;
+        letter-spacing: -0.5px;
       }
     }
 
+    .modal-body {
+      padding: 0;
+    }
+
     .modal-close-btn {
-      background: none;
+      background: var(--muted);
       border: none;
-      font-size: 24px;
+      font-size: 18px;
       cursor: pointer;
-      color: var(--foreground);
-      opacity: 0.5;
-      transition: opacity 0.2s;
-      padding: 4px;
+      color: var(--foreground-secondary);
+      transition:
+        background-color 0.15s,
+        color 0.15s;
+      padding: 8px;
       line-height: 1;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       &:hover {
-        opacity: 1;
+        background: var(--muted-hover);
+        color: var(--foreground);
       }
 
       &:focus-visible {
@@ -81,7 +96,7 @@
     .modal-footer {
       display: flex;
       justify-content: space-between;
-      gap: 8px;
+      gap: 12px;
       margin-top: 24px;
       align-items: center;
 
@@ -91,8 +106,8 @@
 
       .modal-version {
         font-size: 12px;
-        opacity: 0.6;
-        color: var(--foreground);
+        font-weight: 500;
+        color: var(--foreground-secondary);
         white-space: nowrap;
         text-align: center;
         margin: 0 8px;
@@ -100,15 +115,16 @@
     }
 
     .modal-btn {
-      padding: 8px 16px;
+      padding: 10px 20px;
       border: 1px solid var(--modal-border);
-      background: var(--modal-bg);
+      background: var(--muted);
       color: var(--foreground);
-      border-radius: 6px;
+      border-radius: 100px;
       cursor: pointer;
-      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: 14px;
-      transition: all 0.2s;
+      font-weight: 600;
+      transition: all 0.15s;
 
       &:hover {
         background: var(--foreground);
@@ -122,53 +138,60 @@
 
     /* Download modal specific adjustments */
     &.download-modal {
-      /* Download stats (summary at top of download modal) */
       .download-stats {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 20px;
+        margin-bottom: 24px;
+        gap: 24px;
       }
 
       .stat-item {
         display: flex;
         flex-direction: column;
+        flex: 1;
       }
 
       .stat-label {
         font-size: 12px;
-        color: #666;
-        margin-bottom: 4px;
+        font-weight: 500;
+        color: var(--foreground-secondary);
+        margin-bottom: 6px;
       }
 
       .stat-value {
-        font-size: 18px;
-        font-weight: 600;
+        font-size: 22px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
       }
 
       .modal-btn {
-        padding: 8px 24px;
-        background: #000;
-        color: #fff;
+        padding: 10px 28px;
+        background: var(--foreground);
+        color: var(--background);
         border: none;
-        font-family: "JetBrains Mono", "Courier New", monospace;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        font-weight: 600;
       }
 
       .modal-btn:hover {
-        opacity: 0.8;
+        opacity: 0.85;
+        background: var(--foreground);
+        color: var(--background);
       }
 
       .overall-progress-bar-container {
-        height: 8px;
-        background: var(--modal-muted);
-        border-radius: 4px;
+        height: 6px;
+        background: var(--muted);
+        border-radius: 100px;
         overflow: hidden;
-        margin-bottom: 24px;
+        margin-bottom: 28px;
       }
 
       .progress-bar-fill {
         height: 100%;
         background: var(--accent);
         transition: width 0.3s ease;
+        border-radius: 100px;
       }
 
       &.download-complete {
@@ -192,9 +215,9 @@
         display: flex;
         align-items: center;
         gap: 16px;
-        padding: 12px;
-        background: var(--modal-muted);
-        border-radius: 8px;
+        padding: 14px;
+        background: var(--muted);
+        border-radius: var(--large-radius);
         transition: all 0.3s ease;
       }
 
@@ -205,7 +228,7 @@
       .download-album-art {
         width: 48px;
         height: 48px;
-        border-radius: 4px;
+        border-radius: var(--card-radius);
         object-fit: cover;
       }
 
@@ -219,14 +242,14 @@
 
       .download-album-name {
         font-size: 14px;
-        font-weight: 600;
+        font-weight: 700;
         margin-bottom: 8px;
       }
 
       .album-progress-bar-container {
         height: 4px;
-        background: var(--modal-muted);
-        border-radius: 2px;
+        background: var(--muted-hover);
+        border-radius: 100px;
         overflow: hidden;
       }
     }
@@ -234,9 +257,9 @@
     /* Settings modal */
     .settings-section {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr auto;
       gap: 16px;
-      align-items: start;
+      align-items: center;
       margin-bottom: 24px;
 
       > div:first-child {
@@ -245,29 +268,37 @@
       }
 
       h3 {
-        font-size: 18px;
-        font-weight: 600;
-        margin: 0 0 8px 0;
+        font-size: 16px;
+        font-weight: 700;
+        margin: 0 0 6px 0;
         color: var(--foreground);
       }
 
       .button-group {
         display: flex;
         gap: 8px;
-        justify-self: center;
+        justify-self: end;
         align-self: center;
 
         input[type="checkbox"] {
-          width: 24px;
-          height: 24px;
+          width: 22px;
+          height: 22px;
           accent-color: var(--accent);
           cursor: pointer;
-          border-radius: 4px;
+          border-radius: 6px;
         }
       }
 
       &.clickable {
         cursor: pointer;
+        padding: 12px 16px;
+        margin: 0 -16px 12px -16px;
+        border-radius: var(--card-radius);
+        transition: background-color 0.15s ease;
+
+        &:hover {
+          background: var(--muted);
+        }
       }
 
       .settings-description {
@@ -277,26 +308,27 @@
 
         p {
           margin: 0;
-          font-size: 14px;
-          color: var(--foreground);
-          opacity: 0.8;
+          font-size: 13px;
+          color: var(--foreground-secondary);
+          line-height: 1.4;
         }
       }
 
       .settings-btn {
         background: var(--accent);
-        color: var(--background);
+        color: #fff;
         border: none;
-        padding: 8px 16px;
-        border-radius: 4px;
-        font-family: "JetBrains Mono", "Courier New", monospace;
-        font-size: 14px;
+        padding: 8px 18px;
+        border-radius: 100px;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 13px;
+        font-weight: 600;
         cursor: pointer;
-        transition: opacity 0.2s;
+        transition: opacity 0.15s;
         white-space: nowrap;
 
         &:hover {
-          opacity: 0.9;
+          opacity: 0.85;
         }
 
         &.hidden {
@@ -306,7 +338,7 @@
     }
 
     &.active .modal-content {
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
     }
   }
 }
@@ -318,7 +350,7 @@
 
 /* Blur background children when modal is open */
 body.modal-open .app-container > :not(.modal-overlay) {
-  filter: blur(4px);
+  filter: blur(8px);
   pointer-events: none;
 }
 

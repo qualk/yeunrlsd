@@ -6,11 +6,104 @@ const nextBtn = document.getElementById("next-btn")
 const headerDiceBtn = document.getElementById("header-dice-btn")
 const playerExpandBtn = document.getElementById("player-expand-btn")
 const playerContainer = document.querySelector(".player-container")
+const playerProgress = document.getElementById("player-progress")
+const playerProgressFill = document.getElementById("player-progress-fill")
+const playerTimeCurrent = document.getElementById("player-time-current")
+const playerTimeDuration = document.getElementById("player-time-duration")
 
 let currentSongIndex = -1
 let isPlaying = false
+let isSeeking = false
 
 const fetchAlbumData = window.api?.getAlbumData || window.getAlbumData
+
+/**
+ * Format time in seconds to M:SS
+ */
+function formatTime(seconds) {
+  if (!seconds || Number.isNaN(seconds)) return "0:00"
+  const mins = Math.floor(seconds / 60)
+  const secs = Math.floor(seconds % 60)
+  return `${mins}:${secs.toString().padStart(2, "0")}`
+}
+
+/**
+ * Extract dominant color from image using canvas
+ */
+function extractDominantColor(imgSrc) {
+  return new Promise((resolve) => {
+    const img = new Image()
+    const isBlob = imgSrc.startsWith("blob:") || imgSrc.startsWith("data:")
+    if (!isBlob) {
+      img.crossOrigin = "anonymous"
+    }
+    img.onload = () => {
+      try {
+        const canvas = document.createElement("canvas")
+        canvas.width = 50
+        canvas.height = 50
+        const ctx = canvas.getContext("2d")
+        ctx.drawImage(img, 0, 0, 50, 50)
+        const data = ctx.getImageData(0, 0, 50, 50).data
+        let r = 0,
+          g = 0,
+          b = 0,
+          count = 0
+        for (let i = 0; i < data.length; i += 4) {
+          r += data[i]
+          g += data[i + 1]
+          b += data[i + 2]
+          count++
+        }
+        r = Math.floor(r / count)
+        g = Math.floor(g / count)
+        b = Math.floor(b / count)
+        const color = `rgb(${r}, ${g}, ${b})`
+        const glow = `rgba(${r}, ${g}, ${b}, 0.25)`
+        resolve({ color, glow })
+      } catch {
+        resolve(null)
+      }
+    }
+    img.onerror = () => resolve(null)
+    img.src = imgSrc
+  })
+}
+
+/**
+ * Update dynamic background colors
+ */
+async function updateDynamicColors(imgSrc) {
+  const orb = document.getElementById("dynamic-bg-orb")
+  if (!orb || !imgSrc) return
+  const result = await extractDominantColor(imgSrc)
+  if (result) {
+    document.documentElement.style.setProperty("--dynamic-color", result.color)
+    document.documentElement.style.setProperty("--dynamic-glow", result.glow)
+  }
+}
+
+/**
+ * Update progress bar and time display
+ */
+function updateProgress() {
+  if (!player.duration || isSeeking) return
+  const percent = (player.currentTime / player.duration) * 100
+  playerProgressFill.style.width = `${percent}%`
+  playerTimeCurrent.textContent = formatTime(player.currentTime)
+  playerTimeDuration.textContent = formatTime(player.duration)
+}
+
+/**
+ * Seek to position on click
+ */
+function seekToPosition(e) {
+  if (!player.duration) return
+  const rect = playerProgress.getBoundingClientRect()
+  const percent = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width))
+  player.currentTime = percent * player.duration
+  playerProgressFill.style.width = `${percent * 100}%`
+}
 
 /**
  * Initialize media session
@@ -92,7 +185,6 @@ function updateMediaSessionPlaybackState() {
  * Handle clicks on player elements to navigate to album or play random
  */
 function handlePlayerClick() {
-  // If there's a currently playing album, navigate to its album detail view.
   if (window.currentPlayingAlbum) {
     if (window.showAlbumDetail) {
       window.showAlbumDetail(window.currentPlayingAlbum.id)
@@ -100,7 +192,6 @@ function handlePlayerClick() {
     return
   }
 
-  // No song playing, play a random song
   if (window.playRandomSong) {
     window.playRandomSong()
   }
@@ -119,35 +210,138 @@ function initPlayer() {
     }
   })
 
+  // Progress bar interaction
+  playerProgress?.addEventListener("click", seekToPosition)
+  playerProgress?.addEventListener("mousedown", (e) => {
+    isSeeking = true
+    seekToPosition(e)
+  })
+
+  // Volume control interaction
+  const volumeBar = document.getElementById("player-volume-bar")
+  const volumeFill = document.getElementById("player-volume-fill")
+  const volumeMuteBtn = document.getElementById("volume-mute-btn")
+  const volumeMaxIcon = document.querySelector(".volume-icon-max")
+  const volumeIconMuted = document.getElementById("volume-icon-muted")
+  const volumeIconUnmuted = document.getElementById("volume-icon-unmuted")
+
+  let isVolumeDragging = false
+  let lastVolume = 1
+
+  function updateVolumeUI(vol) {
+    if (!volumeFill) return
+    volumeFill.style.width = `${vol * 100}%`
+    if (vol === 0) {
+      if (volumeIconMuted) volumeIconMuted.style.display = "block"
+      if (volumeIconUnmuted) volumeIconUnmuted.style.display = "none"
+    } else {
+      if (volumeIconMuted) volumeIconMuted.style.display = "none"
+      if (volumeIconUnmuted) volumeIconUnmuted.style.display = "block"
+    }
+  }
+
+  function setVolumeFromEvent(e) {
+    if (!volumeBar) return
+    const rect = volumeBar.getBoundingClientRect()
+    let vol = (e.clientX - rect.left) / rect.width
+    vol = Math.max(0, Math.min(1, vol))
+    if (player) {
+      player.volume = vol
+      player.muted = vol === 0
+    }
+    updateVolumeUI(vol)
+    localStorage.setItem("playerVolume", vol.toString())
+  }
+
+  if (volumeBar) {
+    const savedVol = localStorage.getItem("playerVolume")
+    const initialVol = savedVol !== null ? parseFloat(savedVol) : 1
+    if (player) {
+      player.volume = initialVol
+      player.muted = initialVol === 0
+    }
+    updateVolumeUI(initialVol)
+
+    volumeBar.addEventListener("mousedown", (e) => {
+      isVolumeDragging = true
+      setVolumeFromEvent(e)
+    })
+  }
+
+  if (volumeMuteBtn) {
+    volumeMuteBtn.addEventListener("click", () => {
+      if (!player) return
+      if (player.volume > 0) {
+        lastVolume = player.volume
+        player.volume = 0
+        player.muted = true
+      } else {
+        player.volume = lastVolume || 1
+        player.muted = false
+      }
+      updateVolumeUI(player.volume)
+      localStorage.setItem("playerVolume", player.volume.toString())
+    })
+  }
+
+  if (volumeMaxIcon) {
+    volumeMaxIcon.style.cursor = "pointer"
+    volumeMaxIcon.addEventListener("click", () => {
+      if (!player) return
+      player.volume = 1
+      player.muted = false
+      updateVolumeUI(1)
+      localStorage.setItem("playerVolume", "1")
+    })
+  }
+
+  document.addEventListener("mousemove", (e) => {
+    if (isSeeking && player.duration) {
+      const rect = playerProgress.getBoundingClientRect()
+      const percent = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width))
+      playerProgressFill.style.width = `${percent * 100}%`
+      const time = percent * player.duration
+      playerTimeCurrent.textContent = formatTime(time)
+    } else if (isVolumeDragging) {
+      setVolumeFromEvent(e)
+    }
+  })
+  document.addEventListener("mouseup", (e) => {
+    if (isSeeking) {
+      isSeeking = false
+      if (!player.duration) return
+      const rect = playerProgress.getBoundingClientRect()
+      const percent = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width))
+      player.currentTime = percent * player.duration
+    }
+    if (isVolumeDragging) {
+      isVolumeDragging = false
+    }
+  })
+
   // Player keyboard shortcuts
   document.addEventListener("keydown", (event) => {
-    // 'r' = random/dice
     const k = event.key?.toLowerCase()
     if (!k) return
     const t = event.target
     if (t?.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t?.nodeName ?? "")) return
     if (k === "r") return window.playRandomSong?.()
-
-    if (k === "0" && player) player.currentTime = 0 // '0' = seek to beginning
+    if (k === "0" && player) player.currentTime = 0
   })
 
   playerExpandBtn?.addEventListener("click", async () => {
     const expanded = playerContainer?.classList.toggle("expanded")
-    console.log(`📱 Player ${expanded ? "expanded" : "collapsed"}`)
+    console.log(` Player ${expanded ? "expanded" : "collapsed"}`)
 
-    // Update body overflow to prevent scrolling when expanded
     if (expanded) {
       document.body.style.overflow = "hidden"
-
-      // Ensure songs are up-to-date, then scroll to the currently playing album if any
       await updateSongsList()
       const songsList = document.getElementById("player-songs-list")
       const targetId = window.currentPlayingAlbum?.id
       if (songsList && targetId) {
-        // Find the album header and scroll into view smoothly
         const header = songsList.querySelector(`.player-album-header[data-album-id="${targetId}"]`)
         if (header) {
-          console.log(`🎯 Scrolling to album: ${window.currentPlayingAlbum.name}`)
+          console.log(` Scrolling to album: ${window.currentPlayingAlbum.name}`)
           header.scrollIntoView({ block: "center", behavior: "smooth" })
         }
       }
@@ -156,7 +350,6 @@ function initPlayer() {
     }
   })
 
-  // Add click handlers for navigation
   const playerArt = document.getElementById("player-art")
   const playerTitle = document.getElementById("player-title")
   const playerSubtitle = document.getElementById("player-subtitle")
@@ -171,14 +364,18 @@ function initPlayer() {
     player.addEventListener("error", onPlayerError)
     player.addEventListener("loadedmetadata", () => {
       updateMediaSessionPlaybackState()
+      updateProgress()
     })
-    player.addEventListener("timeupdate", onTimeUpdate)
+    player.addEventListener("timeupdate", () => {
+      updateProgress()
+      if (window.lastfm && isPlaying) {
+        window.lastfm.onPlaybackProgress(player.currentTime)
+      }
+    })
 
-    // Initial UI state
     updatePlayerUI()
   }
 
-  // Initialize media session
   initMediaSession()
 }
 
@@ -194,7 +391,6 @@ function updatePlayerUI() {
     playerContainer.classList.remove("is-empty")
   }
 
-  // Update songs list
   updateSongsList()
 }
 
@@ -205,24 +401,22 @@ async function updateSongsList() {
   const songsList = document.getElementById("player-songs-list")
   if (!songsList) return
 
-  // Get all albums with songs, prioritize those with songs
   const albumsWithSongs = (window.albums || []).filter((a) => a.hasSongs)
 
-  // If no albums data yet, show nothing (will be called again once albums load)
   if (albumsWithSongs.length === 0) {
     songsList.innerHTML = ""
     return
   }
 
-  // Fetch album details in parallel (with caching)
   const albumDetails = await Promise.all(albumsWithSongs.map((a) => fetchAlbumData(a.id)))
 
-  // Build grouped HTML for all albums (so queue shows even when no song is playing)
   const html = albumDetails
     .filter(Boolean)
     .map((album) => {
+      const isPlayingAlbum =
+        window.currentPlayingAlbum && window.currentPlayingAlbum.id === album.id
       const header = `
-      <div class="player-album-header" data-album-id="${album.id}">
+      <div class="player-album-header${isPlayingAlbum ? " active" : ""}" data-album-id="${album.id}">
         <img class="player-album-thumb" src="${album.image || "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/icons/placeholder.avif"}" alt="${album.name}">
         <div class="player-album-title">${window.applyTitleCase ? window.applyTitleCase(album.name) : album.name}</div>
       </div>`
@@ -253,7 +447,6 @@ async function updateSongsList() {
 
   songsList.innerHTML = html
 
-  // Add handlers: header -> show album, rows -> play song
   songsList.querySelectorAll(".player-album-header").forEach((hdr) => {
     hdr.addEventListener("click", () => {
       const albumId = hdr.dataset.albumId
@@ -269,15 +462,20 @@ async function updateSongsList() {
       if (album?.songs?.[idx]) {
         currentSongIndex = idx
         playSong(album.songs[idx], album)
+        // Smooth scroll to the clicked song
+        setTimeout(() => {
+          const activeRow = songsList.querySelector(".player-song-row.active")
+          if (activeRow) {
+            activeRow.scrollIntoView({ block: "center", behavior: "smooth" })
+          }
+        }, 50)
       }
     })
   })
 
-  // Scroll active into view (if any)
   const active = songsList.querySelector(".player-song-row.active")
   if (active) active.scrollIntoView({ block: "center", behavior: "smooth" })
 
-  // If the player is expanded, ensure the current album header is visible
   if (playerContainer?.classList.contains("expanded") && window.currentPlayingAlbum) {
     const header = songsList.querySelector(
       `.player-album-header[data-album-id="${window.currentPlayingAlbum.id}"]`,
@@ -308,18 +506,15 @@ function togglePlayPause() {
  * Play next song or next album
  */
 async function playNext() {
-  // Ensure we have prerequisites
   if (!window._currentPlaylist?.length || !window.currentPlayingAlbum || !window.albums?.length)
     return
 
-  // Within current album - next song
   if (currentSongIndex < window._currentPlaylist.length - 1) {
     currentSongIndex++
     playSong(window._currentPlaylist[currentSongIndex], window.currentPlayingAlbum)
     return
   }
 
-  // At end of current album - find next album with songs
   const currentAlbumIndex = window.albums.findIndex((a) => a.id === window.currentPlayingAlbum.id)
   if (currentAlbumIndex < 0) return
 
@@ -339,18 +534,15 @@ async function playNext() {
  * Play previous song or previous album
  */
 async function playPrevious() {
-  // Ensure we have prerequisites
   if (!window._currentPlaylist?.length || !window.currentPlayingAlbum || !window.albums?.length)
     return
 
-  // Within current album - previous song
   if (currentSongIndex > 0) {
     currentSongIndex--
     playSong(window._currentPlaylist[currentSongIndex], window.currentPlayingAlbum)
     return
   }
 
-  // At beginning of current album - find previous album with songs
   const currentAlbumIndex = window.albums.findIndex((a) => a.id === window.currentPlayingAlbum.id)
   if (currentAlbumIndex < 0) return
 
@@ -383,6 +575,7 @@ function onPlay() {
   updatePlayerArt()
   updatePlayerUI()
   updateMediaSessionPlaybackState()
+  document.querySelector(".now-playing")?.classList.add("playing")
 }
 
 /**
@@ -393,18 +586,9 @@ function onPause() {
   updatePlayPauseButton()
   updatePlayerArt()
   updateMediaSessionPlaybackState()
-  // Notify Last.fm of playback stop
+  document.querySelector(".now-playing")?.classList.remove("playing")
   if (window.lastfm) {
     window.lastfm.onPlaybackStop()
-  }
-}
-
-/**
- * Called when player time updates
- */
-function onTimeUpdate() {
-  if (window.lastfm && isPlaying) {
-    window.lastfm.onPlaybackProgress(player.currentTime)
   }
 }
 
@@ -415,12 +599,11 @@ function updatePlayerArt() {
   const playerArt = document.getElementById("player-art")
   const playingAlbum = window.currentPlayingAlbum
   if (!playerArt || !playingAlbum) return
-  // Delegate loading to shared media helper to prefer cached blob URLs and avoid duplicate requests
-  const desired =
-    isPlaying && playingAlbum.anim
-      ? playingAlbum.anim
-      : playingAlbum.image ||
-        "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/icons/placeholder.avif"
+  const showAnimated = isPlaying && playingAlbum.anim && window.animatedCoverEnabled !== false
+  const desired = showAnimated
+    ? playingAlbum.anim
+    : playingAlbum.image ||
+      "https://cdn.jsdelivr.net/gh/qualk/yeunrlsd@main/public/icons/placeholder.avif"
   if (window.media?.setImageFromPath) {
     window.media.setImageFromPath(playerArt, desired).catch((err) => {
       console.warn("media: failed to set player art", desired, err)
@@ -432,6 +615,8 @@ function updatePlayerArt() {
     playerArt.src = desired
     playerArt.dataset.src = desired
   }
+  // Update dynamic colors from album art
+  updateDynamicColors(desired)
 }
 
 /**
@@ -444,11 +629,14 @@ function onPlayerError() {
 }
 
 /**
- * Update play/pause button text
+ * Update play/pause button icons
  */
 function updatePlayPauseButton() {
-  if (playPauseBtn) {
-    playPauseBtn.textContent = isPlaying ? "⏸" : "▶"
+  const playIcon = document.getElementById("play-icon")
+  const pauseIcon = document.getElementById("pause-icon")
+  if (playIcon && pauseIcon) {
+    playIcon.style.display = isPlaying ? "none" : "block"
+    pauseIcon.style.display = isPlaying ? "block" : "none"
   }
 }
 
@@ -456,12 +644,10 @@ function updatePlayPauseButton() {
  * Play a song - override from app.js
  */
 function initPlaySongOverride() {
-  // Only override if app.js has loaded
   if (!window.playSong) return
 
   const originalPlaySong = window.playSong
   window.playSong = (song, album) => {
-    // Find index in current playlist with bounds check
     if (!album?.songs) {
       console.warn("playSong: album or songs undefined")
       return
@@ -470,13 +656,14 @@ function initPlaySongOverride() {
       0,
       album.songs.findIndex((s) => s.title === song.title),
     )
-    // Call original function
     originalPlaySong(song, album)
-    // Update UI
     updatePlayerUI()
-    // Update media session metadata on track change only
     updateMediaSessionMetadata()
-    // Update Last.fm
+    // Update active song highlight in detail view if visible
+    const detailView = document.getElementById("detail-view")
+    if (detailView && !detailView.classList.contains("hidden") && window.renderAlbumDetail) {
+      window.renderAlbumDetail(album)
+    }
     if (window.lastfm) {
       const sanitizedTitle = String(song.title)
         .replace(/\s*\(Yedit\)\s*$/i, "")
@@ -491,14 +678,12 @@ function initPlaySongOverride() {
   }
 }
 
-// Expose updateSongsList so other modules can refresh the queue
 window.updateSongsList = updateSongsList
+window.getCurrentSongIndex = () => currentSongIndex
 
-// Initialize when DOM is ready
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", () => {
     initPlayer()
-    // Wait a moment for app.js to load playSong, then override it
     setTimeout(initPlaySongOverride, 100)
   })
 } else {

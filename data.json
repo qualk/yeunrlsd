@@ -1,5 +1,5 @@
 {
-  "version": "0.1.6",
+  "version": "0.6.7",
   "albums": [
     {
       "id": "grad",
@@ -28,7 +28,7 @@
           "year": 2005
         },
         {
-          "title": "Bittersweet Poetry (Yedit)",
+          "title": "Bittersweet Poetry",
           "file": "/music/grad/Bittersweet Poetry (Yedit).mp3",
           "artist": "Kanye West, John Mayer",
           "year": 2005
@@ -56,7 +56,7 @@
       "attribute": null,
       "songs": [
         {
-          "title": "Flashing Lights 2 (Yedit)",
+          "title": "Flashing Lights 2",
           "file": "/music/gaj/Flashing Lights 2 (Yedit).mp3",
           "artist": "Kanye West, Charlie Wilson, The WRLDFMS Tony Williams, Connie Mitchell",
           "year": 2009
@@ -258,7 +258,7 @@
           "year": null
         },
         {
-          "title": "Star Time (Yedit)",
+          "title": "Star Time",
           "file": "/music/shmG/Star Time (Yedit).mp3",
           "artist": "Kanye West, IDK, Anderson .Paak",
           "year": null
@@ -443,7 +443,7 @@
           "year": 2018
         },
         {
-          "title": "Alien (Yedit)",
+          "title": "Alien",
           "file": "/music/yandhi/Alien (Yedit).mp3",
           "artist": "Kanye West, Ant Clemons, Quavo, Kid Cudi",
           "year": 2018
@@ -497,7 +497,7 @@
           "year": 2018
         },
         {
-          "title": "Cash To Burn (Yedit)",
+          "title": "Cash To Burn",
           "file": "/music/yandhi/Cash To Burn (Yedit).mp3",
           "artist": "Kanye West, Ant Clemons",
           "year": 2018
@@ -545,7 +545,7 @@
           "year": 2018
         },
         {
-          "title": "On God (Yedit)",
+          "title": "On God",
           "file": "/music/yandhi/On God (Yedit).mp3",
           "artist": "Kanye West, Dua Lipa",
           "year": 2018
@@ -555,6 +555,94 @@
           "file": "/music/yandhi/End Of It.mp3",
           "artist": "Kanye West",
           "year": 2018
+        }
+      ]
+    },
+    {
+      "id": "soulchildren",
+      "name": "SOUL CHILDREN",
+      "image": "/img/soulchildren.avif",
+      "anim": null,
+      "year": 2019,
+      "attribute": null,
+      "songs": [
+        {
+          "title": "Unhomme (Jesus Is Lord)",
+          "file": "/music/soulchildren/01_unhomme (evan version).mp3",
+          "artist": "Kanye West & E*VAX",
+          "year": 2019
+        },
+        {
+          "title": "Soul Children (Thank You)",
+          "file": "/music/soulchildren/02_soul children(evan version).mp3",
+          "artist": "Kanye West & E*VAX",
+          "year": 2019
+        },
+        {
+          "title": "Nyce Vieux",
+          "file": "/music/soulchildren/03_nyce vieux(evan version).mp3",
+          "artist": "Kanye West & E*VAX",
+          "year": 2019
+        },
+        {
+          "title": "Elsa Laurent",
+          "file": "/music/soulchildren/04_elsa laurent (evan version).mp3",
+          "artist": "Kanye West & E*VAX",
+          "year": 2019
+        },
+        {
+          "title": "Wayback",
+          "file": "/music/soulchildren/05_wayback (evan version).mp3",
+          "artist": "Kanye West & E*VAX",
+          "year": 2019
+        },
+        {
+          "title": "NY Dreams",
+          "file": "/music/soulchildren/06_ny dreams (evan version).mp3",
+          "artist": "Kanye West & E*VAX",
+          "year": 2019
+        },
+        {
+          "title": "Joicing",
+          "file": "/music/soulchildren/07_joicing(evan version).mp3",
+          "artist": "Kanye West & E*VAX",
+          "year": 2019
+        },
+        {
+          "title": "Real Mannish (Crash Landing)",
+          "file": "/music/soulchildren/08_real mannish(evan version).mp3",
+          "artist": "Kanye West & E*VAX",
+          "year": 2019
+        },
+        {
+          "title": "Lill Lindfors",
+          "file": "/music/soulchildren/09_Lill Lindfors (evan version).mp3",
+          "artist": "Kanye West & E*VAX",
+          "year": 2019
+        },
+        {
+          "title": "Linda Perhacs (Hostage)",
+          "file": "/music/soulchildren/10_linda perhacs (evan version).mp3",
+          "artist": "Kanye West & E*VAX",
+          "year": 2019
+        },
+        {
+          "title": "Emerald Web",
+          "file": "/music/soulchildren/11_emerald web (evan version).mp3",
+          "artist": "Kanye West & E*VAX",
+          "year": 2019
+        },
+        {
+          "title": "Novi Torpedo",
+          "file": "/music/soulchildren/12_novi torpedo (evan version).mp3",
+          "artist": "Kanye West & E*VAX",
+          "year": 2019
+        },
+        {
+          "title": "Uke Kaan",
+          "file": "/music/soulchildren/13_uke kaan (evan version).mp3",
+          "artist": "Kanye West & E*VAX",
+          "year": 2019
         }
       ]
     },
@@ -593,6 +681,18 @@
         {
           "title": "Wake The Dead",
           "file": "/music/JiK/Wake The Dead.mp3",
+          "artist": "Kanye West",
+          "year": 2019
+        },
+        {
+          "title": "All Dreams Real",
+          "file": "/music/JiK/All Dreams Real Kanye ref_v3.mp3",
+          "artist": "Kanye West",
+          "year": 2019
+        },
+        {
+          "title": "Victory",
+          "file": "/music/JiK/190806 Victory KW Ref 1.mp3",
           "artist": "Kanye West",
           "year": 2019
         }
@@ -925,6 +1025,12 @@
           "file": "/music/donda/Fighting Fires.mp3",
           "artist": "Kanye West, Arrowstar, Israel Boyd, Sunday Service Choir",
           "year": 2020
+        },
+        {
+          "title": "Where Do We Go",
+          "file": "/music/donda/WhereDoWeGo- LY & VORY REF.mp3",
+          "artist": "Kanye West, Lil Yachty, Vory",
+          "year": 2021
         }
       ]
     },
@@ -936,6 +1042,12 @@
       "year": 2022,
       "attribute": null,
       "songs": [
+        {
+          "title": "First Time In A Long Time (Boogz Version)",
+          "file": "/music/donda2/63.7 - First Time In A Long Time (Boogz Version) 12.15.21 (take1).mp3",
+          "artist": "Kanye West",
+          "year": 2021
+        },
         {
           "title": "PABLO",
           "file": "/music/donda2/PABLO.mp3",
@@ -1049,7 +1161,7 @@
           "year": 2022
         },
         {
-          "title": "My Way (Yedit)",
+          "title": "My Way",
           "file": "/music/war/My Way (Yedit).mp3",
           "artist": "Kanye West, James Blake",
           "year": 2022
@@ -1077,7 +1189,7 @@
           "year": 2022
         },
         {
-          "title": "Love Love Love (Yedit)",
+          "title": "Love Love Love",
           "file": "/music/yebu/Love Love Love (Yedit).mp3",
           "artist": "Kanye West",
           "year": 2022
@@ -1189,6 +1301,18 @@
           "file": "/music/vultures2/BELIEVER.mp3",
           "artist": "Kanye West, Ty Dolla $ign",
           "year": null
+        },
+        {
+          "title": "STAR TIME",
+          "file": "/music/vultures2/STAR TIME MOOSE 1.mp3",
+          "artist": "Kanye West, Young Moose, The-Dream",
+          "year": 2024
+        },
+        {
+          "title": "SO SOON",
+          "file": "/music/vultures2/So Soon - WES x TAY Edit.mp3",
+          "artist": "Kanye West, Ty Dolla $ign",
+          "year": 2024
         }
       ]
     },
@@ -1219,7 +1343,7 @@
           "year": 2024
         },
         {
-          "title": "APEROL SPRITZ (Yedit)",
+          "title": "APEROL SPRITZ",
           "file": "/music/vultures3/APEROL SPRITZ (Yedit).mp3",
           "artist": "Kanye West, Ty Dolla $ign, Ant Clemons",
           "year": 2024
@@ -1231,7 +1355,7 @@
           "year": 2024
         },
         {
-          "title": "WORSHIP (Yedit)",
+          "title": "WORSHIP",
           "file": "/music/vultures3/WORSHIP (Yedit).mp3",
           "artist": "Kanye West, Ty Dolla $ign, Chloe Bailey",
           "year": 2024
@@ -1337,7 +1461,7 @@
           "year": 2025
         },
         {
-          "title": "DARK MATTER (Yedit)",
+          "title": "DARK MATTER",
           "file": "/music/bully/DARK MATTER (Yedit).mp3",
           "artist": "Kanye West",
           "year": 2025
@@ -1349,7 +1473,7 @@
           "year": 2025
         },
         {
-          "title": "RED EYE (Yedit)",
+          "title": "RED EYE",
           "file": "/music/bully/RED EYE (Yedit).mp3",
           "artist": "Kanye West",
           "year": 2025
@@ -1359,6 +1483,12 @@
           "file": "/music/bully/MELROSE.mp3",
           "artist": "Kanye West, Ty Dolla $ign, Playboi Carti",
           "year": 2025
+        },
+        {
+          "title": "BLIND FOR IT",
+          "file": "/music/bully/don - blind for it. 1.mp3",
+          "artist": "Don Toliver",
+          "year": 2024
         }
       ]
     },

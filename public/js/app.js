@@ -6,16 +6,19 @@ let _currentPlaylist = []
 let titleCaseEnabled = localStorage.getItem("titleCase") === "true" // default false
 let yeditHighlightingEnabled = localStorage.getItem("yeditHighlight") !== "false" // default true
 let autoplayEnabled = localStorage.getItem("autoplay") !== "false" // default true
+let animatedCoverEnabled = localStorage.getItem("animatedCover") !== "false" // default true
 
 // Expose to window so other modules (player) can read initial values
 window.titleCaseEnabled = titleCaseEnabled
 window.yeditHighlightingEnabled = yeditHighlightingEnabled
 window.autoplayEnabled = autoplayEnabled
+window.animatedCoverEnabled = animatedCoverEnabled
 
 // Expose to window immediately
 window.titleCaseEnabled = titleCaseEnabled
 window.yeditHighlightingEnabled = yeditHighlightingEnabled
 window.autoplayEnabled = autoplayEnabled
+window.animatedCoverEnabled = animatedCoverEnabled
 
 // Cache DOM elements
 const elements = {
@@ -135,6 +138,16 @@ async function init() {
         autoplayEnabled = e.target.checked
         window.autoplayEnabled = autoplayEnabled
         localStorage.setItem("autoplay", autoplayEnabled)
+      })
+
+      const animatedCoverCheckbox = document.getElementById("animated-cover-checkbox")
+      if (animatedCoverCheckbox) animatedCoverCheckbox.checked = animatedCoverEnabled
+      animatedCoverCheckbox?.addEventListener("change", (e) => {
+        animatedCoverEnabled = e.target.checked
+        window.animatedCoverEnabled = animatedCoverEnabled
+        localStorage.setItem("animatedCover", animatedCoverEnabled)
+        // Update player art to reflect change
+        if (window.updatePlayerArt) window.updatePlayerArt()
       })
     }, 100)
   })
@@ -424,12 +437,17 @@ async function renderAlbumDetail(album) {
       const filename = song.file.split("/").pop()
       const isYedit = /\s*\(Yedit\)\s*$/i.test(song.title)
       const yClass = isYedit && yeditHighlightingEnabled ? " yedit" : ""
+      const isActive =
+        window.currentPlayingAlbum &&
+        window.currentPlayingAlbum.id === album.id &&
+        (window.getCurrentSongIndex ? window.getCurrentSongIndex() : -1) === index
+      const aClass = isActive ? " active" : ""
       const displayTitleRaw = String(song.title)
         .replace(/\s*\(Yedit\)\s*$/i, "")
         .trim()
       const displayTitle = applyTitleCase(displayTitleRaw)
       return `
-    <li class="song-row${yClass}" data-song-index="${index}" data-yedit="${isYedit ? "true" : "false"}">
+    <li class="song-row${aClass}${yClass}" data-song-index="${index}" data-yedit="${isYedit ? "true" : "false"}">
       <div class="song-main" data-song-title="${song.title}" data-song-file="${songUrl}" title="${displayTitle}">
         <div class="song-left">
           <span class="song-title">${displayTitle}</span>
@@ -521,7 +539,7 @@ async function playSong(song, album) {
     })
   } else {
     // Fallback: immediate set
-    playerArt.src = artUrl
+    playerArt.src = targetArt
     playerArt.dataset.src = targetArt
   }
 
@@ -584,6 +602,7 @@ async function playRandomSong() {
 // Expose functions to window for player.js
 window.playRandomSong = playRandomSong
 window.showAlbumDetail = showAlbumDetail
+window.renderAlbumDetail = renderAlbumDetail
 
 /**
  * Go back to grid view
