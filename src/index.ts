@@ -32,6 +32,8 @@ const MIME_TYPES: Record<string, string> = {
   ".gif": "image/gif",
   ".svg": "image/svg+xml",
   ".mp3": "audio/mpeg",
+  ".m4a": "audio/mp4",
+  ".lrc": "text/plain; charset=utf-8",
 }
 
 function getContentType(filePath: string): string {

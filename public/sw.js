@@ -19,9 +19,10 @@ self.addEventListener("activate", () => {
 self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url)
 
-  // Only intercept music, images, animations, and icons
+  // Only intercept music, lyrics, images, animations, and icons
   if (
     url.pathname.startsWith("/music/") ||
+    url.pathname.startsWith("/lyrics/") ||
     url.pathname.startsWith("/img/") ||
     url.pathname.startsWith("/anim/") ||
     url.pathname.startsWith("/icons/")
